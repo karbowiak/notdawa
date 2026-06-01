@@ -734,6 +734,13 @@ func NewHumaServer(pool *pgxpool.Pool, baseURL string) http.Handler {
 			map[string]string{"entitet": in.Entitet}), nil
 	})
 
+	// Landing page at the exact root. `GET /{$}` matches ONLY "/" (Go 1.22 mux),
+	// so it never shadows an API route or the 404 path.
+	mux.HandleFunc("GET /{$}", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		_, _ = w.Write([]byte(indexHTML))
+	})
+
 	// Scalar docs UI. Served as a plain mux route per the Huma docs.
 	mux.HandleFunc("GET /docs", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
@@ -797,6 +804,58 @@ const scalarHTML = `<!doctype html><html><head><meta charset="utf-8"><title>DAWA
 <script id="api-reference" data-url="/openapi.json"></script>
 <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
 </body></html>`
+
+// indexHTML is the landing page served at "/": a small blurb plus links to the
+// Scalar docs and the OpenAPI document. Self-contained (inline CSS, system fonts,
+// no external assets) so it works offline and adds no dependency.
+const indexHTML = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>notdawa — DAWA-compatible address API</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A self-hosted, DAWA-compatible Danish address API, backed by a local mirror of the Datafordeler registers.">
+<style>
+:root{--bg:#0b0f17;--fg:#e7ecf3;--muted:#9aa7bd;--accent:#5b9dff;--accent2:#7c5cff;--card:#121a2b;--border:#1f2a40}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--fg);
+  background:radial-gradient(1100px 560px at 50% -10%,#1b2746 0%,var(--bg) 60%);
+  display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+.wrap{max-width:680px;width:100%;text-align:center}
+.logo{font-size:clamp(2.6rem,7vw,4.2rem);font-weight:800;letter-spacing:-.03em;margin:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{color:var(--muted);font-size:1.05rem;margin:.6rem 0 0}
+.badge{display:inline-block;margin-top:1.2rem;padding:.32rem .8rem;border:1px solid var(--border);border-radius:999px;
+  color:var(--muted);font-size:.8rem;background:var(--card)}
+.blurb{opacity:.92;line-height:1.65;margin:1.5rem auto 0;max-width:560px}
+.links{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:2.1rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;padding:.8rem 1.3rem;border-radius:.8rem;
+  font-weight:600;font-size:.98rem;border:1px solid var(--border);color:var(--fg);background:var(--card);
+  transition:transform .12s ease,border-color .12s ease}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff}
+.foot{margin-top:2.6rem;color:var(--muted);font-size:.8rem;line-height:1.6}
+.foot a{color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1 class="logo">notdawa</h1>
+  <p class="tag">A self-hosted, DAWA-compatible Danish address API</p>
+  <span class="badge">DAWA shuts down 2026-07-01 &middot; notdawa is a drop-in</span>
+  <p class="blurb">The full DAWA API surface, reimplemented in Go and served from a local
+    PostgreSQL&nbsp;+&nbsp;PostGIS mirror of the official Datafordeler registers
+    (DAR, DAGI, MAT, DS). Same endpoints, same JSON.</p>
+  <div class="links">
+    <a class="btn primary" href="/docs">API documentation</a>
+    <a class="btn" href="/openapi.json">OpenAPI spec</a>
+    <a class="btn" href="https://github.com/karbowiak/notdawa">GitHub &rarr;</a>
+  </div>
+  <p class="foot">Data: Datafordeler / Styrelsen for Dataforsyning og Infrastruktur &middot; free &amp; open &middot; not affiliated with DAWA</p>
+</main>
+</body>
+</html>`
 
 // ---- query-string encoders ----
 //
