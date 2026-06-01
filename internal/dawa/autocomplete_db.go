@@ -104,85 +104,163 @@ func tsMatch(searchText string, paramIdx int) string {
 	return fmt.Sprintf("to_tsvector('simple', unaccent(%s)) @@ to_tsquery('simple', unaccent($%d))", searchText, paramIdx)
 }
 
+// fuzzyRoadThreshold is the minimum pg_trgm similarity for the typo-tolerant
+// road-name fallback to accept a correction. 0.4 comfortably accepts a single
+// missing/extra/wrong letter ("hellevangn" → "Hellevangen", sim ≈ 0.7) while
+// rejecting unrelated names.
+const fuzzyRoadThreshold = 0.4
+
+// fuzzyRoadName returns the trigram-closest status-3 road name to a (possibly
+// misspelled) road part, plus its similarity. It is served by the f_unaccent(navn)
+// GIN trigram index on dar_navngivenvej (the same index that backs the exact
+// prefix filter — gin_trgm_ops answers the `%` similarity operator too), so it
+// stays cheap. Returns "" when nothing is similar enough.
+func fuzzyRoadName(ctx context.Context, pool *pgxpool.Pool, road string) (string, float64, error) {
+	const sql = `SELECT navn, similarity(f_unaccent(navn), f_unaccent($1)) AS sim
+		FROM dar_navngivenvej
+		WHERE status = '3' AND f_unaccent(navn) % f_unaccent($1)
+		ORDER BY sim DESC, navn
+		LIMIT 1`
+	rows, err := pool.Query(ctx, sql, road)
+	if err != nil {
+		return "", 0, err
+	}
+	defer rows.Close()
+	if rows.Next() {
+		var navn string
+		var sim float64
+		if err := rows.Scan(&navn, &sim); err != nil {
+			return "", 0, err
+		}
+		return navn, sim, rows.Err()
+	}
+	return "", 0, rows.Err()
+}
+
+// fuzzyCorrectRoad rewrites q with its road-name part replaced by the trigram-
+// closest real road name, for the typo-tolerant autocomplete fallback. The
+// house-number/etage/dør remainder is preserved verbatim, e.g.
+// "hellevangn 27 st. t" → "Hellevangen 27 st. t". Returns "" when there is no
+// road part, no sufficiently-similar road, or the road is already spelled
+// correctly (retrying the exact query would then be pointless).
+func fuzzyCorrectRoad(ctx context.Context, pool *pgxpool.Pool, q string) string {
+	road := roadNamePart(q)
+	if road == "" {
+		return ""
+	}
+	corrected, sim, err := fuzzyRoadName(ctx, pool, road)
+	if err != nil || corrected == "" || sim < fuzzyRoadThreshold || strings.EqualFold(corrected, road) {
+		return ""
+	}
+	qn := strings.TrimSpace(splitTrailingHusnr(q))
+	remainder := strings.TrimSpace(strings.TrimPrefix(qn, road))
+	if remainder == "" {
+		return corrected
+	}
+	return corrected + " " + remainder
+}
+
 // listAdgangsadresserMatching returns status-3 adgangsadresser matching q as an
 // AND of all its tokens (DAWA tsquery semantics) over the adgangsadresse search
 // text (vejnavn+husnr+suppl+postnr — NO etage/dør), ordered by adressebetegnelse
 // (vejnavn, then husnr numerically) — DAWA's autocomplete order. perSide<=0
-// returns all matches; offset skips the first results.
+// returns all matches; offset skips the first results. When the exact query finds
+// nothing (so DAWA would return [] too), it retries once with the road name
+// trigram-corrected — typo tolerance that never changes a query DAWA can answer.
 func listAdgangsadresserMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL string, perSide, offset int) ([]*Adgangsadresse, error) {
-	tsq := autoTsquery(q)
-	where := "h.status = '3'"
-	args := []any{}
-	if tsq != "" {
-		// Road-name prefix pre-filter FIRST: it cuts dar_navngivenvej (small) to the
-		// matching road(s) via the f_unaccent trigram index, so the expensive per-row
-		// tsvector AND-match only runs on those rows' husnumre — not the whole 2.6M
-		// table. The road name is always the leading token of q, so this never drops
-		// a real match. The tsvector AND then narrows by husnr/postnr (DAWA semantics).
-		args = append(args, tsq)
-		where += " AND " + tsMatch(adgangsadresseSearchText, 1)
-		if road := roadNamePart(q); road != "" {
-			args = append(args, road+"%")
-			where += fmt.Sprintf(" AND f_unaccent(nv.navn) ILIKE f_unaccent($%d)", len(args))
+	run := func(qq string) ([]*Adgangsadresse, error) {
+		tsq := autoTsquery(qq)
+		where := "h.status = '3'"
+		args := []any{}
+		if tsq != "" {
+			// Road-name prefix pre-filter FIRST: it cuts dar_navngivenvej (small) to the
+			// matching road(s) via the f_unaccent trigram index, so the expensive per-row
+			// tsvector AND-match only runs on those rows' husnumre — not the whole 2.6M
+			// table. The road name is always the leading token of q, so this never drops
+			// a real match. The tsvector AND then narrows by husnr/postnr (DAWA semantics).
+			args = append(args, tsq)
+			where += " AND " + tsMatch(adgangsadresseSearchText, 1)
+			if road := roadNamePart(qq); road != "" {
+				args = append(args, road+"%")
+				where += fmt.Sprintf(" AND f_unaccent(nv.navn) ILIKE f_unaccent($%d)", len(args))
+			}
 		}
-	}
-	sql := "SELECT " + adgangsadresseCols + adgangsadresseFrom +
-		" WHERE " + where +
-		" ORDER BY nv.navn, NULLIF(regexp_replace(h.husnummertekst, '\\D', '', 'g'), '')::int NULLS LAST, h.husnummertekst, h.id"
-	sql += pageClause(perSide, offset)
-	rows, err := pool.Query(ctx, sql, args...)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	var out []*Adgangsadresse
-	for rows.Next() {
-		a, err := scanAdgangsadresse(rows, baseURL)
+		sql := "SELECT " + adgangsadresseCols + adgangsadresseFrom +
+			" WHERE " + where +
+			" ORDER BY nv.navn, NULLIF(regexp_replace(h.husnummertekst, '\\D', '', 'g'), '')::int NULLS LAST, h.husnummertekst, h.id"
+		sql += pageClause(perSide, offset)
+		rows, err := pool.Query(ctx, sql, args...)
 		if err != nil {
 			return nil, err
 		}
-		out = append(out, a)
+		defer rows.Close()
+		var out []*Adgangsadresse
+		for rows.Next() {
+			a, err := scanAdgangsadresse(rows, baseURL)
+			if err != nil {
+				return nil, err
+			}
+			out = append(out, a)
+		}
+		return out, rows.Err()
 	}
-	return out, rows.Err()
+	out, err := run(q)
+	if err != nil || len(out) > 0 || q == "" {
+		return out, err
+	}
+	if q2 := fuzzyCorrectRoad(ctx, pool, q); q2 != "" {
+		return run(q2)
+	}
+	return out, nil
 }
 
 // listAdresserMatching mirrors listAdgangsadresserMatching for enhedsadresser, but
 // its search text INCLUDES etage + dør (DAWA's adresse tsvector), so a query like
 // "Hellevangen 27 st. th." narrows to the single matching enhedsadresse. Ordered
-// by adressebetegnelse then etage/dør.
+// by adressebetegnelse then etage/dør. Same zero-result road-name fuzzy fallback.
 func listAdresserMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL string, perSide, offset int) ([]*Adresse, error) {
-	tsq := autoTsquery(q)
-	where := "a.status = '3'"
-	args := []any{}
-	if tsq != "" {
-		// Road-name prefix pre-filter first (f_unaccent trigram index) to bound the
-		// tsvector AND-match to the matching road's addresses — see the adgangs-
-		// adresse version above. Then the tsvector narrows by husnr/etage/dør/postnr.
-		args = append(args, tsq)
-		where += " AND " + tsMatch(adresseSearchText, 1)
-		if road := roadNamePart(q); road != "" {
-			args = append(args, road+"%")
-			where += fmt.Sprintf(" AND f_unaccent(nv.navn) ILIKE f_unaccent($%d)", len(args))
+	run := func(qq string) ([]*Adresse, error) {
+		tsq := autoTsquery(qq)
+		where := "a.status = '3'"
+		args := []any{}
+		if tsq != "" {
+			// Road-name prefix pre-filter first (f_unaccent trigram index) to bound the
+			// tsvector AND-match to the matching road's addresses — see the adgangs-
+			// adresse version above. Then the tsvector narrows by husnr/etage/dør/postnr.
+			args = append(args, tsq)
+			where += " AND " + tsMatch(adresseSearchText, 1)
+			if road := roadNamePart(qq); road != "" {
+				args = append(args, road+"%")
+				where += fmt.Sprintf(" AND f_unaccent(nv.navn) ILIKE f_unaccent($%d)", len(args))
+			}
 		}
-	}
-	sql := "SELECT " + adresseExtraCols + adgangsadresseCols + adresseFromPrefix + adgangsadresseJoins +
-		" WHERE " + where +
-		" ORDER BY nv.navn, NULLIF(regexp_replace(h.husnummertekst, '\\D', '', 'g'), '')::int NULLS LAST, h.husnummertekst, a.etagebetegnelse NULLS FIRST, a.doerbetegnelse NULLS FIRST, a.id_lokalid"
-	sql += pageClause(perSide, offset)
-	rows, err := pool.Query(ctx, sql, args...)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	var out []*Adresse
-	for rows.Next() {
-		a, err := scanAdresse(rows, baseURL)
+		sql := "SELECT " + adresseExtraCols + adgangsadresseCols + adresseFromPrefix + adgangsadresseJoins +
+			" WHERE " + where +
+			" ORDER BY nv.navn, NULLIF(regexp_replace(h.husnummertekst, '\\D', '', 'g'), '')::int NULLS LAST, h.husnummertekst, a.etagebetegnelse NULLS FIRST, a.doerbetegnelse NULLS FIRST, a.id_lokalid"
+		sql += pageClause(perSide, offset)
+		rows, err := pool.Query(ctx, sql, args...)
 		if err != nil {
 			return nil, err
 		}
-		out = append(out, a)
+		defer rows.Close()
+		var out []*Adresse
+		for rows.Next() {
+			a, err := scanAdresse(rows, baseURL)
+			if err != nil {
+				return nil, err
+			}
+			out = append(out, a)
+		}
+		return out, rows.Err()
 	}
-	return out, rows.Err()
+	out, err := run(q)
+	if err != nil || len(out) > 0 || q == "" {
+		return out, err
+	}
+	if q2 := fuzzyCorrectRoad(ctx, pool, q); q2 != "" {
+		return run(q2)
+	}
+	return out, nil
 }
 
 // The remaining helpers SQL-filter the LARGE resources (millions of rows) so the
