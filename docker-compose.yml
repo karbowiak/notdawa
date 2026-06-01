@@ -1,0 +1,21 @@
+services:
+  db:
+    # Multi-arch (incl. arm64/Apple Silicon) PostGIS build; official postgis/postgis is amd64-only.
+    image: imresamu/postgis:17-3.5
+    container_name: notdawa-db
+    environment:
+      POSTGRES_USER: notdawa
+      POSTGRES_PASSWORD: notdawa
+      POSTGRES_DB: notdawa
+    ports:
+      - "5432:5432"
+    volumes:
+      - notdawa-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U notdawa"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  notdawa-pgdata:
