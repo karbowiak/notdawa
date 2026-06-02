@@ -99,10 +99,11 @@ const adresseSearchText = `coalesce(nv.navn,'') || ' ' || coalesce(h.husnummerte
 
 // tsMatch builds the WHERE predicate "<search text> matches the tsquery", using the
 // 'simple' config (no stemming/stopwords — DAWA's 'adresser' config is copy=simple)
-// over unaccented text so æ/ø/å and case fold consistently. paramIdx is the $N for
-// the tsquery string produced by autoTsquery.
+// over dawa_fold'd text so case, æ/ø/å AND the aa↔å digraph fold consistently on
+// both sides (see dawa_fold / migration 030). paramIdx is the $N for the tsquery
+// string produced by autoTsquery.
 func tsMatch(searchText string, paramIdx int) string {
-	return fmt.Sprintf("to_tsvector('simple', unaccent(%s)) @@ to_tsquery('simple', unaccent($%d))", searchText, paramIdx)
+	return fmt.Sprintf("to_tsvector('simple', dawa_fold(%s)) @@ to_tsquery('simple', dawa_fold($%d))", searchText, paramIdx)
 }
 
 // fuzzyRoadThreshold is the minimum pg_trgm similarity for the typo-tolerant
@@ -112,14 +113,14 @@ func tsMatch(searchText string, paramIdx int) string {
 const fuzzyRoadThreshold = 0.4
 
 // fuzzyRoadName returns the trigram-closest status-3 road name to a (possibly
-// misspelled) road part, plus its similarity. It is served by the f_unaccent(navn)
+// misspelled) road part, plus its similarity. It is served by the dawa_fold(navn)
 // GIN trigram index on dar_navngivenvej (the same index that backs the exact
 // prefix filter — gin_trgm_ops answers the `%` similarity operator too), so it
 // stays cheap. Returns "" when nothing is similar enough.
 func fuzzyRoadName(ctx context.Context, pool *pgxpool.Pool, road string) (string, float64, error) {
-	const sql = `SELECT navn, similarity(f_unaccent(navn), f_unaccent($1)) AS sim
+	const sql = `SELECT navn, similarity(dawa_fold(navn), dawa_fold($1)) AS sim
 		FROM dar_navngivenvej
-		WHERE status = '3' AND f_unaccent(navn) % f_unaccent($1)
+		WHERE status = '3' AND dawa_fold(navn) % dawa_fold($1)
 		ORDER BY sim DESC, navn
 		LIMIT 1`
 	rows, err := pool.Query(ctx, sql, road)
@@ -175,7 +176,7 @@ func listAdgangsadresserMatching(ctx context.Context, pool *pgxpool.Pool, q, bas
 		args := []any{}
 		if tsq != "" {
 			// Road-name prefix pre-filter FIRST: it cuts dar_navngivenvej (small) to the
-			// matching road(s) via the f_unaccent trigram index, so the expensive per-row
+			// matching road(s) via the dawa_fold trigram index, so the expensive per-row
 			// tsvector AND-match only runs on those rows' husnumre — not the whole 2.6M
 			// table. The road name is always the leading token of q, so this never drops
 			// a real match. The tsvector AND then narrows by husnr/postnr (DAWA semantics).
@@ -183,7 +184,7 @@ func listAdgangsadresserMatching(ctx context.Context, pool *pgxpool.Pool, q, bas
 			where += " AND " + tsMatch(adgangsadresseSearchText, 1)
 			if road := roadNamePart(qq); road != "" {
 				args = append(args, road+"%")
-				where += fmt.Sprintf(" AND f_unaccent(nv.navn) ILIKE f_unaccent($%d)", len(args))
+				where += fmt.Sprintf(" AND dawa_fold(nv.navn) ILIKE dawa_fold($%d)", len(args))
 			}
 		}
 		sql := "SELECT " + adgangsadresseCols + adgangsadresseFrom +
@@ -225,14 +226,14 @@ func listAdresserMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL st
 		where := "a.status = '3'"
 		args := []any{}
 		if tsq != "" {
-			// Road-name prefix pre-filter first (f_unaccent trigram index) to bound the
+			// Road-name prefix pre-filter first (dawa_fold trigram index) to bound the
 			// tsvector AND-match to the matching road's addresses — see the adgangs-
 			// adresse version above. Then the tsvector narrows by husnr/etage/dør/postnr.
 			args = append(args, tsq)
 			where += " AND " + tsMatch(adresseSearchText, 1)
 			if road := roadNamePart(qq); road != "" {
 				args = append(args, road+"%")
-				where += fmt.Sprintf(" AND f_unaccent(nv.navn) ILIKE f_unaccent($%d)", len(args))
+				where += fmt.Sprintf(" AND dawa_fold(nv.navn) ILIKE dawa_fold($%d)", len(args))
 			}
 		}
 		sql := "SELECT " + adresseExtraCols + adgangsadresseCols + adresseFromPrefix + adgangsadresseJoins +
@@ -275,7 +276,7 @@ func listAdresserMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL st
 // listVejstykkerMatching returns status-3 vejstykker whose navn matches q.
 func listVejstykkerMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL string, perSide, offset int) ([]*Vejstykke, error) {
 	sql := "SELECT " + vejstykkeSelect + vejstykkeFrom +
-		" WHERE kd.status = '3' AND unaccent(nv.navn) ILIKE unaccent($1)" +
+		" WHERE kd.status = '3' AND dawa_fold(nv.navn) ILIKE dawa_fold($1)" +
 		" ORDER BY kd.kommune, kd.vejkode" + pageClause(perSide, offset)
 	rows, err := pool.Query(ctx, sql, "%"+q+"%")
 	if err != nil {
@@ -304,7 +305,7 @@ func listVejstykkerMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL 
 func listVejnavnNamesMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL string) ([]*Vejnavn, error) {
 	sql := `SELECT DISTINCT nv.navn
 		FROM dar_navngivenvej nv
-		WHERE nv.status = '3' AND unaccent(nv.navn) ILIKE unaccent($1)
+		WHERE nv.status = '3' AND dawa_fold(nv.navn) ILIKE dawa_fold($1)
 		ORDER BY nv.navn`
 	rows, err := pool.Query(ctx, sql, "%"+q+"%")
 	if err != nil {
@@ -351,7 +352,7 @@ func listNavngivnevejeMatchingAuto(ctx context.Context, pool *pgxpool.Pool, q, b
 		CASE WHEN nv.geom IS NULL THEN NULL ELSE round(ST_X(g.vc)::numeric, 8)::float8 END AS vc_x,
 		CASE WHEN nv.geom IS NULL THEN NULL ELSE round(ST_Y(g.vc)::numeric, 8)::float8 END AS vc_y` +
 		navngivnevejFrom +
-		" WHERE nv.status = '3' AND unaccent(nv.navn) ~* ('\\m' || unaccent($1))" +
+		" WHERE nv.status = '3' AND dawa_fold(nv.navn) ~* ('\\m' || dawa_fold($1))" +
 		" ORDER BY nv.id" + pageClause(perSide, offset)
 	rows, err := pool.Query(ctx, sql, q)
 	if err != nil {
@@ -372,7 +373,7 @@ func listNavngivnevejeMatchingAuto(ctx context.Context, pool *pgxpool.Pool, q, b
 // listNavngivnevejeMatching returns status-3 navngivneveje whose navn matches q.
 func listNavngivnevejeMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL string, perSide, offset int) ([]*NavngivenVej, error) {
 	sql := "SELECT " + navngivnevejSelect + navngivnevejFrom +
-		" WHERE nv.status = '3' AND unaccent(nv.navn) ILIKE unaccent($1)" +
+		" WHERE nv.status = '3' AND dawa_fold(nv.navn) ILIKE dawa_fold($1)" +
 		" ORDER BY nv.id" + pageClause(perSide, offset)
 	rows, err := pool.Query(ctx, sql, "%"+q+"%")
 	if err != nil {
