@@ -26,7 +26,10 @@
 package tests
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"math"
 	"sort"
 	"strconv"
 	"strings"
@@ -75,6 +78,172 @@ func TestRealQueries(t *testing.T) {
 			})
 		}
 	})
+	// struktur=flad: not in the captured client traffic, but the user requested it
+	// alongside mini. flad is a wide flat projection of the (byte-verified) nestet
+	// object; the few diffs vs DAWA are the documented source-data limitations
+	// (frozen DAR historik timestamps, null tekstretning/højde, sub-mm etrs89 float
+	// drift) plus brofast (hardcoded true — not in our extract; wrong only for the
+	// non-bridge islands). compareFlad enforces identical key set+order and value
+	// equality on every OTHER field. Bornholm is included so an island regression
+	// (anything beyond brofast diverging) is caught.
+	t.Run("flad", func(t *testing.T) {
+		for _, path := range []string{
+			"/adgangsadresser/00000667-2566-47c9-9ba0-f5ec6b8ce50f?struktur=flad",   // Odense, mainland
+			"/adgangsadresser/00038978-be22-4dec-bb57-34e022021549?struktur=flad",   // Bornholm (island)
+			"/adresser/000021c5-e9ee-411d-b2d8-ec9161780ccd?struktur=flad",          // Stubbekøbing, full etage/dør
+			"/adresser/0a3f50c3-6f6d-32b8-e044-0003ba298018?struktur=flad",          // the captured address
+		} {
+			path := path
+			t.Run(label(path), func(t *testing.T) { compareFladSingle(t, path) })
+		}
+		for _, path := range []string{
+			"/adgangsadresser?per_side=5&struktur=flad",
+			"/adresser?per_side=5&struktur=flad",
+		} {
+			path := path
+			t.Run(label(path), func(t *testing.T) { compareFladCollection(t, path) })
+		}
+	})
+}
+
+// fladTolerated holds the flad keys whose value may differ from DAWA without being
+// a bug: the DAR historik timestamps DAWA freezes (lifted to top level + the
+// embedded-adgangsadresse copies), the elevation/bearing we cannot derive (served
+// null), and brofast (hardcoded true; the DAR brofast attribute is not in our
+// extract — fixable only by re-ingest). etrs89 coords are handled separately
+// (sub-mm float tolerance). Every other key must match exactly.
+var fladTolerated = map[string]bool{
+	"oprettet": true, "ændret": true, "ikrafttrædelse": true, "nedlagt": true,
+	"adgangsadresse_oprettet": true, "adgangsadresse_ændret": true,
+	"adgangsadresse_ikrafttrædelse": true, "adgangsadresse_nedlagt": true,
+	"tekstretning": true, "højde": true, "brofast": true,
+}
+
+// compareFladObject asserts ours/dawa flad objects have the SAME keys in the SAME
+// order and equal values on every non-tolerated field. etrs89koordinat_* may drift
+// sub-mm (shared-source float last-bits). Returns the list of real diffs.
+func compareFladObject(prefix string, ov, dv any) []diff {
+	om, ook := ov.(map[string]any)
+	dm, dok := dv.(map[string]any)
+	if !ook || !dok {
+		return []diff{{prefix, kind(ov), kind(dv)}}
+	}
+	var diffs []diff
+	ok, dk := sortedKeys(om), sortedKeys(dm)
+	if strings.Join(ok, ",") != strings.Join(dk, ",") {
+		diffs = append(diffs, diff{prefix + " <keyset>", strings.Join(ok, ","), strings.Join(dk, ",")})
+	}
+	for _, k := range dk {
+		if fladTolerated[k] {
+			continue
+		}
+		ovv, dvv := om[k], dm[k]
+		if strings.HasPrefix(k, "etrs89koordinat_") {
+			of, ofok := toFloat(ovv)
+			df, dfok := toFloat(dvv)
+			if ofok && dfok && math.Abs(of-df) < 0.001 {
+				continue
+			}
+		}
+		var sub []diff
+		compareJSON(prefix+k, ovv, dvv, &sub)
+		diffs = append(diffs, sub...)
+	}
+	return diffs
+}
+
+// sortedKeys returns a decoded object's member keys sorted — a SET check (Go maps
+// lose order). KEY ORDER is checked separately on the raw bytes (rawObjectKeys).
+func sortedKeys(m map[string]any) []string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
+}
+
+// compareFladSingle fetches a single flad resource from both sides and asserts the
+// key SET + ORDER are identical and all non-tolerated values match.
+func compareFladSingle(t *testing.T, path string) {
+	t.Helper()
+	oStatus, oBody := fetch(t, ourBase+path)
+	dStatus, dBody := fetch(t, liveDAWA+path)
+	if oStatus != dStatus {
+		t.Errorf("STATUS mismatch %s ours=%d dawa=%d", path, oStatus, dStatus)
+		return
+	}
+	if oks, dks := rawObjectKeys(oBody), rawObjectKeys(dBody); strings.Join(oks, ",") != strings.Join(dks, ",") {
+		t.Errorf("flad %s: KEY ORDER/SET mismatch\n  ours=%v\n  dawa=%v", path, oks, dks)
+		return
+	}
+	ov, _ := decodeJSON(oBody)
+	dv, _ := decodeJSON(dBody)
+	diffs := compareFladObject("", ov, dv)
+	reportFladDiffs(t, path, diffs)
+}
+
+// compareFladCollection compares a flad collection page: same length, same id
+// order, and each element compared with compareFladObject.
+func compareFladCollection(t *testing.T, path string) {
+	t.Helper()
+	_, oBody := fetch(t, ourBase+path)
+	_, dBody := fetch(t, liveDAWA+path)
+	ov, _ := decodeJSON(oBody)
+	dv, _ := decodeJSON(dBody)
+	oArr, ook := ov.([]any)
+	dArr, dok := dv.([]any)
+	if !ook || !dok {
+		t.Errorf("flad %s: expected arrays (ours=%v dawa=%v)", path, ook, dok)
+		return
+	}
+	if len(oArr) != len(dArr) {
+		t.Errorf("flad %s: COUNT mismatch ours=%d dawa=%d", path, len(oArr), len(dArr))
+		return
+	}
+	var diffs []diff
+	for i := range dArr {
+		diffs = append(diffs, compareFladObject(fmt.Sprintf("[%d].", i), oArr[i], dArr[i])...)
+	}
+	reportFladDiffs(t, path, diffs)
+}
+
+func reportFladDiffs(t *testing.T, path string, diffs []diff) {
+	t.Helper()
+	if len(diffs) == 0 {
+		t.Logf("flad %s: matches DAWA (key set+order identical; tolerated: historik ts, tekstretning/højde null, etrs89 sub-mm, brofast)", path)
+		return
+	}
+	var b strings.Builder
+	fmt.Fprintf(&b, "flad %s: %d real diff(s) (beyond tolerated source-data fields)", path, len(diffs))
+	for i, d := range diffs {
+		if i >= maxDiffsPerEndpoint {
+			break
+		}
+		fmt.Fprintf(&b, "\n  %s: ours=%s dawa=%s", d.path, d.ours, d.dawa)
+	}
+	t.Error(b.String())
+}
+
+// rawObjectKeys returns a JSON object's member keys in source (emit) order.
+func rawObjectKeys(body []byte) []string {
+	dec := json.NewDecoder(bytes.NewReader(body))
+	if _, err := dec.Token(); err != nil { // opening {
+		return nil
+	}
+	var keys []string
+	for dec.More() {
+		tok, err := dec.Token()
+		if err != nil {
+			return keys
+		}
+		if k, ok := tok.(string); ok {
+			keys = append(keys, k)
+			var skip json.RawMessage
+			_ = dec.Decode(&skip)
+		}
+	}
+	return keys
 }
 
 // compareCapturedAutocomplete applies the comparison ladder described in the file
