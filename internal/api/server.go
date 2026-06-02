@@ -781,13 +781,29 @@ func (s *server) listAdgangsadresser(w http.ResponseWriter, r *http.Request) {
 		writeServerError(w, err)
 		return
 	}
+	if cp.struktur == "mini" {
+		writeAddressMiniCollection(w, cp, items, dawa.AdgangsadresseMini)
+		return
+	}
 	writePagedCollection(w, cp, items)
 }
 
 func (s *server) getAdgangsadresse(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
+	struktur, ok := parseStruktur(w, r)
+	if !ok {
+		return
+	}
 	v, err := dawa.GetAdgangsadresse(s.ctx(r), s.pool, id, s.baseURL)
-	finishGet(w, v, err, map[string]any{"id": id})
+	if err != nil {
+		finishGet(w, v, err, map[string]any{"id": id})
+		return
+	}
+	if struktur == "mini" {
+		writeMarshalled(w, dawa.AdgangsadresseMini(v))
+		return
+	}
+	writeMarshalled(w, v)
 }
 
 // Adresser — production-scale: per-field filters (postnr/vejkode/kommunekode/
@@ -803,13 +819,29 @@ func (s *server) listAdresser(w http.ResponseWriter, r *http.Request) {
 		writeServerError(w, err)
 		return
 	}
+	if cp.struktur == "mini" {
+		writeAddressMiniCollection(w, cp, items, dawa.AdresseMini)
+		return
+	}
 	writePagedCollection(w, cp, items)
 }
 
 func (s *server) getAdresse(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
+	struktur, ok := parseStruktur(w, r)
+	if !ok {
+		return
+	}
 	v, err := dawa.GetAdresse(s.ctx(r), s.pool, id, s.baseURL)
-	finishGet(w, v, err, map[string]any{"id": id})
+	if err != nil {
+		finishGet(w, v, err, map[string]any{"id": id})
+		return
+	}
+	if struktur == "mini" {
+		writeMarshalled(w, dawa.AdresseMini(v))
+		return
+	}
+	writeMarshalled(w, v)
 }
 
 // datavaskAdgangsadresser washes a single ?betegnelse into {kategori,

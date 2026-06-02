@@ -77,6 +77,21 @@ type collectionParams struct {
 
 // parseCollectionParams parses pagination plus all cross-cutting parameters.
 // On a malformed value it writes the DAWA 400 envelope and returns ok=false.
+// parseStruktur reads and validates the struktur query param for a SINGLE-resource
+// GET (collections use parseCollectionParams). Returns the normalised value
+// ("nestet" default) or writes a DAWA 400 QueryParameterFormatError and ok=false.
+func parseStruktur(w http.ResponseWriter, r *http.Request) (string, bool) {
+	switch s := r.URL.Query().Get("struktur"); s {
+	case "", "nestet":
+		return "nestet", true
+	case "mini", "flad":
+		return s, true
+	default:
+		writeBadRequest(w, "struktur", s)
+		return "", false
+	}
+}
+
 func parseCollectionParams(w http.ResponseWriter, r *http.Request) (collectionParams, bool) {
 	page, ok := parsePaging(w, r)
 	if !ok {
@@ -334,6 +349,20 @@ func writePagedCollection[T any](w http.ResponseWriter, cp collectionParams, ite
 		}
 	}
 	renderCollection(w, cp, objs)
+}
+
+// writeAddressMiniCollection renders an adresser/adgangsadresser collection in
+// struktur=mini. DAWA's address mini is a fixed nested→flat remap, NOT the generic
+// project() the ordObj path applies, so each item is projected up-front to the
+// typed AddressMini and then rendered with struktur forced to nestet (the structs
+// are already flat). Pagination is already done in SQL; format handling is kept.
+func writeAddressMiniCollection[T any, M any](w http.ResponseWriter, cp collectionParams, items []*T, mini func(*T) *M) {
+	out := make([]*M, len(items))
+	for i, it := range items {
+		out[i] = mini(it)
+	}
+	cp.struktur = "nestet" // already projected into the mini struct; emit verbatim
+	writePagedCollection(w, cp, out)
 }
 
 // renderCollection emits objs in the requested format.
