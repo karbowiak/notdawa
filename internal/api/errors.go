@@ -48,9 +48,13 @@ func writeMarshalled(w http.ResponseWriter, v any) {
 	writeJSON(w, http.StatusOK, b)
 }
 
-// writeList writes a DAWA collection assembled from per-item DAWA bytes.
+// writeList writes an AUTOCOMPLETE array (its only callers are the /autocomplete
+// + /{resource}/autocomplete handlers). DAWA serves these with the standard
+// pretty-printer, NOT the collection streaming serializer, so it uses
+// MarshalDAWAAutoList. Collection endpoints render via the query pipeline
+// (MarshalDAWAList) instead.
 func writeList[T any](w http.ResponseWriter, items []T) {
-	b, err := dawa.MarshalDAWAList(items)
+	b, err := dawa.MarshalDAWAAutoList(items)
 	if err != nil {
 		writeServerError(w, err)
 		return

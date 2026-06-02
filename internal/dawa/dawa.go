@@ -71,3 +71,36 @@ func MarshalDAWAList[T any](items []T) ([]byte, error) {
 	out := append([]byte("[\n"), bytes.Join(parts, []byte(", "))...)
 	return append(out, "\n]"...), nil
 }
+
+// MarshalDAWAAutoList renders an AUTOCOMPLETE array the way DAWA's autocomplete
+// endpoints do — the standard pretty-printer JSON.stringify(x, null, 2):
+//
+//	[
+//	  {
+//	    "type": "vejnavn",
+//	    ...
+//	  },
+//	  {
+//	    ...
+//	  }
+//	]
+//
+// i.e. each element indented one level and separated by ",\n". This is DELIBERATELY
+// different from MarshalDAWAList (the collection streaming serializer, element "{"
+// at column 0 with ", " separators): /autocomplete and /{resource}/autocomplete use
+// the standard serializer, the collection endpoints use the streaming one — verified
+// byte-for-byte against live DAWA. SetEscapeHTML(false) keeps æ/ø/å/& literal; any
+// element type's own MarshalJSON is re-indented by the encoder.
+func MarshalDAWAAutoList[T any](items []T) ([]byte, error) {
+	if len(items) == 0 {
+		return []byte("[]"), nil
+	}
+	var buf bytes.Buffer
+	enc := json.NewEncoder(&buf)
+	enc.SetEscapeHTML(false)
+	enc.SetIndent("", "  ")
+	if err := enc.Encode(items); err != nil {
+		return nil, err
+	}
+	return bytes.TrimRight(buf.Bytes(), "\n"), nil
+}

@@ -2,7 +2,9 @@ package dawa
 
 import (
 	"context"
+	"encoding/json"
 	"net/url"
+	"strconv"
 	"strings"
 	"unicode"
 
@@ -1007,12 +1009,73 @@ type AutocompleteFlatData struct {
 // JSON key order matches DAWA's on-the-wire order exactly:
 // {data, stormodtagerpostnr, type, tekst, forslagstekst, caretpos}.
 type AutocompleteFlatElement struct {
-	Data               *AutocompleteFlatData `json:"data"`
-	Stormodtagerpostnr bool                  `json:"stormodtagerpostnr"`
-	Type               string                `json:"type"`
-	Tekst              string                `json:"tekst"`
-	Forslagstekst      string                `json:"forslagstekst"`
-	Caretpos           int                   `json:"caretpos"`
+	// Data is the per-type payload: *AutocompleteFlatData for adgangsadresse/adresse
+	// elements, *VejnavnReduced ({navn,href}) for vejnavn elements. It is `any` so a
+	// vejnavn element can carry the road object DAWA emits there instead of the
+	// address-shaped data (and null was simply wrong — DAWA never nulls it).
+	Data               any
+	Stormodtagerpostnr bool
+	Type               string
+	Tekst              string
+	Forslagstekst      string
+	Caretpos           int
+}
+
+// MarshalJSON renders the aggregate autocomplete element in DAWA's per-TYPE shape.
+// DAWA emits two distinct shapes (dawa_autocomplete.js): a vejnavn element carries
+// NO stormodtagerpostnr key and a {navn,href} data object, with keys ordered
+// type,tekst,forslagstekst,caretpos,data; an adgangsadresse/adresse element carries
+// stormodtagerpostnr and the flat address data, ordered data,stormodtagerpostnr,
+// type,tekst,forslagstekst,caretpos. We assemble the bytes by hand (like
+// SimpleAreaAuto) so both the key SET and order are byte-faithful; the outer
+// renderer re-indents the result.
+func (e AutocompleteFlatElement) MarshalJSON() ([]byte, error) {
+	data, err := json.Marshal(e.Data)
+	if err != nil {
+		return nil, err
+	}
+	tekst, err := json.Marshal(e.Tekst)
+	if err != nil {
+		return nil, err
+	}
+	forslag, err := json.Marshal(e.Forslagstekst)
+	if err != nil {
+		return nil, err
+	}
+	typ, err := json.Marshal(e.Type)
+	if err != nil {
+		return nil, err
+	}
+	caret := strconv.Itoa(e.Caretpos)
+	var b []byte
+	if e.Type == "vejnavn" {
+		b = append(b, `{"type":`...)
+		b = append(b, typ...)
+		b = append(b, `,"tekst":`...)
+		b = append(b, tekst...)
+		b = append(b, `,"forslagstekst":`...)
+		b = append(b, forslag...)
+		b = append(b, `,"caretpos":`...)
+		b = append(b, caret...)
+		b = append(b, `,"data":`...)
+		b = append(b, data...)
+		b = append(b, '}')
+		return b, nil
+	}
+	b = append(b, `{"data":`...)
+	b = append(b, data...)
+	b = append(b, `,"stormodtagerpostnr":`...)
+	b = append(b, strconv.FormatBool(e.Stormodtagerpostnr)...)
+	b = append(b, `,"type":`...)
+	b = append(b, typ...)
+	b = append(b, `,"tekst":`...)
+	b = append(b, tekst...)
+	b = append(b, `,"forslagstekst":`...)
+	b = append(b, forslag...)
+	b = append(b, `,"caretpos":`...)
+	b = append(b, caret...)
+	b = append(b, '}')
+	return b, nil
 }
 
 // adgFieldValues extracts the scorer's raw per-field values from an
@@ -1131,7 +1194,7 @@ func strPtr(s string) *string { return &s }
 // The result ORDER is the DETERMINISTIC scorer in autocomplete_score.go
 // (sortAdresse / vejnavn scoring), so discriminating queries (whose husnr
 // selects the husnr=1 candidates ordered by postnr) reproduce DAWA byte-for-byte.
-func AutocompleteAggregate(ctx context.Context, pool *pgxpool.Pool, q, requestType, startfra, baseURL string, perSide, offset int) ([]*AutocompleteFlatElement, error) {
+func AutocompleteAggregate(ctx context.Context, pool *pgxpool.Pool, q, requestType, startfra, baseURL string, multilinje bool, perSide, offset int) ([]*AutocompleteFlatElement, error) {
 	if strings.TrimSpace(q) == "" {
 		return []*AutocompleteFlatElement{}, nil
 	}
@@ -1186,7 +1249,7 @@ func AutocompleteAggregate(ctx context.Context, pool *pgxpool.Pool, q, requestTy
 			}
 			sortAdresseFields("adgangsadresse", q, adgs, func(a *Adgangsadresse) addrFieldValues { return adgFieldValues(a) })
 			if lastEntity || len(adgs) > 1 {
-				return finishAdgangsadresseElements(adgs, requestType, medsupplerendebynavn, perSide, offset), nil
+				return finishAdgangsadresseElements(adgs, requestType, medsupplerendebynavn, multilinje, perSide, offset), nil
 			}
 		case "adresse":
 			// adresse is always the last searchable entity → return its results.
@@ -1195,7 +1258,7 @@ func AutocompleteAggregate(ctx context.Context, pool *pgxpool.Pool, q, requestTy
 				return nil, err
 			}
 			sortAdresseFields("adresse", q, adrs, func(a *Adresse) addrFieldValues { return adrFieldValues(a) })
-			return finishAdresseElements(adrs, medsupplerendebynavn, perSide, offset), nil
+			return finishAdresseElements(adrs, medsupplerendebynavn, multilinje, perSide, offset), nil
 		}
 	}
 	return []*AutocompleteFlatElement{}, nil
@@ -1244,12 +1307,13 @@ func finishVejnavnElements(items []*Vejnavn, requestType string, perSide, offset
 			tekst += " "
 		}
 		out = append(out, &AutocompleteFlatElement{
-			Data:               nil,
-			Stormodtagerpostnr: false,
-			Type:               "vejnavn",
-			Tekst:              tekst,
-			Forslagstekst:      v.Navn,
-			Caretpos:           len([]rune(tekst)),
+			// DAWA's vejnavn element carries the reduced {navn,href} road object as
+			// data (NOT null); MarshalJSON omits stormodtagerpostnr for this type.
+			Data:          &VejnavnReduced{Navn: v.Navn, Href: v.Href},
+			Type:          "vejnavn",
+			Tekst:         tekst,
+			Forslagstekst: v.Navn,
+			Caretpos:      len([]rune(tekst)),
 		})
 	}
 	return out
@@ -1257,12 +1321,15 @@ func finishVejnavnElements(items []*Vejnavn, requestType string, perSide, offset
 
 // finishAdgangsadresseElements maps adgangsadresse results to flat elements,
 // applying formatAdresse / formatIncompleteAdr exactly as the JS postProcessFns.
-func finishAdgangsadresseElements(items []*Adgangsadresse, requestType string, medsupplerendebynavn bool, perSide, offset int) []*AutocompleteFlatElement {
+func finishAdgangsadresseElements(items []*Adgangsadresse, requestType string, medsupplerendebynavn, multilinje bool, perSide, offset int) []*AutocompleteFlatElement {
 	items = limitTake(items, perSide, offset)
 	out := make([]*AutocompleteFlatElement, 0, len(items))
 	for _, a := range items {
 		data := flatFromAdgangsadresse(a)
-		forslagstekst := formatAdresseLine(data, false)
+		// forslagstekst is the full betegnelse; multilinje=true splits the postnr
+		// onto its own line (DAWA replaces ", " before the postnr with "\n"). tekst
+		// (the completion text) stays single-line regardless.
+		forslagstekst := formatAdresseLine(data, multilinje)
 		var tekst string
 		var caretpos int
 		if requestType != "adgangsadresse" {
@@ -1285,19 +1352,20 @@ func finishAdgangsadresseElements(items []*Adgangsadresse, requestType string, m
 
 // finishAdresseElements maps adresse results to flat elements (type=adresse,
 // the final entity → complete tekst, caretpos = end of tekst).
-func finishAdresseElements(items []*Adresse, medsupplerendebynavn bool, perSide, offset int) []*AutocompleteFlatElement {
+func finishAdresseElements(items []*Adresse, medsupplerendebynavn, multilinje bool, perSide, offset int) []*AutocompleteFlatElement {
 	items = limitTake(items, perSide, offset)
 	out := make([]*AutocompleteFlatElement, 0, len(items))
 	for _, a := range items {
 		data := flatFromAdresse(a)
 		tekst := formatAdresseLine(data, false)
+		// Same multilinje split as adgangsadresse: only forslagstekst gains the
+		// newline; tekst and caretpos stay on the single-line form.
 		out = append(out, &AutocompleteFlatElement{
-			Data:               data,
-			Stormodtagerpostnr: false,
-			Type:               "adresse",
-			Tekst:              tekst,
-			Forslagstekst:      tekst,
-			Caretpos:           len([]rune(tekst)),
+			Data:          data,
+			Type:          "adresse",
+			Tekst:         tekst,
+			Forslagstekst: formatAdresseLine(data, multilinje),
+			Caretpos:      len([]rune(tekst)),
 		})
 	}
 	return out

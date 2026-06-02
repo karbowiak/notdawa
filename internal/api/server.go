@@ -930,6 +930,7 @@ type autoParams struct {
 	offset      int
 	requestType string
 	startfra    string
+	multilinje  bool
 }
 
 // parseAuto reads q/side/per_side for an autocomplete request. A malformed
@@ -958,7 +959,10 @@ func parseAuto(w http.ResponseWriter, r *http.Request) (autoParams, bool) {
 	if perSide <= 0 {
 		perSide = 20 // DAWA autocomplete default cap
 	}
-	return autoParams{q: r.URL.Query().Get("q"), perSide: perSide, offset: p.offset(), requestType: requestType, startfra: startfra}, true
+	// multilinje=true makes the aggregate /autocomplete split forslagstekst's postnr
+	// onto its own line (DAWA boolean param; absent/other → false).
+	multilinje := r.URL.Query().Get("multilinje") == "true"
+	return autoParams{q: r.URL.Query().Get("q"), perSide: perSide, offset: p.offset(), requestType: requestType, startfra: startfra, multilinje: multilinje}, true
 }
 
 // parseXY reads the x (lon) and y (lat) query parameters as floats, writing a
@@ -1280,7 +1284,7 @@ func (s *server) autocompleteAggregate(w http.ResponseWriter, r *http.Request) {
 	if !ok {
 		return
 	}
-	items, err := dawa.AutocompleteAggregate(s.ctx(r), s.pool, a.q, a.requestType, a.startfra, s.baseURL, a.perSide, a.offset)
+	items, err := dawa.AutocompleteAggregate(s.ctx(r), s.pool, a.q, a.requestType, a.startfra, s.baseURL, a.multilinje, a.perSide, a.offset)
 	if err != nil {
 		writeServerError(w, err)
 		return
