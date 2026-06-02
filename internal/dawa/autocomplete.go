@@ -680,7 +680,7 @@ func AutocompleteVejstykker(ctx context.Context, pool *pgxpool.Pool, q, baseURL 
 // truncated to perSide. This reproduces DAWA's vejnavne autocomplete ordering:
 // startsWith matches first, then the alphabetical tie-break.
 func AutocompleteVejnavne(ctx context.Context, pool *pgxpool.Pool, q, baseURL string, perSide, offset int) ([]*VejnavnAuto, error) {
-	items, err := listVejnavneMatching(ctx, pool, q, baseURL, 0, 0)
+	items, err := listVejnavnNamesMatching(ctx, pool, q, baseURL)
 	if err != nil {
 		return nil, err
 	}
@@ -1208,7 +1208,7 @@ func aggregateVejnavn(ctx context.Context, pool *pgxpool.Pool, q, baseURL string
 	if twoSeparateDigitGroups(q) {
 		return nil, nil
 	}
-	items, err := listVejnavneMatching(ctx, pool, q, baseURL, 0, 0)
+	items, err := listVejnavnNamesMatching(ctx, pool, q, baseURL)
 	if err != nil {
 		return nil, err
 	}

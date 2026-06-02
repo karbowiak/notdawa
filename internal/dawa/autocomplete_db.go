@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/url"
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -292,13 +293,19 @@ func listVejstykkerMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL 
 	return out, rows.Err()
 }
 
-// listVejnavneMatching returns DISTINCT status-3 vejnavne whose navn matches q.
-func listVejnavneMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL string, perSide, offset int) ([]*Vejnavn, error) {
-	sql := vejnavnAggSelect + `(
-		SELECT DISTINCT nv.navn
+// listVejnavnNamesMatching returns DISTINCT status-3 vejnavne as navn+href ONLY,
+// for the autocomplete callers. It deliberately SKIPS vejnavnAggSelect's per-name
+// postnumre[]/kommuner[] aggregates: both vejnavn autocomplete consumers (the
+// /vejnavne/autocomplete {navn,href} element and the aggregate /autocomplete
+// vejnavn escalation step) use only navn, yet they fetch the full match set with no
+// LIMIT (the scorer needs every match before truncating). Computing the PostGIS-
+// backed postnumre/kommuner subqueries for every matching road then made a 2-char
+// query like "ko" (≈3000 roads) run for minutes; navn alone is an ~90ms seq scan.
+func listVejnavnNamesMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL string) ([]*Vejnavn, error) {
+	sql := `SELECT DISTINCT nv.navn
 		FROM dar_navngivenvej nv
 		WHERE nv.status = '3' AND unaccent(nv.navn) ILIKE unaccent($1)
-	) src ORDER BY src.` + vejnavnOrder + pageClause(perSide, offset)
+		ORDER BY nv.navn`
 	rows, err := pool.Query(ctx, sql, "%"+q+"%")
 	if err != nil {
 		return nil, err
@@ -306,11 +313,14 @@ func listVejnavneMatching(ctx context.Context, pool *pgxpool.Pool, q, baseURL st
 	defer rows.Close()
 	var out []*Vejnavn
 	for rows.Next() {
-		v, err := scanVejnavn(rows, baseURL)
-		if err != nil {
+		var navn string
+		if err := rows.Scan(&navn); err != nil {
 			return nil, err
 		}
-		out = append(out, v)
+		out = append(out, &Vejnavn{
+			Navn: navn,
+			Href: fmt.Sprintf("%s/vejnavne/%s", baseURL, url.PathEscape(navn)),
+		})
 	}
 	return out, rows.Err()
 }
