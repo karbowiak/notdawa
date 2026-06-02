@@ -95,6 +95,32 @@ func accessLog(next http.Handler) http.Handler {
 	})
 }
 
+// withCORS makes every response cross-origin readable from any site, mirroring
+// the upstream DAWA API (which serves "Access-Control-Allow-Origin: *" via the
+// standard Express `cors` middleware). The API is public, read-only open data
+// with no credentials, so "*" is both safe and exactly what existing DAWA clients
+// expect. Browser preflight (OPTIONS) is answered directly with 204 — it must be
+// intercepted here because the route mux only registers GET handlers and would
+// otherwise 405 the preflight.
+func withCORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		h := w.Header()
+		h.Set("Access-Control-Allow-Origin", "*")
+		if r.Method == http.MethodOptions {
+			// Preflight: advertise the methods the `cors` default allows, reflect any
+			// requested headers, and short-circuit before the route mux.
+			h.Set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE")
+			h.Add("Vary", "Access-Control-Request-Headers")
+			if reqHeaders := r.Header.Get("Access-Control-Request-Headers"); reqHeaders != "" {
+				h.Set("Access-Control-Allow-Headers", reqHeaders)
+			}
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
 // clientIP returns the best-effort client address: the X-Forwarded-For/
 // X-Real-IP header when present (behind a proxy), else the raw RemoteAddr.
 func clientIP(r *http.Request) string {
@@ -748,8 +774,10 @@ func NewHumaServer(pool *pgxpool.Pool, baseURL string) http.Handler {
 	})
 
 	// Wrap the whole server in access logging so every request (incl. /docs and
-	// /openapi.*) is logged to the console as it comes in.
-	return accessLog(mux)
+	// /openapi.*) is logged to the console as it comes in. CORS sits inside the log
+	// wrapper so preflight OPTIONS are logged too, and makes every response (and the
+	// preflight) cross-origin readable, mirroring upstream DAWA's open policy.
+	return accessLog(withCORS(mux))
 }
 
 // registerKode registers a single-resource GET keyed by {kode}.
