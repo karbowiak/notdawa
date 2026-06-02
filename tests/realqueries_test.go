@@ -80,12 +80,11 @@ func TestRealQueries(t *testing.T) {
 	})
 	// struktur=flad: not in the captured client traffic, but the user requested it
 	// alongside mini. flad is a wide flat projection of the (byte-verified) nestet
-	// object; the few diffs vs DAWA are the documented source-data limitations
+	// object; the only diffs vs DAWA are the documented source-data limitations
 	// (frozen DAR historik timestamps, null tekstretning/højde, sub-mm etrs89 float
-	// drift) plus brofast (hardcoded true — not in our extract; wrong only for the
-	// non-bridge islands). compareFlad enforces identical key set+order and value
-	// equality on every OTHER field. Bornholm is included so an island regression
-	// (anything beyond brofast diverging) is caught.
+	// drift). compareFlad enforces identical key set+order and value equality on
+	// every OTHER field — including brofast, now computed from the brofasthed seed.
+	// Bornholm is included so the island brofast=false path is asserted byte-exact.
 	t.Run("flad", func(t *testing.T) {
 		for _, path := range []string{
 			"/adgangsadresser/00000667-2566-47c9-9ba0-f5ec6b8ce50f?struktur=flad",   // Odense, mainland
@@ -108,15 +107,15 @@ func TestRealQueries(t *testing.T) {
 
 // fladTolerated holds the flad keys whose value may differ from DAWA without being
 // a bug: the DAR historik timestamps DAWA freezes (lifted to top level + the
-// embedded-adgangsadresse copies), the elevation/bearing we cannot derive (served
-// null), and brofast (hardcoded true; the DAR brofast attribute is not in our
-// extract — fixable only by re-ingest). etrs89 coords are handled separately
-// (sub-mm float tolerance). Every other key must match exactly.
+// embedded-adgangsadresse copies) and the elevation/bearing we cannot derive
+// (served null). etrs89 coords are handled separately (sub-mm float tolerance).
+// brofast is NOT tolerated — it is now computed from the brofasthed seed (matching
+// DAWA byte-for-byte, incl. the islands). Every other key must match exactly.
 var fladTolerated = map[string]bool{
 	"oprettet": true, "ændret": true, "ikrafttrædelse": true, "nedlagt": true,
 	"adgangsadresse_oprettet": true, "adgangsadresse_ændret": true,
 	"adgangsadresse_ikrafttrædelse": true, "adgangsadresse_nedlagt": true,
-	"tekstretning": true, "højde": true, "brofast": true,
+	"tekstretning": true, "højde": true,
 }
 
 // compareFladObject asserts ours/dawa flad objects have the SAME keys in the SAME
@@ -211,7 +210,7 @@ func compareFladCollection(t *testing.T, path string) {
 func reportFladDiffs(t *testing.T, path string, diffs []diff) {
 	t.Helper()
 	if len(diffs) == 0 {
-		t.Logf("flad %s: matches DAWA (key set+order identical; tolerated: historik ts, tekstretning/højde null, etrs89 sub-mm, brofast)", path)
+		t.Logf("flad %s: matches DAWA (key set+order identical; tolerated: historik ts, tekstretning/højde null, etrs89 sub-mm)", path)
 		return
 	}
 	var b strings.Builder

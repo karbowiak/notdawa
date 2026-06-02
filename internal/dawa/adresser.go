@@ -65,7 +65,7 @@ func scanAdresse(row pgx.Row, baseURL string) (*Adresse, error) {
 		&s.ldNuts3, &s.ldNavn, &s.rkKode, &s.rkNavn, &s.pkKode, &s.pkNavn,
 		&s.afNummer, &s.afNavn, &s.afKomm, &s.opNummer, &s.opNavn, &s.skNummer, &s.skNavn, &s.vlBogstav, &s.vlNavn,
 		&s.jEjerlavK, &s.jEjerlavN, &s.jMatrikel,
-		&s.bebyggelserJSON,
+		&s.bebyggelserJSON, &s.brofast,
 	); err != nil {
 		return nil, err
 	}

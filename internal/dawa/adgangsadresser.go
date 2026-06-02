@@ -333,7 +333,15 @@ const adgangsadresseCols = `
 		) ORDER BY beb.id_lokalId)
 		FROM ds_steder beb
 		WHERE beb.hovedtype = 'bebyggelse' AND ap.geom IS NOT NULL AND ST_Contains(beb.geom, ap.geom)
-	), '[]'::jsonb) AS bebyggelser_json`
+	), '[]'::jsonb) AS bebyggelser_json,
+	-- brofast: DAWA-computed (not a DAR field). An address is NOT brofast iff its
+	-- adgangspunkt lies in a sted marked brofast=false (the non-bridge islands) in
+	-- the brofasthed seed table; otherwise true. Mirrors DAWA's ikke_brofaste_adresser.
+	(NOT EXISTS (
+		SELECT 1 FROM brofasthed bf
+		JOIN ds_steder bs ON bs.id_lokalId = bf.stedid
+		WHERE bf.brofast = false AND ap.geom IS NOT NULL AND ST_Contains(bs.geom, ap.geom)
+	)) AS brofast`
 
 // adgangsadresseFrom resolves all the joins. The kommunedel join (kd) is the
 // fallback for kommunekode/vejkode when vejmidte is absent. The spatial DAGI
@@ -437,6 +445,7 @@ type adgScan struct {
 	jMatrikel   *string
 
 	bebyggelserJSON []byte
+	brofast         *bool
 }
 
 func scanAdgangsadresse(row pgx.Row, baseURL string) (*Adgangsadresse, error) {
@@ -453,7 +462,7 @@ func scanAdgangsadresse(row pgx.Row, baseURL string) (*Adgangsadresse, error) {
 		&s.ldNuts3, &s.ldNavn, &s.rkKode, &s.rkNavn, &s.pkKode, &s.pkNavn,
 		&s.afNummer, &s.afNavn, &s.afKomm, &s.opNummer, &s.opNavn, &s.skNummer, &s.skNavn, &s.vlBogstav, &s.vlNavn,
 		&s.jEjerlavK, &s.jEjerlavN, &s.jMatrikel,
-		&s.bebyggelserJSON,
+		&s.bebyggelserJSON, &s.brofast,
 	); err != nil {
 		return nil, err
 	}
@@ -470,7 +479,9 @@ func buildAdgangsadresse(s *adgScan, baseURL string) *Adgangsadresse {
 		Href:    fmt.Sprintf("%s/adgangsadresser/%s", baseURL, s.id),
 		Husnr:   formatHusnr(deref(s.husnrtekst)),
 		Zone:    "Udfaset",
-		Brofast: true,
+		// brofast comes from the brofasthed seed join (s.brofast); default true when
+		// the column is absent/null (e.g. no adgangspunkt) — DAWA emits a bool, never null.
+		Brofast: s.brofast == nil || *s.brofast,
 	}
 	kommunekode := deref(s.kommunekode)
 	vejkode := deref(s.vejkode)

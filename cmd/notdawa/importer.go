@@ -83,6 +83,7 @@ func importPlan() []importStep {
 		// Derived / post-processing — run after the data they read from is loaded.
 		{"postnumre-kommuner", "derived", "postal↔municipality relation", noClient(ingest.PostnumreKommuner)},
 		{"stormodtagere", "derived", "high-volume postal recipients (seed CSV)", noClient(ingest.Stormodtagere)},
+		{"brofasthed", "DAWA-seed", "per-place land-connectedness flag (seed CSV)", noClient(ingest.Brofasthed)},
 		{"polylabel-backfill", "derived", "label points for all geometry", noClient(ingest.PolylabelBackfill)},
 	}
 }
