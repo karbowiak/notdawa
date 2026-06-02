@@ -4,14 +4,14 @@
 -- endpoint, and the future source of /menighedsraadsafstemningsomraadetilknytninger.
 -- Each row is a full-res (1:10.000) feature keyed by its DAGI id_lokalId.
 --
--- KEY CHOICE: unlike Afstemningsområde (composite kommunekode/nummer), the live
--- MRafstemningsomraade extract carries a NULL MRafstemningsomraadenummer on every
--- feature, so (kommune, nummer) is not a usable key. id_lokalId is the only stable
--- unique identity (2128 distinct ids == 2128 full-res rows in gen 645) — so the PK
--- is dagi_id. nummer is kept (nullable) to mirror the afstemningsomraader column.
+-- KEY CHOICE: unlike Afstemningsområde (composite kommunekode/nummer), the
+-- (kommune, nummer) pair is not a usable key for MRafstemningsomraade, so id_lokalId
+-- is the PK (2128 distinct ids == 2128 full-res rows in gen 645). nummer IS
+-- populated on every row (numeric, no leading zeros) — it is used by struktur=flad
+-- as menighedsrådsafstemningsområdenummer (an int) via an ST_Covers point lookup.
 CREATE TABLE IF NOT EXISTS dagi_mrafstemningsomraader (
     dagi_id                TEXT PRIMARY KEY,                       -- id_lokalId
-    nummer                 TEXT,                                   -- MRafstemningsomraadenummer (null in current extract)
+    nummer                 TEXT,                                   -- MRafstemningsomraadenummer (numeric; emitted as int by flad)
     navn                   TEXT,
     kommune_lokalid        TEXT,                                   -- kommuneLokalId -> dagi_kommuner.dagi_id
     sogn_lokalid           TEXT,                                   -- sognLokalId -> dagi_sogne.dagi_id

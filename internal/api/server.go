@@ -782,7 +782,22 @@ func (s *server) listAdgangsadresser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if cp.struktur == "mini" {
-		writeAddressMiniCollection(w, cp, items, dawa.AdgangsadresseMini)
+		writeProjectedAddressCollection(w, cp, items, dawa.AdgangsadresseMini)
+		return
+	}
+	if cp.struktur == "flad" {
+		ids := make([]string, len(items))
+		for i, a := range items {
+			ids[i] = a.ID
+		}
+		ex, err := dawa.FetchFladExtras(s.ctx(r), s.pool, ids)
+		if err != nil {
+			writeServerError(w, err)
+			return
+		}
+		writeProjectedAddressCollection(w, cp, items, func(a *dawa.Adgangsadresse) *dawa.FladObject {
+			return dawa.FladAdgangsadresse(a, ex[a.ID])
+		})
 		return
 	}
 	writePagedCollection(w, cp, items)
@@ -799,11 +814,19 @@ func (s *server) getAdgangsadresse(w http.ResponseWriter, r *http.Request) {
 		finishGet(w, v, err, map[string]any{"id": id})
 		return
 	}
-	if struktur == "mini" {
+	switch struktur {
+	case "mini":
 		writeMarshalled(w, dawa.AdgangsadresseMini(v))
-		return
+	case "flad":
+		ex, err := dawa.FetchFladExtras(s.ctx(r), s.pool, []string{v.ID})
+		if err != nil {
+			writeServerError(w, err)
+			return
+		}
+		writeMarshalled(w, dawa.FladAdgangsadresse(v, ex[v.ID]))
+	default:
+		writeMarshalled(w, v)
 	}
-	writeMarshalled(w, v)
 }
 
 // Adresser — production-scale: per-field filters (postnr/vejkode/kommunekode/
@@ -820,7 +843,22 @@ func (s *server) listAdresser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if cp.struktur == "mini" {
-		writeAddressMiniCollection(w, cp, items, dawa.AdresseMini)
+		writeProjectedAddressCollection(w, cp, items, dawa.AdresseMini)
+		return
+	}
+	if cp.struktur == "flad" {
+		ids := make([]string, len(items))
+		for i, a := range items {
+			ids[i] = a.Adgangsadresse.ID
+		}
+		ex, err := dawa.FetchFladExtras(s.ctx(r), s.pool, ids)
+		if err != nil {
+			writeServerError(w, err)
+			return
+		}
+		writeProjectedAddressCollection(w, cp, items, func(a *dawa.Adresse) *dawa.FladObject {
+			return dawa.FladAdresse(a, ex[a.Adgangsadresse.ID])
+		})
 		return
 	}
 	writePagedCollection(w, cp, items)
@@ -837,11 +875,19 @@ func (s *server) getAdresse(w http.ResponseWriter, r *http.Request) {
 		finishGet(w, v, err, map[string]any{"id": id})
 		return
 	}
-	if struktur == "mini" {
+	switch struktur {
+	case "mini":
 		writeMarshalled(w, dawa.AdresseMini(v))
-		return
+	case "flad":
+		ex, err := dawa.FetchFladExtras(s.ctx(r), s.pool, []string{v.Adgangsadresse.ID})
+		if err != nil {
+			writeServerError(w, err)
+			return
+		}
+		writeMarshalled(w, dawa.FladAdresse(v, ex[v.Adgangsadresse.ID]))
+	default:
+		writeMarshalled(w, v)
 	}
-	writeMarshalled(w, v)
 }
 
 // datavaskAdgangsadresser washes a single ?betegnelse into {kategori,

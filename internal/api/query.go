@@ -351,17 +351,18 @@ func writePagedCollection[T any](w http.ResponseWriter, cp collectionParams, ite
 	renderCollection(w, cp, objs)
 }
 
-// writeAddressMiniCollection renders an adresser/adgangsadresser collection in
-// struktur=mini. DAWA's address mini is a fixed nested→flat remap, NOT the generic
-// project() the ordObj path applies, so each item is projected up-front to the
-// typed AddressMini and then rendered with struktur forced to nestet (the structs
-// are already flat). Pagination is already done in SQL; format handling is kept.
-func writeAddressMiniCollection[T any, M any](w http.ResponseWriter, cp collectionParams, items []*T, mini func(*T) *M) {
+// writeProjectedAddressCollection renders an adresser/adgangsadresser collection
+// in struktur=mini or =flad. DAWA's address mini/flad are fixed nested→flat
+// projections, NOT the generic project() the ordObj path applies, so each item is
+// projected up-front via proj and then rendered with struktur forced to nestet
+// (the projected values are already flat). Pagination is already done in SQL;
+// format handling is kept.
+func writeProjectedAddressCollection[T any, M any](w http.ResponseWriter, cp collectionParams, items []*T, proj func(*T) *M) {
 	out := make([]*M, len(items))
 	for i, it := range items {
-		out[i] = mini(it)
+		out[i] = proj(it)
 	}
-	cp.struktur = "nestet" // already projected into the mini struct; emit verbatim
+	cp.struktur = "nestet" // already projected; emit verbatim
 	writePagedCollection(w, cp, out)
 }
 
