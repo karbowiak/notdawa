@@ -346,7 +346,18 @@ const adgangsadresseFrom = "\n\tFROM dar_husnummer h" + adgangsadresseJoins
 // query can anchor on dar_adresse, JOIN dar_husnummer h, then append these.
 const adgangsadresseJoins = `
 	LEFT JOIN dar_navngivenvej nv ON nv.id = h.navngivenvej
-	LEFT JOIN dar_navngivenvej_kommunedel kd ON kd.navngivenvej = h.navngivenvej AND kd.status = '3'
+	LEFT JOIN LATERAL (
+		-- One kommunedel per husnummer (the kommunekode/vejkode fallback when vejmidte
+		-- is absent). A road spanning >1 kommune has >1 status-3 kommunedel; a plain
+		-- join then duplicated the husnummer row. Pick the kommunedel whose kommune
+		-- matches the husnummer's own kommune (h.kommune → kode), so vejkode is the
+		-- right one, and LIMIT 1 guarantees no fan-out.
+		SELECT t.kommune, t.vejkode
+		FROM dar_navngivenvej_kommunedel t
+		WHERE t.navngivenvej = h.navngivenvej AND t.status = '3'
+		ORDER BY (t.kommune = (SELECT kk.kode FROM dagi_kommuner kk WHERE kk.dagi_id = h.kommune)) DESC NULLS LAST, t.kommune
+		LIMIT 1
+	) kd ON true
 	LEFT JOIN dar_postnummer p ON p.id = h.postnummer_id
 	LEFT JOIN dagi_supplerendebynavne sb ON sb.dar_uuid = h.supplerende_bynavn
 	LEFT JOIN dagi_kommuner k ON k.dagi_id = h.kommune
@@ -654,21 +665,24 @@ func derefInt(p *int) int {
 // embedded adgangsadresse in /adresser), joining each row's stored kilde string
 // to its golden kilde int — every occurrence agrees:
 //
-//	Adressemyn -> 5  (adgangsadr rows 1,2,3,5; adresser rows 2,3,5)
-//	Ekstern    -> 4  (adgangsadr row 4;        adresser row 4)
-//	Grundkort  -> 1  (adresser row 000021c5)
+//	Adressemyn   -> 5  (adgangsadr rows 1,2,3,5; adresser rows 2,3,5)
+//	Ekstern      -> 4  (adgangsadr row 4;        adresser row 4)
+//	Grundkort    -> 1  (adresser row 000021c5)
+//	Matrikelkort -> 2  (live-confirmed 2026-06-02 across multiple rows)
+//	Landinsp     -> null (live-confirmed: DAWA emits null kilde on every sampled
+//	                Landinsp row — so it is intentionally absent from the map)
 //
-// Matrikelkort/DARSystem/Landinsp have no golden sample; DAWA's documented
-// kildekode assigns Matrikelkort 1; the other two default to 1 (the "system/
-// other" bucket) until a golden row pins them.
+// DARSystem has no served sample (0 status-3 husnumre reference a DARSystem
+// adgangspunkt), so its code is unverified and moot; left at 1 as a placeholder.
 var darKilde = map[string]int{
 	"Adressemyn":       5, // truncated "Adressemyndighed" in the extract
 	"Adressemyndighed": 5,
 	"Ekstern":          4,
 	"Grundkort":        1,
-	"Matrikelkort":     1,
-	"DARSystem":        1,
-	"Landinsp":         1,
+	"Matrikelkort":     2,
+	"DARSystem":        1, // unverified placeholder; never appears in served data
+	// "Landinsp" is intentionally OMITTED → darKildeToInt returns nil (DAWA emits
+	// null kilde for landinspektør-sourced adgangspunkter).
 }
 
 // darKildeToInt resolves the raw kilde string pointer to a *int code (nil on
