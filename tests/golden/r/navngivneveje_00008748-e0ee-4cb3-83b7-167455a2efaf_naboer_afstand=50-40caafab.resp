@@ -1,0 +1,173 @@
+[
+{
+  "id": "62c43aea-df6f-4f16-a951-fee93ad727bd",
+  "href": "https://api.dataforsyningen.dk/navngivneveje/62c43aea-df6f-4f16-a951-fee93ad727bd",
+  "darstatus": "gældende",
+  "navn": "Præstegårdsvej",
+  "adresseringsnavn": "Præstegårdsvej",
+  "administrerendekommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0217",
+    "kode": "0217",
+    "navn": "Helsingør"
+  },
+  "retskrivningskontrol": "Godkendt",
+  "udtaltvejnavn": "Præstegårdsvej",
+  "visueltcenter": [
+    12.45307208,
+    56.02026977
+  ],
+  "bbox": [
+    12.45122947,
+    56.01869502,
+    12.45380671,
+    56.0214577
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T12:00:00.000Z",
+    "ændret": "2019-12-13T14:09:50.989Z",
+    "ikrafttrædelse": "1900-01-01T12:00:00.000Z",
+    "nedlagt": null
+  },
+  "vejstykker": [
+    {
+      "href": "https://api.dataforsyningen.dk/vejstykker/0217/6422",
+      "kommunekode": "0217",
+      "kode": "6422",
+      "id": "5c9cf353-4eae-11e8-93fd-066cff24d637",
+      "darstatus": 3
+    }
+  ],
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/3080",
+      "nr": "3080",
+      "navn": "Tikøb"
+    }
+  ],
+  "beliggenhed": {
+    "oprindelse": {
+      "kilde": "Ekstern",
+      "tekniskstandard": "NO",
+      "registrering": "2019-12-13T14:09:50.989Z",
+      "nøjagtighedsklasse": "B"
+    },
+    "vejtilslutningspunkter": null,
+    "geometritype": "vejnavnelinje"
+  }
+}, {
+  "id": "07373627-a56d-4b46-a141-dd02acfc5bfc",
+  "href": "https://api.dataforsyningen.dk/navngivneveje/07373627-a56d-4b46-a141-dd02acfc5bfc",
+  "darstatus": "gældende",
+  "navn": "Præstevænget",
+  "adresseringsnavn": "Præstevænget",
+  "administrerendekommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0217",
+    "kode": "0217",
+    "navn": "Helsingør"
+  },
+  "retskrivningskontrol": "Godkendt",
+  "udtaltvejnavn": "Præstevænget",
+  "visueltcenter": [
+    12.45369625,
+    56.01966165
+  ],
+  "bbox": [
+    12.45291616,
+    56.01928764,
+    12.45463245,
+    56.01997065
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T12:00:00.000Z",
+    "ændret": "2023-10-11T14:59:04.469Z",
+    "ikrafttrædelse": "1900-01-01T12:00:00.000Z",
+    "nedlagt": null
+  },
+  "vejstykker": [
+    {
+      "href": "https://api.dataforsyningen.dk/vejstykker/0217/6425",
+      "kommunekode": "0217",
+      "kode": "6425",
+      "id": "5c9cf354-4eae-11e8-93fd-066cff24d637",
+      "darstatus": 3
+    }
+  ],
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/3080",
+      "nr": "3080",
+      "navn": "Tikøb"
+    }
+  ],
+  "beliggenhed": {
+    "oprindelse": {
+      "kilde": "Ekstern",
+      "tekniskstandard": "NO",
+      "registrering": "2023-10-11T14:59:04.469Z",
+      "nøjagtighedsklasse": "B"
+    },
+    "vejtilslutningspunkter": null,
+    "geometritype": "vejnavnelinje"
+  }
+}, {
+  "id": "7f1b261a-d3ac-4eb0-8518-d701ab2af501",
+  "href": "https://api.dataforsyningen.dk/navngivneveje/7f1b261a-d3ac-4eb0-8518-d701ab2af501",
+  "darstatus": "gældende",
+  "navn": "Fredensborgvej",
+  "adresseringsnavn": "Fredensborgvej",
+  "administrerendekommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0217",
+    "kode": "0217",
+    "navn": "Helsingør"
+  },
+  "retskrivningskontrol": "Godkendt",
+  "udtaltvejnavn": "Fredensborgvej",
+  "visueltcenter": [
+    12.43715777,
+    56.01455363
+  ],
+  "bbox": [
+    12.42359512,
+    56.003392,
+    12.45243843,
+    56.01992946
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T11:04:00.000Z",
+    "ændret": "2025-03-25T21:07:22.796Z",
+    "ikrafttrædelse": "1900-01-01T11:04:00.000Z",
+    "nedlagt": null
+  },
+  "vejstykker": [
+    {
+      "href": "https://api.dataforsyningen.dk/vejstykker/0217/2007",
+      "kommunekode": "0217",
+      "kode": "2007",
+      "id": "5c9cf1a1-4eae-11e8-93fd-066cff24d637",
+      "darstatus": 3
+    }
+  ],
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/3080",
+      "nr": "3080",
+      "navn": "Tikøb"
+    },
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/3480",
+      "nr": "3480",
+      "navn": "Fredensborg"
+    }
+  ],
+  "beliggenhed": {
+    "oprindelse": {
+      "kilde": "Ekstern",
+      "tekniskstandard": "NO",
+      "registrering": "2025-03-25T21:07:22.796Z",
+      "nøjagtighedsklasse": "B"
+    },
+    "vejtilslutningspunkter": null,
+    "geometritype": "vejnavnelinje"
+  }
+}
+]

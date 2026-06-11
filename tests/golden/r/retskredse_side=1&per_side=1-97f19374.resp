@@ -1,0 +1,21 @@
+[
+{
+  "ændret": "2026-04-01T21:01:43.855Z",
+  "geo_version": 23,
+  "geo_ændret": "2026-04-01T21:01:43.855Z",
+  "bbox": [
+    12.49837034,
+    55.53311183,
+    12.83469809,
+    55.73416244
+  ],
+  "visueltcenter": [
+    12.59840382,
+    55.61111592
+  ],
+  "dagi_id": "403241",
+  "kode": "1101",
+  "navn": "Københavns Byret",
+  "href": "https://api.dataforsyningen.dk/retskredse/1101"
+}
+]

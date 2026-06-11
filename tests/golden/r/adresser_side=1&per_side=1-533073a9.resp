@@ -1,0 +1,157 @@
+[
+{
+  "id": "000021c5-e9ee-411d-b2d8-ec9161780ccd",
+  "kvhx": "03762401_41A__2__tv",
+  "status": 1,
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/adresser/000021c5-e9ee-411d-b2d8-ec9161780ccd",
+  "historik": {
+    "oprettet": "2018-08-02T12:47:31.924",
+    "ændret": "2018-08-02T12:47:31.924",
+    "ikrafttrædelse": "2018-08-02T12:47:31.924",
+    "nedlagt": null
+  },
+  "etage": "2",
+  "dør": "tv",
+  "adressebetegnelse": "Vestergade 41A, 2. tv, 4850 Stubbekøbing",
+  "adgangsadresse": {
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5086-e9cd-32b8-e044-0003ba298018",
+    "id": "0a3f5086-e9cd-32b8-e044-0003ba298018",
+    "adressebetegnelse": "Vestergade 41A, 4850 Stubbekøbing",
+    "kvh": "03762401_41A",
+    "status": 1,
+    "darstatus": 3,
+    "vejstykke": {
+      "href": "https://api.dataforsyningen.dk/vejstykker/376/2401",
+      "navn": "Vestergade",
+      "adresseringsnavn": "Vestergade",
+      "kode": "2401"
+    },
+    "husnr": "41A",
+    "navngivenvej": {
+      "href": "https://api.dataforsyningen.dk/navngivneveje/134eb4ae-5ac5-4a86-afaa-21c050df4f26",
+      "id": "134eb4ae-5ac5-4a86-afaa-21c050df4f26"
+    },
+    "supplerendebynavn": null,
+    "supplerendebynavn2": null,
+    "postnummer": {
+      "href": "https://api.dataforsyningen.dk/postnumre/4850",
+      "nr": "4850",
+      "navn": "Stubbekøbing"
+    },
+    "stormodtagerpostnummer": null,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0376",
+      "kode": "0376",
+      "navn": "Guldborgsund"
+    },
+    "ejerlav": {
+      "kode": 2003351,
+      "navn": "Stubbekøbing Bygrunde"
+    },
+    "esrejendomsnr": "0",
+    "matrikelnr": "47a",
+    "historik": {
+      "oprettet": "2000-02-05T22:38:02.000",
+      "ændret": "2020-04-27T18:41:49.357",
+      "ikrafttrædelse": "2000-02-05T22:38:02.000",
+      "nedlagt": null
+    },
+    "adgangspunkt": {
+      "id": "0a3f5086-e9cd-32b8-e044-0003ba298018",
+      "koordinater": [
+        12.03890382,
+        54.89017879
+      ],
+      "højde": 8,
+      "nøjagtighed": "A",
+      "kilde": 1,
+      "tekniskstandard": "TN",
+      "tekstretning": 178.35,
+      "ændret": "2018-08-02T11:27:03.649"
+    },
+    "vejpunkt": {
+      "id": "153598b9-af45-11e7-847e-066cff24d637",
+      "kilde": "Ekstern",
+      "nøjagtighed": "A",
+      "tekniskstandard": "V0",
+      "koordinater": [
+        12.03886381,
+        54.89025425
+      ],
+      "ændret": "2018-08-02T11:27:03.649061"
+    },
+    "DDKN": {
+      "m100": "100m_60868_6948",
+      "km1": "1km_6086_694",
+      "km10": "10km_608_69"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/7607",
+      "kode": "7607",
+      "navn": "Stubbekøbing"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1085",
+      "kode": "1085",
+      "navn": "Region Sjælland"
+    },
+    "landsdel": {
+      "href": "https://api.dataforsyningen.dk/landsdele/DK022",
+      "nuts3": "DK022",
+      "navn": "Vest- og Sydsjælland"
+    },
+    "retskreds": {
+      "href": "https://api.dataforsyningen.dk/retskredse/1131",
+      "kode": "1131",
+      "navn": "Retten i Nykøbing Falster"
+    },
+    "politikreds": {
+      "href": "https://api.dataforsyningen.dk/politikredse/1466",
+      "kode": "1466",
+      "navn": "Sydsjællands og Lolland-Falsters Politi"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/0030",
+      "kode": "0030",
+      "navn": "Guldborgsund"
+    },
+    "afstemningsområde": {
+      "href": "https://api.dataforsyningen.dk/afstemningsomraader/376/16",
+      "nummer": "16",
+      "navn": "Stubbekøbing"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/5",
+      "nummer": "5",
+      "navn": "Sjælland"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/B",
+      "bogstav": "B",
+      "navn": "Sjælland-Syddanmark"
+    },
+    "zone": "Udfaset",
+    "jordstykke": {
+      "href": "https://api.dataforsyningen.dk/jordstykker/2003351/47a",
+      "ejerlav": {
+        "kode": 2003351,
+        "navn": "Stubbekøbing Bygrunde",
+        "href": "https://api.dataforsyningen.dk/ejerlav/2003351"
+      },
+      "matrikelnr": "47a",
+      "esrejendomsnr": "0"
+    },
+    "bebyggelser": [
+      {
+        "id": "12337669-d653-6b98-e053-d480220a5a3f",
+        "kode": 10886,
+        "type": "by",
+        "navn": "Stubbekøbing",
+        "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-d653-6b98-e053-d480220a5a3f"
+      }
+    ],
+    "brofast": true
+  }
+}
+]

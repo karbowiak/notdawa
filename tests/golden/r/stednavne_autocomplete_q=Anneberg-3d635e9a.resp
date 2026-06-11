@@ -1,0 +1,91 @@
+[
+{
+  "id": "19e4392f-8cfa-5d41-e053-d380220a2006",
+  "hovedtype": "Bygning",
+  "undertype": "hus",
+  "navn": "Anneberg Hus",
+  "navnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/stednavne/19e4392f-8cfa-5d41-e053-d380220a2006",
+  "egenskaber": {},
+  "visueltcenter": [
+    11.64185023,
+    55.90523621
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0306",
+      "kode": "0306",
+      "navn": "Odsherred"
+    }
+  ]
+}, {
+  "id": "19e4392f-8cf1-5d41-e053-d380220a2006",
+  "hovedtype": "Bygning",
+  "undertype": "andenBygning",
+  "navn": "Anneberghus",
+  "navnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/stednavne/19e4392f-8cf1-5d41-e053-d380220a2006",
+  "egenskaber": {},
+  "visueltcenter": [
+    11.66700274,
+    55.90084419
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0306",
+      "kode": "0306",
+      "navn": "Odsherred"
+    }
+  ]
+}, {
+  "id": "37af0cf5-525a-f989-e063-704f210a8350",
+  "hovedtype": "Seværdighed",
+  "undertype": "andenSeværdighed",
+  "navn": "Anneberg Kulturpark",
+  "navnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/stednavne/37af0cf5-525a-f989-e063-704f210a8350",
+  "egenskaber": {},
+  "visueltcenter": [
+    11.66042881,
+    55.90923603
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0306",
+      "kode": "0306",
+      "navn": "Odsherred"
+    }
+  ]
+}, {
+  "id": "19e4392f-bfe9-5d41-e053-d380220a2006",
+  "hovedtype": "Bygning",
+  "undertype": "kirkeProtestantisk",
+  "navn": "Anneberg Kirke",
+  "navnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/stednavne/19e4392f-bfe9-5d41-e053-d380220a2006",
+  "egenskaber": {},
+  "visueltcenter": [
+    11.65932259,
+    55.90857131
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0306",
+      "kode": "0306",
+      "navn": "Odsherred"
+    }
+  ]
+}
+]

@@ -1,0 +1,48 @@
+[
+{
+  "id": "102ada36-e11c-de9b-e063-704f210a283f",
+  "type": "industriområde",
+  "navn": "Porsborgparken",
+  "kode": null,
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/bebyggelser/102ada36-e11c-de9b-e063-704f210a283f"
+}, {
+  "id": "102ada36-e11d-de9b-e063-704f210a283f",
+  "type": "industriområde",
+  "navn": "Juelstrupparken",
+  "kode": null,
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/bebyggelser/102ada36-e11d-de9b-e063-704f210a283f"
+}, {
+  "id": "10a2b753-ea0d-2c86-e063-704f210a02a9",
+  "type": "industriområde",
+  "navn": "Sydengen",
+  "kode": null,
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/bebyggelser/10a2b753-ea0d-2c86-e063-704f210a02a9"
+}, {
+  "id": "10dbbf91-d983-2d51-e063-704f210a5cae",
+  "type": "industriområde",
+  "navn": "Østre Havn",
+  "kode": null,
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/bebyggelser/10dbbf91-d983-2d51-e063-704f210a5cae"
+}, {
+  "id": "11e3747e-39e4-7a97-e063-6f4f210a55fd",
+  "type": "sommerhusområde",
+  "navn": "Hestehaven",
+  "kode": 70606,
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/bebyggelser/11e3747e-39e4-7a97-e063-6f4f210a55fd"
+}
+]

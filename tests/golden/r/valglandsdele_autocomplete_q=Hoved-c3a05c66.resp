@@ -1,0 +1,23 @@
+[
+{
+  "tekst": "Hovedstaden",
+  "valglandsdel": {
+    "ændret": "2026-03-27T22:17:36.249Z",
+    "geo_version": 54,
+    "geo_ændret": "2026-03-27T22:17:36.249Z",
+    "bbox": [
+      11.60211644,
+      54.98354657,
+      15.31831444,
+      56.20520188
+    ],
+    "visueltcenter": [
+      12.25862847,
+      56.03235233
+    ],
+    "bogstav": "A",
+    "navn": "Hovedstaden",
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A"
+  }
+}
+]

@@ -1,0 +1,148 @@
+[
+{
+  "id": "001e0cf9-aeb1-cb42-e063-0c4f210a2218",
+  "hovedtype": "Vej",
+  "undertype": "vejbro",
+  "primærtnavn": "Dyssebroen",
+  "primærnavnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/steder/001e0cf9-aeb1-cb42-e063-0c4f210a2218",
+  "egenskaber": {},
+  "visueltcenter": [
+    12.60662381,
+    55.67336702
+  ],
+  "bbox": [
+    12.60630998,
+    55.67314198,
+    12.60693764,
+    55.67359205
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ],
+  "sekundærenavne": []
+}, {
+  "id": "001e0cf9-aeb3-cb42-e063-0c4f210a2218",
+  "hovedtype": "Vej",
+  "undertype": "vejbro",
+  "primærtnavn": "Nyholmsbroen",
+  "primærnavnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/steder/001e0cf9-aeb3-cb42-e063-0c4f210a2218",
+  "egenskaber": {},
+  "visueltcenter": [
+    12.6066305,
+    55.6835194
+  ],
+  "bbox": [
+    12.60658891,
+    55.68346801,
+    12.6066721,
+    55.68357079
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ],
+  "sekundærenavne": []
+}, {
+  "id": "001e0cf9-aeb5-cb42-e063-0c4f210a2218",
+  "hovedtype": "Bygning",
+  "undertype": "andenBygning",
+  "primærtnavn": "Slagteriet",
+  "primærnavnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/steder/001e0cf9-aeb5-cb42-e063-0c4f210a2218",
+  "egenskaber": {},
+  "visueltcenter": [
+    8.61878918,
+    56.3676133
+  ],
+  "bbox": [
+    8.61859924,
+    56.36754916,
+    8.61897913,
+    56.36767745
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0661",
+      "kode": "0661",
+      "navn": "Holstebro"
+    }
+  ],
+  "sekundærenavne": []
+}, {
+  "id": "001e0cf9-aeb7-cb42-e063-0c4f210a2218",
+  "hovedtype": "Bygning",
+  "undertype": "museumSamling",
+  "primærtnavn": "Koldkrigsmuseet REGAN Vest",
+  "primærnavnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/steder/001e0cf9-aeb7-cb42-e063-0c4f210a2218",
+  "egenskaber": {},
+  "visueltcenter": [
+    9.80130404,
+    56.8238803
+  ],
+  "bbox": [
+    9.80074333,
+    56.82347095,
+    9.80152263,
+    56.82400461
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0840",
+      "kode": "0840",
+      "navn": "Rebild"
+    }
+  ],
+  "sekundærenavne": []
+}, {
+  "id": "001e0cf9-aeb8-cb42-e063-0c4f210a2218",
+  "hovedtype": "Terrænkontur",
+  "undertype": "dæmning",
+  "primærtnavn": "Arndrup Mølledæmning",
+  "primærnavnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/steder/001e0cf9-aeb8-cb42-e063-0c4f210a2218",
+  "egenskaber": {},
+  "visueltcenter": [
+    9.11195368,
+    55.05083287
+  ],
+  "bbox": [
+    9.11124344,
+    55.0504437,
+    9.11253332,
+    55.05113083
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0550",
+      "kode": "0550",
+      "navn": "Tønder"
+    }
+  ],
+  "sekundærenavne": []
+}
+]

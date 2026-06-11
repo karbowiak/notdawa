@@ -1,0 +1,54 @@
+[
+{
+  "ændret": "2026-03-27T22:17:36.249Z",
+  "geo_version": 54,
+  "geo_ændret": "2026-03-27T22:17:36.249Z",
+  "bbox": [
+    11.60211644,
+    54.98354657,
+    15.31831444,
+    56.20520188
+  ],
+  "visueltcenter": [
+    12.25862847,
+    56.03235233
+  ],
+  "bogstav": "A",
+  "navn": "Hovedstaden",
+  "href": "https://api.dataforsyningen.dk/valglandsdele/A"
+}, {
+  "ændret": "2026-03-27T22:17:36.249Z",
+  "geo_version": 74,
+  "geo_ændret": "2026-03-27T22:17:36.249Z",
+  "bbox": [
+    8.06139166,
+    54.54440636,
+    12.64551576,
+    56.0280857
+  ],
+  "visueltcenter": [
+    8.54676277,
+    55.63773778
+  ],
+  "bogstav": "B",
+  "navn": "Sjælland-Syddanmark",
+  "href": "https://api.dataforsyningen.dk/valglandsdele/B"
+}, {
+  "ændret": "2026-01-01T22:02:26.282Z",
+  "geo_version": 83,
+  "geo_ændret": "2026-01-01T22:02:26.282Z",
+  "bbox": [
+    8.05568918,
+    55.64437916,
+    11.73116679,
+    57.75932822
+  ],
+  "visueltcenter": [
+    9.71758712,
+    56.77799561
+  ],
+  "bogstav": "C",
+  "navn": "Midtjylland-Nordjylland",
+  "href": "https://api.dataforsyningen.dk/valglandsdele/C"
+}
+]

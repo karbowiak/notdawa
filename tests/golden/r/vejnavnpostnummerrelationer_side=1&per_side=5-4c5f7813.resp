@@ -1,0 +1,133 @@
+[
+{
+  "betegnelse": "Kongens Nytorv, 1050 København K",
+  "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/1050/Kongens%20Nytorv",
+  "vejnavn": "Kongens Nytorv",
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/1050",
+    "nr": "1050",
+    "navn": "København K"
+  },
+  "bbox": [
+    12.5847512,
+    55.67876582,
+    12.58739802,
+    55.68144783
+  ],
+  "visueltcenter": [
+    12.5852059,
+    55.68018963
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}, {
+  "betegnelse": "Nyhavn, 1051 København K",
+  "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/1051/Nyhavn",
+  "vejnavn": "Nyhavn",
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/1051",
+    "nr": "1051",
+    "navn": "København K"
+  },
+  "bbox": [
+    12.58752168,
+    55.67899321,
+    12.59384779,
+    55.6808009
+  ],
+  "visueltcenter": [
+    12.59065417,
+    55.67999909
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}, {
+  "betegnelse": "Herluf Trolles Gade, 1052 København K",
+  "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/1052/Herluf%20Trolles%20Gade",
+  "vejnavn": "Herluf Trolles Gade",
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/1052",
+    "nr": "1052",
+    "navn": "København K"
+  },
+  "bbox": [
+    12.58844997,
+    55.67831215,
+    12.59242291,
+    55.67931366
+  ],
+  "visueltcenter": [
+    12.59041063,
+    55.67881456
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}, {
+  "betegnelse": "Cort Adelers Gade, 1053 København K",
+  "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/1053/Cort%20Adelers%20Gade",
+  "vejnavn": "Cort Adelers Gade",
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/1053",
+    "nr": "1053",
+    "navn": "København K"
+  },
+  "bbox": [
+    12.59034748,
+    55.67750715,
+    12.591107,
+    55.67851275
+  ],
+  "visueltcenter": [
+    12.59071696,
+    55.67800727
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}, {
+  "betegnelse": "Peder Skrams Gade, 1054 København K",
+  "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/1054/Peder%20Skrams%20Gade",
+  "vejnavn": "Peder Skrams Gade",
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/1054",
+    "nr": "1054",
+    "navn": "København K"
+  },
+  "bbox": [
+    12.5879553,
+    55.67697361,
+    12.58979713,
+    55.67915993
+  ],
+  "visueltcenter": [
+    12.58889202,
+    55.67805292
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}
+]

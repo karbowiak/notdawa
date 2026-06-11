@@ -1,0 +1,23 @@
+[
+{
+  "txid": 1,
+  "tidspunkt": "2017-05-02T15:48:04.714Z",
+  "operationer": []
+}, {
+  "txid": 2,
+  "tidspunkt": "2017-05-02T16:09:03.971Z",
+  "operationer": []
+}, {
+  "txid": 3,
+  "tidspunkt": "2017-05-02T19:06:59.125Z",
+  "operationer": []
+}, {
+  "txid": 4,
+  "tidspunkt": "2017-05-02T19:07:19.733Z",
+  "operationer": []
+}, {
+  "txid": 5,
+  "tidspunkt": "2017-05-02T19:07:40.230Z",
+  "operationer": []
+}
+]

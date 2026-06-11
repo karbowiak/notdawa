@@ -1,0 +1,102 @@
+[
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsager ",
+    "forslagstekst": "Kongsager",
+    "caretpos": 10,
+    "data": {
+      "navn": "Kongsager",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsager"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsbakken ",
+    "forslagstekst": "Kongsbakken",
+    "caretpos": 12,
+    "data": {
+      "navn": "Kongsbakken",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsbakken"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsberg Alle ",
+    "forslagstekst": "Kongsberg Alle",
+    "caretpos": 15,
+    "data": {
+      "navn": "Kongsberg Alle",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsberg%20Alle"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsbergparken ",
+    "forslagstekst": "Kongsbergparken",
+    "caretpos": 16,
+    "data": {
+      "navn": "Kongsbergparken",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsbergparken"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsbergvej ",
+    "forslagstekst": "Kongsbergvej",
+    "caretpos": 13,
+    "data": {
+      "navn": "Kongsbergvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsbergvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsbjerg ",
+    "forslagstekst": "Kongsbjerg",
+    "caretpos": 11,
+    "data": {
+      "navn": "Kongsbjerg",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsbjerg"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsbjergvej ",
+    "forslagstekst": "Kongsbjergvej",
+    "caretpos": 14,
+    "data": {
+      "navn": "Kongsbjergvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsbjergvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsbo Tværvej ",
+    "forslagstekst": "Kongsbo Tværvej",
+    "caretpos": 16,
+    "data": {
+      "navn": "Kongsbo Tværvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsbo%20Tv%C3%A6rvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsbovej ",
+    "forslagstekst": "Kongsbovej",
+    "caretpos": 11,
+    "data": {
+      "navn": "Kongsbovej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsbovej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsdal Havn ",
+    "forslagstekst": "Kongsdal Havn",
+    "caretpos": 14,
+    "data": {
+      "navn": "Kongsdal Havn",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsdal%20Havn"
+    }
+  }
+]

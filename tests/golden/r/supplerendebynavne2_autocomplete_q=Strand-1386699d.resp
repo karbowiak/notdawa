@@ -1,0 +1,663 @@
+[
+{
+  "tekst": "Tårup Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-04-30T15:23:13.528Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      10.80045839,
+      55.22904908,
+      10.81590385,
+      55.24397015
+    ],
+    "visueltcenter": [
+      10.80854352,
+      55.23402566
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/654897",
+    "dagi_id": "654897",
+    "navn": "Tårup Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0450",
+      "kode": "0450",
+      "navn": "Nyborg"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/5871",
+        "nr": "5871",
+        "navn": "Frørup"
+      }
+    ]
+  }
+}, {
+  "tekst": "Dalby Strand",
+  "supplerendebynavn": {
+    "ændret": "2020-01-15T22:18:08.104Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      11.13261298,
+      55.50796838,
+      11.15414102,
+      55.52791862
+    ],
+    "visueltcenter": [
+      11.14846761,
+      55.51897706
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/655798",
+    "dagi_id": "655798",
+    "navn": "Dalby Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0326",
+      "kode": "0326",
+      "navn": "Kalundborg"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/4281",
+        "nr": "4281",
+        "navn": "Gørlev"
+      }
+    ]
+  }
+}, {
+  "tekst": "Glatved Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-04-30T15:23:13.528Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      10.84034466,
+      56.2981617,
+      10.84760195,
+      56.3004941
+    ],
+    "visueltcenter": [
+      10.84419069,
+      56.29932906
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/656926",
+    "dagi_id": "656926",
+    "navn": "Glatved Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0707",
+      "kode": "0707",
+      "navn": "Norddjurs"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/8444",
+        "nr": "8444",
+        "navn": "Balle"
+      }
+    ]
+  }
+}, {
+  "tekst": "Hasmark Strand",
+  "supplerendebynavn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 2,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      10.43897122,
+      55.51344564,
+      10.56333174,
+      55.56896106
+    ],
+    "visueltcenter": [
+      10.54198715,
+      55.52482035
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/659003",
+    "dagi_id": "659003",
+    "navn": "Hasmark Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0480",
+      "kode": "0480",
+      "navn": "Nordfyns"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/5450",
+        "nr": "5450",
+        "navn": "Otterup"
+      }
+    ]
+  }
+}, {
+  "tekst": "Lumby Strand",
+  "supplerendebynavn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 2,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      10.39145862,
+      55.46599575,
+      10.42374442,
+      55.47997778
+    ],
+    "visueltcenter": [
+      10.40364563,
+      55.47177937
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/659166",
+    "dagi_id": "659166",
+    "navn": "Lumby Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0480",
+      "kode": "0480",
+      "navn": "Nordfyns"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/5270",
+        "nr": "5270",
+        "navn": "Odense N"
+      }
+    ]
+  }
+}, {
+  "tekst": "Aborg Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-04-30T15:23:13.528Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      9.89167718,
+      55.29988417,
+      9.89569001,
+      55.30304999
+    ],
+    "visueltcenter": [
+      9.8936542,
+      55.30153294
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/659785",
+    "dagi_id": "659785",
+    "navn": "Aborg Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0420",
+      "kode": "0420",
+      "navn": "Assens"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/5610",
+        "nr": "5610",
+        "navn": "Assens"
+      }
+    ]
+  }
+}, {
+  "tekst": "Kelstrup Strand",
+  "supplerendebynavn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 2,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      9.56064656,
+      55.18146296,
+      9.58947447,
+      55.19646531
+    ],
+    "visueltcenter": [
+      9.5734558,
+      55.19346238
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/660162",
+    "dagi_id": "660162",
+    "navn": "Kelstrup Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0510",
+      "kode": "0510",
+      "navn": "Haderslev"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/6100",
+        "nr": "6100",
+        "navn": "Haderslev"
+      }
+    ]
+  }
+}, {
+  "tekst": "Slude Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-04-30T15:23:13.528Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      10.79577623,
+      55.24675197,
+      10.80384464,
+      55.25036554
+    ],
+    "visueltcenter": [
+      10.80055769,
+      55.24863664
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/660517",
+    "dagi_id": "660517",
+    "navn": "Slude Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0450",
+      "kode": "0450",
+      "navn": "Nyborg"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/5871",
+        "nr": "5871",
+        "navn": "Frørup"
+      }
+    ]
+  }
+}, {
+  "tekst": "Bøged Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-04-30T15:23:13.528Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      12.14204787,
+      55.07972376,
+      12.17289736,
+      55.1039993
+    ],
+    "visueltcenter": [
+      12.16313438,
+      55.08978226
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/663915",
+    "dagi_id": "663915",
+    "navn": "Bøged Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0390",
+      "kode": "0390",
+      "navn": "Vordingborg"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/4720",
+        "nr": "4720",
+        "navn": "Præstø"
+      }
+    ]
+  }
+}, {
+  "tekst": "Gøttrup Strand",
+  "supplerendebynavn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 2,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      9.17050626,
+      57.02256732,
+      9.20968727,
+      57.05660229
+    ],
+    "visueltcenter": [
+      9.18379018,
+      57.03132445
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/665079",
+    "dagi_id": "665079",
+    "navn": "Gøttrup Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0849",
+      "kode": "0849",
+      "navn": "Jammerbugt"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/9690",
+        "nr": "9690",
+        "navn": "Fjerritslev"
+      }
+    ]
+  }
+}, {
+  "tekst": "Ugelb Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-04-30T15:23:13.528Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      10.40112073,
+      56.29396236,
+      10.40875925,
+      56.29850627
+    ],
+    "visueltcenter": [
+      10.40577801,
+      56.29678813
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/665466",
+    "dagi_id": "665466",
+    "navn": "Ugelb Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0706",
+      "kode": "0706",
+      "navn": "Syddjurs"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/8410",
+        "nr": "8410",
+        "navn": "Rønde"
+      }
+    ]
+  }
+}, {
+  "tekst": "Serup Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-04-30T15:23:13.528Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      8.58131047,
+      56.60093041,
+      8.59251115,
+      56.60787546
+    ],
+    "visueltcenter": [
+      8.58924247,
+      56.60384495
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/666551",
+    "dagi_id": "666551",
+    "navn": "Serup Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0671",
+      "kode": "0671",
+      "navn": "Struer"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/7790",
+        "nr": "7790",
+        "navn": "Thyholm"
+      }
+    ]
+  }
+}, {
+  "tekst": "Grenaa Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-04-30T15:23:13.528Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      10.91676225,
+      56.39260582,
+      10.92012157,
+      56.39717923
+    ],
+    "visueltcenter": [
+      10.9186568,
+      56.39356877
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/668267",
+    "dagi_id": "668267",
+    "navn": "Grenaa Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0707",
+      "kode": "0707",
+      "navn": "Norddjurs"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/8500",
+        "nr": "8500",
+        "navn": "Grenaa"
+      }
+    ]
+  }
+}, {
+  "tekst": "Skovgårde Strand",
+  "supplerendebynavn": {
+    "ændret": "2020-01-15T22:18:08.104Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      10.51922822,
+      56.50859248,
+      10.53239797,
+      56.51292485
+    ],
+    "visueltcenter": [
+      10.52360288,
+      56.51101834
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/668345",
+    "dagi_id": "668345",
+    "navn": "Skovgårde Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0707",
+      "kode": "0707",
+      "navn": "Norddjurs"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/8961",
+        "nr": "8961",
+        "navn": "Allingåbro"
+      }
+    ]
+  }
+}, {
+  "tekst": "Klim Strand",
+  "supplerendebynavn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 2,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      9.14615968,
+      57.11960096,
+      9.23863149,
+      57.14132261
+    ],
+    "visueltcenter": [
+      9.20046401,
+      57.1299887
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/670906",
+    "dagi_id": "670906",
+    "navn": "Klim Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0849",
+      "kode": "0849",
+      "navn": "Jammerbugt"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/9690",
+        "nr": "9690",
+        "navn": "Fjerritslev"
+      }
+    ]
+  }
+}, {
+  "tekst": "Landerslev Strand",
+  "supplerendebynavn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 2,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      11.94509401,
+      55.82336937,
+      11.97022429,
+      55.83150018
+    ],
+    "visueltcenter": [
+      11.95104969,
+      55.82793719
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/672967",
+    "dagi_id": "672967",
+    "navn": "Landerslev Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0250",
+      "kode": "0250",
+      "navn": "Frederikssund"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/3630",
+        "nr": "3630",
+        "navn": "Jægerspris"
+      }
+    ]
+  }
+}, {
+  "tekst": "Lyby Strand",
+  "supplerendebynavn": {
+    "ændret": "2025-07-07T21:02:46.315Z",
+    "geo_version": 6,
+    "geo_ændret": "2025-07-07T21:02:46.315Z",
+    "bbox": [
+      9.05110347,
+      56.63204732,
+      9.0688697,
+      56.64216953
+    ],
+    "visueltcenter": [
+      9.06206667,
+      56.63869732
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/673102",
+    "dagi_id": "673102",
+    "navn": "Lyby Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0779",
+      "kode": "0779",
+      "navn": "Skive"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/7870",
+        "nr": "7870",
+        "navn": "Roslev"
+      }
+    ]
+  }
+}, {
+  "tekst": "Hegedal Strand",
+  "supplerendebynavn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 2,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      10.54775032,
+      56.50736,
+      10.5731608,
+      56.51721626
+    ],
+    "visueltcenter": [
+      10.55347504,
+      56.51119217
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/673991",
+    "dagi_id": "673991",
+    "navn": "Hegedal Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0707",
+      "kode": "0707",
+      "navn": "Norddjurs"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/8585",
+        "nr": "8585",
+        "navn": "Glesborg"
+      }
+    ]
+  }
+}, {
+  "tekst": "Rygård Strand",
+  "supplerendebynavn": {
+    "ændret": "2018-06-07T21:08:14.307Z",
+    "geo_version": 1,
+    "geo_ændret": "2018-04-30T15:23:13.528Z",
+    "bbox": [
+      10.48521503,
+      56.50103409,
+      10.52073345,
+      56.51622763
+    ],
+    "visueltcenter": [
+      10.50088945,
+      56.50935281
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/674033",
+    "dagi_id": "674033",
+    "navn": "Rygård Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0707",
+      "kode": "0707",
+      "navn": "Norddjurs"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/8961",
+        "nr": "8961",
+        "navn": "Allingåbro"
+      }
+    ]
+  }
+}, {
+  "tekst": "Fjellerup Strand",
+  "supplerendebynavn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 2,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      10.57079385,
+      56.50023647,
+      10.64923819,
+      56.52543532
+    ],
+    "visueltcenter": [
+      10.62181911,
+      56.51340908
+    ],
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/674060",
+    "dagi_id": "674060",
+    "navn": "Fjellerup Strand",
+    "darstatus": 3,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0707",
+      "kode": "0707",
+      "navn": "Norddjurs"
+    },
+    "postnumre": [
+      {
+        "href": "https://api.dataforsyningen.dk/postnumre/8585",
+        "nr": "8585",
+        "navn": "Glesborg"
+      }
+    ]
+  }
+}
+]

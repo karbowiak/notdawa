@@ -1,0 +1,21 @@
+[
+{
+  "ændret": "2023-11-02T22:05:36.260Z",
+  "geo_version": 6,
+  "geo_ændret": "2023-11-02T22:05:36.260Z",
+  "bbox": [
+    12.56342763,
+    55.66719221,
+    12.58534207,
+    55.68333631
+  ],
+  "visueltcenter": [
+    12.57165114,
+    55.67358892
+  ],
+  "dagi_id": "107307",
+  "kode": "7002",
+  "navn": "Helligånds",
+  "href": "https://api.dataforsyningen.dk/sogne/7002"
+}
+]

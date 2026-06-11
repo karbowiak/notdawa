@@ -1,0 +1,123 @@
+[
+{
+  "tekst": "Aborg Strand",
+  "supplerendebynavn": {
+    "navn": "Aborg Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Aborg%20Strand"
+  }
+}, {
+  "tekst": "Bøged Strand",
+  "supplerendebynavn": {
+    "navn": "Bøged Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/B%C3%B8ged%20Strand"
+  }
+}, {
+  "tekst": "Bønnerup Strand",
+  "supplerendebynavn": {
+    "navn": "Bønnerup Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/B%C3%B8nnerup%20Strand"
+  }
+}, {
+  "tekst": "Dalby Strand",
+  "supplerendebynavn": {
+    "navn": "Dalby Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Dalby%20Strand"
+  }
+}, {
+  "tekst": "Dyngby Strand",
+  "supplerendebynavn": {
+    "navn": "Dyngby Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Dyngby%20Strand"
+  }
+}, {
+  "tekst": "Femmøller Strand",
+  "supplerendebynavn": {
+    "navn": "Femmøller Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Femm%C3%B8ller%20Strand"
+  }
+}, {
+  "tekst": "Fjellerup Strand",
+  "supplerendebynavn": {
+    "navn": "Fjellerup Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Fjellerup%20Strand"
+  }
+}, {
+  "tekst": "Følle Strand",
+  "supplerendebynavn": {
+    "navn": "Følle Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/F%C3%B8lle%20Strand"
+  }
+}, {
+  "tekst": "Glatved Strand",
+  "supplerendebynavn": {
+    "navn": "Glatved Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Glatved%20Strand"
+  }
+}, {
+  "tekst": "Grenaa Strand",
+  "supplerendebynavn": {
+    "navn": "Grenaa Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Grenaa%20Strand"
+  }
+}, {
+  "tekst": "Gøttrup Strand",
+  "supplerendebynavn": {
+    "navn": "Gøttrup Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/G%C3%B8ttrup%20Strand"
+  }
+}, {
+  "tekst": "Hasmark Strand",
+  "supplerendebynavn": {
+    "navn": "Hasmark Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Hasmark%20Strand"
+  }
+}, {
+  "tekst": "Hegedal Strand",
+  "supplerendebynavn": {
+    "navn": "Hegedal Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Hegedal%20Strand"
+  }
+}, {
+  "tekst": "Henne Strand",
+  "supplerendebynavn": {
+    "navn": "Henne Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Henne%20Strand"
+  }
+}, {
+  "tekst": "Høve Strand",
+  "supplerendebynavn": {
+    "navn": "Høve Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/H%C3%B8ve%20Strand"
+  }
+}, {
+  "tekst": "Jørgensø Strand",
+  "supplerendebynavn": {
+    "navn": "Jørgensø Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/J%C3%B8rgens%C3%B8%20Strand"
+  }
+}, {
+  "tekst": "Kelstrup Strand",
+  "supplerendebynavn": {
+    "navn": "Kelstrup Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Kelstrup%20Strand"
+  }
+}, {
+  "tekst": "Klim Strand",
+  "supplerendebynavn": {
+    "navn": "Klim Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Klim%20Strand"
+  }
+}, {
+  "tekst": "Landerslev Strand",
+  "supplerendebynavn": {
+    "navn": "Landerslev Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Landerslev%20Strand"
+  }
+}, {
+  "tekst": "Lild Strand",
+  "supplerendebynavn": {
+    "navn": "Lild Strand",
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Lild%20Strand"
+  }
+}
+]

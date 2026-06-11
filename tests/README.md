@@ -15,9 +15,11 @@ updates scores 100% forever, because it still matches its own fixtures, and the
 "known-divergence" buckets let the implementation quietly agree with itself that
 everything is fine. The only oracle that can't be gamed is the live upstream.
 
-DAWA shuts down **2026-07-01**. Until then it is the source of truth. After that,
-this suite can't run live — by then the divergences should be understood and the
-migration done.
+DAWA shuts down **2026-07-01**. Until then it is the source of truth. For after,
+the upstream's responses are **frozen verbatim** in `golden/` (see "The oracle
+after the shutdown" below) — that is not the old self-grading-fixture trap,
+because what's frozen is the *upstream's* output captured while it lived, never
+our own.
 
 ## Running it
 
@@ -54,4 +56,24 @@ and which sub-endpoints it exposes. `tilknytningPaths` lists the
 with the upstream (remove the endpoints, or establish the real DAWA path).
 
 To add coverage, add a row to `families` (or a path to `tilknytningPaths`). No
-fixtures to capture, nothing to keep in sync — the upstream is the spec.
+fixtures to capture, nothing to keep in sync — the upstream is the spec. (After
+adding URLs, re-run a capture so the post-shutdown snapshot stays complete.)
+
+## The oracle after the shutdown (`DAWA_ORACLE`, `golden/`)
+
+Live DAWA is **decaying** on its way out: on 2026-06-11 it started returning
+`null` for the address→jordstykke relation it served correctly ten days
+earlier. Two mechanisms deal with the death of the oracle (`oracle_test.go`):
+
+- **Decay tolerance** — `dawaDecayedDiff` / `fladDecayed` tolerate (and loudly
+  log) fields where *DAWA* has degraded to null while we serve the real value.
+  Asymmetric on purpose: our side going null still fails, and
+  `TestDecayedFieldsStillServed` pins our values so a both-sides-null
+  regression can't hide.
+- **Frozen snapshot** — `DAWA_ORACLE=capture go test ./tests/` saves every
+  upstream response byte-exact under `golden/` (raw bodies + `manifest.json`).
+  `DAWA_ORACLE=snapshot` then serves the DAWA side from disk. With the env
+  unset the suite stays live while the upstream answers and **auto-falls back**
+  to the snapshot once it stops. Data keeps moving after the freeze (Datafordeler
+  lives on; only the DAWA API dies), so post-shutdown value diffs accumulate
+  honestly — re-bless by deliberate re-capture review, never by hand-editing.

@@ -1,0 +1,20 @@
+[
+{
+  "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Aa",
+  "navn": "Aa",
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/5631",
+      "nr": "5631",
+      "navn": "Ebberup"
+    }
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0420",
+      "kode": "0420",
+      "navn": "Assens"
+    }
+  ]
+}
+]

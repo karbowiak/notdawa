@@ -1,0 +1,93 @@
+[
+{
+  "ændret": "2026-01-01T22:02:26.282Z",
+  "geo_version": 33,
+  "geo_ændret": "2026-01-01T22:02:26.282Z",
+  "bbox": [
+    9.02950728,
+    56.53454667,
+    11.22599137,
+    57.76284264
+  ],
+  "visueltcenter": [
+    10.11281992,
+    57.30715466
+  ],
+  "dagi_id": "403210",
+  "kode": "1460",
+  "navn": "Nordjyllands Politi",
+  "href": "https://api.dataforsyningen.dk/politikredse/1460"
+}, {
+  "ændret": "2025-02-11T22:03:01.550Z",
+  "geo_version": 23,
+  "geo_ændret": "2025-02-11T22:03:01.550Z",
+  "bbox": [
+    9.65149577,
+    55.74769587,
+    11.65848576,
+    56.76423281
+  ],
+  "visueltcenter": [
+    10.65638132,
+    56.38459184
+  ],
+  "dagi_id": "403214",
+  "kode": "1461",
+  "navn": "Østjyllands Politi",
+  "href": "https://api.dataforsyningen.dk/politikredse/1461"
+}, {
+  "ændret": "2025-07-11T21:05:02.274Z",
+  "geo_version": 37,
+  "geo_ændret": "2025-07-11T21:05:02.274Z",
+  "bbox": [
+    8.07112573,
+    55.77099116,
+    9.88372952,
+    57.15595073
+  ],
+  "visueltcenter": [
+    9.07701997,
+    56.24600588
+  ],
+  "dagi_id": "403221",
+  "kode": "1462",
+  "navn": "Midt- og Vestjyllands Politi",
+  "href": "https://api.dataforsyningen.dk/politikredse/1462"
+}, {
+  "ændret": "2025-05-14T21:02:41.891Z",
+  "geo_version": 27,
+  "geo_ændret": "2025-05-14T21:02:41.891Z",
+  "bbox": [
+    8.74443421,
+    55.30202819,
+    10.37910437,
+    56.2196523
+  ],
+  "visueltcenter": [
+    9.29816644,
+    55.76096602
+  ],
+  "dagi_id": "403215",
+  "kode": "1463",
+  "navn": "Sydøstjyllands Politi",
+  "href": "https://api.dataforsyningen.dk/politikredse/1463"
+}, {
+  "ændret": "2026-03-13T22:03:41.642Z",
+  "geo_version": 16,
+  "geo_ændret": "2026-03-13T22:03:41.642Z",
+  "bbox": [
+    8.06575777,
+    54.79601303,
+    10.09808354,
+    55.84710625
+  ],
+  "visueltcenter": [
+    9.0752101,
+    55.15993201
+  ],
+  "dagi_id": "403220",
+  "kode": "1464",
+  "navn": "Syd- og Sønderjyllands Politi",
+  "href": "https://api.dataforsyningen.dk/politikredse/1464"
+}
+]

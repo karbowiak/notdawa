@@ -1,0 +1,771 @@
+[
+{
+  "id": "000021c5-e9ee-411d-b2d8-ec9161780ccd",
+  "kvhx": "03762401_41A__2__tv",
+  "status": 1,
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/adresser/000021c5-e9ee-411d-b2d8-ec9161780ccd",
+  "historik": {
+    "oprettet": "2018-08-02T12:47:31.924",
+    "ændret": "2018-08-02T12:47:31.924",
+    "ikrafttrædelse": "2018-08-02T12:47:31.924",
+    "nedlagt": null
+  },
+  "etage": "2",
+  "dør": "tv",
+  "adressebetegnelse": "Vestergade 41A, 2. tv, 4850 Stubbekøbing",
+  "adgangsadresse": {
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5086-e9cd-32b8-e044-0003ba298018",
+    "id": "0a3f5086-e9cd-32b8-e044-0003ba298018",
+    "adressebetegnelse": "Vestergade 41A, 4850 Stubbekøbing",
+    "kvh": "03762401_41A",
+    "status": 1,
+    "darstatus": 3,
+    "vejstykke": {
+      "href": "https://api.dataforsyningen.dk/vejstykker/376/2401",
+      "navn": "Vestergade",
+      "adresseringsnavn": "Vestergade",
+      "kode": "2401"
+    },
+    "husnr": "41A",
+    "navngivenvej": {
+      "href": "https://api.dataforsyningen.dk/navngivneveje/134eb4ae-5ac5-4a86-afaa-21c050df4f26",
+      "id": "134eb4ae-5ac5-4a86-afaa-21c050df4f26"
+    },
+    "supplerendebynavn": null,
+    "supplerendebynavn2": null,
+    "postnummer": {
+      "href": "https://api.dataforsyningen.dk/postnumre/4850",
+      "nr": "4850",
+      "navn": "Stubbekøbing"
+    },
+    "stormodtagerpostnummer": null,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0376",
+      "kode": "0376",
+      "navn": "Guldborgsund"
+    },
+    "ejerlav": {
+      "kode": 2003351,
+      "navn": "Stubbekøbing Bygrunde"
+    },
+    "esrejendomsnr": "0",
+    "matrikelnr": "47a",
+    "historik": {
+      "oprettet": "2000-02-05T22:38:02.000",
+      "ændret": "2020-04-27T18:41:49.357",
+      "ikrafttrædelse": "2000-02-05T22:38:02.000",
+      "nedlagt": null
+    },
+    "adgangspunkt": {
+      "id": "0a3f5086-e9cd-32b8-e044-0003ba298018",
+      "koordinater": [
+        12.03890382,
+        54.89017879
+      ],
+      "højde": 8,
+      "nøjagtighed": "A",
+      "kilde": 1,
+      "tekniskstandard": "TN",
+      "tekstretning": 178.35,
+      "ændret": "2018-08-02T11:27:03.649"
+    },
+    "vejpunkt": {
+      "id": "153598b9-af45-11e7-847e-066cff24d637",
+      "kilde": "Ekstern",
+      "nøjagtighed": "A",
+      "tekniskstandard": "V0",
+      "koordinater": [
+        12.03886381,
+        54.89025425
+      ],
+      "ændret": "2018-08-02T11:27:03.649061"
+    },
+    "DDKN": {
+      "m100": "100m_60868_6948",
+      "km1": "1km_6086_694",
+      "km10": "10km_608_69"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/7607",
+      "kode": "7607",
+      "navn": "Stubbekøbing"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1085",
+      "kode": "1085",
+      "navn": "Region Sjælland"
+    },
+    "landsdel": {
+      "href": "https://api.dataforsyningen.dk/landsdele/DK022",
+      "nuts3": "DK022",
+      "navn": "Vest- og Sydsjælland"
+    },
+    "retskreds": {
+      "href": "https://api.dataforsyningen.dk/retskredse/1131",
+      "kode": "1131",
+      "navn": "Retten i Nykøbing Falster"
+    },
+    "politikreds": {
+      "href": "https://api.dataforsyningen.dk/politikredse/1466",
+      "kode": "1466",
+      "navn": "Sydsjællands og Lolland-Falsters Politi"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/0030",
+      "kode": "0030",
+      "navn": "Guldborgsund"
+    },
+    "afstemningsområde": {
+      "href": "https://api.dataforsyningen.dk/afstemningsomraader/376/16",
+      "nummer": "16",
+      "navn": "Stubbekøbing"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/5",
+      "nummer": "5",
+      "navn": "Sjælland"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/B",
+      "bogstav": "B",
+      "navn": "Sjælland-Syddanmark"
+    },
+    "zone": "Udfaset",
+    "jordstykke": {
+      "href": "https://api.dataforsyningen.dk/jordstykker/2003351/47a",
+      "ejerlav": {
+        "kode": 2003351,
+        "navn": "Stubbekøbing Bygrunde",
+        "href": "https://api.dataforsyningen.dk/ejerlav/2003351"
+      },
+      "matrikelnr": "47a",
+      "esrejendomsnr": "0"
+    },
+    "bebyggelser": [
+      {
+        "id": "12337669-d653-6b98-e053-d480220a5a3f",
+        "kode": 10886,
+        "type": "by",
+        "navn": "Stubbekøbing",
+        "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-d653-6b98-e053-d480220a5a3f"
+      }
+    ],
+    "brofast": true
+  }
+}, {
+  "id": "00002732-733c-433a-a5da-a7d428a980cf",
+  "kvhx": "01016996_25M__7__tv",
+  "status": 1,
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/adresser/00002732-733c-433a-a5da-a7d428a980cf",
+  "historik": {
+    "oprettet": "2015-03-26T11:57:32.350",
+    "ændret": "2017-01-24T11:37:07.190",
+    "ikrafttrædelse": "2017-01-24T11:37:07.190",
+    "nedlagt": null
+  },
+  "etage": "7",
+  "dør": "tv",
+  "adressebetegnelse": "Strandlodsvej 25M, 7. tv, 2300 København S",
+  "adgangsadresse": {
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/18fbd56e-c6b2-4d0f-bb08-80133edb896e",
+    "id": "18fbd56e-c6b2-4d0f-bb08-80133edb896e",
+    "adressebetegnelse": "Strandlodsvej 25M, 2300 København S",
+    "kvh": "01016996_25M",
+    "status": 1,
+    "darstatus": 3,
+    "vejstykke": {
+      "href": "https://api.dataforsyningen.dk/vejstykker/101/6996",
+      "navn": "Strandlodsvej",
+      "adresseringsnavn": "Strandlodsvej",
+      "kode": "6996"
+    },
+    "husnr": "25M",
+    "navngivenvej": {
+      "href": "https://api.dataforsyningen.dk/navngivneveje/7c918b0f-cff6-48ee-ad85-1ae054cbab8b",
+      "id": "7c918b0f-cff6-48ee-ad85-1ae054cbab8b"
+    },
+    "supplerendebynavn": null,
+    "supplerendebynavn2": null,
+    "postnummer": {
+      "href": "https://api.dataforsyningen.dk/postnumre/2300",
+      "nr": "2300",
+      "navn": "København S"
+    },
+    "stormodtagerpostnummer": null,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    },
+    "ejerlav": {
+      "kode": 2000172,
+      "navn": "Sundbyøster, København"
+    },
+    "esrejendomsnr": "0",
+    "matrikelnr": "3824f",
+    "historik": {
+      "oprettet": "2015-03-26T11:53:58.587",
+      "ændret": "2025-08-21T19:36:18.346",
+      "ikrafttrædelse": "2017-01-24T11:37:07.190",
+      "nedlagt": null
+    },
+    "adgangspunkt": {
+      "id": "23a68857-1dc5-41e8-af99-938ad7216d57",
+      "koordinater": [
+        12.62385776,
+        55.66576376
+      ],
+      "højde": 1.9,
+      "nøjagtighed": "A",
+      "kilde": 5,
+      "tekniskstandard": "TD",
+      "tekstretning": 267.44,
+      "ændret": "2016-04-11T00:00:00.000"
+    },
+    "vejpunkt": {
+      "id": "1f961466-af45-11e7-847e-066cff24d637",
+      "kilde": "Adressemyn",
+      "nøjagtighed": "A",
+      "tekniskstandard": "V0",
+      "koordinater": [
+        12.62146865,
+        55.66555777
+      ],
+      "ændret": "2018-09-25T10:37:01.919731"
+    },
+    "DDKN": {
+      "m100": "100m_61748_7279",
+      "km1": "1km_6174_727",
+      "km10": "10km_617_72"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/7085",
+      "kode": "7085",
+      "navn": "Allehelgens"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1084",
+      "kode": "1084",
+      "navn": "Region Hovedstaden"
+    },
+    "landsdel": {
+      "href": "https://api.dataforsyningen.dk/landsdele/DK011",
+      "nuts3": "DK011",
+      "navn": "Byen København"
+    },
+    "retskreds": {
+      "href": "https://api.dataforsyningen.dk/retskredse/1101",
+      "kode": "1101",
+      "navn": "Københavns Byret"
+    },
+    "politikreds": {
+      "href": "https://api.dataforsyningen.dk/politikredse/1470",
+      "kode": "1470",
+      "navn": "Københavns Politi"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/0004",
+      "kode": "0004",
+      "navn": "Sundbyøster"
+    },
+    "afstemningsområde": {
+      "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/65",
+      "nummer": "65",
+      "navn": "4. Nordøst"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/1",
+      "nummer": "1",
+      "navn": "København"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+      "bogstav": "A",
+      "navn": "Hovedstaden"
+    },
+    "zone": "Udfaset",
+    "jordstykke": {
+      "href": "https://api.dataforsyningen.dk/jordstykker/2000172/3824f",
+      "ejerlav": {
+        "kode": 2000172,
+        "navn": "Sundbyøster, København",
+        "href": "https://api.dataforsyningen.dk/ejerlav/2000172"
+      },
+      "matrikelnr": "3824f",
+      "esrejendomsnr": "0"
+    },
+    "bebyggelser": [
+      {
+        "id": "12337669-dec7-6b98-e053-d480220a5a3f",
+        "kode": null,
+        "type": "bydel",
+        "navn": "Sundbyerne",
+        "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-dec7-6b98-e053-d480220a5a3f"
+      },
+      {
+        "id": "12337669-dec8-6b98-e053-d480220a5a3f",
+        "kode": null,
+        "type": "bydel",
+        "navn": "Sundbyøster",
+        "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-dec8-6b98-e053-d480220a5a3f"
+      },
+      {
+        "id": "290f85b8-8c7a-6fd1-e053-d480220af996",
+        "kode": 18368,
+        "type": "by",
+        "navn": "København",
+        "href": "https://api.dataforsyningen.dk/bebyggelser/290f85b8-8c7a-6fd1-e053-d480220af996"
+      }
+    ],
+    "brofast": true
+  }
+}, {
+  "id": "00002ec8-9a05-423c-abf2-3d0f4ccb03e0",
+  "kvhx": "08101903__61_______",
+  "status": 1,
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/adresser/00002ec8-9a05-423c-abf2-3d0f4ccb03e0",
+  "historik": {
+    "oprettet": "2024-06-10T08:43:18.815",
+    "ændret": "2024-06-10T08:43:18.815",
+    "ikrafttrædelse": "2024-06-10T08:43:18.815",
+    "nedlagt": null
+  },
+  "etage": null,
+  "dør": null,
+  "adressebetegnelse": "Tolstrupvej 61, 9320 Hjallerup",
+  "adgangsadresse": {
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/d7a85869-28be-4927-8cfa-e05fd73ba2ce",
+    "id": "d7a85869-28be-4927-8cfa-e05fd73ba2ce",
+    "adressebetegnelse": "Tolstrupvej 61, 9320 Hjallerup",
+    "kvh": "08101903__61",
+    "status": 1,
+    "darstatus": 3,
+    "vejstykke": {
+      "href": "https://api.dataforsyningen.dk/vejstykker/810/1903",
+      "navn": "Tolstrupvej",
+      "adresseringsnavn": "Tolstrupvej",
+      "kode": "1903"
+    },
+    "husnr": "61",
+    "navngivenvej": {
+      "href": "https://api.dataforsyningen.dk/navngivneveje/66af9858-91a5-4a8f-8159-bf2d84a35e97",
+      "id": "66af9858-91a5-4a8f-8159-bf2d84a35e97"
+    },
+    "supplerendebynavn": null,
+    "supplerendebynavn2": null,
+    "postnummer": {
+      "href": "https://api.dataforsyningen.dk/postnumre/9320",
+      "nr": "9320",
+      "navn": "Hjallerup"
+    },
+    "stormodtagerpostnummer": null,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0810",
+      "kode": "0810",
+      "navn": "Brønderslev"
+    },
+    "ejerlav": {
+      "kode": 551552,
+      "navn": "Hjallerup Fjerding, Hjallerup"
+    },
+    "esrejendomsnr": "0",
+    "matrikelnr": "116a",
+    "historik": {
+      "oprettet": "2024-06-10T08:43:18.815",
+      "ændret": "2024-07-01T09:38:54.071",
+      "ikrafttrædelse": "2024-06-10T08:43:18.815",
+      "nedlagt": null
+    },
+    "adgangspunkt": {
+      "id": "568a94f7-da49-456c-88f7-51e7d075ab97",
+      "koordinater": [
+        10.18759406,
+        57.17085108
+      ],
+      "højde": null,
+      "nøjagtighed": "A",
+      "kilde": 5,
+      "tekniskstandard": "TD",
+      "tekstretning": 134.47,
+      "ændret": "2024-06-10T08:43:18.815"
+    },
+    "vejpunkt": {
+      "id": "1594423d-4cef-4530-8cd4-d26d72eddf0f",
+      "kilde": "Adressemyn",
+      "nøjagtighed": "A",
+      "tekniskstandard": "V0",
+      "koordinater": [
+        10.18717803,
+        57.17101143
+      ],
+      "ændret": "2024-06-10T08:43:18.815803"
+    },
+    "DDKN": {
+      "m100": "100m_63370_5718",
+      "km1": "1km_6337_571",
+      "km10": "10km_633_57"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/8427",
+      "kode": "8427",
+      "navn": "Hjallerup"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1081",
+      "kode": "1081",
+      "navn": "Region Nordjylland"
+    },
+    "landsdel": {
+      "href": "https://api.dataforsyningen.dk/landsdele/DK050",
+      "nuts3": "DK050",
+      "navn": "Nordjylland"
+    },
+    "retskreds": {
+      "href": "https://api.dataforsyningen.dk/retskredse/1183",
+      "kode": "1183",
+      "navn": "Retten i Hjørring"
+    },
+    "politikreds": {
+      "href": "https://api.dataforsyningen.dk/politikredse/1460",
+      "kode": "1460",
+      "navn": "Nordjyllands Politi"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/0086",
+      "kode": "0086",
+      "navn": "Brønderslev"
+    },
+    "afstemningsområde": {
+      "href": "https://api.dataforsyningen.dk/afstemningsomraader/810/5",
+      "nummer": "5",
+      "navn": "Hjallerup"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/10",
+      "nummer": "10",
+      "navn": "Nordjylland"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/C",
+      "bogstav": "C",
+      "navn": "Midtjylland-Nordjylland"
+    },
+    "zone": "Udfaset",
+    "jordstykke": {
+      "href": "https://api.dataforsyningen.dk/jordstykker/551552/116a",
+      "ejerlav": {
+        "kode": 551552,
+        "navn": "Hjallerup Fjerding, Hjallerup",
+        "href": "https://api.dataforsyningen.dk/ejerlav/551552"
+      },
+      "matrikelnr": "116a",
+      "esrejendomsnr": "0"
+    },
+    "bebyggelser": [],
+    "brofast": true
+  }
+}, {
+  "id": "000059b7-1fe6-4ed2-8386-d9578b2a8859",
+  "kvhx": "04201074___6_______",
+  "status": 1,
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/adresser/000059b7-1fe6-4ed2-8386-d9578b2a8859",
+  "historik": {
+    "oprettet": "2014-05-05T19:07:48.577",
+    "ændret": "2014-05-05T19:07:48.577",
+    "ikrafttrædelse": "2014-05-05T19:07:48.577",
+    "nedlagt": null
+  },
+  "etage": null,
+  "dør": null,
+  "adressebetegnelse": "Melvej 6, 5610 Assens",
+  "adgangsadresse": {
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5087-c638-32b8-e044-0003ba298018",
+    "id": "0a3f5087-c638-32b8-e044-0003ba298018",
+    "adressebetegnelse": "Melvej 6, 5610 Assens",
+    "kvh": "04201074___6",
+    "status": 1,
+    "darstatus": 3,
+    "vejstykke": {
+      "href": "https://api.dataforsyningen.dk/vejstykker/420/1074",
+      "navn": "Melvej",
+      "adresseringsnavn": "Melvej",
+      "kode": "1074"
+    },
+    "husnr": "6",
+    "navngivenvej": {
+      "href": "https://api.dataforsyningen.dk/navngivneveje/7ddc0866-fc21-40c2-a204-22e5d07e1d18",
+      "id": "7ddc0866-fc21-40c2-a204-22e5d07e1d18"
+    },
+    "supplerendebynavn": null,
+    "supplerendebynavn2": null,
+    "postnummer": {
+      "href": "https://api.dataforsyningen.dk/postnumre/5610",
+      "nr": "5610",
+      "navn": "Assens"
+    },
+    "stormodtagerpostnummer": null,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0420",
+      "kode": "0420",
+      "navn": "Assens"
+    },
+    "ejerlav": {
+      "kode": 2003452,
+      "navn": "Assens Markjorder"
+    },
+    "esrejendomsnr": "0",
+    "matrikelnr": "29ac",
+    "historik": {
+      "oprettet": "2009-11-23T23:27:19.000",
+      "ændret": "2025-05-15T14:03:42.966",
+      "ikrafttrædelse": "2009-11-23T23:27:19.000",
+      "nedlagt": null
+    },
+    "adgangspunkt": {
+      "id": "0a3f5087-c638-32b8-e044-0003ba298018",
+      "koordinater": [
+        9.89388557,
+        55.26080266
+      ],
+      "højde": 5.2,
+      "nøjagtighed": "A",
+      "kilde": 4,
+      "tekniskstandard": "TA",
+      "tekstretning": 274.68,
+      "ændret": "1997-06-11T00:00:00.000"
+    },
+    "vejpunkt": {
+      "id": "158ad7cf-af45-11e7-847e-066cff24d637",
+      "kilde": "Ekstern",
+      "nøjagtighed": "B",
+      "tekniskstandard": "V0",
+      "koordinater": [
+        9.89425857,
+        55.26088894
+      ],
+      "ændret": "2018-05-03T14:08:02.125"
+    },
+    "DDKN": {
+      "m100": "100m_61241_5568",
+      "km1": "1km_6124_556",
+      "km10": "10km_612_55"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/7801",
+      "kode": "7801",
+      "navn": "Assens"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1083",
+      "kode": "1083",
+      "navn": "Region Syddanmark"
+    },
+    "landsdel": {
+      "href": "https://api.dataforsyningen.dk/landsdele/DK031",
+      "nuts3": "DK031",
+      "navn": "Fyn"
+    },
+    "retskreds": {
+      "href": "https://api.dataforsyningen.dk/retskredse/1135",
+      "kode": "1135",
+      "navn": "Retten i Odense"
+    },
+    "politikreds": {
+      "href": "https://api.dataforsyningen.dk/politikredse/1465",
+      "kode": "1465",
+      "navn": "Fyns Politi"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/0044",
+      "kode": "0044",
+      "navn": "Assens"
+    },
+    "afstemningsområde": {
+      "href": "https://api.dataforsyningen.dk/afstemningsomraader/420/1",
+      "nummer": "1",
+      "navn": "Assens"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/6",
+      "nummer": "6",
+      "navn": "Fyn"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/B",
+      "bogstav": "B",
+      "navn": "Sjælland-Syddanmark"
+    },
+    "zone": "Udfaset",
+    "jordstykke": {
+      "href": "https://api.dataforsyningen.dk/jordstykker/2003452/29ac",
+      "ejerlav": {
+        "kode": 2003452,
+        "navn": "Assens Markjorder",
+        "href": "https://api.dataforsyningen.dk/ejerlav/2003452"
+      },
+      "matrikelnr": "29ac",
+      "esrejendomsnr": "0"
+    },
+    "bebyggelser": [
+      {
+        "id": "12337669-af51-6b98-e053-d480220a5a3f",
+        "kode": 10473,
+        "type": "by",
+        "navn": "Assens",
+        "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-af51-6b98-e053-d480220a5a3f"
+      }
+    ],
+    "brofast": true
+  }
+}, {
+  "id": "0000670c-4f89-4c07-b77b-f9b82af01c80",
+  "kvhx": "07400666__20_______",
+  "status": 1,
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/adresser/0000670c-4f89-4c07-b77b-f9b82af01c80",
+  "historik": {
+    "oprettet": "2020-07-17T12:19:12.661",
+    "ændret": "2020-07-17T12:19:12.661",
+    "ikrafttrædelse": "2020-07-17T12:19:12.661",
+    "nedlagt": null
+  },
+  "etage": null,
+  "dør": null,
+  "adressebetegnelse": "Hedevænget 20, 8882 Fårvang",
+  "adgangsadresse": {
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/1eb0a0d5-38e7-4052-aee0-209952b35fea",
+    "id": "1eb0a0d5-38e7-4052-aee0-209952b35fea",
+    "adressebetegnelse": "Hedevænget 20, 8882 Fårvang",
+    "kvh": "07400666__20",
+    "status": 1,
+    "darstatus": 3,
+    "vejstykke": {
+      "href": "https://api.dataforsyningen.dk/vejstykker/740/666",
+      "navn": "Hedevænget",
+      "adresseringsnavn": "Hedevænget",
+      "kode": "0666"
+    },
+    "husnr": "20",
+    "navngivenvej": {
+      "href": "https://api.dataforsyningen.dk/navngivneveje/e98086b3-f8ec-4938-a431-0b8a159f712d",
+      "id": "e98086b3-f8ec-4938-a431-0b8a159f712d"
+    },
+    "supplerendebynavn": null,
+    "supplerendebynavn2": null,
+    "postnummer": {
+      "href": "https://api.dataforsyningen.dk/postnumre/8882",
+      "nr": "8882",
+      "navn": "Fårvang"
+    },
+    "stormodtagerpostnummer": null,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0740",
+      "kode": "0740",
+      "navn": "Silkeborg"
+    },
+    "ejerlav": {
+      "kode": 1061352,
+      "navn": "Fårvang By, Tvilum"
+    },
+    "esrejendomsnr": "0",
+    "matrikelnr": "6bg",
+    "historik": {
+      "oprettet": "2020-07-17T12:19:12.661",
+      "ændret": "2021-09-08T13:12:10.203",
+      "ikrafttrædelse": "2020-07-17T12:19:12.661",
+      "nedlagt": null
+    },
+    "adgangspunkt": {
+      "id": "3f078703-ad8a-4314-b385-1f46c3af606b",
+      "koordinater": [
+        9.733622,
+        56.26404636
+      ],
+      "højde": 61.8,
+      "nøjagtighed": "A",
+      "kilde": 5,
+      "tekniskstandard": "UF",
+      "tekstretning": 232.31,
+      "ændret": "2021-09-08T13:12:10.203"
+    },
+    "vejpunkt": {
+      "id": "bb3ac50d-bd64-422b-baa6-b84121b40eee",
+      "kilde": "Adressemyn",
+      "nøjagtighed": "A",
+      "tekniskstandard": "V0",
+      "koordinater": [
+        9.73354274,
+        56.26396898
+      ],
+      "ændret": "2020-07-17T12:19:12.661361"
+    },
+    "DDKN": {
+      "m100": "100m_62357_5454",
+      "km1": "1km_6235_545",
+      "km10": "10km_623_54"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/8026",
+      "kode": "8026",
+      "navn": "Tvilum"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1082",
+      "kode": "1082",
+      "navn": "Region Midtjylland"
+    },
+    "landsdel": {
+      "href": "https://api.dataforsyningen.dk/landsdele/DK042",
+      "nuts3": "DK042",
+      "navn": "Østjylland"
+    },
+    "retskreds": {
+      "href": "https://api.dataforsyningen.dk/retskredse/1171",
+      "kode": "1171",
+      "navn": "Retten i Viborg"
+    },
+    "politikreds": {
+      "href": "https://api.dataforsyningen.dk/politikredse/1462",
+      "kode": "1462",
+      "navn": "Midt- og Vestjyllands Politi"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/0077",
+      "kode": "0077",
+      "navn": "Silkeborg Nord"
+    },
+    "afstemningsområde": {
+      "href": "https://api.dataforsyningen.dk/afstemningsomraader/740/3",
+      "nummer": "3",
+      "navn": "Fårvang"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/9",
+      "nummer": "9",
+      "navn": "Vestjylland"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/C",
+      "bogstav": "C",
+      "navn": "Midtjylland-Nordjylland"
+    },
+    "zone": "Udfaset",
+    "jordstykke": {
+      "href": "https://api.dataforsyningen.dk/jordstykker/1061352/6bg",
+      "ejerlav": {
+        "kode": 1061352,
+        "navn": "Fårvang By, Tvilum",
+        "href": "https://api.dataforsyningen.dk/ejerlav/1061352"
+      },
+      "matrikelnr": "6bg",
+      "esrejendomsnr": "0"
+    },
+    "bebyggelser": [],
+    "brofast": true
+  }
+}
+]

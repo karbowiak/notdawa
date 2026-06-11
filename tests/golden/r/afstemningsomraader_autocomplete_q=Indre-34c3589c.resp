@@ -1,0 +1,119 @@
+[
+{
+  "tekst": "Indre By",
+  "afstemningsområde": {
+    "ændret": "2025-07-02T21:04:51.143Z",
+    "geo_version": 6,
+    "geo_ændret": "2025-07-02T21:04:51.143Z",
+    "bbox": [
+      9.7336812,
+      55.55580147,
+      9.7720062,
+      55.57201886
+    ],
+    "visueltcenter": [
+      9.76092933,
+      55.56578963
+    ],
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/607/8",
+    "dagi_id": "712216",
+    "nummer": "8",
+    "navn": "Indre By",
+    "afstemningssted": {
+      "navn": "Fredericia Rådhus",
+      "adgangsadresse": {
+        "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f508f-0551-32b8-e044-0003ba298018",
+        "id": "0a3f508f-0551-32b8-e044-0003ba298018",
+        "adressebetegnelse": "Gothersgade 20, 7000 Fredericia",
+        "koordinater": [
+          9.75608415,
+          55.56524433
+        ]
+      }
+    },
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0607",
+      "kode": "0607",
+      "navn": "Fredericia"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1083",
+      "kode": "1083",
+      "navn": "Region Syddanmark"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/58",
+      "nummer": "58",
+      "navn": "Fredericia"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/7",
+      "nummer": "7",
+      "navn": "Sydjylland"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/B",
+      "bogstav": "B",
+      "navn": "Sjælland-Syddanmark"
+    }
+  }
+}, {
+  "tekst": "3. Indre By",
+  "afstemningsområde": {
+    "ændret": "2025-08-21T21:04:39.524Z",
+    "geo_version": 10,
+    "geo_ændret": "2025-08-21T21:04:39.524Z",
+    "bbox": [
+      12.55517709,
+      55.67289603,
+      12.57875343,
+      55.68734406
+    ],
+    "visueltcenter": [
+      12.5662339,
+      55.68158963
+    ],
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/11",
+    "dagi_id": "711926",
+    "nummer": "11",
+    "navn": "3. Indre By",
+    "afstemningssted": {
+      "navn": "Rådhushallen",
+      "adgangsadresse": {
+        "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-ec01-32b8-e044-0003ba298018",
+        "id": "0a3f507a-ec01-32b8-e044-0003ba298018",
+        "adressebetegnelse": "Rådhuspladsen 1, 1550 København V",
+        "koordinater": [
+          12.56957768,
+          55.6756275
+        ]
+      }
+    },
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1084",
+      "kode": "1084",
+      "navn": "Region Hovedstaden"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/3",
+      "nummer": "3",
+      "navn": "Indre By"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/1",
+      "nummer": "1",
+      "navn": "København"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+      "bogstav": "A",
+      "navn": "Hovedstaden"
+    }
+  }
+}
+]

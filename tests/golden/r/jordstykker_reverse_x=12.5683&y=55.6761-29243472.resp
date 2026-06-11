@@ -1,0 +1,50 @@
+{
+  "matrikelnr": "7000q",
+  "bbox": [
+    12.56697311,
+    55.67078163,
+    12.57950467,
+    55.6765606
+  ],
+  "visueltcenter": [
+    12.56812689,
+    55.67574416
+  ],
+  "href": "https://api.dataforsyningen.dk/jordstykker/2000179/7000q",
+  "ejerlav": {
+    "kode": 2000179,
+    "navn": "Vestervold Kvarter, København",
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000179"
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "esrejendomsnr": "0",
+  "udvidet_esrejendomsnr": "0",
+  "sfeejendomsnr": "100058855",
+  "bfenummer": 100058855,
+  "ændret": "2025-02-04T22:52:14.997Z",
+  "geo_version": 7,
+  "geo_ændret": "2025-02-04T22:52:14.997Z",
+  "fælleslod": false,
+  "moderjordstykke": null,
+  "registreretareal": 64981,
+  "arealberegningsmetode": "k",
+  "vejareal": 64981,
+  "vejarealberegningsmetode": "e",
+  "vandarealberegningsmetode": "ukendt",
+  "featureid": "100064063",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/7002",
+    "kode": "7002",
+    "navn": "Helligånds"
+  },
+  "retskreds": null
+}

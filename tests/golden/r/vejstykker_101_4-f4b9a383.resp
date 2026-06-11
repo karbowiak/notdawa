@@ -1,0 +1,40 @@
+{
+  "id": "5c963674-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/4",
+  "kode": "0004",
+  "navn": "Abel Cathrines Gade",
+  "adresseringsnavn": "Abel Cathrines Gade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/688e84f2-cac8-422c-9bfa-4908abb311cc",
+    "id": "688e84f2-cac8-422c-9bfa-4908abb311cc",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1654",
+      "nr": "1654",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.55762119,
+    55.67086301,
+    12.56152573,
+    55.67195042
+  ],
+  "visueltcenter": [
+    12.55949137,
+    55.6714052
+  ]
+}

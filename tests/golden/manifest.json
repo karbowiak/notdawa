@@ -1,0 +1,670 @@
+{
+ "captured_at": "2026-06-11T17:29:59Z",
+ "note": "Frozen live-DAWA responses (verbatim bytes). The post-shutdown oracle: DAWA dies 2026-07-01. Re-bless deliberately, never edit by hand.",
+ "entries": {
+  "/adgangsadresser/00000667-2566-47c9-9ba0-f5ec6b8ce50f": {
+   "file": "r/adgangsadresser_00000667-2566-47c9-9ba0-f5ec6b8ce50f-fa7f5f77.resp",
+   "status": 200
+  },
+  "/adgangsadresser/00000667-2566-47c9-9ba0-f5ec6b8ce50f?struktur=flad": {
+   "file": "r/adgangsadresser_00000667-2566-47c9-9ba0-f5ec6b8ce50f_struktur=flad-5f0049b9.resp",
+   "status": 200
+  },
+  "/adgangsadresser/00038978-be22-4dec-bb57-34e022021549?struktur=flad": {
+   "file": "r/adgangsadresser_00038978-be22-4dec-bb57-34e022021549_struktur=flad-bfb29d03.resp",
+   "status": 200
+  },
+  "/adgangsadresser/autocomplete?q=R%C3%A5dhuspladsen+1": {
+   "file": "r/adgangsadresser_autocomplete_q=R_C3_A5dhuspladsen_1-a244908f.resp",
+   "status": 200
+  },
+  "/adgangsadresser/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/adgangsadresser_reverse_x=12.5683\u0026y=55.6761-be4f1bf1.resp",
+   "status": 200
+  },
+  "/adgangsadresser?per_side=5\u0026struktur=flad": {
+   "file": "r/adgangsadresser_per_side=5\u0026struktur=flad-424bcbd4.resp",
+   "status": 200
+  },
+  "/adgangsadresser?side=1\u0026per_side=1": {
+   "file": "r/adgangsadresser_side=1\u0026per_side=1-56ec3476.resp",
+   "status": 200
+  },
+  "/adgangsadresser?side=1\u0026per_side=5": {
+   "file": "r/adgangsadresser_side=1\u0026per_side=5-7e6da931.resp",
+   "status": 200
+  },
+  "/adresser/000021c5-e9ee-411d-b2d8-ec9161780ccd": {
+   "file": "r/adresser_000021c5-e9ee-411d-b2d8-ec9161780ccd-17b878ff.resp",
+   "status": 200
+  },
+  "/adresser/000021c5-e9ee-411d-b2d8-ec9161780ccd?struktur=flad": {
+   "file": "r/adresser_000021c5-e9ee-411d-b2d8-ec9161780ccd_struktur=flad-2c9549eb.resp",
+   "status": 200
+  },
+  "/adresser/0a3f50c3-6f6d-32b8-e044-0003ba298018?struktur=flad": {
+   "file": "r/adresser_0a3f50c3-6f6d-32b8-e044-0003ba298018_struktur=flad-01c9d1a3.resp",
+   "status": 200
+  },
+  "/adresser/0a3f50c3-6f6d-32b8-e044-0003ba298018?struktur=mini": {
+   "file": "r/adresser_0a3f50c3-6f6d-32b8-e044-0003ba298018_struktur=mini-f4fbd31a.resp",
+   "status": 200
+  },
+  "/adresser/0a3f50c3-6f6d-32b8-e044-0003ba298018?struktur=nestet": {
+   "file": "r/adresser_0a3f50c3-6f6d-32b8-e044-0003ba298018_struktur=nestet-e1d88045.resp",
+   "status": 200
+  },
+  "/adresser/autocomplete?q=R%C3%A5dhuspladsen+1": {
+   "file": "r/adresser_autocomplete_q=R_C3_A5dhuspladsen_1-1d84482c.resp",
+   "status": 200
+  },
+  "/adresser/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/adresser_reverse_x=12.5683\u0026y=55.6761-97dee3d4.resp",
+   "status": 404
+  },
+  "/adresser?per_side=5\u0026struktur=flad": {
+   "file": "r/adresser_per_side=5\u0026struktur=flad-a6a819f8.resp",
+   "status": 200
+  },
+  "/adresser?side=1\u0026per_side=1": {
+   "file": "r/adresser_side=1\u0026per_side=1-533073a9.resp",
+   "status": 200
+  },
+  "/adresser?side=1\u0026per_side=5": {
+   "file": "r/adresser_side=1\u0026per_side=5-78dbb7aa.resp",
+   "status": 200
+  },
+  "/afstemningsomraader/101/1": {
+   "file": "r/afstemningsomraader_101_1-c2fff20c.resp",
+   "status": 200
+  },
+  "/afstemningsomraader/autocomplete?q=Indre": {
+   "file": "r/afstemningsomraader_autocomplete_q=Indre-34c3589c.resp",
+   "status": 200
+  },
+  "/afstemningsomraader/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/afstemningsomraader_reverse_x=12.5683\u0026y=55.6761-3eb59183.resp",
+   "status": 200
+  },
+  "/afstemningsomraader?side=1\u0026per_side=1": {
+   "file": "r/afstemningsomraader_side=1\u0026per_side=1-64afc10e.resp",
+   "status": 200
+  },
+  "/afstemningsomraader?side=1\u0026per_side=5": {
+   "file": "r/afstemningsomraader_side=1\u0026per_side=5-14bfb0b8.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=Kongsg%C3%A5rdsvej%20\u0026type=adresse\u0026caretpos=14\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=\u0026startfra=adgangsadresse": {
+   "file": "r/autocomplete_per_side=10\u0026q=Kongsg_C3_A5rdsvej_20\u0026type=adresse\u0026caretpos=14\u0026supple-c1984479.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=Kongsg%C3%A5rdsvej%202\u0026type=adresse\u0026caretpos=15\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=Kongsg_C3_A5rdsvej_202\u0026type=adresse\u0026caretpos=15\u0026suppl-02d9a510.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=Kongsg%C3%A5rdsvej%2024%2C%20s\u0026type=adresse\u0026caretpos=19\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=Kongsg_C3_A5rdsvej_2024_2C_20s\u0026type=adresse\u0026caretpos=-a3b43877.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=Kongsg%C3%A5rdsvej%2024%2C%20st\u0026type=adresse\u0026caretpos=20\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=Kongsg_C3_A5rdsvej_2024_2C_20st\u0026type=adresse\u0026caretpos-f0382a43.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=Kongsg%C3%A5rdsvej%2024%2C\u0026type=adresse\u0026caretpos=17\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=Kongsg_C3_A5rdsvej_2024_2C\u0026type=adresse\u0026caretpos=17\u0026s-8bc89741.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=Kongsg%C3%A5rdsvej%2024\u0026type=adresse\u0026caretpos=16\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=Kongsg_C3_A5rdsvej_2024\u0026type=adresse\u0026caretpos=16\u0026supp-a7800248.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=ko\u0026type=adresse\u0026caretpos=2\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=ko\u0026type=adresse\u0026caretpos=2\u0026supplerendebynavn=true\u0026sto-b338f9d2.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=kongs\u0026type=adresse\u0026caretpos=5\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=kongs\u0026type=adresse\u0026caretpos=5\u0026supplerendebynavn=true\u0026-1cbf1325.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=kongsg\u0026type=adresse\u0026caretpos=6\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=kongsg\u0026type=adresse\u0026caretpos=6\u0026supplerendebynavn=true-a1d5f29c.resp",
+   "status": 200
+  },
+  "/autocomplete?per_side=10\u0026q=kongsk\u0026type=adresse\u0026caretpos=6\u0026supplerendebynavn=true\u0026stormodtagerpostnumre=true\u0026multilinje=true\u0026fuzzy=": {
+   "file": "r/autocomplete_per_side=10\u0026q=kongsk\u0026type=adresse\u0026caretpos=6\u0026supplerendebynavn=true-288dfeeb.resp",
+   "status": 200
+  },
+  "/autocomplete?q=R%C3%A5dhuspladsen+1": {
+   "file": "r/autocomplete_q=R_C3_A5dhuspladsen_1-533261cf.resp",
+   "status": 200
+  },
+  "/autocomplete?q=ko": {
+   "file": "r/autocomplete_q=ko-e204d424.resp",
+   "status": 200
+  },
+  "/bebyggelser/102ada36-e11c-de9b-e063-704f210a283f": {
+   "file": "r/bebyggelser_102ada36-e11c-de9b-e063-704f210a283f-0089304e.resp",
+   "status": 200
+  },
+  "/bebyggelser?side=1\u0026per_side=1": {
+   "file": "r/bebyggelser_side=1\u0026per_side=1-5905f369.resp",
+   "status": 200
+  },
+  "/bebyggelser?side=1\u0026per_side=5": {
+   "file": "r/bebyggelser_side=1\u0026per_side=5-90703e52.resp",
+   "status": 200
+  },
+  "/bygninger/1000214821": {
+   "file": "r/bygninger_1000214821-4b8e446a.resp",
+   "status": 200
+  },
+  "/bygninger?side=1\u0026per_side=1": {
+   "file": "r/bygninger_side=1\u0026per_side=1-ec698800.resp",
+   "status": 200
+  },
+  "/bygninger?side=1\u0026per_side=5": {
+   "file": "r/bygninger_side=1\u0026per_side=5-ad18eb8d.resp",
+   "status": 200
+  },
+  "/ejerlav/10051": {
+   "file": "r/ejerlav_10051-cc3a3bca.resp",
+   "status": 200
+  },
+  "/ejerlav/autocomplete?q=K%C3%B8benhavn": {
+   "file": "r/ejerlav_autocomplete_q=K_C3_B8benhavn-2586ea7a.resp",
+   "status": 200
+  },
+  "/ejerlav?side=1\u0026per_side=1": {
+   "file": "r/ejerlav_side=1\u0026per_side=1-9b11839d.resp",
+   "status": 200
+  },
+  "/ejerlav?side=1\u0026per_side=5": {
+   "file": "r/ejerlav_side=1\u0026per_side=5-ea0b30b8.resp",
+   "status": 200
+  },
+  "/historik/adgangsadresser?id=00000667-2566-47c9-9ba0-f5ec6b8ce50f": {
+   "file": "r/historik_adgangsadresser_id=00000667-2566-47c9-9ba0-f5ec6b8ce50f-deeb3e81.resp",
+   "status": 200
+  },
+  "/historik/adresser?id=000021c5-e9ee-411d-b2d8-ec9161780ccd": {
+   "file": "r/historik_adresser_id=000021c5-e9ee-411d-b2d8-ec9161780ccd-008c57a6.resp",
+   "status": 200
+  },
+  "/jordstykker/10051/101a": {
+   "file": "r/jordstykker_10051_101a-63341bb5.resp",
+   "status": 200
+  },
+  "/jordstykker/autocomplete?q=K%C3%B8benhavn": {
+   "file": "r/jordstykker_autocomplete_q=K_C3_B8benhavn-db8d1aae.resp",
+   "status": 200
+  },
+  "/jordstykker/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/jordstykker_reverse_x=12.5683\u0026y=55.6761-29243472.resp",
+   "status": 200
+  },
+  "/jordstykker?side=1\u0026per_side=1": {
+   "file": "r/jordstykker_side=1\u0026per_side=1-cc333380.resp",
+   "status": 200
+  },
+  "/jordstykker?side=1\u0026per_side=5": {
+   "file": "r/jordstykker_side=1\u0026per_side=5-8c645778.resp",
+   "status": 200
+  },
+  "/jordstykketilknytninger?side=1\u0026per_side=5": {
+   "file": "r/jordstykketilknytninger_side=1\u0026per_side=5-b98bf236.resp",
+   "status": 404
+  },
+  "/kommuner/0101": {
+   "file": "r/kommuner_0101-1996bff9.resp",
+   "status": 200
+  },
+  "/kommuner/autocomplete?q=K%C3%B8benhavn": {
+   "file": "r/kommuner_autocomplete_q=K_C3_B8benhavn-433fde87.resp",
+   "status": 200
+  },
+  "/kommuner/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/kommuner_reverse_x=12.5683\u0026y=55.6761-6dee41ba.resp",
+   "status": 200
+  },
+  "/kommuner?per_side=1": {
+   "file": "r/kommuner_per_side=1-7e14d79a.resp",
+   "status": 200
+  },
+  "/kommuner?side=1\u0026per_side=1": {
+   "file": "r/kommuner_side=1\u0026per_side=1-7fb6823c.resp",
+   "status": 200
+  },
+  "/kommuner?side=1\u0026per_side=5": {
+   "file": "r/kommuner_side=1\u0026per_side=5-155382cd.resp",
+   "status": 200
+  },
+  "/kommunetilknytninger?side=1\u0026per_side=5": {
+   "file": "r/kommunetilknytninger_side=1\u0026per_side=5-cd426c2c.resp",
+   "status": 404
+  },
+  "/landsdele/DK011": {
+   "file": "r/landsdele_DK011-9f957bde.resp",
+   "status": 200
+  },
+  "/landsdele/autocomplete?q=K%C3%B8ben": {
+   "file": "r/landsdele_autocomplete_q=K_C3_B8ben-3125276b.resp",
+   "status": 200
+  },
+  "/landsdele/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/landsdele_reverse_x=12.5683\u0026y=55.6761-69222a8a.resp",
+   "status": 200
+  },
+  "/landsdele?side=1\u0026per_side=1": {
+   "file": "r/landsdele_side=1\u0026per_side=1-2ccaabfc.resp",
+   "status": 200
+  },
+  "/landsdele?side=1\u0026per_side=5": {
+   "file": "r/landsdele_side=1\u0026per_side=5-e3939479.resp",
+   "status": 200
+  },
+  "/menighedsraadsafstemningsomraader/101/1": {
+   "file": "r/menighedsraadsafstemningsomraader_101_1-dcccc247.resp",
+   "status": 200
+  },
+  "/menighedsraadsafstemningsomraader/autocomplete?q=Helligaand": {
+   "file": "r/menighedsraadsafstemningsomraader_autocomplete_q=Helligaand-700713a9.resp",
+   "status": 200
+  },
+  "/menighedsraadsafstemningsomraader/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/menighedsraadsafstemningsomraader_reverse_x=12.5683\u0026y=55.6761-8ed9a58f.resp",
+   "status": 200
+  },
+  "/menighedsraadsafstemningsomraader?side=1\u0026per_side=1": {
+   "file": "r/menighedsraadsafstemningsomraader_side=1\u0026per_side=1-dfeeb801.resp",
+   "status": 200
+  },
+  "/menighedsraadsafstemningsomraader?side=1\u0026per_side=5": {
+   "file": "r/menighedsraadsafstemningsomraader_side=1\u0026per_side=5-be07d536.resp",
+   "status": 200
+  },
+  "/navngivneveje/00008748-e0ee-4cb3-83b7-167455a2efaf": {
+   "file": "r/navngivneveje_00008748-e0ee-4cb3-83b7-167455a2efaf-bff776ba.resp",
+   "status": 200
+  },
+  "/navngivneveje/00008748-e0ee-4cb3-83b7-167455a2efaf/naboer?afstand=50": {
+   "file": "r/navngivneveje_00008748-e0ee-4cb3-83b7-167455a2efaf_naboer_afstand=50-40caafab.resp",
+   "status": 200
+  },
+  "/navngivneveje/autocomplete?q=Vester": {
+   "file": "r/navngivneveje_autocomplete_q=Vester-81f076db.resp",
+   "status": 200
+  },
+  "/navngivneveje?side=1\u0026per_side=1": {
+   "file": "r/navngivneveje_side=1\u0026per_side=1-90300ea1.resp",
+   "status": 200
+  },
+  "/navngivneveje?side=1\u0026per_side=5": {
+   "file": "r/navngivneveje_side=1\u0026per_side=5-98308b48.resp",
+   "status": 200
+  },
+  "/opstillingskredse/1": {
+   "file": "r/opstillingskredse_1-9c66346b.resp",
+   "status": 200
+  },
+  "/opstillingskredse/autocomplete?q=Indre": {
+   "file": "r/opstillingskredse_autocomplete_q=Indre-ce9bc749.resp",
+   "status": 200
+  },
+  "/opstillingskredse/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/opstillingskredse_reverse_x=12.5683\u0026y=55.6761-e59caa26.resp",
+   "status": 200
+  },
+  "/opstillingskredse?side=1\u0026per_side=1": {
+   "file": "r/opstillingskredse_side=1\u0026per_side=1-64128b96.resp",
+   "status": 200
+  },
+  "/opstillingskredse?side=1\u0026per_side=5": {
+   "file": "r/opstillingskredse_side=1\u0026per_side=5-d04fe12e.resp",
+   "status": 200
+  },
+  "/opstillingskredstilknytninger?side=1\u0026per_side=5": {
+   "file": "r/opstillingskredstilknytninger_side=1\u0026per_side=5-a1aa4f15.resp",
+   "status": 404
+  },
+  "/politikredse/1460": {
+   "file": "r/politikredse_1460-4aa0c1fa.resp",
+   "status": 200
+  },
+  "/politikredse/autocomplete?q=K%C3%B8benhavn": {
+   "file": "r/politikredse_autocomplete_q=K_C3_B8benhavn-a83ef1df.resp",
+   "status": 200
+  },
+  "/politikredse/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/politikredse_reverse_x=12.5683\u0026y=55.6761-e28f0d96.resp",
+   "status": 200
+  },
+  "/politikredse?side=1\u0026per_side=1": {
+   "file": "r/politikredse_side=1\u0026per_side=1-cea7dd07.resp",
+   "status": 200
+  },
+  "/politikredse?side=1\u0026per_side=5": {
+   "file": "r/politikredse_side=1\u0026per_side=5-903203ce.resp",
+   "status": 200
+  },
+  "/politikredstilknytninger?side=1\u0026per_side=5": {
+   "file": "r/politikredstilknytninger_side=1\u0026per_side=5-426cce2a.resp",
+   "status": 404
+  },
+  "/postnummertilknytninger?side=1\u0026per_side=5": {
+   "file": "r/postnummertilknytninger_side=1\u0026per_side=5-076e98ed.resp",
+   "status": 404
+  },
+  "/postnumre/1050": {
+   "file": "r/postnumre_1050-e32876d7.resp",
+   "status": 200
+  },
+  "/postnumre/autocomplete?q=21": {
+   "file": "r/postnumre_autocomplete_q=21-54fc3d02.resp",
+   "status": 200
+  },
+  "/postnumre/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/postnumre_reverse_x=12.5683\u0026y=55.6761-44b96838.resp",
+   "status": 200
+  },
+  "/postnumre?side=1\u0026per_side=1": {
+   "file": "r/postnumre_side=1\u0026per_side=1-8aff6c26.resp",
+   "status": 200
+  },
+  "/postnumre?side=1\u0026per_side=5": {
+   "file": "r/postnumre_side=1\u0026per_side=5-01e2e91d.resp",
+   "status": 200
+  },
+  "/regioner/1081": {
+   "file": "r/regioner_1081-3b63c592.resp",
+   "status": 200
+  },
+  "/regioner/autocomplete?q=Hoved": {
+   "file": "r/regioner_autocomplete_q=Hoved-1049f042.resp",
+   "status": 200
+  },
+  "/regioner/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/regioner_reverse_x=12.5683\u0026y=55.6761-3e90780b.resp",
+   "status": 200
+  },
+  "/regioner?side=1\u0026per_side=1": {
+   "file": "r/regioner_side=1\u0026per_side=1-9b92cb30.resp",
+   "status": 200
+  },
+  "/regioner?side=1\u0026per_side=5": {
+   "file": "r/regioner_side=1\u0026per_side=5-253c3623.resp",
+   "status": 200
+  },
+  "/regionstilknytninger?side=1\u0026per_side=5": {
+   "file": "r/regionstilknytninger_side=1\u0026per_side=5-a4b6a0ce.resp",
+   "status": 404
+  },
+  "/replikering/datamodel?entitet=vejstykke": {
+   "file": "r/replikering_datamodel_entitet=vejstykke-0a4d8d2e.resp",
+   "status": 200
+  },
+  "/replikering/senestesekvensnummer": {
+   "file": "r/replikering_senestesekvensnummer-80229a97.resp",
+   "status": 200
+  },
+  "/replikering/senestetransaktion": {
+   "file": "r/replikering_senestetransaktion-70ac4d28.resp",
+   "status": 200
+  },
+  "/replikering/transaktioner?side=1\u0026per_side=5": {
+   "file": "r/replikering_transaktioner_side=1\u0026per_side=5-36291a3d.resp",
+   "status": 200
+  },
+  "/retskredse/1101": {
+   "file": "r/retskredse_1101-da1309de.resp",
+   "status": 200
+  },
+  "/retskredse/autocomplete?q=K%C3%B8benhavn": {
+   "file": "r/retskredse_autocomplete_q=K_C3_B8benhavn-ff55e61a.resp",
+   "status": 200
+  },
+  "/retskredse/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/retskredse_reverse_x=12.5683\u0026y=55.6761-bccac867.resp",
+   "status": 200
+  },
+  "/retskredse?side=1\u0026per_side=1": {
+   "file": "r/retskredse_side=1\u0026per_side=1-97f19374.resp",
+   "status": 200
+  },
+  "/retskredse?side=1\u0026per_side=5": {
+   "file": "r/retskredse_side=1\u0026per_side=5-e4c3e03c.resp",
+   "status": 200
+  },
+  "/retskredstilknytninger?side=1\u0026per_side=5": {
+   "file": "r/retskredstilknytninger_side=1\u0026per_side=5-942e0644.resp",
+   "status": 404
+  },
+  "/sogne/7002": {
+   "file": "r/sogne_7002-f841b51b.resp",
+   "status": 200
+  },
+  "/sogne/autocomplete?q=Vor": {
+   "file": "r/sogne_autocomplete_q=Vor-3f367ab0.resp",
+   "status": 200
+  },
+  "/sogne/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/sogne_reverse_x=12.5683\u0026y=55.6761-913265d1.resp",
+   "status": 200
+  },
+  "/sogne?side=1\u0026per_side=1": {
+   "file": "r/sogne_side=1\u0026per_side=1-6ba6b88a.resp",
+   "status": 200
+  },
+  "/sogne?side=1\u0026per_side=5": {
+   "file": "r/sogne_side=1\u0026per_side=5-b60bbd67.resp",
+   "status": 200
+  },
+  "/sognetilknytninger?side=1\u0026per_side=5": {
+   "file": "r/sognetilknytninger_side=1\u0026per_side=5-2d580921.resp",
+   "status": 404
+  },
+  "/steder/001e0cf9-aeb1-cb42-e063-0c4f210a2218": {
+   "file": "r/steder_001e0cf9-aeb1-cb42-e063-0c4f210a2218-a5a7914f.resp",
+   "status": 200
+  },
+  "/steder?side=1\u0026per_side=1": {
+   "file": "r/steder_side=1\u0026per_side=1-5340f504.resp",
+   "status": 200
+  },
+  "/steder?side=1\u0026per_side=5": {
+   "file": "r/steder_side=1\u0026per_side=5-524fa16d.resp",
+   "status": 200
+  },
+  "/stednavne/001e0cf9-aeb1-cb42-e063-0c4f210a2218": {
+   "file": "r/stednavne_001e0cf9-aeb1-cb42-e063-0c4f210a2218-bf1b5102.resp",
+   "status": 200
+  },
+  "/stednavne/autocomplete?q=Anneberg": {
+   "file": "r/stednavne_autocomplete_q=Anneberg-3d635e9a.resp",
+   "status": 200
+  },
+  "/stednavne2/001e0cf9-aeb1-cb42-e063-0c4f210a2218/Dyssebroen": {
+   "file": "r/stednavne2_001e0cf9-aeb1-cb42-e063-0c4f210a2218_Dyssebroen-5232b6f6.resp",
+   "status": 200
+  },
+  "/stednavne2/autocomplete?q=K%C3%B8benhavn": {
+   "file": "r/stednavne2_autocomplete_q=K_C3_B8benhavn-65dfdc28.resp",
+   "status": 200
+  },
+  "/stednavne2?side=1\u0026per_side=1": {
+   "file": "r/stednavne2_side=1\u0026per_side=1-116f81e6.resp",
+   "status": 200
+  },
+  "/stednavne2?side=1\u0026per_side=5": {
+   "file": "r/stednavne2_side=1\u0026per_side=5-523b8615.resp",
+   "status": 200
+  },
+  "/stednavne?side=1\u0026per_side=1": {
+   "file": "r/stednavne_side=1\u0026per_side=1-87792589.resp",
+   "status": 200
+  },
+  "/stednavne?side=1\u0026per_side=5": {
+   "file": "r/stednavne_side=1\u0026per_side=5-c013c01c.resp",
+   "status": 200
+  },
+  "/stednavntilknytninger?side=1\u0026per_side=5": {
+   "file": "r/stednavntilknytninger_side=1\u0026per_side=5-f2bca8c2.resp",
+   "status": 404
+  },
+  "/stednavntyper/Andentopografi%20flade": {
+   "file": "r/stednavntyper_Andentopografi_20flade-ea798678.resp",
+   "status": 200
+  },
+  "/stednavntyper?side=1\u0026per_side=1": {
+   "file": "r/stednavntyper_side=1\u0026per_side=1-76d340d3.resp",
+   "status": 200
+  },
+  "/stednavntyper?side=1\u0026per_side=5": {
+   "file": "r/stednavntyper_side=1\u0026per_side=5-23a2e6b8.resp",
+   "status": 200
+  },
+  "/storkredse/1": {
+   "file": "r/storkredse_1-448399cc.resp",
+   "status": 200
+  },
+  "/storkredse/autocomplete?q=K%C3%B8benhavn": {
+   "file": "r/storkredse_autocomplete_q=K_C3_B8benhavn-5bbbcee6.resp",
+   "status": 200
+  },
+  "/storkredse/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/storkredse_reverse_x=12.5683\u0026y=55.6761-a2a9e670.resp",
+   "status": 200
+  },
+  "/storkredse?side=1\u0026per_side=1": {
+   "file": "r/storkredse_side=1\u0026per_side=1-472a2042.resp",
+   "status": 200
+  },
+  "/storkredse?side=1\u0026per_side=5": {
+   "file": "r/storkredse_side=1\u0026per_side=5-2f5380a5.resp",
+   "status": 200
+  },
+  "/storkredstilknytninger?side=1\u0026per_side=5": {
+   "file": "r/storkredstilknytninger_side=1\u0026per_side=5-037e5c2d.resp",
+   "status": 404
+  },
+  "/supplerendebynavne/autocomplete?q=Strand": {
+   "file": "r/supplerendebynavne_autocomplete_q=Strand-255ba9f9.resp",
+   "status": 200
+  },
+  "/supplerendebynavne2/654870": {
+   "file": "r/supplerendebynavne2_654870-6d926ae0.resp",
+   "status": 200
+  },
+  "/supplerendebynavne2/Aa": {
+   "file": "r/supplerendebynavne2_Aa-d85f49ec.resp",
+   "status": 404
+  },
+  "/supplerendebynavne2/autocomplete?q=Strand": {
+   "file": "r/supplerendebynavne2_autocomplete_q=Strand-1386699d.resp",
+   "status": 200
+  },
+  "/supplerendebynavne2/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/supplerendebynavne2_reverse_x=12.5683\u0026y=55.6761-6e7cfb72.resp",
+   "status": 404
+  },
+  "/supplerendebynavne2?side=1\u0026per_side=1": {
+   "file": "r/supplerendebynavne2_side=1\u0026per_side=1-51eeece6.resp",
+   "status": 200
+  },
+  "/supplerendebynavne2?side=1\u0026per_side=5": {
+   "file": "r/supplerendebynavne2_side=1\u0026per_side=5-494e9ea7.resp",
+   "status": 200
+  },
+  "/supplerendebynavne?side=1\u0026per_side=1": {
+   "file": "r/supplerendebynavne_side=1\u0026per_side=1-f9531f31.resp",
+   "status": 200
+  },
+  "/supplerendebynavne?side=1\u0026per_side=5": {
+   "file": "r/supplerendebynavne_side=1\u0026per_side=5-619c2f6d.resp",
+   "status": 200
+  },
+  "/valglandsdele/A": {
+   "file": "r/valglandsdele_A-97dd3cb4.resp",
+   "status": 200
+  },
+  "/valglandsdele/autocomplete?q=Hoved": {
+   "file": "r/valglandsdele_autocomplete_q=Hoved-c3a05c66.resp",
+   "status": 200
+  },
+  "/valglandsdele/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/valglandsdele_reverse_x=12.5683\u0026y=55.6761-7c3e5df7.resp",
+   "status": 200
+  },
+  "/valglandsdele?side=1\u0026per_side=1": {
+   "file": "r/valglandsdele_side=1\u0026per_side=1-e8a77107.resp",
+   "status": 200
+  },
+  "/valglandsdele?side=1\u0026per_side=5": {
+   "file": "r/valglandsdele_side=1\u0026per_side=5-1a541efa.resp",
+   "status": 200
+  },
+  "/valglandsdelstilknytninger?side=1\u0026per_side=5": {
+   "file": "r/valglandsdelstilknytninger_side=1\u0026per_side=5-986e3423.resp",
+   "status": 404
+  },
+  "/vejnavne/10.%20Februar%20Vej": {
+   "file": "r/vejnavne_10._20Februar_20Vej-c32185ef.resp",
+   "status": 200
+  },
+  "/vejnavne/autocomplete?q=Vester": {
+   "file": "r/vejnavne_autocomplete_q=Vester-083d0026.resp",
+   "status": 200
+  },
+  "/vejnavne?side=1\u0026per_side=1": {
+   "file": "r/vejnavne_side=1\u0026per_side=1-5b67978d.resp",
+   "status": 200
+  },
+  "/vejnavne?side=1\u0026per_side=5": {
+   "file": "r/vejnavne_side=1\u0026per_side=5-a1936b9d.resp",
+   "status": 200
+  },
+  "/vejnavnpostnummerrelationer/1050/Kongens%20Nytorv": {
+   "file": "r/vejnavnpostnummerrelationer_1050_Kongens_20Nytorv-61e14aa3.resp",
+   "status": 200
+  },
+  "/vejnavnpostnummerrelationer/autocomplete?q=R%C3%A5dhuspladsen": {
+   "file": "r/vejnavnpostnummerrelationer_autocomplete_q=R_C3_A5dhuspladsen-9e5126f8.resp",
+   "status": 200
+  },
+  "/vejnavnpostnummerrelationer?side=1\u0026per_side=1": {
+   "file": "r/vejnavnpostnummerrelationer_side=1\u0026per_side=1-30aab63f.resp",
+   "status": 200
+  },
+  "/vejnavnpostnummerrelationer?side=1\u0026per_side=5": {
+   "file": "r/vejnavnpostnummerrelationer_side=1\u0026per_side=5-4c5f7813.resp",
+   "status": 200
+  },
+  "/vejstykker/101/4": {
+   "file": "r/vejstykker_101_4-f4b9a383.resp",
+   "status": 200
+  },
+  "/vejstykker/101/4/naboer?afstand=50": {
+   "file": "r/vejstykker_101_4_naboer_afstand=50-3e5cee9b.resp",
+   "status": 200
+  },
+  "/vejstykker/autocomplete?q=Vester": {
+   "file": "r/vejstykker_autocomplete_q=Vester-596c5a38.resp",
+   "status": 200
+  },
+  "/vejstykker/reverse?x=12.5683\u0026y=55.6761": {
+   "file": "r/vejstykker_reverse_x=12.5683\u0026y=55.6761-c48330d4.resp",
+   "status": 200
+  },
+  "/vejstykker?side=1\u0026per_side=1": {
+   "file": "r/vejstykker_side=1\u0026per_side=1-147edc92.resp",
+   "status": 200
+  },
+  "/vejstykker?side=1\u0026per_side=5": {
+   "file": "r/vejstykker_side=1\u0026per_side=5-1435b60d.resp",
+   "status": 200
+  },
+  "/zonetilknytninger?side=1\u0026per_side=5": {
+   "file": "r/zonetilknytninger_side=1\u0026per_side=5-1b7d5f71.resp",
+   "status": 404
+  }
+ }
+}

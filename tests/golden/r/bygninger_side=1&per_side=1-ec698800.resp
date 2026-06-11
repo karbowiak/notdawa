@@ -1,0 +1,31 @@
+[
+{
+  "href": "https://api.dataforsyningen.dk/bygninger/1000214821",
+  "id": "1000214821",
+  "bygningstype": "Bygning",
+  "metode3d": "Tag",
+  "målested": "Tag",
+  "synlig": true,
+  "overlap": false,
+  "bbrbygning": null,
+  "ændret": "2015-11-24T08:43:51.000Z",
+  "bbox": [
+    11.90720344,
+    55.92460793,
+    11.90735282,
+    55.92467891
+  ],
+  "visueltcenter": [
+    11.90727813,
+    55.92464342
+  ],
+  "adgangsadresser": [],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0250",
+      "kode": "0250",
+      "navn": "Frederikssund"
+    }
+  ]
+}
+]

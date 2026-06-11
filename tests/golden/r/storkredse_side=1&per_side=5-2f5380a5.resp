@@ -1,0 +1,138 @@
+[
+{
+  "ændret": "2026-03-27T22:17:36.249Z",
+  "geo_version": 28,
+  "geo_ændret": "2026-03-27T22:17:36.249Z",
+  "bbox": [
+    12.43824875,
+    55.53311183,
+    12.83469809,
+    55.73587822
+  ],
+  "visueltcenter": [
+    12.62259141,
+    55.60322408
+  ],
+  "href": "https://api.dataforsyningen.dk/storkredse/1",
+  "nummer": "1",
+  "navn": "København",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}, {
+  "ændret": "2026-02-26T22:13:10.911Z",
+  "geo_version": 29,
+  "geo_ændret": "2026-02-26T22:13:10.911Z",
+  "bbox": [
+    12.14476073,
+    55.58761093,
+    12.60999403,
+    55.82086291
+  ],
+  "visueltcenter": [
+    12.2513383,
+    55.65720679
+  ],
+  "href": "https://api.dataforsyningen.dk/storkredse/2",
+  "nummer": "2",
+  "navn": "Københavns Omegn",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}, {
+  "ændret": "2025-05-14T21:02:41.891Z",
+  "geo_version": 16,
+  "geo_ændret": "2025-05-14T21:02:41.891Z",
+  "bbox": [
+    11.64179531,
+    55.68579162,
+    12.63786643,
+    56.20520188
+  ],
+  "visueltcenter": [
+    12.25862572,
+    56.03235511
+  ],
+  "href": "https://api.dataforsyningen.dk/storkredse/3",
+  "nummer": "3",
+  "navn": "Nordsjælland",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}, {
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 6,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    14.66821448,
+    54.98354657,
+    15.19914101,
+    55.35308649
+  ],
+  "visueltcenter": [
+    14.8836754,
+    55.12789092
+  ],
+  "href": "https://api.dataforsyningen.dk/storkredse/4",
+  "nummer": "4",
+  "navn": "Bornholm",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}, {
+  "ændret": "2026-03-27T22:17:36.249Z",
+  "geo_version": 36,
+  "geo_ændret": "2026-03-27T22:17:36.249Z",
+  "bbox": [
+    10.8148054,
+    54.54440636,
+    12.64551576,
+    56.0173058
+  ],
+  "visueltcenter": [
+    11.69401555,
+    55.29726638
+  ],
+  "href": "https://api.dataforsyningen.dk/storkredse/5",
+  "nummer": "5",
+  "navn": "Sjælland",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1085",
+    "kode": "1085",
+    "navn": "Region Sjælland"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/B",
+    "bogstav": "B",
+    "navn": "Sjælland-Syddanmark"
+  }
+}
+]

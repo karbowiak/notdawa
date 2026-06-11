@@ -1,0 +1,4118 @@
+{
+  "adgangsadresse": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Universel, unik identifikation af adressen af datatypen UUID. Er stabil over hele adressens levetid (ligesom et CPR-nummer) dvs. uanset om adressen evt. ændrer vejnavn, husnummer, postnummer eller kommunekode. Repræsenteret som 32 hexadecimale tegn. Eksempel: ”0a3f507a-93e7-32b8-e044-0003ba298018”."
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Adgangsadressens status. Heltal. Mulige værdier er 1: gældende, 2: nedlagt, 3: foreløbig, 4: henlagt."
+      },
+      {
+        "name": "oprettet",
+        "type": "localdatetime",
+        "nullable": true,
+        "description": "Dato og tid for adgangsadressens oprettelse, som registreret i DAR. Eksempel: 2001-12-23T00:00:00."
+      },
+      {
+        "name": "ændret",
+        "type": "localdatetime",
+        "nullable": true,
+        "description": "Dato og tid hvor der sidst er ændret i adgangsadressen, som registreret i DAR. Eksempel: 2002-04-08T00:00:00."
+      },
+      {
+        "name": "ikrafttrædelsesdato",
+        "type": "localdatetime",
+        "nullable": true,
+        "description": "Adgangsadressens ikrafttrædelsesdato, dvs. det tidspunkt hvor adressen første gang fik status \"gældende\". Kan være fremtidig."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": true,
+        "description": "Kommunekoden. 4 cifre."
+      },
+      {
+        "name": "vejkode",
+        "type": "string",
+        "nullable": true,
+        "description": "Identifikation af vejstykket, adgangsadressen befinder sig på. Er unikt indenfor den pågældende kommune. Repræsenteret ved fire cifre. Eksempel: I Københavns kommune er ”0004” lig ”Abel Cathrines Gade”."
+      },
+      {
+        "name": "husnr",
+        "type": "string",
+        "nullable": true,
+        "description": "Husnummer der identificerer den pågældende adresse i forhold til andre adresser med samme vejnavn. Husnummeret består af et tal 1-999 evt. suppleret af et stort bogstav A..Z, og fastsættes i stigende orden, normalt med lige og ulige numre på hver side af vejen. Eksempel: \"11\", \"12A\", \"187B\"."
+      },
+      {
+        "name": "supplerendebynavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Et supplerende bynavn – typisk landsbyens navn – eller andet lokalt stednavn, der er fastsat af kommunen for at præcisere adressens beliggenhed indenfor postnummeret. Indgår som en del af den officielle adressebetegnelse. Indtil 34 tegn. Eksempel: ”Sønderholm”."
+      },
+      {
+        "name": "postnr",
+        "type": "string",
+        "nullable": true,
+        "description": "Postnummeret som adressen er beliggende i."
+      },
+      {
+        "name": "ejerlavkode",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ejerlavkode for det jordstykke, som adressen er placeret på. Repræsenteret ved indtil 7 cifre. Eksempel: ”170354” for ejerlavet ”Eskebjerg By, Bregninge”."
+      },
+      {
+        "name": "matrikelnr",
+        "type": "string",
+        "nullable": true,
+        "description": "Matrikelnummer for det jordstykke, som adressen er placeret på. Repræsenteret ved Indtil 7 tegn: max. 4 cifre + max. 3 små bogstaver. Eksempel: ”18b”."
+      },
+      {
+        "name": "esrejendomsnr",
+        "type": "string",
+        "nullable": true,
+        "description": "⚠ Bemærk: DAWA anvender tilbagekonverteret BBR-data, som ikke længere opdateres fra 16. december 2023. BBR-data udfases helt i DAWA pr. 1. april 2024. Læs mere på https://dataforsyningen.dk/news/4915. Identifikation af den vurderingsejendom jf. Ejendomsstamregisteret, ESR, som det jordstykke som adressen ligger på, er en del af. Repræsenteret ved op til syv cifre. Eksempel ”13606”."
+      },
+      {
+        "name": "etrs89koordinat_øst",
+        "type": "real",
+        "nullable": true,
+        "description": "Adgangspunktets østlige koordiat angivet i koordinatsystemet UTM zone 32 og ved brug af det fælles europæiske terrestriale referencesystem EUREF89/ETRS89."
+      },
+      {
+        "name": "etrs89koordinat_nord",
+        "type": "real",
+        "nullable": true,
+        "description": "Adgangspunktets nordlige koordiat angivet i koordinatsystemet UTM zone 32 og ved brug af det fælles europæiske terrestriale referencesystem EUREF89/ETRS89."
+      },
+      {
+        "name": "nøjagtighed",
+        "type": "string",
+        "nullable": false,
+        "description": "Kode der angiver nøjagtigheden for adressepunktet. Et tegn. ”A” betyder at adressepunktet er absolut placeret på et detaljeret grundkort, typisk med en nøjagtighed bedre end +/- 2 meter. ”B” betyder at adressepunktet er beregnet – typisk på basis af matrikelkortet, således at adressen ligger midt på det pågældende matrikelnummer. I så fald kan nøjagtigheden være ringere en end +/- 100 meter afhængig af forholdene. ”U” betyder intet adressepunkt."
+      },
+      {
+        "name": "kilde",
+        "type": "integer",
+        "nullable": true,
+        "description": "Kode der angiver kilden til adressepunktet. Et tegn. ”1” = oprettet maskinelt fra teknisk kort; ”2” = Oprettet maskinelt fra af matrikelnummer tyngdepunkt; ”3” = Eksternt indberettet af konsulent på vegne af kommunen; ”4” = Eksternt indberettet af kommunes kortkontor o.l. ”5” = Oprettet af teknisk forvaltning.\""
+      },
+      {
+        "name": "husnummerkilde",
+        "type": "integer",
+        "nullable": true,
+        "description": "Kode der angiver kilden til husnummeret. Et tal bestående af et ciffer."
+      },
+      {
+        "name": "tekniskstandard",
+        "type": "string",
+        "nullable": true,
+        "description": "Kode der angiver den specifikation adressepunktet skal opfylde. 2 tegn. ”TD” = 3 meter inde i bygningen ved det sted hvor indgangsdør e.l. skønnes placeret; ”TK” = Udtrykkelig TK-standard: 3 meter inde i bygning, midt for længste side mod vej; ”TN” Alm. teknisk standard: bygningstyngdepunkt eller blot i bygning; ”UF” = Uspecificeret/foreløbig: ikke nødvendigvis placeret i bygning.\""
+      },
+      {
+        "name": "tekstretning",
+        "type": "real",
+        "nullable": true,
+        "description": "Angiver en evt. retningsvinkel for adressen i ”gon” dvs. hvor hele cirklen er 400 gon og 200 er vandret. Værdier 0.00-400.00: Eksempel: ”128.34”."
+      },
+      {
+        "name": "adressepunktændringsdato",
+        "type": "localdatetime",
+        "nullable": true,
+        "description": "Dato for sidste ændring i adressepunktet, som registreret af DAR. Eksempel: ”1998-11-17T00:00:00”"
+      },
+      {
+        "name": "esdhreference",
+        "type": "string",
+        "nullable": true,
+        "description": "Nøgle i ESDH system."
+      },
+      {
+        "name": "journalnummer",
+        "type": "string",
+        "nullable": true,
+        "description": "Journalnummer."
+      },
+      {
+        "name": "højde",
+        "type": "real",
+        "nullable": true,
+        "description": "Højden (koten) er beregnet efter Dansk Vertikal Reference 1990 (DVR90) fra middelvandstanden i havene ved Danmarks kyster til terrænniveau.  Angivet i meter. Beregnet ud fra den danske højdemodel. Værdien -9999 angiver, at adressens adgangspunkt er udenfor højdemodellen, og derfor ikke kan beregnes."
+      },
+      {
+        "name": "adgangspunktid",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Adgangspunktets unikke ID"
+      },
+      {
+        "name": "supplerendebynavn_dagi_id",
+        "type": "string",
+        "nullable": true,
+        "description": "DAGI ID på det supplerende bynavn, som adgangsadressen ligger i."
+      },
+      {
+        "name": "vejpunkt_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Vejpunktets unikke ID."
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Den navngivne vejs unikke ID"
+      }
+    ]
+  },
+  "adresse": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Universel, unik identifikation af adressen af datatypen UUID. Er stabil over hele adressens levetid (ligesom et CPR-nummer) dvs. uanset om adressen evt. ændrer vejnavn, husnummer, postnummer eller kommunekode. Repræsenteret som 32 hexadecimale tegn. Eksempel: ”0a3f507a-93e7-32b8-e044-0003ba298018”."
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Adressens status. Heltal. Mulige værdier er 1: gældende, 2: nedlagt, 3: foreløbig, 4: henlagt."
+      },
+      {
+        "name": "oprettet",
+        "type": "localdatetime",
+        "nullable": false,
+        "description": "Dato og tid for adressens oprettelse, som registreret hos DAR. Eksempel: 2001-12-23T00:00:00."
+      },
+      {
+        "name": "ændret",
+        "type": "localdatetime",
+        "nullable": false,
+        "description": "Dato og tid hvor der sidst er ændret i adressen, som registreret hos DAR. Eksempel: 2002-04-08T00:00:00."
+      },
+      {
+        "name": "ikrafttrædelsesdato",
+        "type": "localdatetime",
+        "nullable": true,
+        "description": "Adressens ikrafttrædelsesdato, dvs. det tidspunkt hvor adressen først er registreret som \"gældende\" i DAR. Kan være fremtidig."
+      },
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Identifier for adressens adgangsadresse. UUID."
+      },
+      {
+        "name": "etage",
+        "type": "string",
+        "nullable": true,
+        "description": "Etagebetegnelse. Hvis værdi angivet kan den antage følgende værdier: tal fra 1 til 99, st, kl, k2 op til k99."
+      },
+      {
+        "name": "dør",
+        "type": "string",
+        "nullable": true,
+        "description": "Dørbetegnelse. Hvis værdi angivet kan den antage følgende værdier: tal fra 1 til 9999, små bogstaver samt tegnene / og -."
+      },
+      {
+        "name": "kilde",
+        "type": "integer",
+        "nullable": true,
+        "description": "Kode der angiver kilden til adressen. Tal bestående af et ciffer."
+      },
+      {
+        "name": "esdhreference",
+        "type": "string",
+        "nullable": true,
+        "description": "Nøgle i ESDH system."
+      },
+      {
+        "name": "journalnummer",
+        "type": "string",
+        "nullable": true,
+        "description": "Journalnummer."
+      }
+    ]
+  },
+  "afstemningsområde": {
+    "key": [
+      "kommunekode",
+      "nummer"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "afstemningsområdets geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "nummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Afstemningsområdets nummer. Heltal."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Afstemningsområdets navn."
+      },
+      {
+        "name": "afstemningsstednavn",
+        "type": "string",
+        "nullable": false,
+        "description": "Afstemningsstedets navn."
+      },
+      {
+        "name": "afstemningsstedadresse",
+        "type": "string",
+        "nullable": false,
+        "description": "UUID for afstemningssstedets adgangsadresse."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden for den kommune, som afstemningsmrådet ligger i."
+      },
+      {
+        "name": "opstillingskreds_dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "DAGI id for opstillingskredsen, som afstemningsområdet tilhører"
+      }
+    ]
+  },
+  "afstemningsområdetilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "kommunekode",
+      "afstemningsområdenummer"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden for den kommune, som afstemningsmrådet ligger i."
+      },
+      {
+        "name": "afstemningsområdenummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Afstemningsområdets nummer. Heltal."
+      }
+    ]
+  },
+  "brofasthed": {
+    "key": [
+      "stedid"
+    ],
+    "attributes": [
+      {
+        "name": "stedid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Øens unikke ID (UUID)"
+      },
+      {
+        "name": "brofast",
+        "type": "boolean",
+        "nullable": false,
+        "description": "Angiver, om øen er brofast."
+      }
+    ]
+  },
+  "bygning": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "string",
+        "nullable": false,
+        "description": "Bygningspolygonets unikke ID. Heltal."
+      },
+      {
+        "name": "bygningstype",
+        "type": "string",
+        "nullable": false,
+        "description": "Angiver bygningens type, eksempelvis \"Bygning\", \"Drivhus\", \"Tank/Silo\"."
+      },
+      {
+        "name": "metode3d",
+        "type": "string",
+        "nullable": false,
+        "description": "Angiver hvor Z-koordinaten er registreret. Fotogrammetrisk anvendes altid \"Tag\". \n        Dog kan \"3D-Tag\" anvendes, hvis det eksplicit er aftalt i forbindelse med 3D-bygningsmodellering.\n        Anvendelse af ”Under terræn” muliggør registrering af en underjordisk bygning.\n        Mulige værdier: 3D-Tag, Tag, Terræn, Under terræn, Ikke tildelt, Ukendt."
+      },
+      {
+        "name": "målested",
+        "type": "string",
+        "nullable": false,
+        "description": "Angiver målestedet for bygningspolygonet. Mulige værdier: \"Tag\", \"Væg\", \"Tag og Væg\", \"Ukendt\", \"Ikke Tildelt\"."
+      },
+      {
+        "name": "bbrbygning_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Angiver bygningens ID i Bygnings- og Boligregisteret (BBR). UUID."
+      },
+      {
+        "name": "synlig",
+        "type": "boolean",
+        "nullable": false,
+        "description": "Angiver, om en Bygning er synlig i et ortofoto. At den ikke er synlig skyldes, \n        at et andet GeoDanmark objekt skjuler den helt eller delvist eller at den ligger helt eller \n        delvist under jorden.\n        \"false\"= Bygning er helt eller delvist usynlig i et ortofoto.\n        \"true\"= Bygning er synlig i et ortofoto.\n"
+      },
+      {
+        "name": "overlap",
+        "type": "boolean",
+        "nullable": false,
+        "description": "Angiver, om en Bygning overlappes helt eller delvist af en anden Bygning.\n        \"false\"= Bygning er ikke helt eller delvist overlappet af en anden Bygning.\n        \"true\"= Bygning er helt eller delvist overlappet af en anden Bygning.\n"
+      },
+      {
+        "name": "geometri",
+        "type": "geometry3d",
+        "nullable": false,
+        "description": "Bygningens geometri. Leveres som GeoJSON polygon."
+      }
+    ]
+  },
+  "bygningtilknytning": {
+    "key": [
+      "bygningid",
+      "adgangsadresseid"
+    ],
+    "attributes": [
+      {
+        "name": "bygningid",
+        "type": "integer",
+        "nullable": false,
+        "description": "Bygningspolygonets unikke ID. Heltal."
+      },
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      }
+    ]
+  },
+  "dagi_postnummer": {
+    "key": [
+      "nr"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "postnummerets geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "nr",
+        "type": "string",
+        "nullable": false,
+        "description": "Postnummeret. 4 cifre."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Postnummerets navn."
+      }
+    ]
+  },
+  "dar_adresse_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "dørbetegnelse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "dørpunkt_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "etagebetegnelse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_bbr_bygning_bygning",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "husnummer_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_adresse_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "dørbetegnelse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "dørpunkt_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "etagebetegnelse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_bbr_bygning_bygning",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "husnummer_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_adressepunkt_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "oprindelse_kilde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "oprindelse_nøjagtighedsklasse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "oprindelse_registrering",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "oprindelse_tekniskstandard",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "position",
+        "type": "point2d",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_adressepunkt_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "oprindelse_kilde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "oprindelse_nøjagtighedsklasse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "oprindelse_registrering",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "oprindelse_tekniskstandard",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "position",
+        "type": "point2d",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_darafstemningsområde_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "afstemningsområde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "afstemningsområdenummer",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_darafstemningsområde_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "afstemningsområde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "afstemningsområdenummer",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_darkommuneinddeling_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "kommuneinddeling",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_darkommuneinddeling_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "kommuneinddeling",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_darmenighedsrådsafstemningsområde_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "mrafstemningsområde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "mrafstemningsområdenummer",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_darmenighedsrådsafstemningsområde_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "mrafstemningsområde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "mrafstemningsområdenummer",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_darsogneinddeling_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "sogneinddeling",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "sognekode",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_darsogneinddeling_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "sogneinddeling",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "sognekode",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_husnummer_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "adgangspunkt_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "darafstemningsområde_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "darkommune_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "darmenighedsrådsafstemningsområde_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "darsogneinddeling_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_bbr_bygning_adgangtilbygning",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_bbr_tekniskanlæg_adgangtiltekniskanlæg",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_geodk_bygning_geodanmarkbygning",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_geodk_vejmidte_vejmidte",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_mu_jordstykke_foreløbigtplaceretpåjordstykke",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_mu_jordstykke_jordstykke",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "husnummerretning",
+        "type": "point2d",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "husnummertekst",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "postnummer_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "supplerendebynavn_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejpunkt_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_husnummer_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "adgangspunkt_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "darafstemningsområde_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "darkommune_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "darmenighedsrådsafstemningsområde_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "darsogneinddeling_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_bbr_bygning_adgangtilbygning",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_bbr_tekniskanlæg_adgangtiltekniskanlæg",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_geodk_bygning_geodanmarkbygning",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_geodk_vejmidte_vejmidte",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_mu_jordstykke_foreløbigtplaceretpåjordstykke",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "fk_mu_jordstykke_jordstykke",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "husnummerretning",
+        "type": "point2d",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "husnummertekst",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "postnummer_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "supplerendebynavn_id",
+        "type": "uuid",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejpunkt_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_navngivenvej_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "administreresafkommune",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "beskrivelse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "retskrivningskontrol",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "udtaltvejnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejadresseringsnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_oprindelse_kilde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_oprindelse_nøjagtighedsklasse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_oprindelse_registrering",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_oprindelse_tekniskstandard",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_vejnavnelinje",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_vejnavneområde",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_vejtilslutningspunkter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_navngivenvej_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "administreresafkommune",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "beskrivelse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "retskrivningskontrol",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "udtaltvejnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejadresseringsnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_oprindelse_kilde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_oprindelse_nøjagtighedsklasse",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_oprindelse_registrering",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_oprindelse_tekniskstandard",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_vejnavnelinje",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_vejnavneområde",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejnavnebeliggenhed_vejtilslutningspunkter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_navngivenvejkommunedel_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "kommune",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejkode",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_navngivenvejkommunedel_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "kommune",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "vejkode",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_navngivenvejpostnummerrelation_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "postnummer_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_navngivenvejpostnummerrelation_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "postnummer_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_navngivenvejsupplerendebynavnrelation_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "supplerendebynavn_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_navngivenvejsupplerendebynavnrelation_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "supplerendebynavn_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_postnummer_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "postnr",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "postnummerinddeling",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_postnummer_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "postnr",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "postnummerinddeling",
+        "type": "integer",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_reserveretvejnavn_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navneområde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reservationudløbsdato",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reserveretafkommune",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reserveretnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reserveretudtaltnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reserveretvejadresseringsnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "retskrivningskontrol",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_reserveretvejnavn_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navneområde",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reservationudløbsdato",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reserveretafkommune",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reserveretnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reserveretudtaltnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "reserveretvejadresseringsnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "retskrivningskontrol",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_supplerendebynavn_aktuel": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "supplerendebynavn1",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "dar_supplerendebynavn_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik ID for den angivne række. "
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid. "
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      },
+      {
+        "name": "supplerendebynavn1",
+        "type": "string",
+        "nullable": true,
+        "description": "Ikke tilgængelig"
+      }
+    ]
+  },
+  "ejerlav": {
+    "key": [
+      "kode"
+    ],
+    "attributes": [
+      {
+        "name": "kode",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik identifikation af det matrikulære ”ejerlav”. Repræsenteret ved indtil 7 cifre. Eksempel: ”170354” for ejerlavet ”Eskebjerg By, Bregninge”."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Det matrikulære ”ejerlav”s navn. Eksempel: ”Eskebjerg By, Bregninge”."
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "geo_ændret",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometrien registreret i DAWA."
+      },
+      {
+        "name": "ændret",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring registreret i DAWA. Opdateres ikke hvis ændringen kun vedrører geometrien (se felterne geo_ændret og geo_version)."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ejerlavets visuelle center. Kan f.eks. bruges til at placere en label for ejerlavet på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ejerlavets bounding box, dvs. det mindste rectangel som indeholder geometrien. \n        Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Ejerlavets geometri.",
+        "offloaded": true
+      }
+    ]
+  },
+  "højde": {
+    "key": [
+      "husnummerid"
+    ],
+    "attributes": [
+      {
+        "name": "husnummerid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Husnummeret (adgangsadressen), hvis adgangspunkt som rækken angiver højden på"
+      },
+      {
+        "name": "højde",
+        "type": "real",
+        "nullable": false,
+        "description": "Adgangspunktets højde i meter over havoverfladen. Beregnet ud fra Danmarks Højdemodel. Værdien -9999 angiver, at højden er udenfor højdemodellen, og derfor ikke kan beregnes."
+      }
+    ]
+  },
+  "ikke_brofast_husnummer": {
+    "key": [
+      "husnummerid"
+    ],
+    "attributes": [
+      {
+        "name": "husnummerid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Det ikke brofaste husnummers UUID"
+      }
+    ]
+  },
+  "jordstykke": {
+    "key": [
+      "ejerlavkode",
+      "matrikelnr"
+    ],
+    "attributes": [
+      {
+        "name": "ejerlavkode",
+        "type": "integer",
+        "nullable": false,
+        "description": "Unik identifikation af det matrikulære ”ejerlav”. Repræsenteret ved indtil 7 cifre. Eksempel: ”170354” for ejerlavet ”Eskebjerg By, Bregninge”."
+      },
+      {
+        "name": "matrikelnr",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik identifikation af jordstykket indenfor ejerlavet. Består af bogstaver og tal."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden. 4 cifre."
+      },
+      {
+        "name": "regionskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Regionskoden. 4 cifre."
+      },
+      {
+        "name": "sognekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Sognekoden. 4 cifre."
+      },
+      {
+        "name": "retskredskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Retskredskoden. 4 cifre."
+      },
+      {
+        "name": "esrejendomsnr",
+        "type": "string",
+        "nullable": true,
+        "description": "⚠ Bemærk: DAWA anvender tilbagekonverteret BBR-data, som ikke længere opdateres fra 16. december 2023. BBR-data udfases helt i DAWA pr. 1. april 2024. Læs mere på https://dataforsyningen.dk/news/4915. Identifikation af den vurderingsejendom jf. Ejendomsstamregisteret, ESR, som jordstykket er en del af. Repræsenteret ved 7 cifre. Eksempel ”0035512”."
+      },
+      {
+        "name": "udvidet_esrejendomsnr",
+        "type": "string",
+        "nullable": true,
+        "description": "⚠ Bemærk: DAWA anvender tilbagekonverteret BBR-data, som ikke længere opdateres fra 16. december 2023. BBR-data udfases helt i DAWA pr. 1. april 2024. Læs mere på https://dataforsyningen.dk/news/4915. Identifikation af den vurderingsejendom jf. Ejendomsstamregisteret, ESR, som jordstykket er en del af. Repræsenteret ved 10 cifre, hvor de første 3 cifre er kommunekoden hvor ejerskabet er placeret. Eksempel ”6070035512”."
+      },
+      {
+        "name": "sfeejendomsnr",
+        "type": "string",
+        "nullable": true,
+        "description": "SFE ejendomsnummer."
+      },
+      {
+        "name": "bfenummer",
+        "type": "integer",
+        "nullable": true,
+        "description": "BFE Nummer."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": false,
+        "description": "Jordstykkets geometri. Leveres som GeoJSON polygon."
+      },
+      {
+        "name": "featureid",
+        "type": "string",
+        "nullable": false,
+        "description": "Jordstykkets featureid, en unik identifikator som anvendes i matrikelkortet."
+      },
+      {
+        "name": "fælleslod",
+        "type": "boolean",
+        "nullable": false,
+        "description": "angivelse om jordstykket indgår i flere faste ejendomme."
+      },
+      {
+        "name": "moderjordstykke",
+        "type": "integer",
+        "nullable": true,
+        "description": "featureid for det jordstykke som jordstykket er udstykket fra."
+      },
+      {
+        "name": "registreretareal",
+        "type": "integer",
+        "nullable": false,
+        "description": "det i matriklen registrerede sande areal på jordstykket – ikke nødvendigvis identisk med det geometriske areal - angivet som heltal i kvadratmeter"
+      },
+      {
+        "name": "arealberegningsmetode",
+        "type": "string",
+        "nullable": false,
+        "description": "angivelse af beregningsmåden for det registrerede areal for jordstykket – følgende koder benyttes:\n        <ul>\n        <li>o – arealet er beregnet efter opmåling</li>\n        <li>s – arealet er beregnet efter konstruktion i større målforhold, dvs. større end det analoge matrikelkort</li>\n        <li>k – arealet er beregnet på grundlag af kort</li></ul>"
+      },
+      {
+        "name": "vejareal",
+        "type": "integer",
+        "nullable": false,
+        "description": "det i matriklen registrerede sande areal af vejudlæg på jordstykket angivet som heltal i kvadratmeter"
+      },
+      {
+        "name": "vejarealberegningsmetode",
+        "type": "string",
+        "nullable": false,
+        "description": "angivelse af beregningsmåden for det registrerede areal af vej på jordstykket – følgende koder benyttes:\n        <ul>\n        <li>b – vejareal på jordstykket er beregnet (og kan være 0)</li>\n        <li>e – der er konstateret vej på jordstykket, men areal er ikke beregnet</li>\n        <li>u – det er ukendt, om der findes vej på jordstykket</li>\n        </ul>"
+      },
+      {
+        "name": "vandarealberegningsmetode",
+        "type": "string",
+        "nullable": false,
+        "description": "\n        angivelse af beregningsmåden for det registrerede areal af vand på jordstykket – følgende koder benyttes:\n        <ul>\n        <li> incl – vandareal på jordstykket et inkluderet i det registrerede areal for jordstykket</li>\n        <li> excl – vandareal på jordstykket er ikke inkluderet i det registrerede areal for jordstykket</li>\n        <li>ukendt – vandareal er ikke oplyst</li> \n        </ul>"
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": false,
+        "description": "Jordstykkets visuelle center."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Bounding box for jordstykkets geometri."
+      }
+    ]
+  },
+  "jordstykketilknytning": {
+    "key": [
+      "ejerlavkode",
+      "matrikelnr",
+      "adgangsadresseid"
+    ],
+    "attributes": [
+      {
+        "name": "ejerlavkode",
+        "type": "integer",
+        "nullable": false,
+        "description": "Ejerlavkoden."
+      },
+      {
+        "name": "matrikelnr",
+        "type": "string",
+        "nullable": false,
+        "description": "Matrikelnummeret for jordstykket."
+      },
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      }
+    ]
+  },
+  "kommune": {
+    "key": [
+      "kode"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "kommunens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "kode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunens myndighedskode. Er unik for hver kommune. 4 cifre."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunens navn"
+      },
+      {
+        "name": "regionskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Regionskode for den region kommunen er beliggende i. 4 cifre."
+      },
+      {
+        "name": "udenforkommuneinddeling",
+        "type": "boolean",
+        "nullable": false,
+        "description": "Falsk angiver at kommunen er en ægte kommune med en folkevalgt forsamling. Sand angiver at området/kommunen hører under Forsvarministeriet."
+      }
+    ]
+  },
+  "kommunetilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "kommunekode"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunens myndighedskode. Er unik for hver kommune. 4 cifre."
+      }
+    ]
+  },
+  "landpostnummer": {
+    "key": [
+      "nr"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "landpostnummerets geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "nr",
+        "type": "string",
+        "nullable": false,
+        "description": "Postnummeret. 4 cifre."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Postnummerets navn."
+      }
+    ]
+  },
+  "landsdel": {
+    "key": [
+      "nuts3"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "landsdelens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "nuts3",
+        "type": "string",
+        "nullable": false,
+        "description": "NUTS3 kode"
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Det landsdelens navn."
+      },
+      {
+        "name": "regionskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Regionskode for den region landsdelen er beliggende i. 4 cifre."
+      }
+    ]
+  },
+  "landsdelstilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "nuts3"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "nuts3",
+        "type": "string",
+        "nullable": false,
+        "description": "NUTS3 kode"
+      }
+    ]
+  },
+  "menighedsrådsafstemningsområde": {
+    "key": [
+      "kommunekode",
+      "nummer"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "menighedsrådsafstemningsområdets geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "nummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Menighedsrådsafstemningsområdets nummer. Udgør nøglen."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Menighedsrådsafstemningsområdets navn."
+      },
+      {
+        "name": "afstemningsstednavn",
+        "type": "string",
+        "nullable": false,
+        "description": "Afstemningsstedets navn"
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden for den kommune, som menighedsrådsafstemningsmrådet tilhører."
+      },
+      {
+        "name": "sognekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Sognekoden for det sogn, som menighedsrådsafstemningsområdet tilhører."
+      }
+    ]
+  },
+  "menighedsrådsafstemningsområdetilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "kommunekode",
+      "menighedsrådsafstemningsområdenummer"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden for den kommune, som menighedsrådsafstemningsmrådet tilhører."
+      },
+      {
+        "name": "menighedsrådsafstemningsområdenummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Menighedsrådsafstemningsområdets nummer. Udgør nøglen."
+      }
+    ]
+  },
+  "navngivenvej": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Den navngivne vejs unikke ID"
+      },
+      {
+        "name": "darstatus",
+        "type": "string",
+        "nullable": false,
+        "description": "Den navngivne vejs status i DAR."
+      },
+      {
+        "name": "oprettet",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Dato og tid for vejens oprettelse i DAR. Eksempel: 2001-12-23T00:00:00."
+      },
+      {
+        "name": "ændret",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Dato og tid for seneste ændring af vejen i DAR. Eksempel: 2002-04-08T00:00:00."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejens navn. Repræsenteret ved indtil 40 tegn. Eksempel: ”Hvidkildevej”."
+      },
+      {
+        "name": "adresseringsnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "En evt. forkortet udgave af vejnavnet på højst 20 tegn, som bruges ved adressering på labels og rudekuverter og lign., hvor der ikke plads til det fulde vejnavn."
+      },
+      {
+        "name": "administrerendekommune",
+        "type": "string",
+        "nullable": true,
+        "description": "Kommunekoden for den kommune, som administrerer den navngivne vej."
+      },
+      {
+        "name": "beskrivelse",
+        "type": "string",
+        "nullable": true,
+        "description": "En beskrivelse af den navngivne vej"
+      },
+      {
+        "name": "retskrivningskontrol",
+        "type": "string",
+        "nullable": true,
+        "description": "Styrelsen for Dataforsyning og Effektivisering har fem hverdage til at kontrollere retskrivningen af et nyt vejnavn. retskrivningskontrol angiver hvor i processen vejnavnet er. retskrivningskontrol kan antage følgende værdier: Udløbet, Afvist, Godkendt og Ikke Kontrolleret."
+      },
+      {
+        "name": "udtaltvejnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Vejnavnet skrevet fuldt ud, således som det udtales. Udtaltvejnavn anvendes\n         for at gøre det nemmere at finde frem til et bestemt vejnavn, også i de tilfælde hvor der\n          ingår forkortelser som ikke udtales som sådanne fx som Gl. Kongevej, der udtales Gammel\n           Kongevej."
+      },
+      {
+        "name": "beliggenhed_oprindelse_kilde",
+        "type": "string",
+        "nullable": true,
+        "description": "Kode som angiver hvilken part eller system, der er kilde til stedfæstelsen. Kilde er en kodeliste som klassificerer de forskellige typer af kilder til stedfæstelsen. fx med værdierne GeoDKgrundkort, Matrikelkort, Ekstern indberetning, Ejer/administrator/Lsp, Adressemyndigheden."
+      },
+      {
+        "name": "beliggenhed_oprindelse_nøjagtighedsklasse",
+        "type": "string",
+        "nullable": true,
+        "description": "Nøjagtighedsklasse: A: Manuelt sat, følger ikke GeoDanmark. B: Maskinelt sat, ud fra GeoDanmark. C: Manuelt sat, kommer til at følge GeoDanmark."
+      },
+      {
+        "name": "beliggenhed_oprindelse_registrering",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Tidsstempel som angiver seneste opdatering af stedfæstelsen i DAR.\nRegistreringstidspunktet angiver hvornår den pågældende stedfæstelse senest er ajourført. Oplysningen giver brugerne mulighed for at vurdere om stedfæstelsen er opdateret i forhold til andre relevante objekter."
+      },
+      {
+        "name": "beliggenhed_oprindelse_tekniskstandard",
+        "type": "string",
+        "nullable": true,
+        "description": "Kode som angiver den tekniske standard, der er anvendt ved stedfæstelsen.\nN0: Vejnavnebeliggenheden kan være et vejnavneområde, som omslutter vejens adresser, eller en vejmidte som kommer fra GeoDanmark eller er konstrueret i DAR."
+      }
+    ]
+  },
+  "opstillingskreds": {
+    "key": [
+      "kode"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "opstillingskredsens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "nummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Opstillingskredsens nummer."
+      },
+      {
+        "name": "kode",
+        "type": "string",
+        "nullable": false,
+        "description": "Opstillingskredsens kode. Er unik for hver opstillingskreds. 4 cifre."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Opstillingskredsens navn."
+      },
+      {
+        "name": "valgkredsnummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Valgkredsnummer. Unikt indenfor storkredsen."
+      },
+      {
+        "name": "storkredsnummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Nummeret på storkredsen, som opstillingskredsen tilhører."
+      },
+      {
+        "name": "kredskommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Opstillingskredsens kredskommune"
+      }
+    ]
+  },
+  "opstillingskredstilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "opstillingskredskode"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "opstillingskredskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Opstillingskredsens kode. Er unik for hver opstillingskreds. 4 cifre."
+      }
+    ]
+  },
+  "politikreds": {
+    "key": [
+      "kode"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "politikredsens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "kode",
+        "type": "string",
+        "nullable": false,
+        "description": "Politikredsens myndighedskode. Er unik for hver politikreds. 4 cifre."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Politikredsens navn."
+      }
+    ]
+  },
+  "politikredstilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "politikredskode"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "politikredskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Politikredsens myndighedskode. Er unik for hver politikreds. 4 cifre."
+      }
+    ]
+  },
+  "postnummer": {
+    "key": [
+      "nr"
+    ],
+    "attributes": [
+      {
+        "name": "nr",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik identifikation af det postnummeret. Postnumre fastsættes af Post Danmark. Repræsenteret ved fire cifre. Eksempel: ”2400” for ”København NV”."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Det navn der er knyttet til postnummeret, typisk byens eller bydelens navn. Repræsenteret ved indtil 20 tegn. Eksempel: ”København NV”."
+      },
+      {
+        "name": "stormodtager",
+        "type": "boolean",
+        "nullable": false,
+        "description": "Hvorvidt postnummeret er en særlig type, der er tilknyttet en organisation der modtager en større mængde post."
+      }
+    ]
+  },
+  "postnummertilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "postnummer"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "postnummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Postnummeret. 4 cifre."
+      }
+    ]
+  },
+  "region": {
+    "key": [
+      "kode"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "regionens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "kode",
+        "type": "string",
+        "nullable": false,
+        "description": "Regionens myndighedskode. Er unik for hver region. 4 cifre."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Regionens navn"
+      },
+      {
+        "name": "nuts2",
+        "type": "string",
+        "nullable": false,
+        "description": "Regionens NUTS2 kode. "
+      }
+    ]
+  },
+  "regionstilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "regionskode"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "regionskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Regionens myndighedskode. Er unik for hver region. 4 cifre."
+      }
+    ]
+  },
+  "retskreds": {
+    "key": [
+      "kode"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "retskredsens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "kode",
+        "type": "string",
+        "nullable": false,
+        "description": "Retskredsens myndighedskode. Er unik for hver retskreds. 4 cifre."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Retskredsens navn."
+      }
+    ]
+  },
+  "retskredstilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "retskredskode"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "retskredskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Retskredsens myndighedskode. Er unik for hver retskreds. 4 cifre."
+      }
+    ]
+  },
+  "sogn": {
+    "key": [
+      "kode"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "sognets geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "kode",
+        "type": "string",
+        "nullable": false,
+        "description": "Sognets myndighedskode. Er unik for hvert sogn. 4 cifre."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Sognets navn"
+      }
+    ]
+  },
+  "sognetilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "sognekode"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "sognekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Sognets myndighedskode. Er unik for hvert sogn. 4 cifre."
+      }
+    ]
+  },
+  "sted": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "stedets ID"
+      },
+      {
+        "name": "hovedtype",
+        "type": "string",
+        "nullable": false,
+        "description": "Stedets hovedtype."
+      },
+      {
+        "name": "undertype",
+        "type": "string",
+        "nullable": false,
+        "description": "Stedets undertype"
+      },
+      {
+        "name": "bebyggelseskode",
+        "type": "integer",
+        "nullable": true,
+        "description": "Unik 5-cifret kode der identificerer en by eller et sommerhusområde"
+      },
+      {
+        "name": "indbyggerantal",
+        "type": "integer",
+        "nullable": true,
+        "description": "Antal indbyggere indenfor objektets udstrækning."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": false,
+        "description": "Stedets visuelle center."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Bounding box for stedets geometri. Null hvis stedets geometri ikke har nogen fysisk udstrækning."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": false,
+        "description": "Stedets geometri",
+        "offloaded": true
+      }
+    ]
+  },
+  "stednavn": {
+    "key": [
+      "stedid",
+      "navn"
+    ],
+    "attributes": [
+      {
+        "name": "stedid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "stedets ID."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Navnet på stedet."
+      },
+      {
+        "name": "navnestatus",
+        "type": "string",
+        "nullable": false,
+        "description": "Stednavnets status. \"suAutoriseret\", \"officielt\" eller \"uofficielt\"."
+      },
+      {
+        "name": "brugsprioritet",
+        "type": "string",
+        "nullable": false,
+        "description": "Angiver, om stednavet er det primære navn. Mulige værdier: \"primær\", \"sekundær\"."
+      }
+    ]
+  },
+  "stednavntilknytning": {
+    "key": [
+      "stednavn_id",
+      "adgangsadresse_id"
+    ],
+    "attributes": [
+      {
+        "name": "stednavn_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "stednavnets ID"
+      },
+      {
+        "name": "adgangsadresse_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "adgangsadressens ID"
+      }
+    ]
+  },
+  "stedtilknytning": {
+    "key": [
+      "stedid",
+      "adgangsadresseid"
+    ],
+    "attributes": [
+      {
+        "name": "stedid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "stedets ID"
+      },
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "adgangsadressens ID"
+      }
+    ]
+  },
+  "storkreds": {
+    "key": [
+      "nummer"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "storkredsens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "nummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Storkredsens nummer. Heltal. Udgør nøglen."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Storkredsens navn."
+      },
+      {
+        "name": "regionskode",
+        "type": "string",
+        "nullable": false,
+        "description": "Koden på den region som storkredsen ligger i."
+      },
+      {
+        "name": "valglandsdelsbogstav",
+        "type": "string",
+        "nullable": false,
+        "description": "Bogstav for den valglandsdel, som storkredsen ligger i."
+      }
+    ]
+  },
+  "storkredstilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "storkredsnummer"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "storkredsnummer",
+        "type": "string",
+        "nullable": false,
+        "description": "Storkredsens nummer. Heltal. Udgør nøglen."
+      }
+    ]
+  },
+  "supplerendebynavn": {
+    "key": [
+      "dagi_id"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "det supplerende bynavns geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Det supplerende bynavns navn."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden for den kommune, som det supplerende bynavn tilhører."
+      }
+    ]
+  },
+  "supplerendebynavntilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "dagi_id"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "dagi_id",
+        "type": "string",
+        "nullable": false,
+        "description": "Unik ID"
+      }
+    ]
+  },
+  "valglandsdel": {
+    "key": [
+      "bogstav"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "valglandsdelens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "bogstav",
+        "type": "string",
+        "nullable": false,
+        "description": "Valgslandsdelens bogstav, udgør nøglen."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": false,
+        "description": "Valglandsdelens navn."
+      }
+    ]
+  },
+  "valglandsdelstilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "valglandsdelsbogstav"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "valglandsdelsbogstav",
+        "type": "string",
+        "nullable": false,
+        "description": "Valgslandsdelens bogstav, udgør nøglen."
+      }
+    ]
+  },
+  "vask_adresse_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "husnummerid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Husnummerets ID."
+      },
+      {
+        "name": "etage",
+        "type": "string",
+        "nullable": true,
+        "description": "Etageangivelsen, f.eks. st."
+      },
+      {
+        "name": "dør",
+        "type": "string",
+        "nullable": true,
+        "description": "Dørangivelsen, f.eks. tv."
+      },
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Rækkens unikke ID"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adressens ID."
+      },
+      {
+        "name": "adgangspunkt_status",
+        "type": "integer",
+        "nullable": true,
+        "description": "Adgangspunktets status"
+      },
+      {
+        "name": "husnummer_status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Husnummerets status."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden. 4 cifre."
+      },
+      {
+        "name": "vejkode",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejkoden. 4 cifre."
+      },
+      {
+        "name": "vejnavn",
+        "type": "string",
+        "nullable": false,
+        "description": "Adressens vejnavn."
+      },
+      {
+        "name": "adresseringsvejnavn",
+        "type": "string",
+        "nullable": false,
+        "description": "En evt. forkortet udgave af adressens vejnavn."
+      },
+      {
+        "name": "husnr",
+        "type": "string",
+        "nullable": false,
+        "description": "Adressens husnummer. Tal samt evt. bogstav."
+      },
+      {
+        "name": "supplerendebynavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Et supplerende bynavn – typisk landsbyens navn – eller andet lokalt stednavn."
+      },
+      {
+        "name": "postnr",
+        "type": "string",
+        "nullable": false,
+        "description": "Adressens postnummer."
+      },
+      {
+        "name": "postnrnavn",
+        "type": "string",
+        "nullable": false,
+        "description": "Det navn der er knyttet til postnummeret, typisk byens eller bydelens navn."
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid."
+      }
+    ]
+  },
+  "vask_husnummer_historik": {
+    "key": [
+      "rowkey"
+    ],
+    "attributes": [
+      {
+        "name": "rowkey",
+        "type": "integer",
+        "nullable": false,
+        "description": "Rækkens unikke ID"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adressens ID."
+      },
+      {
+        "name": "adgangspunkt_status",
+        "type": "integer",
+        "nullable": true,
+        "description": "Adgangspunktets status"
+      },
+      {
+        "name": "husnummer_status",
+        "type": "integer",
+        "nullable": false,
+        "description": "Husnummerets status."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden. 4 cifre."
+      },
+      {
+        "name": "vejkode",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejkoden. 4 cifre."
+      },
+      {
+        "name": "vejnavn",
+        "type": "string",
+        "nullable": false,
+        "description": "Adressens vejnavn."
+      },
+      {
+        "name": "adresseringsvejnavn",
+        "type": "string",
+        "nullable": false,
+        "description": "En evt. forkortet udgave af adressens vejnavn."
+      },
+      {
+        "name": "husnr",
+        "type": "string",
+        "nullable": false,
+        "description": "Adressens husnummer. Tal samt evt. bogstav."
+      },
+      {
+        "name": "supplerendebynavn",
+        "type": "string",
+        "nullable": true,
+        "description": "Et supplerende bynavn – typisk landsbyens navn – eller andet lokalt stednavn."
+      },
+      {
+        "name": "postnr",
+        "type": "string",
+        "nullable": false,
+        "description": "Adressens postnummer."
+      },
+      {
+        "name": "postnrnavn",
+        "type": "string",
+        "nullable": false,
+        "description": "Det navn der er knyttet til postnummeret, typisk byens eller bydelens navn."
+      },
+      {
+        "name": "virkningstart",
+        "type": "timestamp",
+        "nullable": false,
+        "description": "Startidspunktet for rækkens virkningstid."
+      },
+      {
+        "name": "virkningslut",
+        "type": "timestamp",
+        "nullable": true,
+        "description": "Sluttidspunktet for rækkens virkningstid."
+      }
+    ]
+  },
+  "vejmidte": {
+    "key": [
+      "kommunekode",
+      "vejkode"
+    ],
+    "attributes": [
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden. 4 cifre."
+      },
+      {
+        "name": "vejkode",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejkoden. 4 cifre."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry3d",
+        "nullable": false,
+        "description": "Vejmidtens geometri.",
+        "offloaded": true
+      }
+    ]
+  },
+  "vejpunkt": {
+    "key": [
+      "id"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Vejpunktets unikke ID."
+      },
+      {
+        "name": "kilde",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejpunktets kilde."
+      },
+      {
+        "name": "tekniskstandard",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejpunktets tekniske standard."
+      },
+      {
+        "name": "nøjagtighedsklasse",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejpunktets nøjagtighedsklasse."
+      },
+      {
+        "name": "position",
+        "type": "geometry",
+        "nullable": false,
+        "description": "Vejpunktets position."
+      }
+    ]
+  },
+  "vejstykke": {
+    "key": [
+      "kommunekode",
+      "kode"
+    ],
+    "attributes": [
+      {
+        "name": "id",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejstykkets unikke ID (UUID)."
+      },
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden. 4 cifre."
+      },
+      {
+        "name": "kode",
+        "type": "string",
+        "nullable": false,
+        "description": "Identifikation af vejstykke. Er unikt indenfor den pågældende kommune. Repræsenteret ved fire cifre. Eksempel: I Københavns kommune er ”0004” lig ”Abel Cathrines Gade”."
+      },
+      {
+        "name": "oprettet",
+        "type": "localdatetime",
+        "nullable": true,
+        "description": "Oprettelsestidspunktet for vejstykket, som registreret i DAR."
+      },
+      {
+        "name": "ændret",
+        "type": "localdatetime",
+        "nullable": true,
+        "description": "DEPRECATED. Feltet opdateres ikke længere."
+      },
+      {
+        "name": "navn",
+        "type": "string",
+        "nullable": true,
+        "description": "Vejens navn som det er fastsat og registreret af kommunen. Repræsenteret ved indtil 40 tegn. Eksempel: ”Hvidkildevej”."
+      },
+      {
+        "name": "adresseringsnavn",
+        "type": "string",
+        "nullable": true,
+        "description": "En evt. forkortet udgave af vejnavnet på højst 20 tegn, som bruges ved adressering på labels og rudekuverter og lign., hvor der ikke plads til det fulde vejnavn."
+      },
+      {
+        "name": "navngivenvej_id",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Den navngivne vej, som vejstykket tilhører"
+      }
+    ]
+  },
+  "vejstykkepostnummerrelation": {
+    "key": [
+      "kommunekode",
+      "vejkode",
+      "postnr"
+    ],
+    "attributes": [
+      {
+        "name": "kommunekode",
+        "type": "string",
+        "nullable": false,
+        "description": "Kommunekoden. 4 cifre."
+      },
+      {
+        "name": "vejkode",
+        "type": "string",
+        "nullable": false,
+        "description": "Vejkoden. 4 cifre."
+      },
+      {
+        "name": "postnr",
+        "type": "string",
+        "nullable": false,
+        "description": "Postnummeret. 4 cifre."
+      }
+    ]
+  },
+  "zone": {
+    "key": [
+      "zone"
+    ],
+    "attributes": [
+      {
+        "name": "ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring i DAWA"
+      },
+      {
+        "name": "geo_ændret",
+        "type": "string",
+        "nullable": false,
+        "description": "Tidspunkt for seneste ændring af geometri i DAWA"
+      },
+      {
+        "name": "geo_version",
+        "type": "integer",
+        "nullable": false,
+        "description": "Versionsangivelse for geometrien. Inkrementeres hver gang geometrien ændrer sig i DAWA."
+      },
+      {
+        "name": "visueltcenter",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens visuelle center. Kan f.eks. bruges til at placere en label for geometrien på at kort."
+      },
+      {
+        "name": "bbox",
+        "type": "geometry",
+        "nullable": true,
+        "description": "Geometriens bounding box, dvs. det mindste rectangel som indeholder geometrien. Består af et array af 4 tal.\n        De første to tal er koordinaterne for bounding boxens sydvestlige hjørne, og to sidste tal er\n        koordinaterne for bounding boxens nordøstlige hjørne."
+      },
+      {
+        "name": "geometri",
+        "type": "geometry",
+        "nullable": true,
+        "description": "zonens geometri.",
+        "offloaded": true
+      },
+      {
+        "name": "zone",
+        "type": "string",
+        "nullable": false,
+        "description": "<div class=\"alert alert-danger\">Bemærk. <a href=\"https://dataforsyningen.dk/data/4924\">Zone er udfaset - læs mere her.</a></div> \"Byzone\", \"Sommerhusområde\" eller \"Landzone\"."
+      }
+    ]
+  },
+  "zonetilknytning": {
+    "key": [
+      "adgangsadresseid",
+      "zone"
+    ],
+    "attributes": [
+      {
+        "name": "adgangsadresseid",
+        "type": "uuid",
+        "nullable": false,
+        "description": "Adgangsadressens id."
+      },
+      {
+        "name": "zone",
+        "type": "string",
+        "nullable": false,
+        "description": "<div class=\"alert alert-danger\">Bemærk. <a href=\"https://dataforsyningen.dk/data/4924\">Zone er udfaset - læs mere her.</a></div> \"Byzone\", \"Sommerhusområde\" eller \"Landzone\"."
+      }
+    ]
+  }
+}

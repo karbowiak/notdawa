@@ -1,0 +1,19 @@
+[
+{
+  "id": "000021c5-e9ee-411d-b2d8-ec9161780ccd",
+  "status": 1,
+  "adgangspunktstatus": 1,
+  "kommunekode": "0376",
+  "vejkode": "2401",
+  "vejnavn": "Vestergade",
+  "husnr": "41A",
+  "supplerendebynavn": null,
+  "postnr": "4850",
+  "postnrnavn": "Stubbekøbing",
+  "virkningstart": "2018-08-02T10:47:31.924Z",
+  "virkningslut": null,
+  "adgangsadresseid": "0a3f5086-e9cd-32b8-e044-0003ba298018",
+  "etage": "2",
+  "dør": "tv"
+}
+]

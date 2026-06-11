@@ -1,0 +1,5 @@
+{
+  "type": "ResourceNotFoundError",
+  "title": "The resource was not found",
+  "details": {}
+}

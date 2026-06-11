@@ -1,0 +1,22 @@
+{
+  "id": "0a3f50c3-6f6d-32b8-e044-0003ba298018",
+  "status": 1,
+  "darstatus": 3,
+  "vejkode": "4456",
+  "vejnavn": "Kongsgårdsvej",
+  "adresseringsvejnavn": "Kongsgårdsvej",
+  "husnr": "24",
+  "etage": "st",
+  "dør": "3",
+  "supplerendebynavn": null,
+  "postnr": "8260",
+  "postnrnavn": "Viby J",
+  "stormodtagerpostnr": null,
+  "stormodtagerpostnrnavn": null,
+  "kommunekode": "0751",
+  "adgangsadresseid": "0a3f5096-769e-32b8-e044-0003ba298018",
+  "x": 10.16374258,
+  "y": 56.12470881,
+  "href": "https://api.dataforsyningen.dk/adresser/0a3f50c3-6f6d-32b8-e044-0003ba298018",
+  "betegnelse": "Kongsgårdsvej 24, st. 3, 8260 Viby J"
+}

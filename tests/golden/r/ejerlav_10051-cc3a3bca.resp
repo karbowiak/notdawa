@@ -1,0 +1,15 @@
+{
+  "href": "https://api.dataforsyningen.dk/ejerlav/10051",
+  "kode": 10051,
+  "navn": "Frederiksberg",
+  "bbox": [
+    12.4902788,
+    55.66556582,
+    12.55873518,
+    55.6989674
+  ],
+  "visueltcenter": [
+    12.52373151,
+    55.67936486
+  ]
+}

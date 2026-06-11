@@ -1,0 +1,23 @@
+[
+{
+  "tekst": "2150 Nordhavn",
+  "postnummer": {
+    "nr": "2150",
+    "navn": "Nordhavn",
+    "stormodtager": false,
+    "visueltcenter_x": 12.61612961,
+    "visueltcenter_y": 55.72293927,
+    "href": "https://api.dataforsyningen.dk/postnumre/2150"
+  }
+}, {
+  "tekst": "2100 København Ø",
+  "postnummer": {
+    "nr": "2100",
+    "navn": "København Ø",
+    "stormodtager": false,
+    "visueltcenter_x": 12.57364633,
+    "visueltcenter_y": 55.7109795,
+    "href": "https://api.dataforsyningen.dk/postnumre/2100"
+  }
+}
+]

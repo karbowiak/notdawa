@@ -1,0 +1,163 @@
+[
+{
+  "tekst": "Søren Vestergaards V",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/860/3529",
+    "kommunekode": "0860",
+    "kode": "3529",
+    "navn": "Søren Vestergaards V"
+  }
+}, {
+  "tekst": "Ishøj Vestergade",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/183/345",
+    "kommunekode": "0183",
+    "kode": "0345",
+    "navn": "Ishøj Vestergade"
+  }
+}, {
+  "tekst": "Vesteragegyden",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/420/2028",
+    "kommunekode": "0420",
+    "kode": "2028",
+    "navn": "Vesteragegyden"
+  }
+}, {
+  "tekst": "Vesterager",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/661/1630",
+    "kommunekode": "0661",
+    "kode": "1630",
+    "navn": "Vesterager"
+  }
+}, {
+  "tekst": "Vesteragerstien",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/657/8946",
+    "kommunekode": "0657",
+    "kode": "8946",
+    "navn": "Vesteragerstien"
+  }
+}, {
+  "tekst": "Vesteralle",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/573/1528",
+    "kommunekode": "0573",
+    "kode": "1528",
+    "navn": "Vesteralle"
+  }
+}, {
+  "tekst": "Vesteralle",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/661/1397",
+    "kommunekode": "0661",
+    "kode": "1397",
+    "navn": "Vesteralle"
+  }
+}, {
+  "tekst": "Vesteralle",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/706/2232",
+    "kommunekode": "0706",
+    "kode": "2232",
+    "navn": "Vesteralle"
+  }
+}, {
+  "tekst": "Vesteralle",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/706/2233",
+    "kommunekode": "0706",
+    "kode": "2233",
+    "navn": "Vesteralle"
+  }
+}, {
+  "tekst": "Vesteralle",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/813/2863",
+    "kommunekode": "0813",
+    "kode": "2863",
+    "navn": "Vesteralle"
+  }
+}, {
+  "tekst": "Vesterallé",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/580/2320",
+    "kommunekode": "0580",
+    "kode": "2320",
+    "navn": "Vesterallé"
+  }
+}, {
+  "tekst": "Vesterbakke",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/540/2407",
+    "kommunekode": "0540",
+    "kode": "2407",
+    "navn": "Vesterbakke"
+  }
+}, {
+  "tekst": "Vesterbakken",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/420/2029",
+    "kommunekode": "0420",
+    "kode": "2029",
+    "navn": "Vesterbakken"
+  }
+}, {
+  "tekst": "Vesterbakken",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/630/2743",
+    "kommunekode": "0630",
+    "kode": "2743",
+    "navn": "Vesterbakken"
+  }
+}, {
+  "tekst": "Vesterbakken",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/661/8171",
+    "kommunekode": "0661",
+    "kode": "8171",
+    "navn": "Vesterbakken"
+  }
+}, {
+  "tekst": "Vesterbakken",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/740/2045",
+    "kommunekode": "0740",
+    "kode": "2045",
+    "navn": "Vesterbakken"
+  }
+}, {
+  "tekst": "Vesterballe",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/540/2410",
+    "kommunekode": "0540",
+    "kode": "2410",
+    "navn": "Vesterballe"
+  }
+}, {
+  "tekst": "Vesterballe",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/580/2130",
+    "kommunekode": "0580",
+    "kode": "2130",
+    "navn": "Vesterballe"
+  }
+}, {
+  "tekst": "Vesterballevej",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/479/8986",
+    "kommunekode": "0479",
+    "kode": "8986",
+    "navn": "Vesterballevej"
+  }
+}, {
+  "tekst": "Vesterballevej",
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/573/1529",
+    "kommunekode": "0573",
+    "kode": "1529",
+    "navn": "Vesterballevej"
+  }
+}
+]

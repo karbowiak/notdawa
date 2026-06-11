@@ -1,0 +1,403 @@
+[
+{
+  "tekst": "Rådhuspladsen 1, 9300 Sæby",
+  "adgangsadresse": {
+    "id": "0a3f509b-eeab-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "1610",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1",
+    "supplerendebynavn": null,
+    "postnr": "9300",
+    "postnrnavn": "Sæby",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0813",
+    "x": 10.50572747,
+    "y": 57.3335043,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f509b-eeab-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1, 4300 Holbæk",
+  "adgangsadresse": {
+    "id": "0a3f5083-452c-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "1322",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1",
+    "supplerendebynavn": null,
+    "postnr": "4300",
+    "postnrnavn": "Holbæk",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0316",
+    "x": 11.71155395,
+    "y": 55.71628708,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5083-452c-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1, 8362 Hørning",
+  "adgangsadresse": {
+    "id": "0a3f5093-f86f-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "0847",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1",
+    "supplerendebynavn": null,
+    "postnr": "8362",
+    "postnrnavn": "Hørning",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0746",
+    "x": 10.03579247,
+    "y": 56.085104,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5093-f86f-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1, 4200 Slagelse",
+  "adgangsadresse": {
+    "id": "0a3f5084-62c3-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "1407",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1",
+    "supplerendebynavn": null,
+    "postnr": "4200",
+    "postnrnavn": "Slagelse",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0330",
+    "x": 11.35623868,
+    "y": 55.40464424,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5084-62c3-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 10, 8362 Hørning",
+  "adgangsadresse": {
+    "id": "5bae167c-19bb-4096-8c86-f728b39e38af",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "0847",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "10",
+    "supplerendebynavn": null,
+    "postnr": "8362",
+    "postnrnavn": "Hørning",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0746",
+    "x": 10.03530347,
+    "y": 56.08557249,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/5bae167c-19bb-4096-8c86-f728b39e38af"
+  }
+}, {
+  "tekst": "Rådhuspladsen 12, 8362 Hørning",
+  "adgangsadresse": {
+    "id": "89d147d1-b5d2-4e99-aa24-2ce3bfe75973",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "0847",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "12",
+    "supplerendebynavn": null,
+    "postnr": "8362",
+    "postnrnavn": "Hørning",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0746",
+    "x": 10.03525964,
+    "y": 56.08550026,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/89d147d1-b5d2-4e99-aa24-2ce3bfe75973"
+  }
+}, {
+  "tekst": "Rådhuspladsen 14, 8362 Hørning",
+  "adgangsadresse": {
+    "id": "efc92dc8-6362-4408-80b2-77b1b1c6db2c",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "0847",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "14",
+    "supplerendebynavn": null,
+    "postnr": "8362",
+    "postnrnavn": "Hørning",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0746",
+    "x": 10.03526989,
+    "y": 56.08541112,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/efc92dc8-6362-4408-80b2-77b1b1c6db2c"
+  }
+}, {
+  "tekst": "Rådhuspladsen 16, 8362 Hørning",
+  "adgangsadresse": {
+    "id": "a0834db8-8abd-494d-a161-c1af22bad01b",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "0847",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "16",
+    "supplerendebynavn": null,
+    "postnr": "8362",
+    "postnrnavn": "Hørning",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0746",
+    "x": 10.03511904,
+    "y": 56.08523942,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/a0834db8-8abd-494d-a161-c1af22bad01b"
+  }
+}, {
+  "tekst": "Rådhuspladsen 18, 8362 Hørning",
+  "adgangsadresse": {
+    "id": "cd80a85b-747a-4e1c-8ad3-4a403b8b1687",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "0847",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "18",
+    "supplerendebynavn": null,
+    "postnr": "8362",
+    "postnrnavn": "Hørning",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0746",
+    "x": 10.03510463,
+    "y": 56.08512129,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/cd80a85b-747a-4e1c-8ad3-4a403b8b1687"
+  }
+}, {
+  "tekst": "Rådhuspladsen 11, 4200 Slagelse",
+  "adgangsadresse": {
+    "id": "0a3f5084-62cc-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "1407",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "11",
+    "supplerendebynavn": null,
+    "postnr": "4200",
+    "postnrnavn": "Slagelse",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0330",
+    "x": 11.356016,
+    "y": 55.40539359,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5084-62cc-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1, 3300 Frederiksværk",
+  "adgangsadresse": {
+    "id": "0a3f507f-0959-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "1214",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1",
+    "supplerendebynavn": null,
+    "postnr": "3300",
+    "postnrnavn": "Frederiksværk",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0260",
+    "x": 12.01612365,
+    "y": 55.97657023,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507f-0959-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1, Otterup, 5450 Otterup",
+  "adgangsadresse": {
+    "id": "0a3f508a-0b0a-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "1034",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1",
+    "supplerendebynavn": "Otterup",
+    "postnr": "5450",
+    "postnrnavn": "Otterup",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0480",
+    "x": 10.39359928,
+    "y": 55.51414306,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f508a-0b0a-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1, 8000 Aarhus C",
+  "adgangsadresse": {
+    "id": "0a3f5096-c91e-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "7005",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1",
+    "supplerendebynavn": null,
+    "postnr": "8000",
+    "postnrnavn": "Aarhus C",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0751",
+    "x": 10.20292887,
+    "y": 56.15337002,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5096-c91e-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1B, 8000 Aarhus C",
+  "adgangsadresse": {
+    "id": "6ca6b685-8066-48b9-bcdb-ed1fa493dec6",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "7005",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1B",
+    "supplerendebynavn": null,
+    "postnr": "8000",
+    "postnrnavn": "Aarhus C",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0751",
+    "x": 10.20304917,
+    "y": 56.15335171,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/6ca6b685-8066-48b9-bcdb-ed1fa493dec6"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1C, 8000 Aarhus C",
+  "adgangsadresse": {
+    "id": "323ae6a0-6f73-41d4-9281-bfc5d315e130",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "7005",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1C",
+    "supplerendebynavn": null,
+    "postnr": "8000",
+    "postnrnavn": "Aarhus C",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0751",
+    "x": 10.20313562,
+    "y": 56.15334143,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/323ae6a0-6f73-41d4-9281-bfc5d315e130"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1D, 8000 Aarhus C",
+  "adgangsadresse": {
+    "id": "559e2a41-2930-468e-a8fd-38da268d82bc",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "7005",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1D",
+    "supplerendebynavn": null,
+    "postnr": "8000",
+    "postnrnavn": "Aarhus C",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0751",
+    "x": 10.20322444,
+    "y": 56.15333491,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/559e2a41-2930-468e-a8fd-38da268d82bc"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1E, 8000 Aarhus C",
+  "adgangsadresse": {
+    "id": "80e5e24b-f053-415e-bfab-fdc56b60f93f",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "7005",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1E",
+    "supplerendebynavn": null,
+    "postnr": "8000",
+    "postnrnavn": "Aarhus C",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0751",
+    "x": 10.20333122,
+    "y": 56.15328984,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/80e5e24b-f053-415e-bfab-fdc56b60f93f"
+  }
+}, {
+  "tekst": "Rådhuspladsen 16, 1550 København V",
+  "adgangsadresse": {
+    "id": "0a3f507a-ec09-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "6152",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "16",
+    "supplerendebynavn": null,
+    "postnr": "1550",
+    "postnrnavn": "København V",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0101",
+    "x": 12.56719424,
+    "y": 55.67595124,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-ec09-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 1, 1550 København V",
+  "adgangsadresse": {
+    "id": "0a3f507a-ec01-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "6152",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "1",
+    "supplerendebynavn": null,
+    "postnr": "1550",
+    "postnrnavn": "København V",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0101",
+    "x": 12.56957768,
+    "y": 55.6756275,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-ec01-32b8-e044-0003ba298018"
+  }
+}, {
+  "tekst": "Rådhuspladsen 11, 1550 København V",
+  "adgangsadresse": {
+    "id": "0a3f507a-ec07-32b8-e044-0003ba298018",
+    "status": 1,
+    "darstatus": 3,
+    "vejkode": "6152",
+    "vejnavn": "Rådhuspladsen",
+    "adresseringsvejnavn": "Rådhuspladsen",
+    "husnr": "11",
+    "supplerendebynavn": null,
+    "postnr": "1550",
+    "postnrnavn": "København V",
+    "stormodtagerpostnr": null,
+    "stormodtagerpostnrnavn": null,
+    "kommunekode": "0101",
+    "x": 12.56865713,
+    "y": 55.67637966,
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-ec07-32b8-e044-0003ba298018"
+  }
+}
+]

@@ -1,0 +1,276 @@
+[
+{
+  "id": "5c99b209-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/8332",
+  "kode": "8332",
+  "navn": "Viktoriagade",
+  "adresseringsnavn": "Viktoriagade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/786f3efa-4ff4-466a-87ab-c501b09eb373",
+    "id": "786f3efa-4ff4-466a-87ab-c501b09eb373",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1655",
+      "nr": "1655",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.55704852,
+    55.67008955,
+    12.5598352,
+    55.67264357
+  ],
+  "visueltcenter": [
+    12.55831168,
+    55.67133198
+  ]
+}, {
+  "id": "5c9949c4-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/4636",
+  "kode": "4636",
+  "navn": "Maria Kirkeplads",
+  "adresseringsnavn": "Maria Kirkeplads",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/4718c166-2a9b-408c-9cef-1751ae1367b5",
+    "id": "4718c166-2a9b-408c-9cef-1751ae1367b5",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1707",
+      "nr": "1707",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.56036264,
+    55.67151391,
+    12.5608248,
+    55.67197196
+  ],
+  "visueltcenter": [
+    12.56058851,
+    55.67174145
+  ]
+}, {
+  "id": "5c98e195-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/2544",
+  "kode": "2544",
+  "navn": "Halmtorvet",
+  "adresseringsnavn": "Halmtorvet",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/cdc62d3a-9e7e-472b-bc7f-868e24643aaa",
+    "id": "cdc62d3a-9e7e-472b-bc7f-868e24643aaa",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1700",
+      "nr": "1700",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.55564028,
+    55.66786389,
+    12.56351221,
+    55.67153326
+  ],
+  "visueltcenter": [
+    12.56008685,
+    55.66996341
+  ]
+}, {
+  "id": "5c98e35d-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/4036",
+  "kode": "4036",
+  "navn": "Kvægtorvsgade",
+  "adresseringsnavn": "Kvægtorvsgade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/ff88faac-7fb7-47a1-90c2-f6a16455d662",
+    "id": "ff88faac-7fb7-47a1-90c2-f6a16455d662",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1710",
+      "nr": "1710",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.56165794,
+    55.66936042,
+    12.56377143,
+    55.67069918
+  ],
+  "visueltcenter": [
+    12.56270138,
+    55.67002462
+  ]
+}, {
+  "id": "5c98e3a8-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/4276",
+  "kode": "4276",
+  "navn": "Lille Istedgade",
+  "adresseringsnavn": "Lille Istedgade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/ab4daf4d-dc1d-4697-8a02-9ad794edeb6b",
+    "id": "ab4daf4d-dc1d-4697-8a02-9ad794edeb6b",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1706",
+      "nr": "1706",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.559506,
+    55.67042683,
+    12.56034878,
+    55.6711182
+  ],
+  "visueltcenter": [
+    12.55993488,
+    55.67077474
+  ]
+}, {
+  "id": "5c98e1db-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/2772",
+  "kode": "2772",
+  "navn": "Helgolandsgade",
+  "adresseringsnavn": "Helgolandsgade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/17ab65b4-4849-412b-9752-131df23cd27b",
+    "id": "17ab65b4-4849-412b-9752-131df23cd27b",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1653",
+      "nr": "1653",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.56039188,
+    55.67094332,
+    12.56184788,
+    55.67318933
+  ],
+  "visueltcenter": [
+    12.56121025,
+    55.67207894
+  ]
+}, {
+  "id": "5c98e27c-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/3312",
+  "kode": "3312",
+  "navn": "Istedgade",
+  "adresseringsnavn": "Istedgade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/e1ef66a2-ca18-4f88-a545-8062630b4966",
+    "id": "e1ef66a2-ca18-4f88-a545-8062630b4966",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1650",
+      "nr": "1650",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.54761568,
+    55.66707534,
+    12.56357259,
+    55.67287179
+  ],
+  "visueltcenter": [
+    12.55561598,
+    55.66986358
+  ]
+}
+]

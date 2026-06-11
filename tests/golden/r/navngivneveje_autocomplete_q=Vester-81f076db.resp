@@ -1,0 +1,263 @@
+[
+{
+  "tekst": "Vester-Vangen, Gribskov Kommune",
+  "navngivenvej": {
+    "id": "5320f00f-b66f-40cb-bcdd-271649b11457",
+    "darstatus": "gældende",
+    "navn": "Vester-Vangen",
+    "adresseringsnavn": "Vester-Vangen",
+    "administrerendekommunekode": "0270",
+    "administrerendekommunenavn": "Gribskov",
+    "visueltcenter_x": 12.20551906,
+    "visueltcenter_y": 56.08324987,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/5320f00f-b66f-40cb-bcdd-271649b11457"
+  }
+}, {
+  "tekst": "Vester Alle, Holstebro Kommune",
+  "navngivenvej": {
+    "id": "63b6ea82-8d7c-4f62-942e-3bcd0dfe5b45",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0661",
+    "administrerendekommunenavn": "Holstebro",
+    "visueltcenter_x": 8.77343652,
+    "visueltcenter_y": 56.47981301,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/63b6ea82-8d7c-4f62-942e-3bcd0dfe5b45"
+  }
+}, {
+  "tekst": "Vester Alle, Vesthimmerlands Kommune",
+  "navngivenvej": {
+    "id": "6d49bca1-15c1-4725-831a-2db86bb3d648",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0820",
+    "administrerendekommunenavn": "Vesthimmerlands",
+    "visueltcenter_x": 9.22395967,
+    "visueltcenter_y": 56.89913764,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/6d49bca1-15c1-4725-831a-2db86bb3d648"
+  }
+}, {
+  "tekst": "Vester Alle, Vejen Kommune",
+  "navngivenvej": {
+    "id": "728fa7d8-4b5a-4836-9955-9be79f4bdc10",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0575",
+    "administrerendekommunenavn": "Vejen",
+    "visueltcenter_x": 9.13716057,
+    "visueltcenter_y": 55.48139,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/728fa7d8-4b5a-4836-9955-9be79f4bdc10"
+  }
+}, {
+  "tekst": "Vester Alle, Skanderborg Kommune",
+  "navngivenvej": {
+    "id": "82fd2758-269c-4b8a-9fd8-ebd08075735e",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0746",
+    "administrerendekommunenavn": "Skanderborg",
+    "visueltcenter_x": 10.03309173,
+    "visueltcenter_y": 56.08824334,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/82fd2758-269c-4b8a-9fd8-ebd08075735e"
+  }
+}, {
+  "tekst": "Vester Alle, Brønderslev Kommune",
+  "navngivenvej": {
+    "id": "8b37d8bd-081a-41c1-b0b9-24fcf5dfab5d",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0810",
+    "administrerendekommunenavn": "Brønderslev",
+    "visueltcenter_x": 9.93968403,
+    "visueltcenter_y": 57.27182384,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/8b37d8bd-081a-41c1-b0b9-24fcf5dfab5d"
+  }
+}, {
+  "tekst": "Vester Allé, Aarhus Kommune",
+  "navngivenvej": {
+    "id": "909bace3-5655-4498-a68c-d88c484a2c65",
+    "darstatus": "gældende",
+    "navn": "Vester Allé",
+    "adresseringsnavn": "Vester Allé",
+    "administrerendekommunekode": "0751",
+    "administrerendekommunenavn": "Aarhus",
+    "visueltcenter_x": 10.19951196,
+    "visueltcenter_y": 56.15510695,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/909bace3-5655-4498-a68c-d88c484a2c65"
+  }
+}, {
+  "tekst": "Vester Alle, Struer Kommune",
+  "navngivenvej": {
+    "id": "b5395862-32e1-4d6c-b73b-f5c6dcf5268b",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0671",
+    "administrerendekommunenavn": "Struer",
+    "visueltcenter_x": 8.60305527,
+    "visueltcenter_y": 56.48297832,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/b5395862-32e1-4d6c-b73b-f5c6dcf5268b"
+  }
+}, {
+  "tekst": "Vester Alle, Herning Kommune",
+  "navngivenvej": {
+    "id": "b9fc0810-e1de-4a61-a0b7-ddde18b777d8",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0657",
+    "administrerendekommunenavn": "Herning",
+    "visueltcenter_x": 8.85085011,
+    "visueltcenter_y": 56.03095985,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/b9fc0810-e1de-4a61-a0b7-ddde18b777d8"
+  }
+}, {
+  "tekst": "Vester Alle, Hjørring Kommune",
+  "navngivenvej": {
+    "id": "bf422bd6-9c89-4250-9a18-3dc45e934d13",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0860",
+    "administrerendekommunenavn": "Hjørring",
+    "visueltcenter_x": 10.19550991,
+    "visueltcenter_y": 57.54316623,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/bf422bd6-9c89-4250-9a18-3dc45e934d13"
+  }
+}, {
+  "tekst": "Vester Alle, Mariagerfjord Kommune",
+  "navngivenvej": {
+    "id": "bf6d29c4-af32-4d4c-9c16-e0362e783a64",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0846",
+    "administrerendekommunenavn": "Mariagerfjord",
+    "visueltcenter_x": 9.79094852,
+    "visueltcenter_y": 56.63309253,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/bf6d29c4-af32-4d4c-9c16-e0362e783a64"
+  }
+}, {
+  "tekst": "Vester Alle, Kolding Kommune",
+  "navngivenvej": {
+    "id": "cfc5cb88-5aaa-41ac-a642-2ffe31e81213",
+    "darstatus": "gældende",
+    "navn": "Vester Alle",
+    "adresseringsnavn": "Vester Alle",
+    "administrerendekommunekode": "0621",
+    "administrerendekommunenavn": "Kolding",
+    "visueltcenter_x": 9.53184247,
+    "visueltcenter_y": 55.50364471,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/cfc5cb88-5aaa-41ac-a642-2ffe31e81213"
+  }
+}, {
+  "tekst": "Vester Søvej, Sønderborg Kommune",
+  "navngivenvej": {
+    "id": "803ebf47-4233-4698-b585-3e5e4bd3355a",
+    "darstatus": "gældende",
+    "navn": "Vester Søvej",
+    "adresseringsnavn": "Vester Søvej",
+    "administrerendekommunekode": "0540",
+    "administrerendekommunenavn": "Sønderborg",
+    "visueltcenter_x": 9.74538729,
+    "visueltcenter_y": 55.06130578,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/803ebf47-4233-4698-b585-3e5e4bd3355a"
+  }
+}, {
+  "tekst": "Vester Altan, Mariagerfjord Kommune",
+  "navngivenvej": {
+    "id": "9d20dce4-a7d4-40f2-9f62-a6692d585421",
+    "darstatus": "gældende",
+    "navn": "Vester Altan",
+    "adresseringsnavn": "Vester Altan",
+    "administrerendekommunekode": "0846",
+    "administrerendekommunenavn": "Mariagerfjord",
+    "visueltcenter_x": 9.79251978,
+    "visueltcenter_y": 56.6320908,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/9d20dce4-a7d4-40f2-9f62-a6692d585421"
+  }
+}, {
+  "tekst": "Vester Søvej, Aalborg Kommune",
+  "navngivenvej": {
+    "id": "f68a8580-2408-4bcf-9f21-becace18c89c",
+    "darstatus": "gældende",
+    "navn": "Vester Søvej",
+    "adresseringsnavn": "Vester Søvej",
+    "administrerendekommunekode": "0851",
+    "administrerendekommunenavn": "Aalborg",
+    "visueltcenter_x": 9.54811219,
+    "visueltcenter_y": 56.91737867,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/f68a8580-2408-4bcf-9f21-becace18c89c"
+  }
+}, {
+  "tekst": "Vester Hessel, Aabenraa Kommune",
+  "navngivenvej": {
+    "id": "02185773-8452-475e-ad00-2c2199b32a20",
+    "darstatus": "gældende",
+    "navn": "Vester Hessel",
+    "adresseringsnavn": "Vester Hessel",
+    "administrerendekommunekode": "0580",
+    "administrerendekommunenavn": "Aabenraa",
+    "visueltcenter_x": 9.45538078,
+    "visueltcenter_y": 55.08863723,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/02185773-8452-475e-ad00-2c2199b32a20"
+  }
+}, {
+  "tekst": "Vestre Kærvej, Aalborg Kommune",
+  "navngivenvej": {
+    "id": "7de4bc94-9e91-4aad-92fe-ed4c6b5459ab",
+    "darstatus": "gældende",
+    "navn": "Vestre Kærvej",
+    "adresseringsnavn": "Vestre Kærvej",
+    "administrerendekommunekode": "0851",
+    "administrerendekommunenavn": "Aalborg",
+    "visueltcenter_x": 9.88343666,
+    "visueltcenter_y": 57.05292047,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/7de4bc94-9e91-4aad-92fe-ed4c6b5459ab"
+  }
+}, {
+  "tekst": "Vester Kærvej, Viborg Kommune",
+  "navngivenvej": {
+    "id": "b3089ec1-d59a-49aa-b539-f3bb90aa7faa",
+    "darstatus": "gældende",
+    "navn": "Vester Kærvej",
+    "adresseringsnavn": "Vester Kærvej",
+    "administrerendekommunekode": "0791",
+    "administrerendekommunenavn": "Viborg",
+    "visueltcenter_x": 9.56287062,
+    "visueltcenter_y": 56.54137388,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/b3089ec1-d59a-49aa-b539-f3bb90aa7faa"
+  }
+}, {
+  "tekst": "Vestre Kaj, Lolland Kommune",
+  "navngivenvej": {
+    "id": "c660094d-31ea-4c4e-af73-62cfa88ca955",
+    "darstatus": "gældende",
+    "navn": "Vestre Kaj",
+    "adresseringsnavn": "Vestre Kaj",
+    "administrerendekommunekode": "0360",
+    "administrerendekommunenavn": "Lolland",
+    "visueltcenter_x": 11.12861773,
+    "visueltcenter_y": 54.83212347,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/c660094d-31ea-4c4e-af73-62cfa88ca955"
+  }
+}, {
+  "tekst": "Vester Søgade, København Kommune",
+  "navngivenvej": {
+    "id": "c6a3e0ce-7152-4c03-b7a7-c24116c6fe94",
+    "darstatus": "gældende",
+    "navn": "Vester Søgade",
+    "adresseringsnavn": "Vester Søgade",
+    "administrerendekommunekode": "0101",
+    "administrerendekommunenavn": "København",
+    "visueltcenter_x": 12.55959845,
+    "visueltcenter_y": 55.67767515,
+    "href": "https://api.dataforsyningen.dk/navngivneveje/c6a3e0ce-7152-4c03-b7a7-c24116c6fe94"
+  }
+}
+]

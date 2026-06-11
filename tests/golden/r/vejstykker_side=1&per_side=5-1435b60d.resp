@@ -1,0 +1,198 @@
+[
+{
+  "id": "5c963674-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/4",
+  "kode": "0004",
+  "navn": "Abel Cathrines Gade",
+  "adresseringsnavn": "Abel Cathrines Gade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/688e84f2-cac8-422c-9bfa-4908abb311cc",
+    "id": "688e84f2-cac8-422c-9bfa-4908abb311cc",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1654",
+      "nr": "1654",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.55762119,
+    55.67086301,
+    12.56152573,
+    55.67195042
+  ],
+  "visueltcenter": [
+    12.55949137,
+    55.6714052
+  ]
+}, {
+  "id": "0451868e-dbd9-4a9b-b54a-0e4e84eb6cec",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/5",
+  "kode": "0005",
+  "navn": "Bygården",
+  "adresseringsnavn": "Bygården",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/1b76dcda-1695-43ee-bf94-891c296b8322",
+    "id": "1b76dcda-1695-43ee-bf94-891c296b8322",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/2700",
+      "nr": "2700",
+      "navn": "Brønshøj"
+    }
+  ],
+  "historik": {
+    "oprettet": "2019-02-01T13:30:31.959",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.48755649,
+    55.71703079,
+    12.48815552,
+    55.71754566
+  ],
+  "visueltcenter": [
+    12.48790169,
+    55.71736013
+  ]
+}, {
+  "id": "5c963675-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/6",
+  "kode": "0006",
+  "navn": "Aberdeengade",
+  "adresseringsnavn": "Aberdeengade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/9479d62b-29fa-4115-9718-9962b1a502ed",
+    "id": "9479d62b-29fa-4115-9718-9962b1a502ed",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/2150",
+      "nr": "2150",
+      "navn": "Nordhavn"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T16:46:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.59233787,
+    55.70610322,
+    12.59257887,
+    55.70657999
+  ],
+  "visueltcenter": [
+    12.59245838,
+    55.70634161
+  ]
+}, {
+  "id": "097ae470-9532-4d67-8cb9-6420c601fc24",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/7",
+  "kode": "0007",
+  "navn": "Dompapvej",
+  "adresseringsnavn": "Dompapvej",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/4fb0b0a2-8be7-4254-90d5-fc1af6eb111c",
+    "id": "4fb0b0a2-8be7-4254-90d5-fc1af6eb111c",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/2300",
+      "nr": "2300",
+      "navn": "København S"
+    }
+  ],
+  "historik": {
+    "oprettet": "2019-04-03T13:30:37.031",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.59335419,
+    55.64825201,
+    12.59366148,
+    55.64906246
+  ],
+  "visueltcenter": [
+    12.59345606,
+    55.64863887
+  ]
+}, {
+  "id": "5c963676-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/8",
+  "kode": "0008",
+  "navn": "Abildgaardsgade",
+  "adresseringsnavn": "Abildgaardsgade",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/6e1dde9e-9a22-478c-8be5-e0a5287e4094",
+    "id": "6e1dde9e-9a22-478c-8be5-e0a5287e4094",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/2100",
+      "nr": "2100",
+      "navn": "København Ø"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.57330181,
+    55.69088263,
+    12.57576727,
+    55.69185936
+  ],
+  "visueltcenter": [
+    12.57453455,
+    55.69137102
+  ]
+}
+]

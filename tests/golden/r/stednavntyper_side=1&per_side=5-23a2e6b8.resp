@@ -1,0 +1,109 @@
+[
+{
+  "href": "https://api.dataforsyningen.dk/stednavntyper/Andentopografi%20flade",
+  "hovedtype": "Andentopografi flade",
+  "undertyper": [
+    "kilde",
+    "køretekniskAnlæg",
+    "landsdel",
+    "stenbrud",
+    "vejkryds",
+    "vindmøllepark"
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/stednavntyper/Andentopografi%20punkt",
+  "hovedtype": "Andentopografi punkt",
+  "undertyper": [
+    "bro",
+    "brønd",
+    "gravsted",
+    "grænsestenGrænsepæl",
+    "kilde",
+    "ledLåge",
+    "løvtræ",
+    "mindesten",
+    "motorvejskryds",
+    "nåletræ",
+    "rastepladsMedService",
+    "rastepladsUdenService",
+    "sluse",
+    "sten",
+    "strandpost",
+    "udsigtspunkt",
+    "udsigtstårn",
+    "vandfald",
+    "varde",
+    "vejkryds"
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/stednavntyper/Bebyggelse",
+  "hovedtype": "Bebyggelse",
+  "undertyper": [
+    "by",
+    "bydel",
+    "industriområde",
+    "kolonihave",
+    "sommerhusområde",
+    "sommerhusområdedel",
+    "spredtBebyggelse"
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/stednavntyper/Begravelsesplads",
+  "hovedtype": "Begravelsesplads",
+  "undertyper": [
+    "andenReligion",
+    "jødisk",
+    "kristen",
+    "muslimsk"
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/stednavntyper/Bygning",
+  "hovedtype": "Bygning",
+  "undertyper": [
+    "akvarium",
+    "andenBygning",
+    "daginstitution",
+    "efterskoleUngdomsskole",
+    "fagskole",
+    "feriecenter",
+    "folkehøjskole",
+    "folkeskole",
+    "forskningscenter",
+    "friluftsgård",
+    "fængsel",
+    "gymnasium",
+    "gård",
+    "hal",
+    "herregård",
+    "hospital",
+    "hotel",
+    "hus",
+    "kirkeAndenKristen",
+    "kirkeProtestantisk",
+    "kommunekontor",
+    "kraftvarmeværk",
+    "kursuscenter",
+    "moske",
+    "museumSamling",
+    "observatorium",
+    "privatskoleFriskole",
+    "proffesionshøjskole",
+    "regionsgård",
+    "rådhus",
+    "skadestue",
+    "slot",
+    "specialskole",
+    "synagoge",
+    "søredningsstation",
+    "terminal",
+    "terrarium",
+    "turistbureau",
+    "uddannelsescenter",
+    "universitet",
+    "vandkraftværk",
+    "vandmølle",
+    "vandrerhjem",
+    "vejrmølle"
+  ]
+}
+]

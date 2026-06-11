@@ -1,0 +1,45 @@
+[
+{
+  "tekst": "1470 Københavns Politi",
+  "politikreds": {
+    "ændret": "2026-03-27T22:17:36.249Z",
+    "geo_version": 25,
+    "geo_ændret": "2026-03-27T22:17:36.249Z",
+    "bbox": [
+      12.43824875,
+      55.53311183,
+      12.83469809,
+      55.73587822
+    ],
+    "visueltcenter": [
+      12.62259141,
+      55.60322408
+    ],
+    "dagi_id": "403212",
+    "kode": "1470",
+    "navn": "Københavns Politi",
+    "href": "https://api.dataforsyningen.dk/politikredse/1470"
+  }
+}, {
+  "tekst": "1469 Københavns Vestegns Politi",
+  "politikreds": {
+    "ændret": "2026-02-26T22:13:10.911Z",
+    "geo_version": 24,
+    "geo_ændret": "2026-02-26T22:13:10.911Z",
+    "bbox": [
+      12.14476073,
+      55.58994556,
+      12.52568184,
+      55.78434285
+    ],
+    "visueltcenter": [
+      12.25135014,
+      55.65721266
+    ],
+    "dagi_id": "403219",
+    "kode": "1469",
+    "navn": "Københavns Vestegns Politi",
+    "href": "https://api.dataforsyningen.dk/politikredse/1469"
+  }
+}
+]

@@ -1,0 +1,53 @@
+[
+{
+  "tekst": "0003 Indre By",
+  "opstillingskreds": {
+    "ændret": "2023-11-02T22:05:36.260Z",
+    "geo_version": 9,
+    "geo_ændret": "2023-11-02T22:05:36.260Z",
+    "bbox": [
+      12.55467767,
+      55.6628222,
+      12.73581427,
+      55.72478573
+    ],
+    "visueltcenter": [
+      12.58289936,
+      55.68828735
+    ],
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/3",
+    "dagi_id": "403573",
+    "nummer": "3",
+    "kode": "0003",
+    "navn": "Indre By",
+    "valgkredsnummer": "3",
+    "kredskommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1084",
+      "kode": "1084",
+      "navn": "Region Hovedstaden"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/1",
+      "nummer": "1",
+      "navn": "København"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+      "bogstav": "A",
+      "navn": "Hovedstaden"
+    },
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ]
+  }
+}
+]

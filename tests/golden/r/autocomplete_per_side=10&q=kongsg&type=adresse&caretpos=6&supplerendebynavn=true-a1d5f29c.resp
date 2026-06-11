@@ -1,0 +1,62 @@
+[
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsgaardsvej ",
+    "forslagstekst": "Kongsgaardsvej",
+    "caretpos": 15,
+    "data": {
+      "navn": "Kongsgaardsvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsgaardsvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsgaden ",
+    "forslagstekst": "Kongsgaden",
+    "caretpos": 11,
+    "data": {
+      "navn": "Kongsgaden",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsgaden"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsgården ",
+    "forslagstekst": "Kongsgården",
+    "caretpos": 12,
+    "data": {
+      "navn": "Kongsgården",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsg%C3%A5rden"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsgårds Alle ",
+    "forslagstekst": "Kongsgårds Alle",
+    "caretpos": 16,
+    "data": {
+      "navn": "Kongsgårds Alle",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsg%C3%A5rds%20Alle"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsgårdsvej ",
+    "forslagstekst": "Kongsgårdsvej",
+    "caretpos": 14,
+    "data": {
+      "navn": "Kongsgårdsvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsg%C3%A5rdsvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kongsgårdvej ",
+    "forslagstekst": "Kongsgårdvej",
+    "caretpos": 13,
+    "data": {
+      "navn": "Kongsgårdvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongsg%C3%A5rdvej"
+    }
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "ændret": "2025-08-21T21:04:39.524Z",
+  "geo_version": 9,
+  "geo_ændret": "2025-08-21T21:04:39.524Z",
+  "bbox": [
+    12.5617914,
+    55.69885594,
+    12.58783962,
+    55.70960866
+  ],
+  "visueltcenter": [
+    12.57251778,
+    55.70527602
+  ],
+  "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/1",
+  "dagi_id": "707732",
+  "nummer": "1",
+  "navn": "1. Østerbro",
+  "afstemningssted": {
+    "navn": "Idrætshuset",
+    "adgangsadresse": {
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-8121-32b8-e044-0003ba298018",
+      "id": "0a3f507a-8121-32b8-e044-0003ba298018",
+      "adressebetegnelse": "Gunnar Nu Hansens Plads 7, 2100 København Ø",
+      "koordinater": [
+        12.57484891,
+        55.70476656
+      ]
+    }
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/1",
+    "nummer": "1",
+    "navn": "Østerbro"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}

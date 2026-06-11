@@ -1,0 +1,27 @@
+{
+  "href": "https://api.dataforsyningen.dk/postnumre/1050",
+  "nr": "1050",
+  "navn": "København K",
+  "stormodtageradresser": null,
+  "bbox": [
+    12.5841266,
+    55.67871944,
+    12.58827962,
+    55.68185111
+  ],
+  "visueltcenter": [
+    12.58600133,
+    55.68065246
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ],
+  "ændret": "2025-07-08T21:03:05.192Z",
+  "geo_ændret": "2025-07-08T21:03:05.192Z",
+  "geo_version": 3,
+  "dagi_id": "191050"
+}

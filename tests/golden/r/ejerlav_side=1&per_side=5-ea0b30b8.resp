@@ -1,0 +1,73 @@
+[
+{
+  "href": "https://api.dataforsyningen.dk/ejerlav/10051",
+  "kode": 10051,
+  "navn": "Frederiksberg",
+  "bbox": [
+    12.4902788,
+    55.66556582,
+    12.55873518,
+    55.6989674
+  ],
+  "visueltcenter": [
+    12.52373151,
+    55.67936486
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/ejerlav/10151",
+  "kode": 10151,
+  "navn": "Gentofte",
+  "bbox": [
+    12.5295174,
+    55.72202708,
+    12.5888535,
+    55.75933613
+  ],
+  "visueltcenter": [
+    12.55372364,
+    55.74122794
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/ejerlav/10251",
+  "kode": 10251,
+  "navn": "Buddinge",
+  "bbox": [
+    12.48041493,
+    55.71938559,
+    12.52429983,
+    55.76023249
+  ],
+  "visueltcenter": [
+    12.503452,
+    55.73067698
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/ejerlav/10252",
+  "kode": 10252,
+  "navn": "Gladsaxe",
+  "bbox": [
+    12.44425231,
+    55.73025792,
+    12.48900367,
+    55.76131765
+  ],
+  "visueltcenter": [
+    12.46811197,
+    55.74495605
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/ejerlav/10352",
+  "kode": 10352,
+  "navn": "Hellerup",
+  "bbox": [
+    12.56733829,
+    55.72166168,
+    12.59016296,
+    55.73218928
+  ],
+  "visueltcenter": [
+    12.57974126,
+    55.72754569
+  ]
+}
+]

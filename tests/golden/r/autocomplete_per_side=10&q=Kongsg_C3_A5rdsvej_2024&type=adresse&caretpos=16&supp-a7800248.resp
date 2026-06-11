@@ -1,0 +1,77 @@
+[
+  {
+    "data": {
+      "id": "0a3f5096-769e-32b8-e044-0003ba298018",
+      "status": 1,
+      "darstatus": 3,
+      "vejkode": "4456",
+      "vejnavn": "Kongsgårdsvej",
+      "adresseringsvejnavn": "Kongsgårdsvej",
+      "husnr": "24",
+      "supplerendebynavn": null,
+      "postnr": "8260",
+      "postnrnavn": "Viby J",
+      "stormodtagerpostnr": null,
+      "stormodtagerpostnrnavn": null,
+      "kommunekode": "0751",
+      "x": 10.16374258,
+      "y": 56.12470881,
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5096-769e-32b8-e044-0003ba298018"
+    },
+    "stormodtagerpostnr": false,
+    "type": "adgangsadresse",
+    "tekst": "Kongsgårdsvej 24, , 8260 Viby J",
+    "forslagstekst": "Kongsgårdsvej 24\n8260 Viby J",
+    "caretpos": 18
+  },
+  {
+    "data": {
+      "id": "6bd46a49-e3e9-71a9-e044-00144f3ead67",
+      "status": 1,
+      "darstatus": 3,
+      "vejkode": "4531",
+      "vejnavn": "Kongsgaardsvej",
+      "adresseringsvejnavn": "Kongsgaardsvej",
+      "husnr": "24",
+      "supplerendebynavn": null,
+      "postnr": "6800",
+      "postnrnavn": "Varde",
+      "stormodtagerpostnr": null,
+      "stormodtagerpostnrnavn": null,
+      "kommunekode": "0573",
+      "x": 8.47333013,
+      "y": 55.61607331,
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/6bd46a49-e3e9-71a9-e044-00144f3ead67"
+    },
+    "stormodtagerpostnr": false,
+    "type": "adgangsadresse",
+    "tekst": "Kongsgaardsvej 24, , 6800 Varde",
+    "forslagstekst": "Kongsgaardsvej 24\n6800 Varde",
+    "caretpos": 19
+  },
+  {
+    "data": {
+      "id": "0a3f508e-5c3a-32b8-e044-0003ba298018",
+      "status": 1,
+      "darstatus": 3,
+      "vejkode": "4531",
+      "vejnavn": "Kongsgaardsvej",
+      "adresseringsvejnavn": "Kongsgaardsvej",
+      "husnr": "24X",
+      "supplerendebynavn": null,
+      "postnr": "6800",
+      "postnrnavn": "Varde",
+      "stormodtagerpostnr": null,
+      "stormodtagerpostnrnavn": null,
+      "kommunekode": "0573",
+      "x": 8.47289276,
+      "y": 55.61577436,
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f508e-5c3a-32b8-e044-0003ba298018"
+    },
+    "stormodtagerpostnr": false,
+    "type": "adgangsadresse",
+    "tekst": "Kongsgaardsvej 24X, , 6800 Varde",
+    "forslagstekst": "Kongsgaardsvej 24X\n6800 Varde",
+    "caretpos": 20
+  }
+]

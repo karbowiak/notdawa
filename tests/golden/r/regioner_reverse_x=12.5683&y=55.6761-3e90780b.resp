@@ -1,0 +1,20 @@
+{
+  "ændret": "2026-03-27T22:17:36.249Z",
+  "geo_version": 37,
+  "geo_ændret": "2026-03-27T22:17:36.249Z",
+  "bbox": [
+    11.60211644,
+    54.98354657,
+    15.31831444,
+    56.20520188
+  ],
+  "visueltcenter": [
+    12.28010559,
+    55.97837539
+  ],
+  "dagi_id": "389099",
+  "kode": "1084",
+  "navn": "Region Hovedstaden",
+  "nuts2": "DK01",
+  "href": "https://api.dataforsyningen.dk/regioner/1084"
+}

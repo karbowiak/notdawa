@@ -1,0 +1,694 @@
+[
+{
+  "href": "https://api.dataforsyningen.dk/adgangsadresser/00000667-2566-47c9-9ba0-f5ec6b8ce50f",
+  "id": "00000667-2566-47c9-9ba0-f5ec6b8ce50f",
+  "adressebetegnelse": "Hospitalsringen 68, 5260 Odense S",
+  "kvh": "04613436__68",
+  "status": 1,
+  "darstatus": 3,
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/461/3436",
+    "navn": "Hospitalsringen",
+    "adresseringsnavn": "Hospitalsringen",
+    "kode": "3436"
+  },
+  "husnr": "68",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/02da5b79-929c-f1b5-e053-d280220ac400",
+    "id": "02da5b79-929c-f1b5-e053-d280220ac400"
+  },
+  "supplerendebynavn": null,
+  "supplerendebynavn2": null,
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/5260",
+    "nr": "5260",
+    "navn": "Odense S"
+  },
+  "stormodtagerpostnummer": null,
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0461",
+    "kode": "0461",
+    "navn": "Odense"
+  },
+  "ejerlav": null,
+  "esrejendomsnr": null,
+  "matrikelnr": null,
+  "historik": {
+    "oprettet": "2015-05-07T13:00:48.533",
+    "ændret": "2025-03-12T14:37:51.176",
+    "ikrafttrædelse": "2015-05-07T13:00:48.533",
+    "nedlagt": null
+  },
+  "adgangspunkt": {
+    "id": "d90e9338-0470-41bc-8ecb-6f71dd912ff0",
+    "koordinater": [
+      10.42881503,
+      55.36090711
+    ],
+    "højde": 22.1,
+    "nøjagtighed": "A",
+    "kilde": 5,
+    "tekniskstandard": "TN",
+    "tekstretning": 200,
+    "ændret": "2023-10-10T08:39:54.785"
+  },
+  "vejpunkt": {
+    "id": "11604d86-af45-11e7-847e-066cff24d637",
+    "kilde": "Adressemyn",
+    "nøjagtighed": "A",
+    "tekniskstandard": "V0",
+    "koordinater": [
+      10.42857882,
+      55.36283464
+    ],
+    "ændret": "2021-06-29T09:50:22.812683"
+  },
+  "DDKN": {
+    "m100": "100m_61358_5905",
+    "km1": "1km_6135_590",
+    "km10": "10km_613_59"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/9148",
+    "kode": "9148",
+    "navn": "Tornbjerg"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1083",
+    "kode": "1083",
+    "navn": "Region Syddanmark"
+  },
+  "landsdel": {
+    "href": "https://api.dataforsyningen.dk/landsdele/DK031",
+    "nuts3": "DK031",
+    "navn": "Fyn"
+  },
+  "retskreds": {
+    "href": "https://api.dataforsyningen.dk/retskredse/1135",
+    "kode": "1135",
+    "navn": "Retten i Odense"
+  },
+  "politikreds": {
+    "href": "https://api.dataforsyningen.dk/politikredse/1465",
+    "kode": "1465",
+    "navn": "Fyns Politi"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/0043",
+    "kode": "0043",
+    "navn": "Odense Syd"
+  },
+  "afstemningsområde": {
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/461/25",
+    "nummer": "25",
+    "navn": "Rosengårdskolen"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/6",
+    "nummer": "6",
+    "navn": "Fyn"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/B",
+    "bogstav": "B",
+    "navn": "Sjælland-Syddanmark"
+  },
+  "zone": "Udfaset",
+  "jordstykke": null,
+  "bebyggelser": [
+    {
+      "id": "12337669-c0d6-6b98-e053-d480220a5a3f",
+      "kode": 10677,
+      "type": "by",
+      "navn": "Odense",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-c0d6-6b98-e053-d480220a5a3f"
+    }
+  ],
+  "brofast": true
+}, {
+  "href": "https://api.dataforsyningen.dk/adgangsadresser/00003301-feb4-4cb5-9b4d-8b1798e0d644",
+  "id": "00003301-feb4-4cb5-9b4d-8b1798e0d644",
+  "adressebetegnelse": "Torvestrædet 20, 3450 Allerød",
+  "kvh": "02018850__20",
+  "status": 1,
+  "darstatus": 3,
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/201/8850",
+    "navn": "Torvestrædet",
+    "adresseringsnavn": "Torvestrædet",
+    "kode": "8850"
+  },
+  "husnr": "20",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/70063cd0-f618-4500-b1c9-e72491147a88",
+    "id": "70063cd0-f618-4500-b1c9-e72491147a88"
+  },
+  "supplerendebynavn": null,
+  "supplerendebynavn2": null,
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/3450",
+    "nr": "3450",
+    "navn": "Allerød"
+  },
+  "stormodtagerpostnummer": null,
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0201",
+    "kode": "0201",
+    "navn": "Allerød"
+  },
+  "ejerlav": {
+    "kode": 80552,
+    "navn": "Lillerød By, Lillerød"
+  },
+  "esrejendomsnr": "0",
+  "matrikelnr": "3r",
+  "historik": {
+    "oprettet": "2016-08-31T11:16:02.570",
+    "ændret": "2024-04-16T08:27:37.888",
+    "ikrafttrædelse": "2016-08-31T11:16:02.570",
+    "nedlagt": null
+  },
+  "adgangspunkt": {
+    "id": "d7cf0321-a2cb-4342-b5ad-cd6298008890",
+    "koordinater": [
+      12.35551336,
+      55.86955482
+    ],
+    "højde": 47.4,
+    "nøjagtighed": "A",
+    "kilde": 5,
+    "tekniskstandard": "TN",
+    "tekstretning": 244,
+    "ændret": "2016-08-31T00:00:00.000"
+  },
+  "vejpunkt": {
+    "id": "11604d88-af45-11e7-847e-066cff24d637",
+    "kilde": "Ekstern",
+    "nøjagtighed": "B",
+    "tekniskstandard": "V0",
+    "koordinater": [
+      12.35562334,
+      55.86960791
+    ],
+    "ændret": "2018-05-03T14:08:02.125"
+  },
+  "DDKN": {
+    "m100": "100m_61966_7099",
+    "km1": "1km_6196_709",
+    "km10": "10km_619_70"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/7450",
+    "kode": "7450",
+    "navn": "Lillerød"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "landsdel": {
+    "href": "https://api.dataforsyningen.dk/landsdele/DK013",
+    "nuts3": "DK013",
+    "navn": "Nordsjælland"
+  },
+  "retskreds": {
+    "href": "https://api.dataforsyningen.dk/retskredse/1115",
+    "kode": "1115",
+    "navn": "Retten i Hillerød"
+  },
+  "politikreds": {
+    "href": "https://api.dataforsyningen.dk/politikredse/1468",
+    "kode": "1468",
+    "navn": "Nordsjællands Politi"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/0026",
+    "kode": "0026",
+    "navn": "Rudersdal"
+  },
+  "afstemningsområde": {
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/201/3",
+    "nummer": "3",
+    "navn": "Lillerød"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/3",
+    "nummer": "3",
+    "navn": "Nordsjælland"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  },
+  "zone": "Udfaset",
+  "jordstykke": {
+    "href": "https://api.dataforsyningen.dk/jordstykker/80552/3r",
+    "ejerlav": {
+      "kode": 80552,
+      "navn": "Lillerød By, Lillerød",
+      "href": "https://api.dataforsyningen.dk/ejerlav/80552"
+    },
+    "matrikelnr": "3r",
+    "esrejendomsnr": "0"
+  },
+  "bebyggelser": [
+    {
+      "id": "12337669-dd71-6b98-e053-d480220a5a3f",
+      "kode": 10829,
+      "type": "by",
+      "navn": "Lillerød",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-dd71-6b98-e053-d480220a5a3f"
+    }
+  ],
+  "brofast": true
+}, {
+  "href": "https://api.dataforsyningen.dk/adgangsadresser/0000af2c-ae73-485e-8718-dcb918021a2a",
+  "id": "0000af2c-ae73-485e-8718-dcb918021a2a",
+  "adressebetegnelse": "Jægergårdsgade 90A, 8000 Aarhus C",
+  "kvh": "07514015_90A",
+  "status": 1,
+  "darstatus": 3,
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/751/4015",
+    "navn": "Jægergårdsgade",
+    "adresseringsnavn": "Jægergårdsgade",
+    "kode": "4015"
+  },
+  "husnr": "90A",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/13cd0115-08ab-4ae7-9d70-0e8d22fbb14d",
+    "id": "13cd0115-08ab-4ae7-9d70-0e8d22fbb14d"
+  },
+  "supplerendebynavn": null,
+  "supplerendebynavn2": null,
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/8000",
+    "nr": "8000",
+    "navn": "Aarhus C"
+  },
+  "stormodtagerpostnummer": null,
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0751",
+    "kode": "0751",
+    "navn": "Aarhus"
+  },
+  "ejerlav": {
+    "kode": 2006352,
+    "navn": "Marselisborg, Århus Grunde"
+  },
+  "esrejendomsnr": "0",
+  "matrikelnr": "380b",
+  "historik": {
+    "oprettet": "2016-03-07T11:56:25.353",
+    "ændret": "2024-04-20T13:53:01.482",
+    "ikrafttrædelse": "2016-03-07T11:56:25.353",
+    "nedlagt": null
+  },
+  "adgangspunkt": {
+    "id": "71e3ba81-a974-4836-ac2d-021d66eed6bc",
+    "koordinater": [
+      10.20285443,
+      56.14811374
+    ],
+    "højde": 16.4,
+    "nøjagtighed": "A",
+    "kilde": 5,
+    "tekniskstandard": "TD",
+    "tekstretning": 193,
+    "ændret": "2016-07-05T00:00:00.000"
+  },
+  "vejpunkt": {
+    "id": "11604d89-af45-11e7-847e-066cff24d637",
+    "kilde": "Ekstern",
+    "nøjagtighed": "B",
+    "tekniskstandard": "V0",
+    "koordinater": [
+      10.20283654,
+      56.14821804
+    ],
+    "ændret": "2018-05-03T14:08:02.125"
+  },
+  "DDKN": {
+    "m100": "100m_62232_5747",
+    "km1": "1km_6223_574",
+    "km10": "10km_622_57"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/8118",
+    "kode": "8118",
+    "navn": "Sankt Pauls"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1082",
+    "kode": "1082",
+    "navn": "Region Midtjylland"
+  },
+  "landsdel": {
+    "href": "https://api.dataforsyningen.dk/landsdele/DK042",
+    "nuts3": "DK042",
+    "navn": "Østjylland"
+  },
+  "retskreds": {
+    "href": "https://api.dataforsyningen.dk/retskredse/1165",
+    "kode": "1165",
+    "navn": "Retten i Århus"
+  },
+  "politikreds": {
+    "href": "https://api.dataforsyningen.dk/politikredse/1461",
+    "kode": "1461",
+    "navn": "Østjyllands Politi"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/0065",
+    "kode": "0065",
+    "navn": "Aarhus Øst"
+  },
+  "afstemningsområde": {
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/751/21",
+    "nummer": "21",
+    "navn": "Aarhus Rådhus"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/8",
+    "nummer": "8",
+    "navn": "Østjylland"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/C",
+    "bogstav": "C",
+    "navn": "Midtjylland-Nordjylland"
+  },
+  "zone": "Udfaset",
+  "jordstykke": {
+    "href": "https://api.dataforsyningen.dk/jordstykker/2006352/380b",
+    "ejerlav": {
+      "kode": 2006352,
+      "navn": "Marselisborg, Århus Grunde",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2006352"
+    },
+    "matrikelnr": "380b",
+    "esrejendomsnr": "0"
+  },
+  "bebyggelser": [
+    {
+      "id": "12337669-a188-6b98-e053-d480220a5a3f",
+      "kode": 11045,
+      "type": "by",
+      "navn": "Aarhus",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-a188-6b98-e053-d480220a5a3f"
+    },
+    {
+      "id": "12337669-c6cf-6b98-e053-d480220a5a3f",
+      "kode": null,
+      "type": "bydel",
+      "navn": "Frederiksbjerg",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-c6cf-6b98-e053-d480220a5a3f"
+    }
+  ],
+  "brofast": true
+}, {
+  "href": "https://api.dataforsyningen.dk/adgangsadresser/0000b348-5503-498e-9f63-c04a1e532318",
+  "id": "0000b348-5503-498e-9f63-c04a1e532318",
+  "adressebetegnelse": "Mejsevej 6, Hadbjerg, 8370 Hadsten",
+  "kvh": "07101291___6",
+  "status": 1,
+  "darstatus": 3,
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/710/1291",
+    "navn": "Mejsevej",
+    "adresseringsnavn": "Mejsevej",
+    "kode": "1291"
+  },
+  "husnr": "6",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/6dd7744d-ec5f-489d-8e52-6a10af7973c6",
+    "id": "6dd7744d-ec5f-489d-8e52-6a10af7973c6"
+  },
+  "supplerendebynavn": "Hadbjerg",
+  "supplerendebynavn2": {
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/681730",
+    "dagi_id": "681730"
+  },
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/8370",
+    "nr": "8370",
+    "navn": "Hadsten"
+  },
+  "stormodtagerpostnummer": null,
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0710",
+    "kode": "0710",
+    "navn": "Favrskov"
+  },
+  "ejerlav": {
+    "kode": 910251,
+    "navn": "Hadbjerg By, Hadbjerg"
+  },
+  "esrejendomsnr": "0",
+  "matrikelnr": "15n",
+  "historik": {
+    "oprettet": "2010-04-27T14:23:58.023",
+    "ændret": "2018-07-04T18:00:00.000",
+    "ikrafttrædelse": "2010-04-27T14:23:58.023",
+    "nedlagt": null
+  },
+  "adgangspunkt": {
+    "id": "800f8df9-77e8-4144-9f3a-de78de737bd5",
+    "koordinater": [
+      10.10729543,
+      56.33046095
+    ],
+    "højde": 62.3,
+    "nøjagtighed": "A",
+    "kilde": 4,
+    "tekniskstandard": "TN",
+    "tekstretning": 266.67,
+    "ændret": "2017-12-20T00:00:00.000"
+  },
+  "vejpunkt": {
+    "id": "11604d8a-af45-11e7-847e-066cff24d637",
+    "kilde": "Ekstern",
+    "nøjagtighed": "B",
+    "tekniskstandard": "V0",
+    "koordinater": [
+      10.10699699,
+      56.33038197
+    ],
+    "ændret": "2018-05-03T14:08:02.125"
+  },
+  "DDKN": {
+    "m100": "100m_62434_5684",
+    "km1": "1km_6243_568",
+    "km10": "10km_624_56"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/8148",
+    "kode": "8148",
+    "navn": "Hadbjerg"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1082",
+    "kode": "1082",
+    "navn": "Region Midtjylland"
+  },
+  "landsdel": {
+    "href": "https://api.dataforsyningen.dk/landsdele/DK042",
+    "nuts3": "DK042",
+    "navn": "Østjylland"
+  },
+  "retskreds": {
+    "href": "https://api.dataforsyningen.dk/retskredse/1169",
+    "kode": "1169",
+    "navn": "Retten i Randers"
+  },
+  "politikreds": {
+    "href": "https://api.dataforsyningen.dk/politikredse/1461",
+    "kode": "1461",
+    "navn": "Østjyllands Politi"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/0069",
+    "kode": "0069",
+    "navn": "Favrskov"
+  },
+  "afstemningsområde": {
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/710/3",
+    "nummer": "3",
+    "navn": "Hadbjerg"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/8",
+    "nummer": "8",
+    "navn": "Østjylland"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/C",
+    "bogstav": "C",
+    "navn": "Midtjylland-Nordjylland"
+  },
+  "zone": "Udfaset",
+  "jordstykke": {
+    "href": "https://api.dataforsyningen.dk/jordstykker/910251/15n",
+    "ejerlav": {
+      "kode": 910251,
+      "navn": "Hadbjerg By, Hadbjerg",
+      "href": "https://api.dataforsyningen.dk/ejerlav/910251"
+    },
+    "matrikelnr": "15n",
+    "esrejendomsnr": "0"
+  },
+  "bebyggelser": [
+    {
+      "id": "12337669-c985-6b98-e053-d480220a5a3f",
+      "kode": 10634,
+      "type": "by",
+      "navn": "Hadbjerg",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-c985-6b98-e053-d480220a5a3f"
+    }
+  ],
+  "brofast": true
+}, {
+  "href": "https://api.dataforsyningen.dk/adgangsadresser/0000cb74-7584-4cf5-9ef7-854f328bab93",
+  "id": "0000cb74-7584-4cf5-9ef7-854f328bab93",
+  "adressebetegnelse": "Gårdbækvej 10, Amtoft, 7742 Vesløs",
+  "kvh": "07872419__10",
+  "status": 1,
+  "darstatus": 3,
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/787/2419",
+    "navn": "Gårdbækvej",
+    "adresseringsnavn": "Gårdbækvej",
+    "kode": "2419"
+  },
+  "husnr": "10",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/10bf5ee0-66cb-4dc3-ac94-4c80812340f0",
+    "id": "10bf5ee0-66cb-4dc3-ac94-4c80812340f0"
+  },
+  "supplerendebynavn": "Amtoft",
+  "supplerendebynavn2": {
+    "href": "https://api.dataforsyningen.dk/supplerendebynavne2/662990",
+    "dagi_id": "662990"
+  },
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/7742",
+    "nr": "7742",
+    "navn": "Vesløs"
+  },
+  "stormodtagerpostnummer": null,
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0787",
+    "kode": "0787",
+    "navn": "Thisted"
+  },
+  "ejerlav": {
+    "kode": 680151,
+    "navn": "Amtoft By, Arup"
+  },
+  "esrejendomsnr": "0",
+  "matrikelnr": "5ae",
+  "historik": {
+    "oprettet": "2011-01-07T10:36:19.183",
+    "ændret": "2022-05-17T13:08:53.227",
+    "ikrafttrædelse": "2011-01-07T10:36:19.183",
+    "nedlagt": null
+  },
+  "adgangspunkt": {
+    "id": "e7f17a59-45b5-4a88-827b-08993835be15",
+    "koordinater": [
+      8.94282903,
+      57.00641985
+    ],
+    "højde": 2,
+    "nøjagtighed": "A",
+    "kilde": 5,
+    "tekniskstandard": "TN",
+    "tekstretning": 283.77,
+    "ændret": "2022-05-17T13:08:53.227"
+  },
+  "vejpunkt": {
+    "id": "11604d8b-af45-11e7-847e-066cff24d637",
+    "kilde": "Adressemyn",
+    "nøjagtighed": "A",
+    "tekniskstandard": "V0",
+    "koordinater": [
+      8.94258766,
+      57.00638541
+    ],
+    "ændret": "2022-05-17T13:08:53.227128"
+  },
+  "DDKN": {
+    "m100": "100m_63181_4965",
+    "km1": "1km_6318_496",
+    "km10": "10km_631_49"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/8720",
+    "kode": "8720",
+    "navn": "Arup"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1081",
+    "kode": "1081",
+    "navn": "Region Nordjylland"
+  },
+  "landsdel": {
+    "href": "https://api.dataforsyningen.dk/landsdele/DK050",
+    "nuts3": "DK050",
+    "navn": "Nordjylland"
+  },
+  "retskreds": {
+    "href": "https://api.dataforsyningen.dk/retskredse/1162",
+    "kode": "1162",
+    "navn": "Retten i Holstebro"
+  },
+  "politikreds": {
+    "href": "https://api.dataforsyningen.dk/politikredse/1462",
+    "kode": "1462",
+    "navn": "Midt- og Vestjyllands Politi"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/0087",
+    "kode": "0087",
+    "navn": "Thisted"
+  },
+  "afstemningsområde": {
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/787/6",
+    "nummer": "6",
+    "navn": "Vesløs"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/10",
+    "nummer": "10",
+    "navn": "Nordjylland"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/C",
+    "bogstav": "C",
+    "navn": "Midtjylland-Nordjylland"
+  },
+  "zone": "Udfaset",
+  "jordstykke": {
+    "href": "https://api.dataforsyningen.dk/jordstykker/680151/5ae",
+    "ejerlav": {
+      "kode": 680151,
+      "navn": "Amtoft By, Arup",
+      "href": "https://api.dataforsyningen.dk/ejerlav/680151"
+    },
+    "matrikelnr": "5ae",
+    "esrejendomsnr": "0"
+  },
+  "bebyggelser": [
+    {
+      "id": "12337669-ab9b-6b98-e053-d480220a5a3f",
+      "kode": 17352,
+      "type": "by",
+      "navn": "Amtoft",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-ab9b-6b98-e053-d480220a5a3f"
+    }
+  ],
+  "brofast": true
+}
+]

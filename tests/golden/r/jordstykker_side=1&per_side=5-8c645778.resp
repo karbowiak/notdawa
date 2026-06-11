@@ -1,0 +1,248 @@
+[
+{
+  "matrikelnr": "101a",
+  "bbox": [
+    12.53199232,
+    55.67889357,
+    12.53256785,
+    55.67924775
+  ],
+  "visueltcenter": [
+    12.53228396,
+    55.67907414
+  ],
+  "href": "https://api.dataforsyningen.dk/jordstykker/10051/101a",
+  "ejerlav": {
+    "kode": 10051,
+    "navn": "Frederiksberg",
+    "href": "https://api.dataforsyningen.dk/ejerlav/10051"
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0147",
+    "kode": "0147",
+    "navn": "Frederiksberg"
+  },
+  "esrejendomsnr": "0",
+  "udvidet_esrejendomsnr": "0",
+  "sfeejendomsnr": "100027640",
+  "bfenummer": 100027640,
+  "ændret": "2024-02-15T22:45:25.787Z",
+  "geo_version": 2,
+  "geo_ændret": "2021-11-18T23:37:19.250Z",
+  "fælleslod": false,
+  "moderjordstykke": null,
+  "registreretareal": 1001,
+  "arealberegningsmetode": "k",
+  "vejareal": 0,
+  "vejarealberegningsmetode": "e",
+  "vandarealberegningsmetode": "ukendt",
+  "featureid": "100028538",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/7103",
+    "kode": "7103",
+    "navn": "Solbjerg"
+  },
+  "retskreds": null
+}, {
+  "matrikelnr": "101c",
+  "bbox": [
+    12.53188792,
+    55.67860326,
+    12.53248364,
+    55.67895875
+  ],
+  "visueltcenter": [
+    12.53219506,
+    55.67878577
+  ],
+  "href": "https://api.dataforsyningen.dk/jordstykker/10051/101c",
+  "ejerlav": {
+    "kode": 10051,
+    "navn": "Frederiksberg",
+    "href": "https://api.dataforsyningen.dk/ejerlav/10051"
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0147",
+    "kode": "0147",
+    "navn": "Frederiksberg"
+  },
+  "esrejendomsnr": "0",
+  "udvidet_esrejendomsnr": "0",
+  "sfeejendomsnr": "100027639",
+  "bfenummer": 100027639,
+  "ændret": "2024-02-15T22:45:25.787Z",
+  "geo_version": 1,
+  "geo_ændret": "2015-02-27T14:42:56.738Z",
+  "fælleslod": false,
+  "moderjordstykke": null,
+  "registreretareal": 1014,
+  "arealberegningsmetode": "k",
+  "vejareal": 127,
+  "vejarealberegningsmetode": "e",
+  "vandarealberegningsmetode": "ukendt",
+  "featureid": "100028537",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/7103",
+    "kode": "7103",
+    "navn": "Solbjerg"
+  },
+  "retskreds": null
+}, {
+  "matrikelnr": "103a",
+  "bbox": [
+    12.5316069,
+    55.67867658,
+    12.53203056,
+    55.67909408
+  ],
+  "visueltcenter": [
+    12.53183407,
+    55.67892097
+  ],
+  "href": "https://api.dataforsyningen.dk/jordstykker/10051/103a",
+  "ejerlav": {
+    "kode": 10051,
+    "navn": "Frederiksberg",
+    "href": "https://api.dataforsyningen.dk/ejerlav/10051"
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0147",
+    "kode": "0147",
+    "navn": "Frederiksberg"
+  },
+  "esrejendomsnr": "0",
+  "udvidet_esrejendomsnr": "0",
+  "sfeejendomsnr": "100027638",
+  "bfenummer": 100027638,
+  "ændret": "2024-02-15T22:45:25.787Z",
+  "geo_version": 1,
+  "geo_ændret": "2015-02-27T14:42:56.738Z",
+  "fælleslod": false,
+  "moderjordstykke": null,
+  "registreretareal": 788,
+  "arealberegningsmetode": "k",
+  "vejareal": 61,
+  "vejarealberegningsmetode": "e",
+  "vandarealberegningsmetode": "ukendt",
+  "featureid": "100028536",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/7103",
+    "kode": "7103",
+    "navn": "Solbjerg"
+  },
+  "retskreds": null
+}, {
+  "matrikelnr": "103b",
+  "bbox": [
+    12.53173785,
+    55.67904769,
+    12.53209667,
+    55.67928843
+  ],
+  "visueltcenter": [
+    12.53191485,
+    55.67915197
+  ],
+  "href": "https://api.dataforsyningen.dk/jordstykker/10051/103b",
+  "ejerlav": {
+    "kode": 10051,
+    "navn": "Frederiksberg",
+    "href": "https://api.dataforsyningen.dk/ejerlav/10051"
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0147",
+    "kode": "0147",
+    "navn": "Frederiksberg"
+  },
+  "esrejendomsnr": "0",
+  "udvidet_esrejendomsnr": "0",
+  "sfeejendomsnr": "100027637",
+  "bfenummer": 100027637,
+  "ændret": "2024-02-15T22:45:25.787Z",
+  "geo_version": 2,
+  "geo_ændret": "2021-11-18T23:37:19.250Z",
+  "fælleslod": false,
+  "moderjordstykke": null,
+  "registreretareal": 416,
+  "arealberegningsmetode": "k",
+  "vejareal": 0,
+  "vejarealberegningsmetode": "e",
+  "vandarealberegningsmetode": "ukendt",
+  "featureid": "100028535",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/7103",
+    "kode": "7103",
+    "navn": "Solbjerg"
+  },
+  "retskreds": null
+}, {
+  "matrikelnr": "106",
+  "bbox": [
+    12.5272997,
+    55.67915039,
+    12.5278209,
+    55.67940871
+  ],
+  "visueltcenter": [
+    12.5275658,
+    55.6792797
+  ],
+  "href": "https://api.dataforsyningen.dk/jordstykker/10051/106",
+  "ejerlav": {
+    "kode": 10051,
+    "navn": "Frederiksberg",
+    "href": "https://api.dataforsyningen.dk/ejerlav/10051"
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0147",
+    "kode": "0147",
+    "navn": "Frederiksberg"
+  },
+  "esrejendomsnr": "0",
+  "udvidet_esrejendomsnr": "0",
+  "sfeejendomsnr": "100027605",
+  "bfenummer": 100027605,
+  "ændret": "2024-02-15T22:45:25.787Z",
+  "geo_version": 1,
+  "geo_ændret": "2015-02-27T14:42:56.738Z",
+  "fælleslod": false,
+  "moderjordstykke": null,
+  "registreretareal": 670,
+  "arealberegningsmetode": "k",
+  "vejareal": 69,
+  "vejarealberegningsmetode": "e",
+  "vandarealberegningsmetode": "ukendt",
+  "featureid": "100028515",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/7103",
+    "kode": "7103",
+    "navn": "Solbjerg"
+  },
+  "retskreds": null
+}
+]

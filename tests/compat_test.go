@@ -411,11 +411,14 @@ func compareStatusBody(t *testing.T, label string, oStatus int, oBody []byte, dS
 	// from the Datafordeler bulk extract — see toleratedDiff). Tolerated diffs are
 	// still PRINTED below so they stay visible and a regression cannot hide behind
 	// the allow-list; only real diffs fail the endpoint.
-	var diffs, tolerated []diff
+	var diffs, tolerated, decayed []diff
 	for _, d := range all {
-		if toleratedDiff(label, d.path) {
+		switch {
+		case toleratedDiff(label, d.path):
 			tolerated = append(tolerated, d)
-		} else {
+		case dawaDecayedDiff(d):
+			decayed = append(decayed, d)
+		default:
 			diffs = append(diffs, d)
 		}
 	}
@@ -430,6 +433,18 @@ func compareStatusBody(t *testing.T, label string, oStatus int, oBody []byte, dS
 			fmt.Fprintf(&tb, "\n  %s: ours=%s dawa=%s", d.path, d.ours, d.dawa)
 		}
 		t.Log(tb.String())
+	}
+	if len(decayed) > 0 {
+		var db strings.Builder
+		fmt.Fprintf(&db, "%d tolerated DAWA-DECAY diff(s) %s (live DAWA degrading toward the 2026-07-01 shutdown; ours serves the real values — see dawaDecayedDiff)", len(decayed), label)
+		for i, d := range decayed {
+			if i >= maxDiffsPerEndpoint {
+				fmt.Fprintf(&db, "\n  …+%d more", len(decayed)-maxDiffsPerEndpoint)
+				break
+			}
+			fmt.Fprintf(&db, "\n  %s: ours=%s dawa=%s", d.path, d.ours, d.dawa)
+		}
+		t.Log(db.String())
 	}
 	if len(diffs) == 0 {
 		return
@@ -588,7 +603,7 @@ func compareNaboerSet(t *testing.T, label string, ov, dv any) {
 		var pair []diff
 		compareJSON(k, ov, dv, &pair)
 		for _, d := range pair {
-			if toleratedDiff(label, d.path) {
+			if toleratedDiff(label, d.path) || dawaDecayedDiff(d) {
 				tolerated = append(tolerated, d)
 			} else {
 				diffs = append(diffs, d)
@@ -816,6 +831,36 @@ func toleratedDiff(label, path string) bool {
 	return false
 }
 
+// dawaDecayedDiff reports whether a diff is live-DAWA DECAY: a field the dying
+// upstream has degraded to null/absent on its way to the 2026-07-01 shutdown
+// while WE still serve the real value. First observed 2026-06-11: the
+// address→jordstykke relation (the ejerlav/jordstykke objects and the
+// matrikelnr/esrejendomsnr leaves) returns null on live /adgangsadresser —
+// it served real values on 2026-06-01 when the whole suite was green (zone
+// "Udfaset" was the same phase-out pattern, earlier).
+//
+// The tolerance is deliberately ASYMMETRIC: only the DAWA side may be
+// null/absent. If OUR side loses the value the diff still fails — that would be
+// a regression in our join, not upstream decay. And because a decayed field is
+// null on BOTH sides once our join breaks (which compares equal and produces no
+// diff at all), TestDecayedFieldsStillServed separately pins our values for
+// these fields. Tolerated decay is still printed by compareStatusBody so the
+// decay's spread stays visible run-over-run.
+func dawaDecayedDiff(d diff) bool {
+	leaf := d.path
+	if i := strings.LastIndex(d.path, "."); i >= 0 {
+		leaf = d.path[i+1:]
+	}
+	switch leaf {
+	case "ejerlav", "jordstykke", "matrikelnr", "esrejendomsnr":
+	default:
+		return false
+	}
+	dawaNull := d.dawa == "null" || d.dawa == "<nil>" || d.dawa == "<absent>"
+	oursNull := d.ours == "null" || d.ours == "<nil>" || d.ours == "<absent>"
+	return dawaNull && !oursNull
+}
+
 // leafEqual compares two scalar leaves. Numbers compare by value; geo numeric
 // leaves are allowed to drift by up to allowGeoDriftMeters (0 by default = exact).
 func leafEqual(path string, ours, dawa any) bool {
@@ -871,14 +916,34 @@ func requireDAWA(t *testing.T) {
 	}
 }
 
-// fetch GETs full and returns (status, body), retrying on transport/truncated-body
-// errors (DAWA's gateway intermittently resets connections) AND on HTTP 429 / 5xx
+// fetch GETs full and returns (status, body). DAWA-side requests are routed
+// through the oracle (see oracle_test.go): in snapshot mode they are served
+// from the frozen tests/golden/ capture instead of the network; in capture
+// mode every live response is additionally saved verbatim. Requests to OUR
+// in-process server always hit the network path.
+func fetch(t *testing.T, full string) (int, []byte) {
+	t.Helper()
+	if rel, ok := strings.CutPrefix(full, liveDAWA); ok {
+		switch oracle() {
+		case oracleSnapshot:
+			return snapshotFetch(t, rel)
+		case oracleCapture:
+			status, body := liveFetch(t, full)
+			captureSave(rel, status, body)
+			return status, body
+		}
+	}
+	return liveFetch(t, full)
+}
+
+// liveFetch GETs over the network, retrying on transport/truncated-body errors
+// (DAWA's gateway intermittently resets connections) AND on HTTP 429 / 5xx
 // gateway throttling. The suite fires hundreds of live requests, so DAWA's rate
 // limiter occasionally returns 429 ("Too Many Requests") or a transient 502/503 —
 // those are upstream throttling, not a real status divergence, so we back off and
 // retry with longer waits. A status that PERSISTS past all retries is returned
 // as-is and fails honestly (we never substitute or hide it).
-func fetch(t *testing.T, full string) (int, []byte) {
+func liveFetch(t *testing.T, full string) (int, []byte) {
 	t.Helper()
 	var lastErr error
 	lastStatus := 0

@@ -1,0 +1,40 @@
+{
+  "id": "5c994b98-4eae-11e8-93fd-066cff24d637",
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/vejstykker/101/6152",
+  "kode": "6152",
+  "navn": "Rådhuspladsen",
+  "adresseringsnavn": "Rådhuspladsen",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/db18d58c-b16d-457b-aa1b-e92cbd8aace5",
+    "id": "db18d58c-b16d-457b-aa1b-e92cbd8aace5",
+    "darstatus": 3
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/1550",
+      "nr": "1550",
+      "navn": "København V"
+    }
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T13:00:00.000",
+    "ændret": null,
+    "nedlagt": null
+  },
+  "bbox": [
+    12.56796043,
+    55.67543886,
+    12.5709795,
+    55.67671141
+  ],
+  "visueltcenter": [
+    12.56905666,
+    55.67629223
+  ]
+}

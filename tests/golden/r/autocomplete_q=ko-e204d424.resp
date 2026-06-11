@@ -1,0 +1,202 @@
+[
+  {
+    "type": "vejnavn",
+    "tekst": "Kobækvej ",
+    "forslagstekst": "Kobækvej",
+    "caretpos": 9,
+    "data": {
+      "navn": "Kobækvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kob%C3%A6kvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobakkevej ",
+    "forslagstekst": "Kobakkevej",
+    "caretpos": 11,
+    "data": {
+      "navn": "Kobakkevej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobakkevej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelbakken ",
+    "forslagstekst": "Kobbelbakken",
+    "caretpos": 13,
+    "data": {
+      "navn": "Kobbelbakken",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelbakken"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelgårdsvej ",
+    "forslagstekst": "Kobbelgårdsvej",
+    "caretpos": 15,
+    "data": {
+      "navn": "Kobbelgårdsvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelg%C3%A5rdsvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelhave ",
+    "forslagstekst": "Kobbelhave",
+    "caretpos": 11,
+    "data": {
+      "navn": "Kobbelhave",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelhave"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelhaven ",
+    "forslagstekst": "Kobbelhaven",
+    "caretpos": 12,
+    "data": {
+      "navn": "Kobbelhaven",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelhaven"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelhøje ",
+    "forslagstekst": "Kobbelhøje",
+    "caretpos": 11,
+    "data": {
+      "navn": "Kobbelhøje",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelh%C3%B8je"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelhøjvej ",
+    "forslagstekst": "Kobbelhøjvej",
+    "caretpos": 13,
+    "data": {
+      "navn": "Kobbelhøjvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelh%C3%B8jvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelhuse ",
+    "forslagstekst": "Kobbelhuse",
+    "caretpos": 11,
+    "data": {
+      "navn": "Kobbelhuse",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelhuse"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelkildevej ",
+    "forslagstekst": "Kobbelkildevej",
+    "caretpos": 15,
+    "data": {
+      "navn": "Kobbelkildevej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelkildevej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelled ",
+    "forslagstekst": "Kobbelled",
+    "caretpos": 10,
+    "data": {
+      "navn": "Kobbelled",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelled"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelskoven ",
+    "forslagstekst": "Kobbelskoven",
+    "caretpos": 13,
+    "data": {
+      "navn": "Kobbelskoven",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelskoven"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelskovvej ",
+    "forslagstekst": "Kobbelskovvej",
+    "caretpos": 14,
+    "data": {
+      "navn": "Kobbelskovvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelskovvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelsøvej ",
+    "forslagstekst": "Kobbelsøvej",
+    "caretpos": 12,
+    "data": {
+      "navn": "Kobbelsøvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbels%C3%B8vej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelsti ",
+    "forslagstekst": "Kobbelsti",
+    "caretpos": 10,
+    "data": {
+      "navn": "Kobbelsti",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelsti"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelvænge ",
+    "forslagstekst": "Kobbelvænge",
+    "caretpos": 12,
+    "data": {
+      "navn": "Kobbelvænge",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelv%C3%A6nge"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelvænget ",
+    "forslagstekst": "Kobbelvænget",
+    "caretpos": 13,
+    "data": {
+      "navn": "Kobbelvænget",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelv%C3%A6nget"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelvangen ",
+    "forslagstekst": "Kobbelvangen",
+    "caretpos": 13,
+    "data": {
+      "navn": "Kobbelvangen",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelvangen"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelvangsvej ",
+    "forslagstekst": "Kobbelvangsvej",
+    "caretpos": 15,
+    "data": {
+      "navn": "Kobbelvangsvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelvangsvej"
+    }
+  },
+  {
+    "type": "vejnavn",
+    "tekst": "Kobbelvej ",
+    "forslagstekst": "Kobbelvej",
+    "caretpos": 10,
+    "data": {
+      "navn": "Kobbelvej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kobbelvej"
+    }
+  }
+]

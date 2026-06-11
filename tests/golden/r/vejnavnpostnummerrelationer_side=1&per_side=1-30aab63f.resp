@@ -1,0 +1,29 @@
+[
+{
+  "betegnelse": "Kongens Nytorv, 1050 København K",
+  "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/1050/Kongens%20Nytorv",
+  "vejnavn": "Kongens Nytorv",
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/1050",
+    "nr": "1050",
+    "navn": "København K"
+  },
+  "bbox": [
+    12.5847512,
+    55.67876582,
+    12.58739802,
+    55.68144783
+  ],
+  "visueltcenter": [
+    12.5852059,
+    55.68018963
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}
+]

@@ -1,0 +1,20 @@
+[
+{
+  "href": "https://api.dataforsyningen.dk/vejnavne/10.%20Februar%20Vej",
+  "navn": "10. Februar Vej",
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/6070",
+      "nr": "6070",
+      "navn": "Christiansfeld"
+    }
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0621",
+      "kode": "0621",
+      "navn": "Kolding"
+    }
+  ]
+}
+]

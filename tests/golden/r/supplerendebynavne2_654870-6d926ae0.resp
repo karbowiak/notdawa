@@ -1,0 +1,31 @@
+{
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 2,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    12.10717079,
+    55.53239575,
+    12.12954137,
+    55.54305572
+  ],
+  "visueltcenter": [
+    12.12494297,
+    55.53467993
+  ],
+  "href": "https://api.dataforsyningen.dk/supplerendebynavne2/654870",
+  "dagi_id": "654870",
+  "navn": "Havdrup",
+  "darstatus": 3,
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0269",
+    "kode": "0269",
+    "navn": "Solrød"
+  },
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/4622",
+      "nr": "4622",
+      "navn": "Havdrup"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 8,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    12.55143308,
+    55.69011141,
+    12.64061818,
+    55.73302155
+  ],
+  "visueltcenter": [
+    12.57732539,
+    55.70633293
+  ],
+  "href": "https://api.dataforsyningen.dk/opstillingskredse/1",
+  "dagi_id": "403564",
+  "nummer": "1",
+  "kode": "0001",
+  "navn": "Østerbro",
+  "valgkredsnummer": "1",
+  "kredskommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  },
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}

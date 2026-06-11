@@ -1,0 +1,238 @@
+[
+{
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 8,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    12.55143308,
+    55.69011141,
+    12.64061818,
+    55.73302155
+  ],
+  "visueltcenter": [
+    12.57732539,
+    55.70633293
+  ],
+  "href": "https://api.dataforsyningen.dk/opstillingskredse/1",
+  "dagi_id": "403564",
+  "nummer": "1",
+  "kode": "0001",
+  "navn": "Østerbro",
+  "valgkredsnummer": "1",
+  "kredskommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  },
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}, {
+  "ændret": "2026-03-27T22:17:36.249Z",
+  "geo_version": 10,
+  "geo_ændret": "2026-03-27T22:17:36.249Z",
+  "bbox": [
+    12.50464019,
+    55.60978035,
+    12.62000703,
+    55.67203109
+  ],
+  "visueltcenter": [
+    12.58702661,
+    55.651264
+  ],
+  "href": "https://api.dataforsyningen.dk/opstillingskredse/2",
+  "dagi_id": "403565",
+  "nummer": "2",
+  "kode": "0002",
+  "navn": "Sundbyvester",
+  "valgkredsnummer": "2",
+  "kredskommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  },
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}, {
+  "ændret": "2023-11-02T22:05:36.260Z",
+  "geo_version": 9,
+  "geo_ændret": "2023-11-02T22:05:36.260Z",
+  "bbox": [
+    12.55467767,
+    55.6628222,
+    12.73581427,
+    55.72478573
+  ],
+  "visueltcenter": [
+    12.58289936,
+    55.68828735
+  ],
+  "href": "https://api.dataforsyningen.dk/opstillingskredse/3",
+  "dagi_id": "403573",
+  "nummer": "3",
+  "kode": "0003",
+  "navn": "Indre By",
+  "valgkredsnummer": "3",
+  "kredskommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  },
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}, {
+  "ændret": "2024-10-04T21:02:54.978Z",
+  "geo_version": 5,
+  "geo_ændret": "2024-10-04T21:02:54.978Z",
+  "bbox": [
+    12.59348972,
+    55.63841606,
+    12.65534946,
+    55.69155575
+  ],
+  "visueltcenter": [
+    12.61608074,
+    55.66613036
+  ],
+  "href": "https://api.dataforsyningen.dk/opstillingskredse/4",
+  "dagi_id": "403566",
+  "nummer": "4",
+  "kode": "0004",
+  "navn": "Sundbyøster",
+  "valgkredsnummer": "4",
+  "kredskommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  },
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}, {
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 4,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    12.53364852,
+    55.68108182,
+    12.57125676,
+    55.71193912
+  ],
+  "visueltcenter": [
+    12.54975646,
+    55.6936112
+  ],
+  "href": "https://api.dataforsyningen.dk/opstillingskredse/5",
+  "dagi_id": "403567",
+  "nummer": "5",
+  "kode": "0005",
+  "navn": "Nørrebro",
+  "valgkredsnummer": "5",
+  "kredskommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  },
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ]
+}
+]

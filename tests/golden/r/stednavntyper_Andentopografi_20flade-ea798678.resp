@@ -1,0 +1,12 @@
+{
+  "href": "https://api.dataforsyningen.dk/stednavntyper/Andentopografi%20flade",
+  "hovedtype": "Andentopografi flade",
+  "undertyper": [
+    "landsdel",
+    "stenbrud",
+    "vejkryds",
+    "kilde",
+    "vindmøllepark",
+    "køretekniskAnlæg"
+  ]
+}

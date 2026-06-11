@@ -1,0 +1,76 @@
+[
+{
+  "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Aa",
+  "navn": "Aa",
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/5631",
+      "nr": "5631",
+      "navn": "Ebberup"
+    }
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0420",
+      "kode": "0420",
+      "navn": "Assens"
+    }
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Aabybro",
+  "navn": "Aabybro",
+  "postnumre": [],
+  "kommuner": []
+}, {
+  "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Aabylund",
+  "navn": "Aabylund",
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/5580",
+      "nr": "5580",
+      "navn": "Nørre Aaby"
+    }
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0410",
+      "kode": "0410",
+      "navn": "Middelfart"
+    }
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Aab%C3%A6k",
+  "navn": "Aabæk",
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/6200",
+      "nr": "6200",
+      "navn": "Aabenraa"
+    }
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0580",
+      "kode": "0580",
+      "navn": "Aabenraa"
+    }
+  ]
+}, {
+  "href": "https://api.dataforsyningen.dk/supplerendebynavne2/Aab%C3%B8lling",
+  "navn": "Aabølling",
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/6683",
+      "nr": "6683",
+      "navn": "Føvling"
+    }
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0575",
+      "kode": "0575",
+      "navn": "Vejen"
+    }
+  ]
+}
+]

@@ -1,0 +1,65 @@
+[
+{
+  "tekst": "Helligånds",
+  "menighedsrådsafstemningsområde": {
+    "ændret": "2023-11-02T22:05:36.260Z",
+    "geo_version": 5,
+    "geo_ændret": "2023-11-02T22:05:36.260Z",
+    "bbox": [
+      12.56342763,
+      55.66719221,
+      12.58534207,
+      55.68333631
+    ],
+    "visueltcenter": [
+      12.57165114,
+      55.67358892
+    ],
+    "href": "https://api.dataforsyningen.dk/menighedsraadsafstemningsomraader/101/1",
+    "dagi_id": "577555",
+    "nummer": "1",
+    "navn": "Helligånds",
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/7002",
+      "kode": "7002",
+      "navn": "Helligånds"
+    }
+  }
+}, {
+  "tekst": "Helligånds",
+  "menighedsrådsafstemningsområde": {
+    "ændret": "2023-04-20T21:02:32.537Z",
+    "geo_version": 7,
+    "geo_ændret": "2023-04-20T21:02:32.537Z",
+    "bbox": [
+      10.13086654,
+      56.17016492,
+      10.18773712,
+      56.19058982
+    ],
+    "visueltcenter": [
+      10.16797921,
+      56.17814615
+    ],
+    "href": "https://api.dataforsyningen.dk/menighedsraadsafstemningsomraader/751/52",
+    "dagi_id": "577797",
+    "nummer": "52",
+    "navn": "Helligånds",
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0751",
+      "kode": "0751",
+      "navn": "Aarhus"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/9090",
+      "kode": "9090",
+      "navn": "Helligånds"
+    }
+  }
+}
+]

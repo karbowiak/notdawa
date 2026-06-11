@@ -1,0 +1,24 @@
+{
+  "txid": 4128503,
+  "tidspunkt": "2026-06-11T17:02:20.890Z",
+  "operationer": [
+    {
+      "entitet": "dar1_navngivenvej_aktuel",
+      "inserts": 0,
+      "updates": 1,
+      "deletes": 0
+    },
+    {
+      "entitet": "dar1_navngivenvej_historik",
+      "inserts": 1,
+      "updates": 1,
+      "deletes": 0
+    },
+    {
+      "entitet": "navngivenvej",
+      "inserts": 0,
+      "updates": 1,
+      "deletes": 0
+    }
+  ]
+}

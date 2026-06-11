@@ -1,0 +1,423 @@
+[
+{
+  "tekst": "7469 Vordingborg",
+  "sogn": {
+    "ændret": "2023-06-07T21:02:29.192Z",
+    "geo_version": 11,
+    "geo_ændret": "2023-06-07T21:02:29.192Z",
+    "bbox": [
+      11.60945972,
+      54.96782243,
+      12.01569365,
+      55.08332895
+    ],
+    "visueltcenter": [
+      11.97896404,
+      54.99934479
+    ],
+    "dagi_id": "104505",
+    "kode": "7469",
+    "navn": "Vordingborg",
+    "href": "https://api.dataforsyningen.dk/sogne/7469"
+  }
+}, {
+  "tekst": "8146 Vorup",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 8,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      9.98617952,
+      56.41815008,
+      10.05948309,
+      56.45796654
+    ],
+    "visueltcenter": [
+      10.03129061,
+      56.44661784
+    ],
+    "dagi_id": "77832",
+    "kode": "8146",
+    "navn": "Vorup",
+    "href": "https://api.dataforsyningen.dk/sogne/8146"
+  }
+}, {
+  "tekst": "8563 Vorde",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 9,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      9.30652171,
+      56.49414592,
+      9.4378719,
+      56.54123312
+    ],
+    "visueltcenter": [
+      9.37543072,
+      56.51943536
+    ],
+    "dagi_id": "47279",
+    "kode": "8563",
+    "navn": "Vorde",
+    "href": "https://api.dataforsyningen.dk/sogne/8563"
+  }
+}, {
+  "tekst": "8639 Vorning",
+  "sogn": {
+    "ændret": "2024-01-23T22:04:07.687Z",
+    "geo_version": 6,
+    "geo_ændret": "2024-01-23T22:04:07.687Z",
+    "bbox": [
+      9.68235324,
+      56.50632781,
+      9.79634205,
+      56.56252524
+    ],
+    "visueltcenter": [
+      9.75296183,
+      56.53557389
+    ],
+    "dagi_id": "42909",
+    "kode": "8639",
+    "navn": "Vorning",
+    "href": "https://api.dataforsyningen.dk/sogne/8639"
+  }
+}, {
+  "tekst": "8766 Vorgod",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 4,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      8.63489778,
+      56.04903655,
+      8.78186273,
+      56.14577126
+    ],
+    "visueltcenter": [
+      8.71406133,
+      56.10057541
+    ],
+    "dagi_id": "7830",
+    "kode": "8766",
+    "navn": "Vorgod",
+    "href": "https://api.dataforsyningen.dk/sogne/8766"
+  }
+}, {
+  "tekst": "8944 Vorbasse",
+  "sogn": {
+    "ændret": "2024-02-05T22:01:25.064Z",
+    "geo_version": 4,
+    "geo_ændret": "2024-02-05T22:01:25.064Z",
+    "bbox": [
+      8.9701191,
+      55.59339151,
+      9.18891815,
+      55.66863504
+    ],
+    "visueltcenter": [
+      9.08829722,
+      55.62658663
+    ],
+    "dagi_id": "34341",
+    "kode": "8944",
+    "navn": "Vorbasse",
+    "href": "https://api.dataforsyningen.dk/sogne/8944"
+  }
+}, {
+  "tekst": "9129 Vorupør",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 4,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      8.34189758,
+      56.92101526,
+      8.424794,
+      56.96283184
+    ],
+    "visueltcenter": [
+      8.37171117,
+      56.94341409
+    ],
+    "dagi_id": "21456",
+    "kode": "9129",
+    "navn": "Vorupør",
+    "href": "https://api.dataforsyningen.dk/sogne/9129"
+  }
+}, {
+  "tekst": "9284 Vorslunde",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 3,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      9.06995319,
+      55.83887738,
+      9.16693734,
+      55.87722181
+    ],
+    "visueltcenter": [
+      9.10383492,
+      55.85811431
+    ],
+    "dagi_id": "412960",
+    "kode": "9284",
+    "navn": "Vorslunde",
+    "href": "https://api.dataforsyningen.dk/sogne/9284"
+  }
+}, {
+  "tekst": "7082 Vor Frelsers",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 5,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      12.58697812,
+      55.66087013,
+      12.73434461,
+      55.70845237
+    ],
+    "visueltcenter": [
+      12.61596036,
+      55.674069
+    ],
+    "dagi_id": "107333",
+    "kode": "7082",
+    "navn": "Vor Frelsers",
+    "href": "https://api.dataforsyningen.dk/sogne/7082"
+  }
+}, {
+  "tekst": "7158 Vor Frue",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 3,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      12.04863005,
+      55.58496382,
+      12.14809539,
+      55.63029887
+    ],
+    "visueltcenter": [
+      12.09153025,
+      55.60751262
+    ],
+    "dagi_id": "111276",
+    "kode": "7158",
+    "navn": "Vor Frue",
+    "href": "https://api.dataforsyningen.dk/sogne/7158"
+  }
+}, {
+  "tekst": "7268 Vor Frue",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 6,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      11.04655644,
+      55.66767435,
+      11.19868506,
+      55.75686172
+    ],
+    "visueltcenter": [
+      11.16779894,
+      55.74282974
+    ],
+    "dagi_id": "98042",
+    "kode": "7268",
+    "navn": "Vor Frue",
+    "href": "https://api.dataforsyningen.dk/sogne/7268"
+  }
+}, {
+  "tekst": "7675 Vor Frue",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 7,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      10.58259608,
+      55.05707904,
+      10.64008466,
+      55.08567761
+    ],
+    "visueltcenter": [
+      10.6112738,
+      55.0680144
+    ],
+    "dagi_id": "60023",
+    "kode": "7675",
+    "navn": "Vor Frue",
+    "href": "https://api.dataforsyningen.dk/sogne/7675"
+  }
+}, {
+  "tekst": "7779 Vor Frue",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 3,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      10.39034885,
+      55.39063782,
+      10.42055404,
+      55.40281093
+    ],
+    "visueltcenter": [
+      10.4039066,
+      55.39624018
+    ],
+    "dagi_id": "59571",
+    "kode": "7779",
+    "navn": "Vor Frue",
+    "href": "https://api.dataforsyningen.dk/sogne/7779"
+  }
+}, {
+  "tekst": "7894 Vor Frelsers",
+  "sogn": {
+    "ændret": "2024-05-27T21:01:23.728Z",
+    "geo_version": 9,
+    "geo_ændret": "2024-05-27T21:01:23.728Z",
+    "bbox": [
+      9.52140652,
+      55.70397977,
+      9.58825759,
+      55.72152211
+    ],
+    "visueltcenter": [
+      9.54852306,
+      55.71085992
+    ],
+    "dagi_id": "29619",
+    "kode": "7894",
+    "navn": "Vor Frelsers",
+    "href": "https://api.dataforsyningen.dk/sogne/7894"
+  }
+}, {
+  "tekst": "8053 Vor Frelsers",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 9,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      9.811678,
+      55.86142251,
+      9.86448155,
+      55.88740906
+    ],
+    "visueltcenter": [
+      9.82482968,
+      55.87795632
+    ],
+    "dagi_id": "38472",
+    "kode": "8053",
+    "navn": "Vor Frelsers",
+    "href": "https://api.dataforsyningen.dk/sogne/8053"
+  }
+}, {
+  "tekst": "8115 Vor Frue",
+  "sogn": {
+    "ændret": "2023-08-21T21:01:57.382Z",
+    "geo_version": 7,
+    "geo_ændret": "2023-08-21T21:01:57.382Z",
+    "bbox": [
+      10.17341327,
+      56.14382244,
+      10.20956951,
+      56.1612448
+    ],
+    "visueltcenter": [
+      10.19758166,
+      56.15375642
+    ],
+    "dagi_id": "71210",
+    "kode": "8115",
+    "navn": "Vor Frue",
+    "href": "https://api.dataforsyningen.dk/sogne/8115"
+  }
+}, {
+  "tekst": "8366 Vor Frelsers",
+  "sogn": {
+    "ændret": "2023-03-24T22:28:38.837Z",
+    "geo_version": 5,
+    "geo_ændret": "2023-03-24T22:28:38.837Z",
+    "bbox": [
+      9.8987225,
+      57.04886766,
+      9.91510926,
+      57.05826479
+    ],
+    "visueltcenter": [
+      9.90686828,
+      57.05327405
+    ],
+    "dagi_id": "54123",
+    "kode": "8366",
+    "navn": "Vor Frelsers",
+    "href": "https://api.dataforsyningen.dk/sogne/8366"
+  }
+}, {
+  "tekst": "8368 Vor Frue",
+  "sogn": {
+    "ændret": "2024-05-27T21:01:23.728Z",
+    "geo_version": 13,
+    "geo_ændret": "2024-05-27T21:01:23.728Z",
+    "bbox": [
+      9.91875219,
+      57.0224347,
+      9.93596677,
+      57.05068088
+    ],
+    "visueltcenter": [
+      9.92807208,
+      57.04586227
+    ],
+    "dagi_id": "82987",
+    "kode": "8368",
+    "navn": "Vor Frue",
+    "href": "https://api.dataforsyningen.dk/sogne/8368"
+  }
+}, {
+  "tekst": "8905 Vor Frelsers",
+  "sogn": {
+    "ændret": "2024-09-30T21:02:55.720Z",
+    "geo_version": 4,
+    "geo_ændret": "2024-09-30T21:02:55.720Z",
+    "bbox": [
+      8.44702256,
+      55.46228672,
+      8.46345211,
+      55.47960608
+    ],
+    "visueltcenter": [
+      8.45561602,
+      55.47400617
+    ],
+    "dagi_id": "5517",
+    "kode": "8905",
+    "navn": "Vor Frelsers",
+    "href": "https://api.dataforsyningen.dk/sogne/8905"
+  }
+}, {
+  "tekst": "8961 Vor Frue",
+  "sogn": {
+    "ændret": "2024-05-27T21:01:23.728Z",
+    "geo_version": 7,
+    "geo_ændret": "2024-05-27T21:01:23.728Z",
+    "bbox": [
+      9.46928172,
+      55.21459934,
+      9.52080217,
+      55.28648351
+    ],
+    "visueltcenter": [
+      9.49982313,
+      55.25956817
+    ],
+    "dagi_id": "26950",
+    "kode": "8961",
+    "navn": "Vor Frue",
+    "href": "https://api.dataforsyningen.dk/sogne/8961"
+  }
+}
+]

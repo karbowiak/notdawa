@@ -1,0 +1,754 @@
+[
+{
+  "navn": "København",
+  "navnestatus": "suAutoriseret",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/290f85b8-8c7a-6fd1-e053-d480220af996/K%C3%B8benhavn",
+  "sted": {
+    "id": "290f85b8-8c7a-6fd1-e053-d480220af996",
+    "hovedtype": "Bebyggelse",
+    "undertype": "by",
+    "primærtnavn": "København",
+    "primærnavnestatus": "suAutoriseret",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/290f85b8-8c7a-6fd1-e053-d480220af996",
+    "egenskaber": {
+      "bebyggelseskode": 18368,
+      "indbyggerantal": null
+    },
+    "visueltcenter": [
+      12.56284182,
+      55.70552403
+    ],
+    "bbox": [
+      12.44476787,
+      55.61312333,
+      12.6584064,
+      55.73587954
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      },
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0147",
+        "kode": "0147",
+        "navn": "Frederiksberg"
+      },
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0157",
+        "kode": "0157",
+        "navn": "Gentofte"
+      },
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0159",
+        "kode": "0159",
+        "navn": "Gladsaxe"
+      },
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0163",
+        "kode": "0163",
+        "navn": "Herlev"
+      },
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0167",
+        "kode": "0167",
+        "navn": "Hvidovre"
+      },
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0175",
+        "kode": "0175",
+        "navn": "Rødovre"
+      },
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0185",
+        "kode": "0185",
+        "navn": "Tårnby"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-1575-5d41-e053-d380220a2006/K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-1575-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "gård",
+    "primærtnavn": "København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-1575-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      9.75214378,
+      55.97425477
+    ],
+    "bbox": [
+      9.75201824,
+      55.97417491,
+      9.75226933,
+      55.97433463
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0615",
+        "kode": "0615",
+        "navn": "Horsens"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-1886-5d41-e053-d380220a2006/K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-1886-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "gård",
+    "primærtnavn": "København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-1886-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      9.54391347,
+      55.82622791
+    ],
+    "bbox": [
+      9.54349626,
+      55.82615957,
+      9.5439859,
+      55.82628266
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0766",
+        "kode": "0766",
+        "navn": "Hedensted"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-5f35-5d41-e053-d380220a2006/K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-5f35-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "hus",
+    "primærtnavn": "København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-5f35-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      10.21826148,
+      56.29182301
+    ],
+    "bbox": [
+      10.21819471,
+      56.29177238,
+      10.21832824,
+      56.29187364
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0751",
+        "kode": "0751",
+        "navn": "Aarhus"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "København H",
+  "navnestatus": "suAutoriseret",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/1233766a-2808-6b98-e053-d480220a5a3f/K%C3%B8benhavn%20H",
+  "sted": {
+    "id": "1233766a-2808-6b98-e053-d480220a5a3f",
+    "hovedtype": "Standsningssted",
+    "undertype": "tog",
+    "primærtnavn": "København H",
+    "primærnavnestatus": "suAutoriseret",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/1233766a-2808-6b98-e053-d480220a5a3f",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.56572962,
+      55.67272704
+    ],
+    "bbox": null,
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "København Syd",
+  "navnestatus": "uofficielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/1233766a-2895-6b98-e053-d480220a5a3f/K%C3%B8benhavn%20Syd",
+  "sted": {
+    "id": "1233766a-2895-6b98-e053-d480220a5a3f",
+    "hovedtype": "Standsningssted",
+    "undertype": "tog",
+    "primærtnavn": "København Syd",
+    "primærnavnestatus": "uofficielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/1233766a-2895-6b98-e053-d480220a5a3f",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.51675897,
+      55.65234368
+    ],
+    "bbox": null,
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": [
+      {
+        "navn": "Ny Ellebjerg Station",
+        "navnestatus": "suAutoriseret"
+      }
+    ]
+  }
+}, {
+  "navn": "DDSKS København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-d97e-5d41-e053-d380220a2006/DDSKS%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-d97e-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "uddannelsescenter",
+    "primærtnavn": "DDSKS København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-d97e-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.60661722,
+      55.6817713
+    ],
+    "bbox": [
+      12.60533335,
+      55.68032115,
+      12.6071375,
+      55.68236561
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": [
+      {
+        "navn": "Den danske Scenekunstskole",
+        "navnestatus": "uofficielt"
+      }
+    ]
+  }
+}, {
+  "navn": "Filipskolen København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-c846-5d41-e053-d380220a2006/Filipskolen%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-c846-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "privatskoleFriskole",
+    "primærtnavn": "Filipskolen København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-c846-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.63339031,
+      55.65950733
+    ],
+    "bbox": [
+      12.63273795,
+      55.65929107,
+      12.63367204,
+      55.65958436
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "Aalborg Universitet København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/205454e2-0875-b6bb-e053-d480220a5059/Aalborg%20Universitet%20K%C3%B8benhavn",
+  "sted": {
+    "id": "205454e2-0875-b6bb-e053-d480220a5059",
+    "hovedtype": "Bygning",
+    "undertype": "universitet",
+    "primærtnavn": "Aalborg Universitet København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/205454e2-0875-b6bb-e053-d480220a5059",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.54317286,
+      55.65037583
+    ],
+    "bbox": [
+      12.54117621,
+      55.64857022,
+      12.54373401,
+      55.65108233
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "Studieskolen i København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-db77-5d41-e053-d380220a2006/Studieskolen%20i%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-db77-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "fagskole",
+    "primærtnavn": "Studieskolen i København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-db77-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.58462262,
+      55.68272946
+    ],
+    "bbox": [
+      12.58435463,
+      55.68252496,
+      12.58492379,
+      55.68283246
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "Nationalmuseet i København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-c13b-5d41-e053-d380220a2006/Nationalmuseet%20i%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-c13b-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "museumSamling",
+    "primærtnavn": "Nationalmuseet i København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-c13b-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.57411888,
+      55.67444545
+    ],
+    "bbox": [
+      12.57329573,
+      55.67397015,
+      12.57638265,
+      55.67542573
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "København Huse",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/12337669-c521-6b98-e053-d480220a5a3f/K%C3%B8benhavn%20Huse",
+  "sted": {
+    "id": "12337669-c521-6b98-e053-d480220a5a3f",
+    "hovedtype": "Bebyggelse",
+    "undertype": "by",
+    "primærtnavn": "København Huse",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/12337669-c521-6b98-e053-d480220a5a3f",
+    "egenskaber": {
+      "bebyggelseskode": 16935,
+      "indbyggerantal": null
+    },
+    "visueltcenter": [
+      9.97307169,
+      55.45520773
+    ],
+    "bbox": [
+      9.97178444,
+      55.45477303,
+      9.97398777,
+      55.45636539
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0410",
+        "kode": "0410",
+        "navn": "Middelfart"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "Lille København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-440a-5d41-e053-d380220a2006/Lille%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-440a-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "hus",
+    "primærtnavn": "Lille København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-440a-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      10.34790302,
+      55.14565475
+    ],
+    "bbox": [
+      10.34773346,
+      55.14559464,
+      10.34807259,
+      55.14571486
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0430",
+        "kode": "0430",
+        "navn": "Faaborg-Midtfyn"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "Waldorf Skolen i København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-d8c7-5d41-e053-d380220a2006/Waldorf%20Skolen%20i%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-d8c7-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "privatskoleFriskole",
+    "primærtnavn": "Waldorf Skolen i København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-d8c7-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.63577722,
+      55.6486894
+    ],
+    "bbox": [
+      12.6351746,
+      55.64850121,
+      12.63602772,
+      55.64903061
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "København Syd Metro Station",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/1a9b8758-138d-8ad0-e063-6f4f210a4302/K%C3%B8benhavn%20Syd%20Metro%20Station",
+  "sted": {
+    "id": "1a9b8758-138d-8ad0-e063-6f4f210a4302",
+    "hovedtype": "Standsningssted",
+    "undertype": "tog",
+    "primærtnavn": "København Syd Metro Station",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/1a9b8758-138d-8ad0-e063-6f4f210a4302",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.51549686,
+      55.6534268
+    ],
+    "bbox": null,
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "Aleris-Hamlet København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-dd5c-5d41-e053-d380220a2006/Aleris-Hamlet%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-dd5c-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "hospital",
+    "primærtnavn": "Aleris-Hamlet København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-dd5c-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.47579407,
+      55.72726076
+    ],
+    "bbox": [
+      12.47488994,
+      55.7268403,
+      12.47678003,
+      55.72777585
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0159",
+        "kode": "0159",
+        "navn": "Gladsaxe"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "IT-Universitetet i København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-d9c5-5d41-e053-d380220a2006/IT-Universitetet%20i%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-d9c5-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "universitet",
+    "primærtnavn": "IT-Universitetet i København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-d9c5-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.59106153,
+      55.65959795
+    ],
+    "bbox": [
+      12.59052227,
+      55.65893732,
+      12.59163887,
+      55.66015731
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}, {
+  "navn": "DCU-Camping København - Absalon",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/12337669-6803-6b98-e053-d480220a5a3f/DCU-Camping%20K%C3%B8benhavn%20-%20Absalon",
+  "sted": {
+    "id": "12337669-6803-6b98-e053-d480220a5a3f",
+    "hovedtype": "Campingplads",
+    "undertype": "Campingplads",
+    "primærtnavn": "DCU-Camping København - Absalon",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/12337669-6803-6b98-e053-d480220a5a3f",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.43150489,
+      55.67207731
+    ],
+    "bbox": [
+      12.42892977,
+      55.67036928,
+      12.43555827,
+      55.67370677
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0153",
+        "kode": "0153",
+        "navn": "Brøndby"
+      },
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0175",
+        "kode": "0175",
+        "navn": "Rødovre"
+      }
+    ],
+    "sekundærenavne": [
+      {
+        "navn": "Absalon Camping",
+        "navnestatus": "uofficielt"
+      }
+    ]
+  }
+}, {
+  "navn": "Den Lille Skole i København",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/19e4392f-c84f-5d41-e053-d380220a2006/Den%20Lille%20Skole%20i%20K%C3%B8benhavn",
+  "sted": {
+    "id": "19e4392f-c84f-5d41-e053-d380220a2006",
+    "hovedtype": "Bygning",
+    "undertype": "privatskoleFriskole",
+    "primærtnavn": "Den Lille Skole i København",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/19e4392f-c84f-5d41-e053-d380220a2006",
+    "egenskaber": {},
+    "visueltcenter": [
+      12.48693417,
+      55.69912255
+    ],
+    "bbox": [
+      12.4868143,
+      55.6990334,
+      12.48705403,
+      55.69921171
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0101",
+        "kode": "0101",
+        "navn": "København"
+      }
+    ],
+    "sekundærenavne": [
+      {
+        "navn": "Lilleskolen",
+        "navnestatus": "uofficielt"
+      }
+    ]
+  }
+}, {
+  "navn": "Københavnerhede",
+  "navnestatus": "officielt",
+  "brugsprioritet": "primær",
+  "href": "https://api.dataforsyningen.dk/stednavne2/12337669-7bd5-6b98-e053-d480220a5a3f/K%C3%B8benhavnerhede",
+  "sted": {
+    "id": "12337669-7bd5-6b98-e053-d480220a5a3f",
+    "hovedtype": "Naturareal",
+    "undertype": "agerMark",
+    "primærtnavn": "Københavnerhede",
+    "primærnavnestatus": "officielt",
+    "ændret": "2026-05-04T22:02:01.427Z",
+    "geo_ændret": "2026-05-04T22:02:01.427Z",
+    "geo_version": 1,
+    "href": "https://api.dataforsyningen.dk/steder/12337669-7bd5-6b98-e053-d480220a5a3f",
+    "egenskaber": {},
+    "visueltcenter": [
+      9.18780487,
+      56.08679738
+    ],
+    "bbox": [
+      9.15055036,
+      56.07454597,
+      9.21122144,
+      56.09557533
+    ],
+    "kommuner": [
+      {
+        "href": "https://api.dataforsyningen.dk/kommuner/0756",
+        "kode": "0756",
+        "navn": "Ikast-Brande"
+      }
+    ],
+    "sekundærenavne": []
+  }
+}
+]

@@ -118,16 +118,30 @@ var fladTolerated = map[string]bool{
 	"tekstretning": true, "højde": true,
 }
 
+// fladDecayed holds the flat-projection twins of the jordstykke relation that
+// live DAWA has degraded to null on its way to the 2026-07-01 shutdown (first
+// observed 2026-06-11; the fields served real values on 2026-06-01). Same
+// asymmetric rule as dawaDecayedDiff in compat_test.go: tolerated ONLY when the
+// DAWA side is null and ours is not — if WE go null too the pair compares equal
+// here, which is why TestDecayedFieldsStillServed pins our values separately.
+var fladDecayed = map[string]bool{
+	"ejerlavkode": true, "ejerlavnavn": true, "esrejendomsnr": true, "matrikelnr": true,
+	"jordstykke_ejerlavkode": true, "jordstykke_ejerlavnavn": true,
+	"jordstykke_esrejendomsnr": true, "jordstykke_matrikelnr": true,
+}
+
 // compareFladObject asserts ours/dawa flad objects have the SAME keys in the SAME
 // order and equal values on every non-tolerated field. etrs89koordinat_* may drift
-// sub-mm (shared-source float last-bits). Returns the list of real diffs.
-func compareFladObject(prefix string, ov, dv any) []diff {
+// sub-mm (shared-source float last-bits). Returns the list of real diffs plus the
+// number of DAWA-decay skips (dawa-side null on a fladDecayed key).
+func compareFladObject(prefix string, ov, dv any) ([]diff, int) {
 	om, ook := ov.(map[string]any)
 	dm, dok := dv.(map[string]any)
 	if !ook || !dok {
-		return []diff{{prefix, kind(ov), kind(dv)}}
+		return []diff{{prefix, kind(ov), kind(dv)}}, 0
 	}
 	var diffs []diff
+	decayed := 0
 	ok, dk := sortedKeys(om), sortedKeys(dm)
 	if strings.Join(ok, ",") != strings.Join(dk, ",") {
 		diffs = append(diffs, diff{prefix + " <keyset>", strings.Join(ok, ","), strings.Join(dk, ",")})
@@ -137,6 +151,10 @@ func compareFladObject(prefix string, ov, dv any) []diff {
 			continue
 		}
 		ovv, dvv := om[k], dm[k]
+		if fladDecayed[k] && dvv == nil && ovv != nil {
+			decayed++
+			continue
+		}
 		if strings.HasPrefix(k, "etrs89koordinat_") {
 			of, ofok := toFloat(ovv)
 			df, dfok := toFloat(dvv)
@@ -148,7 +166,7 @@ func compareFladObject(prefix string, ov, dv any) []diff {
 		compareJSON(prefix+k, ovv, dvv, &sub)
 		diffs = append(diffs, sub...)
 	}
-	return diffs
+	return diffs, decayed
 }
 
 // sortedKeys returns a decoded object's member keys sorted — a SET check (Go maps
@@ -178,8 +196,8 @@ func compareFladSingle(t *testing.T, path string) {
 	}
 	ov, _ := decodeJSON(oBody)
 	dv, _ := decodeJSON(dBody)
-	diffs := compareFladObject("", ov, dv)
-	reportFladDiffs(t, path, diffs)
+	diffs, decayed := compareFladObject("", ov, dv)
+	reportFladDiffs(t, path, diffs, decayed)
 }
 
 // compareFladCollection compares a flad collection page: same length, same id
@@ -201,14 +219,20 @@ func compareFladCollection(t *testing.T, path string) {
 		return
 	}
 	var diffs []diff
+	decayed := 0
 	for i := range dArr {
-		diffs = append(diffs, compareFladObject(fmt.Sprintf("[%d].", i), oArr[i], dArr[i])...)
+		d, dec := compareFladObject(fmt.Sprintf("[%d].", i), oArr[i], dArr[i])
+		diffs = append(diffs, d...)
+		decayed += dec
 	}
-	reportFladDiffs(t, path, diffs)
+	reportFladDiffs(t, path, diffs, decayed)
 }
 
-func reportFladDiffs(t *testing.T, path string, diffs []diff) {
+func reportFladDiffs(t *testing.T, path string, diffs []diff, decayed int) {
 	t.Helper()
+	if decayed > 0 {
+		t.Logf("flad %s: %d tolerated DAWA-DECAY field(s) (upstream nulled the jordstykke relation while dying; ours serves the real values — see fladDecayed)", path, decayed)
+	}
 	if len(diffs) == 0 {
 		t.Logf("flad %s: matches DAWA (key set+order identical; tolerated: historik ts, tekstretning/højde null, etrs89 sub-mm)", path)
 		return
@@ -410,6 +434,48 @@ func pathQuery(path string) string {
 		return path[i+1:]
 	}
 	return ""
+}
+
+// TestDecayedFieldsStillServed pins OUR values for the fields live DAWA has
+// degraded to null (the decay tolerated by dawaDecayedDiff/fladDecayed). The
+// decay tolerance is asymmetric, but once our own jordstykke join broke too the
+// two nulls would compare EQUAL and no diff would ever surface — this pin is
+// the regression guard that keeps our side honest. The expected values were
+// byte-verified against HEALTHY live DAWA on 2026-06-01 (suite fully green).
+// Purely ours-vs-pin: no live DAWA involved. If the pinned address is ever
+// decommissioned in DAR, update the pin from another address with a jordstykke.
+func TestDecayedFieldsStillServed(t *testing.T) {
+	if ourBase == "" {
+		t.Skip("no DB — server not started (set DATABASE_URL)")
+	}
+	status, body := fetch(t, ourBase+"/adgangsadresser/00000667-2566-47c9-9ba0-f5ec6b8ce50f?struktur=flad")
+	if status != 200 {
+		t.Fatalf("pinned address fetch: status %d: %s", status, snippet(body))
+	}
+	v, err := decodeJSON(body)
+	if err != nil {
+		t.Fatalf("pinned address: %v", err)
+	}
+	m, ok := v.(map[string]any)
+	if !ok {
+		t.Fatalf("pinned address: not an object")
+	}
+	want := map[string]string{
+		"ejerlavkode":              "350455",
+		"ejerlavnavn":              "Hollufgård Hgd., Fraugde",
+		"esrejendomsnr":            "0",
+		"matrikelnr":               "1f",
+		"jordstykke_ejerlavkode":   "350455",
+		"jordstykke_ejerlavnavn":   "Hollufgård Hgd., Fraugde",
+		"jordstykke_esrejendomsnr": "0",
+		"jordstykke_matrikelnr":    "1f",
+	}
+	for k, w := range want {
+		got, present := m[k]
+		if !present || got == nil || fmt.Sprint(got) != w {
+			t.Errorf("decayed-field pin %s: ours=%v want=%s (our jordstykke join regressed?)", k, got, w)
+		}
+	}
 }
 
 // label shortens a request path to a readable subtest name (q + the distinguishing

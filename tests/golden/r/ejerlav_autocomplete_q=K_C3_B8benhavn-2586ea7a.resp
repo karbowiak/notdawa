@@ -1,0 +1,143 @@
+[
+{
+  "tekst": "2000152 Brønshøj, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000152",
+    "kode": 2000152,
+    "navn": "Brønshøj, København"
+  }
+}, {
+  "tekst": "2000154 Damhussøen, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000154",
+    "kode": 2000154,
+    "navn": "Damhussøen, København"
+  }
+}, {
+  "tekst": "2000155 Eksercerpladsen, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000155",
+    "kode": 2000155,
+    "navn": "Eksercerpladsen, København"
+  }
+}, {
+  "tekst": "2000156 Emdrup, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000156",
+    "kode": 2000156,
+    "navn": "Emdrup, København"
+  }
+}, {
+  "tekst": "2000157 Frihavnskvarteret, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000157",
+    "kode": 2000157,
+    "navn": "Frihavnskvarteret, København"
+  }
+}, {
+  "tekst": "2000159 Husum, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000159",
+    "kode": 2000159,
+    "navn": "Husum, København"
+  }
+}, {
+  "tekst": "2000171 Sundbyvester, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000171",
+    "kode": 2000171,
+    "navn": "Sundbyvester, København"
+  }
+}, {
+  "tekst": "2000172 Sundbyøster, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000172",
+    "kode": 2000172,
+    "navn": "Sundbyøster, København"
+  }
+}, {
+  "tekst": "2000175 Utterslev, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000175",
+    "kode": 2000175,
+    "navn": "Utterslev, København"
+  }
+}, {
+  "tekst": "2000176 Valby, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000176",
+    "kode": 2000176,
+    "navn": "Valby, København"
+  }
+}, {
+  "tekst": "2000177 Vanløse, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000177",
+    "kode": 2000177,
+    "navn": "Vanløse, København"
+  }
+}, {
+  "tekst": "2000180 Vigerslev, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000180",
+    "kode": 2000180,
+    "navn": "Vigerslev, København"
+  }
+}, {
+  "tekst": "2000170 Sundby Overdrev, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000170",
+    "kode": 2000170,
+    "navn": "Sundby Overdrev, København"
+  }
+}, {
+  "tekst": "2000161 Kongens Enghave, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000161",
+    "kode": 2000161,
+    "navn": "Kongens Enghave, København"
+  }
+}, {
+  "tekst": "2000151 Amagerbros Kvarter, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000151",
+    "kode": 2000151,
+    "navn": "Amagerbros Kvarter, København"
+  }
+}, {
+  "tekst": "2000153 Christianshavns Kvarter, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000153",
+    "kode": 2000153,
+    "navn": "Christianshavns Kvarter, København"
+  }
+}, {
+  "tekst": "2000158 Frimands Kvarter, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000158",
+    "kode": 2000158,
+    "navn": "Frimands Kvarter, København"
+  }
+}, {
+  "tekst": "2000160 Klædebo Kvarter, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000160",
+    "kode": 2000160,
+    "navn": "Klædebo Kvarter, København"
+  }
+}, {
+  "tekst": "2000162 Købmager Kvarter, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000162",
+    "kode": 2000162,
+    "navn": "Købmager Kvarter, København"
+  }
+}, {
+  "tekst": "2000164 Nørrevold Kvarter, København",
+  "ejerlav": {
+    "href": "https://api.dataforsyningen.dk/ejerlav/2000164",
+    "kode": 2000164,
+    "navn": "Nørrevold Kvarter, København"
+  }
+}
+]

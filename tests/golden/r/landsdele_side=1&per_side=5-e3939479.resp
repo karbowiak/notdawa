@@ -1,0 +1,118 @@
+[
+{
+  "ændret": "2026-03-27T22:17:36.249Z",
+  "geo_version": 20,
+  "geo_ændret": "2026-03-27T22:17:36.249Z",
+  "bbox": [
+    12.43824875,
+    55.53311183,
+    12.83469809,
+    55.73587822
+  ],
+  "visueltcenter": [
+    12.62259141,
+    55.60322408
+  ],
+  "href": "https://api.dataforsyningen.dk/landsdele/DK011",
+  "dagi_id": "218528",
+  "navn": "Byen København",
+  "nuts3": "DK011",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}, {
+  "ændret": "2026-02-26T22:13:10.911Z",
+  "geo_version": 18,
+  "geo_ændret": "2026-02-26T22:13:10.911Z",
+  "bbox": [
+    12.14476073,
+    55.58761093,
+    12.60999403,
+    55.82086291
+  ],
+  "visueltcenter": [
+    12.2513383,
+    55.65720679
+  ],
+  "href": "https://api.dataforsyningen.dk/landsdele/DK012",
+  "dagi_id": "218530",
+  "navn": "Københavns omegn",
+  "nuts3": "DK012",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}, {
+  "ændret": "2025-05-14T21:02:41.891Z",
+  "geo_version": 8,
+  "geo_ændret": "2025-05-14T21:02:41.891Z",
+  "bbox": [
+    11.64179531,
+    55.68579162,
+    12.63786643,
+    56.20520188
+  ],
+  "visueltcenter": [
+    12.27937981,
+    55.97239387
+  ],
+  "href": "https://api.dataforsyningen.dk/landsdele/DK013",
+  "dagi_id": "218532",
+  "navn": "Nordsjælland",
+  "nuts3": "DK013",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}, {
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 3,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    14.66821448,
+    54.98354657,
+    15.19914101,
+    55.35308649
+  ],
+  "visueltcenter": [
+    14.8836754,
+    55.12789092
+  ],
+  "href": "https://api.dataforsyningen.dk/landsdele/DK014",
+  "dagi_id": "218534",
+  "navn": "Bornholm",
+  "nuts3": "DK014",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}, {
+  "ændret": "2026-01-01T22:02:26.282Z",
+  "geo_version": 17,
+  "geo_ændret": "2026-01-01T22:02:26.282Z",
+  "bbox": [
+    11.75920876,
+    55.36136958,
+    12.37868184,
+    55.78824659
+  ],
+  "visueltcenter": [
+    12.0090153,
+    55.58675609
+  ],
+  "href": "https://api.dataforsyningen.dk/landsdele/DK021",
+  "dagi_id": "218536",
+  "navn": "Østsjælland",
+  "nuts3": "DK021",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1085",
+    "kode": "1085",
+    "navn": "Region Sjælland"
+  }
+}
+]

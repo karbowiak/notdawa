@@ -1,0 +1,128 @@
+[
+{
+  "ændret": "2026-03-27T22:17:36.249Z",
+  "geo_version": 28,
+  "geo_ændret": "2026-03-27T22:17:36.249Z",
+  "bbox": [
+    12.44441133,
+    55.60647026,
+    12.73658638,
+    55.73587822
+  ],
+  "visueltcenter": [
+    12.49390862,
+    55.7040906
+  ],
+  "href": "https://api.dataforsyningen.dk/kommuner/0101",
+  "dagi_id": "389103",
+  "kode": "0101",
+  "navn": "København",
+  "udenforkommuneinddeling": false,
+  "regionskode": "1084",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}, {
+  "ændret": "2024-01-16T22:03:35.709Z",
+  "geo_version": 7,
+  "geo_ændret": "2024-01-16T22:03:35.709Z",
+  "bbox": [
+    12.49027876,
+    55.66556585,
+    12.55873518,
+    55.69896893
+  ],
+  "visueltcenter": [
+    12.52373306,
+    55.67936546
+  ],
+  "href": "https://api.dataforsyningen.dk/kommuner/0147",
+  "dagi_id": "389104",
+  "kode": "0147",
+  "navn": "Frederiksberg",
+  "udenforkommuneinddeling": false,
+  "regionskode": "1084",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}, {
+  "ændret": "2025-05-14T21:02:41.891Z",
+  "geo_version": 9,
+  "geo_ændret": "2025-05-14T21:02:41.891Z",
+  "bbox": [
+    12.25958944,
+    55.69631008,
+    12.4301625,
+    55.76439116
+  ],
+  "visueltcenter": [
+    12.36851587,
+    55.72707466
+  ],
+  "href": "https://api.dataforsyningen.dk/kommuner/0151",
+  "dagi_id": "389105",
+  "kode": "0151",
+  "navn": "Ballerup",
+  "udenforkommuneinddeling": false,
+  "regionskode": "1084",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}, {
+  "ændret": "2026-02-16T22:06:23.707Z",
+  "geo_version": 9,
+  "geo_ændret": "2026-02-16T22:06:23.707Z",
+  "bbox": [
+    12.35917289,
+    55.6062615,
+    12.46196914,
+    55.67369314
+  ],
+  "visueltcenter": [
+    12.404382,
+    55.64503727
+  ],
+  "href": "https://api.dataforsyningen.dk/kommuner/0153",
+  "dagi_id": "389106",
+  "kode": "0153",
+  "navn": "Brøndby",
+  "udenforkommuneinddeling": false,
+  "regionskode": "1084",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}, {
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 3,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    12.55362233,
+    55.53632022,
+    12.71832842,
+    55.61097821
+  ],
+  "visueltcenter": [
+    12.65022813,
+    55.59380739
+  ],
+  "href": "https://api.dataforsyningen.dk/kommuner/0155",
+  "dagi_id": "389107",
+  "kode": "0155",
+  "navn": "Dragør",
+  "udenforkommuneinddeling": false,
+  "regionskode": "1084",
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  }
+}
+]

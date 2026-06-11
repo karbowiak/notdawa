@@ -1,0 +1,113 @@
+[
+{
+  "tekst": "Rådhuspladsen, 3300 Frederiksværk",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "3300",
+    "postnrnavn": "Frederiksværk",
+    "visueltcenter_x": 12.0172898,
+    "visueltcenter_y": 55.97684641,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/3300/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 4200 Slagelse",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "4200",
+    "postnrnavn": "Slagelse",
+    "visueltcenter_x": 11.35640519,
+    "visueltcenter_y": 55.40519047,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/4200/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 4300 Holbæk",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "4300",
+    "postnrnavn": "Holbæk",
+    "visueltcenter_x": 11.71136013,
+    "visueltcenter_y": 55.7161889,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/4300/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 5450 Otterup",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "5450",
+    "postnrnavn": "Otterup",
+    "visueltcenter_x": 10.39264255,
+    "visueltcenter_y": 55.51455528,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/5450/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 6100 Haderslev",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "6100",
+    "postnrnavn": "Haderslev",
+    "visueltcenter_x": 9.4876621,
+    "visueltcenter_y": 55.25327765,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/6100/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 7800 Skive",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "7800",
+    "postnrnavn": "Skive",
+    "visueltcenter_x": 9.03045136,
+    "visueltcenter_y": 56.56622688,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/7800/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 8362 Hørning",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "8362",
+    "postnrnavn": "Hørning",
+    "visueltcenter_x": 10.035921,
+    "visueltcenter_y": 56.08548215,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/8362/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 9300 Sæby",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "9300",
+    "postnrnavn": "Sæby",
+    "visueltcenter_x": 10.50619003,
+    "visueltcenter_y": 57.33357324,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/9300/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 8000 Aarhus C",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "8000",
+    "postnrnavn": "Aarhus C",
+    "visueltcenter_x": 10.20321649,
+    "visueltcenter_y": 56.15317736,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/8000/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 4660 Store Heddinge",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "4660",
+    "postnrnavn": "Store Heddinge",
+    "visueltcenter_x": 12.38563407,
+    "visueltcenter_y": 55.31229509,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/4660/R%C3%A5dhuspladsen"
+  }
+}, {
+  "tekst": "Rådhuspladsen, 1550 København V",
+  "vejnavnpostnummerrelation": {
+    "vejnavn": "Rådhuspladsen",
+    "postnr": "1550",
+    "postnrnavn": "København V",
+    "visueltcenter_x": 12.56956834,
+    "visueltcenter_y": 55.67636085,
+    "href": "https://api.dataforsyningen.dk/vejnavnpostnummerrelationer/1550/R%C3%A5dhuspladsen"
+  }
+}
+]

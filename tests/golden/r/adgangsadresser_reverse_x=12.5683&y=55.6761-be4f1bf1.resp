@@ -1,0 +1,146 @@
+{
+  "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-ec03-32b8-e044-0003ba298018",
+  "id": "0a3f507a-ec03-32b8-e044-0003ba298018",
+  "adressebetegnelse": "Rådhuspladsen 3, 1550 København V",
+  "kvh": "01016152___3",
+  "status": 1,
+  "darstatus": 3,
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/101/6152",
+    "navn": "Rådhuspladsen",
+    "adresseringsnavn": "Rådhuspladsen",
+    "kode": "6152"
+  },
+  "husnr": "3",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/db18d58c-b16d-457b-aa1b-e92cbd8aace5",
+    "id": "db18d58c-b16d-457b-aa1b-e92cbd8aace5"
+  },
+  "supplerendebynavn": null,
+  "supplerendebynavn2": null,
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/1550",
+    "nr": "1550",
+    "navn": "København V"
+  },
+  "stormodtagerpostnummer": null,
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "ejerlav": {
+    "kode": 2000179,
+    "navn": "Vestervold Kvarter, København"
+  },
+  "esrejendomsnr": "0",
+  "matrikelnr": "7000q",
+  "historik": {
+    "oprettet": "2001-10-18T15:27:01.000",
+    "ændret": "2018-07-04T18:00:00.000",
+    "ikrafttrædelse": "2001-10-18T15:27:01.000",
+    "nedlagt": null
+  },
+  "adgangspunkt": {
+    "id": "0a3f507a-ec03-32b8-e044-0003ba298018",
+    "koordinater": [
+      12.56823601,
+      55.67611003
+    ],
+    "højde": 6.1,
+    "nøjagtighed": "A",
+    "kilde": 5,
+    "tekniskstandard": "TD",
+    "tekstretning": 200,
+    "ændret": "2002-04-05T00:00:00.000"
+  },
+  "vejpunkt": {
+    "id": "11f2eeff-af45-11e7-847e-066cff24d637",
+    "kilde": "Adressemyn",
+    "nøjagtighed": "A",
+    "tekniskstandard": "V0",
+    "koordinater": [
+      12.56791118,
+      55.67595924
+    ],
+    "ændret": "2021-03-01T13:14:14.455386"
+  },
+  "DDKN": {
+    "m100": "100m_61758_7243",
+    "km1": "1km_6175_724",
+    "km10": "10km_617_72"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/7002",
+    "kode": "7002",
+    "navn": "Helligånds"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "landsdel": {
+    "href": "https://api.dataforsyningen.dk/landsdele/DK011",
+    "nuts3": "DK011",
+    "navn": "Byen København"
+  },
+  "retskreds": {
+    "href": "https://api.dataforsyningen.dk/retskredse/1101",
+    "kode": "1101",
+    "navn": "Københavns Byret"
+  },
+  "politikreds": {
+    "href": "https://api.dataforsyningen.dk/politikredse/1470",
+    "kode": "1470",
+    "navn": "Københavns Politi"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/0003",
+    "kode": "0003",
+    "navn": "Indre By"
+  },
+  "afstemningsområde": {
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/11",
+    "nummer": "11",
+    "navn": "3. Indre By"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  },
+  "zone": "Udfaset",
+  "jordstykke": {
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000179/7000q",
+    "ejerlav": {
+      "kode": 2000179,
+      "navn": "Vestervold Kvarter, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000179"
+    },
+    "matrikelnr": "7000q",
+    "esrejendomsnr": "0"
+  },
+  "bebyggelser": [
+    {
+      "id": "12337669-d99c-6b98-e053-d480220a5a3f",
+      "kode": null,
+      "type": "bydel",
+      "navn": "Vestervold",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-d99c-6b98-e053-d480220a5a3f"
+    },
+    {
+      "id": "290f85b8-8c7a-6fd1-e053-d480220af996",
+      "kode": 18368,
+      "type": "by",
+      "navn": "København",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/290f85b8-8c7a-6fd1-e053-d480220af996"
+    }
+  ],
+  "brofast": true
+}

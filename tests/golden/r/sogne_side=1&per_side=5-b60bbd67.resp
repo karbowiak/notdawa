@@ -1,0 +1,93 @@
+[
+{
+  "ændret": "2023-11-02T22:05:36.260Z",
+  "geo_version": 6,
+  "geo_ændret": "2023-11-02T22:05:36.260Z",
+  "bbox": [
+    12.56342763,
+    55.66719221,
+    12.58534207,
+    55.68333631
+  ],
+  "visueltcenter": [
+    12.57165114,
+    55.67358892
+  ],
+  "dagi_id": "107307",
+  "kode": "7002",
+  "navn": "Helligånds",
+  "href": "https://api.dataforsyningen.dk/sogne/7002"
+}, {
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 3,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    12.56569348,
+    55.67963777,
+    12.58406222,
+    55.68922793
+  ],
+  "visueltcenter": [
+    12.57598886,
+    55.68443181
+  ],
+  "dagi_id": "107329",
+  "kode": "7003",
+  "navn": "Trinitatis",
+  "href": "https://api.dataforsyningen.dk/sogne/7003"
+}, {
+  "ændret": "2023-03-24T22:28:38.837Z",
+  "geo_version": 3,
+  "geo_ændret": "2023-03-24T22:28:38.837Z",
+  "bbox": [
+    12.55293701,
+    55.68134175,
+    12.56002745,
+    55.68634064
+  ],
+  "visueltcenter": [
+    12.55723993,
+    55.68400855
+  ],
+  "dagi_id": "107080",
+  "kode": "7011",
+  "navn": "Betlehems",
+  "href": "https://api.dataforsyningen.dk/sogne/7011"
+}, {
+  "ændret": "2024-05-24T21:01:20.688Z",
+  "geo_version": 12,
+  "geo_ændret": "2024-05-24T21:01:20.688Z",
+  "bbox": [
+    12.5075035,
+    55.66030426,
+    12.5359619,
+    55.66958515
+  ],
+  "visueltcenter": [
+    12.52025197,
+    55.66452683
+  ],
+  "dagi_id": "107330",
+  "kode": "7024",
+  "navn": "Valby",
+  "href": "https://api.dataforsyningen.dk/sogne/7024"
+}, {
+  "ændret": "2024-05-24T21:01:20.688Z",
+  "geo_version": 9,
+  "geo_ændret": "2024-05-24T21:01:20.688Z",
+  "bbox": [
+    12.47786399,
+    55.65896214,
+    12.51653199,
+    55.67053033
+  ],
+  "visueltcenter": [
+    12.50131566,
+    55.66514873
+  ],
+  "dagi_id": "107328",
+  "kode": "7026",
+  "navn": "Timotheus",
+  "href": "https://api.dataforsyningen.dk/sogne/7026"
+}
+]

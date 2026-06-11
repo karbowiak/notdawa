@@ -1,0 +1,12 @@
+[
+  {
+    "type": "vejnavn",
+    "tekst": "Kongskildevej ",
+    "forslagstekst": "Kongskildevej",
+    "caretpos": 14,
+    "data": {
+      "navn": "Kongskildevej",
+      "href": "https://api.dataforsyningen.dk/vejnavne/Kongskildevej"
+    }
+  }
+]

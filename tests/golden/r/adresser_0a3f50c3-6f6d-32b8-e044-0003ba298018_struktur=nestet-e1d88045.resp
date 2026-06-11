@@ -1,0 +1,162 @@
+{
+  "id": "0a3f50c3-6f6d-32b8-e044-0003ba298018",
+  "kvhx": "07514456__24_st___3",
+  "status": 1,
+  "darstatus": 3,
+  "href": "https://api.dataforsyningen.dk/adresser/0a3f50c3-6f6d-32b8-e044-0003ba298018",
+  "historik": {
+    "oprettet": "2000-02-05T15:25:42.000",
+    "ændret": "2000-02-05T15:25:42.000",
+    "ikrafttrædelse": "2000-02-05T15:25:42.000",
+    "nedlagt": null
+  },
+  "etage": "st",
+  "dør": "3",
+  "adressebetegnelse": "Kongsgårdsvej 24, st. 3, 8260 Viby J",
+  "adgangsadresse": {
+    "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f5096-769e-32b8-e044-0003ba298018",
+    "id": "0a3f5096-769e-32b8-e044-0003ba298018",
+    "adressebetegnelse": "Kongsgårdsvej 24, 8260 Viby J",
+    "kvh": "07514456__24",
+    "status": 1,
+    "darstatus": 3,
+    "vejstykke": {
+      "href": "https://api.dataforsyningen.dk/vejstykker/751/4456",
+      "navn": "Kongsgårdsvej",
+      "adresseringsnavn": "Kongsgårdsvej",
+      "kode": "4456"
+    },
+    "husnr": "24",
+    "navngivenvej": {
+      "href": "https://api.dataforsyningen.dk/navngivneveje/2bf7c2ac-f668-4938-88ed-d6c06ac42bcf",
+      "id": "2bf7c2ac-f668-4938-88ed-d6c06ac42bcf"
+    },
+    "supplerendebynavn": null,
+    "supplerendebynavn2": null,
+    "postnummer": {
+      "href": "https://api.dataforsyningen.dk/postnumre/8260",
+      "nr": "8260",
+      "navn": "Viby J"
+    },
+    "stormodtagerpostnummer": null,
+    "kommune": {
+      "href": "https://api.dataforsyningen.dk/kommuner/0751",
+      "kode": "0751",
+      "navn": "Aarhus"
+    },
+    "ejerlav": {
+      "kode": 1031251,
+      "navn": "Viby By, Viby"
+    },
+    "esrejendomsnr": "0",
+    "matrikelnr": "126a",
+    "historik": {
+      "oprettet": "2000-02-05T15:25:42.000",
+      "ændret": "2024-12-11T11:21:49.901",
+      "ikrafttrædelse": "2000-02-05T15:25:42.000",
+      "nedlagt": null
+    },
+    "adgangspunkt": {
+      "id": "0a3f5096-769e-32b8-e044-0003ba298018",
+      "koordinater": [
+        10.16374258,
+        56.12470881
+      ],
+      "højde": 25.8,
+      "nøjagtighed": "A",
+      "kilde": 5,
+      "tekniskstandard": "TK",
+      "tekstretning": 110,
+      "ændret": "2012-02-20T23:59:00.000"
+    },
+    "vejpunkt": {
+      "id": "1b84e22b-af45-11e7-847e-066cff24d637",
+      "kilde": "Adressemyn",
+      "nøjagtighed": "A",
+      "tekniskstandard": "V0",
+      "koordinater": [
+        10.16414238,
+        56.12477715
+      ],
+      "ændret": "2024-12-11T11:21:49.901254"
+    },
+    "DDKN": {
+      "m100": "100m_62205_5723",
+      "km1": "1km_6220_572",
+      "km10": "10km_622_57"
+    },
+    "sogn": {
+      "href": "https://api.dataforsyningen.dk/sogne/8100",
+      "kode": "8100",
+      "navn": "Viby"
+    },
+    "region": {
+      "href": "https://api.dataforsyningen.dk/regioner/1082",
+      "kode": "1082",
+      "navn": "Region Midtjylland"
+    },
+    "landsdel": {
+      "href": "https://api.dataforsyningen.dk/landsdele/DK042",
+      "nuts3": "DK042",
+      "navn": "Østjylland"
+    },
+    "retskreds": {
+      "href": "https://api.dataforsyningen.dk/retskredse/1165",
+      "kode": "1165",
+      "navn": "Retten i Århus"
+    },
+    "politikreds": {
+      "href": "https://api.dataforsyningen.dk/politikredse/1461",
+      "kode": "1461",
+      "navn": "Østjyllands Politi"
+    },
+    "opstillingskreds": {
+      "href": "https://api.dataforsyningen.dk/opstillingskredse/0063",
+      "kode": "0063",
+      "navn": "Aarhus Vest"
+    },
+    "afstemningsområde": {
+      "href": "https://api.dataforsyningen.dk/afstemningsomraader/751/8",
+      "nummer": "8",
+      "navn": "Viby Hallen"
+    },
+    "storkreds": {
+      "href": "https://api.dataforsyningen.dk/storkredse/8",
+      "nummer": "8",
+      "navn": "Østjylland"
+    },
+    "valglandsdel": {
+      "href": "https://api.dataforsyningen.dk/valglandsdele/C",
+      "bogstav": "C",
+      "navn": "Midtjylland-Nordjylland"
+    },
+    "zone": "Udfaset",
+    "jordstykke": {
+      "href": "https://api.dataforsyningen.dk/jordstykker/1031251/126a",
+      "ejerlav": {
+        "kode": 1031251,
+        "navn": "Viby By, Viby",
+        "href": "https://api.dataforsyningen.dk/ejerlav/1031251"
+      },
+      "matrikelnr": "126a",
+      "esrejendomsnr": "0"
+    },
+    "bebyggelser": [
+      {
+        "id": "12337669-a188-6b98-e053-d480220a5a3f",
+        "kode": 11045,
+        "type": "by",
+        "navn": "Aarhus",
+        "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-a188-6b98-e053-d480220a5a3f"
+      },
+      {
+        "id": "12337669-c6b6-6b98-e053-d480220a5a3f",
+        "kode": null,
+        "type": "bydel",
+        "navn": "Viby",
+        "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-c6b6-6b98-e053-d480220a5a3f"
+      }
+    ],
+    "brofast": true
+  }
+}

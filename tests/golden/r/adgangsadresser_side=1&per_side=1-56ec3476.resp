@@ -1,0 +1,129 @@
+[
+{
+  "href": "https://api.dataforsyningen.dk/adgangsadresser/00000667-2566-47c9-9ba0-f5ec6b8ce50f",
+  "id": "00000667-2566-47c9-9ba0-f5ec6b8ce50f",
+  "adressebetegnelse": "Hospitalsringen 68, 5260 Odense S",
+  "kvh": "04613436__68",
+  "status": 1,
+  "darstatus": 3,
+  "vejstykke": {
+    "href": "https://api.dataforsyningen.dk/vejstykker/461/3436",
+    "navn": "Hospitalsringen",
+    "adresseringsnavn": "Hospitalsringen",
+    "kode": "3436"
+  },
+  "husnr": "68",
+  "navngivenvej": {
+    "href": "https://api.dataforsyningen.dk/navngivneveje/02da5b79-929c-f1b5-e053-d280220ac400",
+    "id": "02da5b79-929c-f1b5-e053-d280220ac400"
+  },
+  "supplerendebynavn": null,
+  "supplerendebynavn2": null,
+  "postnummer": {
+    "href": "https://api.dataforsyningen.dk/postnumre/5260",
+    "nr": "5260",
+    "navn": "Odense S"
+  },
+  "stormodtagerpostnummer": null,
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0461",
+    "kode": "0461",
+    "navn": "Odense"
+  },
+  "ejerlav": null,
+  "esrejendomsnr": null,
+  "matrikelnr": null,
+  "historik": {
+    "oprettet": "2015-05-07T13:00:48.533",
+    "ændret": "2025-03-12T14:37:51.176",
+    "ikrafttrædelse": "2015-05-07T13:00:48.533",
+    "nedlagt": null
+  },
+  "adgangspunkt": {
+    "id": "d90e9338-0470-41bc-8ecb-6f71dd912ff0",
+    "koordinater": [
+      10.42881503,
+      55.36090711
+    ],
+    "højde": 22.1,
+    "nøjagtighed": "A",
+    "kilde": 5,
+    "tekniskstandard": "TN",
+    "tekstretning": 200,
+    "ændret": "2023-10-10T08:39:54.785"
+  },
+  "vejpunkt": {
+    "id": "11604d86-af45-11e7-847e-066cff24d637",
+    "kilde": "Adressemyn",
+    "nøjagtighed": "A",
+    "tekniskstandard": "V0",
+    "koordinater": [
+      10.42857882,
+      55.36283464
+    ],
+    "ændret": "2021-06-29T09:50:22.812683"
+  },
+  "DDKN": {
+    "m100": "100m_61358_5905",
+    "km1": "1km_6135_590",
+    "km10": "10km_613_59"
+  },
+  "sogn": {
+    "href": "https://api.dataforsyningen.dk/sogne/9148",
+    "kode": "9148",
+    "navn": "Tornbjerg"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1083",
+    "kode": "1083",
+    "navn": "Region Syddanmark"
+  },
+  "landsdel": {
+    "href": "https://api.dataforsyningen.dk/landsdele/DK031",
+    "nuts3": "DK031",
+    "navn": "Fyn"
+  },
+  "retskreds": {
+    "href": "https://api.dataforsyningen.dk/retskredse/1135",
+    "kode": "1135",
+    "navn": "Retten i Odense"
+  },
+  "politikreds": {
+    "href": "https://api.dataforsyningen.dk/politikredse/1465",
+    "kode": "1465",
+    "navn": "Fyns Politi"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/0043",
+    "kode": "0043",
+    "navn": "Odense Syd"
+  },
+  "afstemningsområde": {
+    "href": "https://api.dataforsyningen.dk/afstemningsomraader/461/25",
+    "nummer": "25",
+    "navn": "Rosengårdskolen"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/6",
+    "nummer": "6",
+    "navn": "Fyn"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/B",
+    "bogstav": "B",
+    "navn": "Sjælland-Syddanmark"
+  },
+  "zone": "Udfaset",
+  "jordstykke": null,
+  "bebyggelser": [
+    {
+      "id": "12337669-c0d6-6b98-e053-d480220a5a3f",
+      "kode": 10677,
+      "type": "by",
+      "navn": "Odense",
+      "href": "https://api.dataforsyningen.dk/bebyggelser/12337669-c0d6-6b98-e053-d480220a5a3f"
+    }
+  ],
+  "brofast": true
+}
+]

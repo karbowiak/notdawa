@@ -1,0 +1,278 @@
+[
+{
+  "id": "00008748-e0ee-4cb3-83b7-167455a2efaf",
+  "href": "https://api.dataforsyningen.dk/navngivneveje/00008748-e0ee-4cb3-83b7-167455a2efaf",
+  "darstatus": "gældende",
+  "navn": "Halvdansvej",
+  "adresseringsnavn": "Halvdansvej",
+  "administrerendekommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0217",
+    "kode": "0217",
+    "navn": "Helsingør"
+  },
+  "retskrivningskontrol": "Godkendt",
+  "udtaltvejnavn": "Halvdansvej",
+  "visueltcenter": [
+    12.45145865,
+    56.01942144
+  ],
+  "bbox": [
+    12.45079692,
+    56.0188894,
+    12.45274693,
+    56.02011508
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T12:00:00.000Z",
+    "ændret": "1900-01-01T12:00:00.000Z",
+    "ikrafttrædelse": "1900-01-01T12:00:00.000Z",
+    "nedlagt": null
+  },
+  "vejstykker": [
+    {
+      "href": "https://api.dataforsyningen.dk/vejstykker/0217/2844",
+      "kommunekode": "0217",
+      "kode": "2844",
+      "id": "5c9cf1d9-4eae-11e8-93fd-066cff24d637",
+      "darstatus": 3
+    }
+  ],
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/3080",
+      "nr": "3080",
+      "navn": "Tikøb"
+    }
+  ],
+  "beliggenhed": {
+    "oprindelse": {
+      "kilde": "Ekstern",
+      "tekniskstandard": "NO",
+      "registrering": "2018-05-03T15:57:30.356Z",
+      "nøjagtighedsklasse": "B"
+    },
+    "vejtilslutningspunkter": null,
+    "geometritype": "vejnavnelinje"
+  }
+}, {
+  "id": "000150a4-3d0f-4848-b43d-9556e8cc9916",
+  "href": "https://api.dataforsyningen.dk/navngivneveje/000150a4-3d0f-4848-b43d-9556e8cc9916",
+  "darstatus": "gældende",
+  "navn": "Mølhøjstien",
+  "adresseringsnavn": "Mølhøjstien",
+  "administrerendekommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0561",
+    "kode": "0561",
+    "navn": "Esbjerg"
+  },
+  "retskrivningskontrol": "Godkendt",
+  "udtaltvejnavn": "Mølhøjstien",
+  "visueltcenter": [
+    8.51162891,
+    55.50872448
+  ],
+  "bbox": [
+    8.50130415,
+    55.5015333,
+    8.52376726,
+    55.51049394
+  ],
+  "historik": {
+    "oprettet": "2024-01-26T06:51:42.020Z",
+    "ændret": "2026-06-10T12:02:21.561Z",
+    "ikrafttrædelse": "2024-01-26T06:51:42.020Z",
+    "nedlagt": null
+  },
+  "vejstykker": [
+    {
+      "href": "https://api.dataforsyningen.dk/vejstykker/0561/1329",
+      "kommunekode": "0561",
+      "kode": "1329",
+      "id": "e2264c1d-8ebb-4164-b177-784fd1eb8e89",
+      "darstatus": 3
+    }
+  ],
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/6705",
+      "nr": "6705",
+      "navn": "Esbjerg Ø"
+    }
+  ],
+  "beliggenhed": {
+    "oprindelse": {
+      "kilde": "Ekstern",
+      "tekniskstandard": "NO",
+      "registrering": "2026-06-10T12:02:21.561Z",
+      "nøjagtighedsklasse": "B"
+    },
+    "vejtilslutningspunkter": null,
+    "geometritype": "vejnavnelinje"
+  }
+}, {
+  "id": "00015d9f-dc65-4bca-bb6b-b2f58e920024",
+  "href": "https://api.dataforsyningen.dk/navngivneveje/00015d9f-dc65-4bca-bb6b-b2f58e920024",
+  "darstatus": "gældende",
+  "navn": "Rudbølvej",
+  "adresseringsnavn": "Rudbølvej",
+  "administrerendekommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0740",
+    "kode": "0740",
+    "navn": "Silkeborg"
+  },
+  "retskrivningskontrol": "Godkendt",
+  "udtaltvejnavn": "Rudbølvej",
+  "visueltcenter": [
+    9.50284354,
+    56.17474794
+  ],
+  "bbox": [
+    9.50068331,
+    56.17324122,
+    9.50504612,
+    56.17640063
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T12:00:00.000Z",
+    "ændret": "1900-01-01T12:00:00.000Z",
+    "ikrafttrædelse": "1900-01-01T12:00:00.000Z",
+    "nedlagt": null
+  },
+  "vejstykker": [
+    {
+      "href": "https://api.dataforsyningen.dk/vejstykker/0740/1449",
+      "kommunekode": "0740",
+      "kode": "1449",
+      "id": "5cb982af-4eae-11e8-93fd-066cff24d637",
+      "darstatus": 3
+    }
+  ],
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/8600",
+      "nr": "8600",
+      "navn": "Silkeborg"
+    }
+  ],
+  "beliggenhed": {
+    "oprindelse": {
+      "kilde": "Ekstern",
+      "tekniskstandard": "NO",
+      "registrering": "2018-05-03T15:57:30.356Z",
+      "nøjagtighedsklasse": "B"
+    },
+    "vejtilslutningspunkter": null,
+    "geometritype": "vejnavnelinje"
+  }
+}, {
+  "id": "000245f5-3b5d-4f37-a344-1c48883ae304",
+  "href": "https://api.dataforsyningen.dk/navngivneveje/000245f5-3b5d-4f37-a344-1c48883ae304",
+  "darstatus": "gældende",
+  "navn": "Gl Færgevej",
+  "adresseringsnavn": "Gl Færgevej",
+  "administrerendekommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0671",
+    "kode": "0671",
+    "navn": "Struer"
+  },
+  "retskrivningskontrol": "Godkendt",
+  "udtaltvejnavn": "Gl Færgevej",
+  "visueltcenter": [
+    8.56501272,
+    56.57367874
+  ],
+  "bbox": [
+    8.5631902,
+    56.56750064,
+    8.56714433,
+    56.5805619
+  ],
+  "historik": {
+    "oprettet": "1995-06-08T12:32:00.000Z",
+    "ændret": "2025-05-20T12:59:34.996Z",
+    "ikrafttrædelse": "1995-06-08T12:32:00.000Z",
+    "nedlagt": null
+  },
+  "vejstykker": [
+    {
+      "href": "https://api.dataforsyningen.dk/vejstykker/0671/2257",
+      "kommunekode": "0671",
+      "kode": "2257",
+      "id": "5cb64957-4eae-11e8-93fd-066cff24d637",
+      "darstatus": 3
+    }
+  ],
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/7600",
+      "nr": "7600",
+      "navn": "Struer"
+    }
+  ],
+  "beliggenhed": {
+    "oprindelse": {
+      "kilde": "Ekstern",
+      "tekniskstandard": "NO",
+      "registrering": "2025-05-20T12:59:34.996Z",
+      "nøjagtighedsklasse": "B"
+    },
+    "vejtilslutningspunkter": null,
+    "geometritype": "vejnavnelinje"
+  }
+}, {
+  "id": "0002e963-cc53-444e-9f0f-be86db158639",
+  "href": "https://api.dataforsyningen.dk/navngivneveje/0002e963-cc53-444e-9f0f-be86db158639",
+  "darstatus": "gældende",
+  "navn": "Tøndervej",
+  "adresseringsnavn": "Tøndervej",
+  "administrerendekommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0550",
+    "kode": "0550",
+    "navn": "Tønder"
+  },
+  "retskrivningskontrol": "Godkendt",
+  "udtaltvejnavn": "Tøndervej",
+  "visueltcenter": [
+    8.78934003,
+    55.14317582
+  ],
+  "bbox": [
+    8.76901307,
+    55.12191803,
+    8.80728248,
+    55.15826004
+  ],
+  "historik": {
+    "oprettet": "1900-01-01T12:00:00.000Z",
+    "ændret": "2025-12-15T20:20:30.820Z",
+    "ikrafttrædelse": "1900-01-01T12:00:00.000Z",
+    "nedlagt": null
+  },
+  "vejstykker": [
+    {
+      "href": "https://api.dataforsyningen.dk/vejstykker/0550/1780",
+      "kommunekode": "0550",
+      "kode": "1780",
+      "id": "5caf72f7-4eae-11e8-93fd-066cff24d637",
+      "darstatus": 3
+    }
+  ],
+  "postnumre": [
+    {
+      "href": "https://api.dataforsyningen.dk/postnumre/6780",
+      "nr": "6780",
+      "navn": "Skærbæk"
+    }
+  ],
+  "beliggenhed": {
+    "oprindelse": {
+      "kilde": "Ekstern",
+      "tekniskstandard": "NO",
+      "registrering": "2025-12-15T20:20:30.820Z",
+      "nøjagtighedsklasse": "B"
+    },
+    "vejtilslutningspunkter": null,
+    "geometritype": "vejnavnelinje"
+  }
+}
+]

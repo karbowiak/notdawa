@@ -1,0 +1,523 @@
+[
+{
+  "tekst": "1139 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "1139",
+    "bbox": [
+      12.50268194,
+      55.69365459,
+      12.5034284,
+      55.69401091
+    ],
+    "visueltcenter": [
+      12.50321314,
+      55.69388611
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/1139",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6002257",
+    "bfenummer": 6002257
+  }
+}, {
+  "tekst": "1233 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "1233",
+    "bbox": [
+      12.50747063,
+      55.69488467,
+      12.50818897,
+      55.69528499
+    ],
+    "visueltcenter": [
+      12.50779156,
+      55.69506803
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/1233",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6002343",
+    "bfenummer": 6002343
+  }
+}, {
+  "tekst": "1365 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "1365",
+    "bbox": [
+      12.50518188,
+      55.69141093,
+      12.5052645,
+      55.69145665
+    ],
+    "visueltcenter": [
+      12.50523242,
+      55.69143898
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/1365",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6002466",
+    "bfenummer": 6002466
+  }
+}, {
+  "tekst": "14 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "14",
+    "bbox": [
+      12.50017745,
+      55.70461911,
+      12.50067768,
+      55.70495811
+    ],
+    "visueltcenter": [
+      12.50041538,
+      55.70481745
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/14",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6001295",
+    "bfenummer": 6001295
+  }
+}, {
+  "tekst": "144 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "144",
+    "bbox": [
+      12.50236237,
+      55.69999723,
+      12.5028519,
+      55.70024226
+    ],
+    "visueltcenter": [
+      12.50259738,
+      55.70012365
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/144",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6001399",
+    "bfenummer": 6001399
+  }
+}, {
+  "tekst": "1624 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "1624",
+    "bbox": [
+      12.49666822,
+      55.69572525,
+      12.49741693,
+      55.69601597
+    ],
+    "visueltcenter": [
+      12.49718985,
+      55.69588334
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/1624",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6002696",
+    "bfenummer": 6002696
+  }
+}, {
+  "tekst": "1984 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "1984",
+    "bbox": [
+      12.49456062,
+      55.70811656,
+      12.49524246,
+      55.70832198
+    ],
+    "visueltcenter": [
+      12.49490154,
+      55.70821927
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/1984",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6003052",
+    "bfenummer": 6003052
+  }
+}, {
+  "tekst": "1l Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "1l",
+    "bbox": [
+      12.50115372,
+      55.70541323,
+      12.50169125,
+      55.70564982
+    ],
+    "visueltcenter": [
+      12.50142248,
+      55.70553153
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/1l",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6001042",
+    "bfenummer": 6001042
+  }
+}, {
+  "tekst": "208 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "208",
+    "bbox": [
+      12.50252421,
+      55.69937357,
+      12.50270168,
+      55.69951808
+    ],
+    "visueltcenter": [
+      12.50261295,
+      55.69944582
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/208",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6001462",
+    "bfenummer": 6001462
+  }
+}, {
+  "tekst": "2270 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "2270",
+    "bbox": [
+      12.50058385,
+      55.69881499,
+      12.50060973,
+      55.69887993
+    ],
+    "visueltcenter": [
+      12.50059544,
+      55.69883232
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/2270",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6003302",
+    "bfenummer": 6003302
+  }
+}, {
+  "tekst": "2698 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "2698",
+    "bbox": [
+      12.49035379,
+      55.69652572,
+      12.49052271,
+      55.69675826
+    ],
+    "visueltcenter": [
+      12.49041565,
+      55.69670168
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/2698",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6003694",
+    "bfenummer": 6003694
+  }
+}, {
+  "tekst": "2862 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "2862",
+    "bbox": [
+      12.49163262,
+      55.7019327,
+      12.49232716,
+      55.70215037
+    ],
+    "visueltcenter": [
+      12.49204716,
+      55.70203341
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/2862",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6003850",
+    "bfenummer": 6003850
+  }
+}, {
+  "tekst": "3321 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "3321",
+    "bbox": [
+      12.50409888,
+      55.69403881,
+      12.50456898,
+      55.69428671
+    ],
+    "visueltcenter": [
+      12.50433393,
+      55.69416276
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/3321",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6004275",
+    "bfenummer": 6004275
+  }
+}, {
+  "tekst": "3354 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "3354",
+    "bbox": [
+      12.49755096,
+      55.69789819,
+      12.49823731,
+      55.69800193
+    ],
+    "visueltcenter": [
+      12.49763736,
+      55.69794152
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/3354",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6004305",
+    "bfenummer": 6004305
+  }
+}, {
+  "tekst": "3426 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "3426",
+    "bbox": [
+      12.50348532,
+      55.708491,
+      12.50395846,
+      55.70876409
+    ],
+    "visueltcenter": [
+      12.50382837,
+      55.70855771
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/3426",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "9070492",
+    "bfenummer": 9070492
+  }
+}, {
+  "tekst": "814 Brønshøj, København (2000152)",
+  "jordstykke": {
+    "matrikelnr": "814",
+    "bbox": [
+      12.50002092,
+      55.69923293,
+      12.50054595,
+      55.69956939
+    ],
+    "visueltcenter": [
+      12.50028343,
+      55.69940116
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000152/814",
+    "ejerlav": {
+      "kode": 2000152,
+      "navn": "Brønshøj, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000152"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6001990",
+    "bfenummer": 6001990
+  }
+}, {
+  "tekst": "5 Damhussøen, København (2000154)",
+  "jordstykke": {
+    "matrikelnr": "5",
+    "bbox": [
+      12.47594884,
+      55.68053423,
+      12.47613397,
+      55.68067321
+    ],
+    "visueltcenter": [
+      12.47605334,
+      55.6806159
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000154/5",
+    "ejerlav": {
+      "kode": 2000154,
+      "navn": "Damhussøen, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000154"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6004675",
+    "bfenummer": 6004675
+  }
+}, {
+  "tekst": "1180 Emdrup, København (2000156)",
+  "jordstykke": {
+    "matrikelnr": "1180",
+    "bbox": [
+      12.52698584,
+      55.72330438,
+      12.52734353,
+      55.72369894
+    ],
+    "visueltcenter": [
+      12.52716468,
+      55.72350166
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000156/1180",
+    "ejerlav": {
+      "kode": 2000156,
+      "navn": "Emdrup, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000156"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6005797",
+    "bfenummer": 6005797
+  }
+}, {
+  "tekst": "122 Emdrup, København (2000156)",
+  "jordstykke": {
+    "matrikelnr": "122",
+    "bbox": [
+      12.54505813,
+      55.72328592,
+      12.54554926,
+      55.72359408
+    ],
+    "visueltcenter": [
+      12.54529756,
+      55.72345256
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000156/122",
+    "ejerlav": {
+      "kode": 2000156,
+      "navn": "Emdrup, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000156"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "6004900",
+    "bfenummer": 6004900
+  }
+}, {
+  "tekst": "1314 Emdrup, København (2000156)",
+  "jordstykke": {
+    "matrikelnr": "1314",
+    "bbox": [
+      12.54037081,
+      55.72300483,
+      12.54112383,
+      55.72329033
+    ],
+    "visueltcenter": [
+      12.54062328,
+      55.72313873
+    ],
+    "href": "https://api.dataforsyningen.dk/jordstykker/2000156/1314",
+    "ejerlav": {
+      "kode": 2000156,
+      "navn": "Emdrup, København",
+      "href": "https://api.dataforsyningen.dk/ejerlav/2000156"
+    },
+    "kommune": null,
+    "esrejendomsnr": "0",
+    "udvidet_esrejendomsnr": "0",
+    "sfeejendomsnr": "8243791",
+    "bfenummer": 8243791
+  }
+}
+]

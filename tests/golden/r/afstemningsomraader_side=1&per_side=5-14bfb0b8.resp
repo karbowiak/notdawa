@@ -1,0 +1,278 @@
+[
+{
+  "ændret": "2025-08-21T21:04:39.524Z",
+  "geo_version": 9,
+  "geo_ændret": "2025-08-21T21:04:39.524Z",
+  "bbox": [
+    12.5617914,
+    55.69885594,
+    12.58783962,
+    55.70960866
+  ],
+  "visueltcenter": [
+    12.57251778,
+    55.70527602
+  ],
+  "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/1",
+  "dagi_id": "707732",
+  "nummer": "1",
+  "navn": "1. Østerbro",
+  "afstemningssted": {
+    "navn": "Idrætshuset",
+    "adgangsadresse": {
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-8121-32b8-e044-0003ba298018",
+      "id": "0a3f507a-8121-32b8-e044-0003ba298018",
+      "adressebetegnelse": "Gunnar Nu Hansens Plads 7, 2100 København Ø",
+      "koordinater": [
+        12.57484891,
+        55.70476656
+      ]
+    }
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/1",
+    "nummer": "1",
+    "navn": "Østerbro"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}, {
+  "ændret": "2025-08-21T21:04:39.524Z",
+  "geo_version": 7,
+  "geo_ændret": "2025-08-21T21:04:39.524Z",
+  "bbox": [
+    12.56357007,
+    55.70753583,
+    12.59389495,
+    55.73271149
+  ],
+  "visueltcenter": [
+    12.58266671,
+    55.71087318
+  ],
+  "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/2",
+  "dagi_id": "711932",
+  "nummer": "2",
+  "navn": "1. Nord",
+  "afstemningssted": {
+    "navn": "Strandvejsskolen",
+    "adgangsadresse": {
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-f1b6-32b8-e044-0003ba298018",
+      "id": "0a3f507a-f1b6-32b8-e044-0003ba298018",
+      "adressebetegnelse": "Sionsgade 1, 2100 København Ø",
+      "koordinater": [
+        12.57920605,
+        55.71124423
+      ]
+    }
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/1",
+    "nummer": "1",
+    "navn": "Østerbro"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}, {
+  "ændret": "2025-08-21T21:04:39.524Z",
+  "geo_version": 7,
+  "geo_ændret": "2025-08-21T21:04:39.524Z",
+  "bbox": [
+    12.56093843,
+    55.69158705,
+    12.58798409,
+    55.70574967
+  ],
+  "visueltcenter": [
+    12.56874495,
+    55.69809018
+  ],
+  "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/3",
+  "dagi_id": "704936",
+  "nummer": "3",
+  "navn": "1. Syd",
+  "afstemningssted": {
+    "navn": "Remisen",
+    "adgangsadresse": {
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-4851-32b8-e044-0003ba298018",
+      "id": "0a3f507a-4851-32b8-e044-0003ba298018",
+      "adressebetegnelse": "Blegdamsvej 132, 2100 København Ø",
+      "koordinater": [
+        12.57679007,
+        55.6986844
+      ]
+    }
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/1",
+    "nummer": "1",
+    "navn": "Østerbro"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}, {
+  "ændret": "2025-08-21T21:04:39.524Z",
+  "geo_version": 8,
+  "geo_ændret": "2025-08-21T21:04:39.524Z",
+  "bbox": [
+    12.55240774,
+    55.70263715,
+    12.57805121,
+    55.71560702
+  ],
+  "visueltcenter": [
+    12.56014447,
+    55.70790808
+  ],
+  "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/5",
+  "dagi_id": "706160",
+  "nummer": "5",
+  "navn": "1. Vest",
+  "afstemningssted": {
+    "navn": "Nørre Fælled Skole",
+    "adgangsadresse": {
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-457f-32b8-e044-0003ba298018",
+      "id": "0a3f507a-457f-32b8-e044-0003ba298018",
+      "adressebetegnelse": "Biskop Krags Vænge 7, 2100 København Ø",
+      "koordinater": [
+        12.5581518,
+        55.70536092
+      ]
+    }
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/1",
+    "nummer": "1",
+    "navn": "Østerbro"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}, {
+  "ændret": "2025-08-21T21:04:39.524Z",
+  "geo_version": 8,
+  "geo_ændret": "2025-08-21T21:04:39.524Z",
+  "bbox": [
+    12.55812388,
+    55.70948207,
+    12.5791875,
+    55.7316402
+  ],
+  "visueltcenter": [
+    12.5685572,
+    55.7155214
+  ],
+  "href": "https://api.dataforsyningen.dk/afstemningsomraader/101/6",
+  "dagi_id": "710802",
+  "nummer": "6",
+  "navn": "1. Nordvest",
+  "afstemningssted": {
+    "navn": "Kildevældsskolen",
+    "adgangsadresse": {
+      "href": "https://api.dataforsyningen.dk/adgangsadresser/0a3f507a-4387-32b8-e044-0003ba298018",
+      "id": "0a3f507a-4387-32b8-e044-0003ba298018",
+      "adressebetegnelse": "Bellmansgade 5A, 2100 København Ø",
+      "koordinater": [
+        12.56940985,
+        55.71540214
+      ]
+    }
+  },
+  "kommune": {
+    "href": "https://api.dataforsyningen.dk/kommuner/0101",
+    "kode": "0101",
+    "navn": "København"
+  },
+  "region": {
+    "href": "https://api.dataforsyningen.dk/regioner/1084",
+    "kode": "1084",
+    "navn": "Region Hovedstaden"
+  },
+  "opstillingskreds": {
+    "href": "https://api.dataforsyningen.dk/opstillingskredse/1",
+    "nummer": "1",
+    "navn": "Østerbro"
+  },
+  "storkreds": {
+    "href": "https://api.dataforsyningen.dk/storkredse/1",
+    "nummer": "1",
+    "navn": "København"
+  },
+  "valglandsdel": {
+    "href": "https://api.dataforsyningen.dk/valglandsdele/A",
+    "bogstav": "A",
+    "navn": "Hovedstaden"
+  }
+}
+]

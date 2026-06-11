@@ -1,0 +1,32 @@
+[
+{
+  "id": "001e0cf9-aeb1-cb42-e063-0c4f210a2218",
+  "hovedtype": "Vej",
+  "undertype": "vejbro",
+  "primærtnavn": "Dyssebroen",
+  "primærnavnestatus": "officielt",
+  "ændret": "2026-05-04T22:02:01.427Z",
+  "geo_ændret": "2026-05-04T22:02:01.427Z",
+  "geo_version": 1,
+  "href": "https://api.dataforsyningen.dk/steder/001e0cf9-aeb1-cb42-e063-0c4f210a2218",
+  "egenskaber": {},
+  "visueltcenter": [
+    12.60662381,
+    55.67336702
+  ],
+  "bbox": [
+    12.60630998,
+    55.67314198,
+    12.60693764,
+    55.67359205
+  ],
+  "kommuner": [
+    {
+      "href": "https://api.dataforsyningen.dk/kommuner/0101",
+      "kode": "0101",
+      "navn": "København"
+    }
+  ],
+  "sekundærenavne": []
+}
+]
