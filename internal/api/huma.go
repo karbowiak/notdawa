@@ -121,6 +121,40 @@ func withCORS(next http.Handler) http.Handler {
 	})
 }
 
+// withHealth answers Kubernetes probe endpoints ahead of everything else:
+//
+//   - GET /healthz — liveness: 200 as long as the process is up (no DB touch).
+//   - GET /readyz  — readiness: a short, bounded pool.Ping; 200 when the database
+//     is reachable, 503 otherwise.
+//
+// They sit OUTSIDE the access log so 1-per-10s probe traffic doesn't drown the
+// console, and they are deliberately NOT part of the DAWA surface or the OpenAPI
+// document — they exist only for orchestration health checks. Crucially, /readyz
+// is cheap (a single round-trip) rather than serializing a real resource, so it
+// stays fast even while a bulk import hammers the database.
+func withHealth(pool *pgxpool.Pool, next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case "/healthz":
+			w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+			_, _ = w.Write([]byte("ok\n"))
+			return
+		case "/readyz":
+			ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
+			defer cancel()
+			w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+			if err := pool.Ping(ctx); err != nil {
+				w.WriteHeader(http.StatusServiceUnavailable)
+				_, _ = w.Write([]byte("not ready: " + err.Error() + "\n"))
+				return
+			}
+			_, _ = w.Write([]byte("ready\n"))
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
 // clientIP returns the best-effort client address: the X-Forwarded-For/
 // X-Real-IP header when present (behind a proxy), else the raw RemoteAddr.
 func clientIP(r *http.Request) string {
@@ -777,7 +811,8 @@ func NewHumaServer(pool *pgxpool.Pool, baseURL string) http.Handler {
 	// /openapi.*) is logged to the console as it comes in. CORS sits inside the log
 	// wrapper so preflight OPTIONS are logged too, and makes every response (and the
 	// preflight) cross-origin readable, mirroring upstream DAWA's open policy.
-	return accessLog(withCORS(mux))
+	// withHealth sits OUTSIDE the log wrapper so probe traffic isn't logged.
+	return withHealth(pool, accessLog(withCORS(mux)))
 }
 
 // registerKode registers a single-resource GET keyed by {kode}.
