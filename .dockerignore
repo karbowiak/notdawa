@@ -1,0 +1,26 @@
+# Never bake secrets or local state into the image build context.
+.env
+.env.*
+!.env.example
+
+# Build output / local scratch
+bin/
+dist/
+data/
+*.zip
+*.gpkg
+*.gml
+
+# VCS and tooling
+.git
+.gitignore
+.github
+.claude/
+.vscode/
+.DS_Store
+
+# Not needed to build or run the binary
+docs/
+helm/
+values.devspace.yaml
+README.md

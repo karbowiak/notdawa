@@ -1,5 +1,7 @@
 # Secrets & build output
 /.env
+/values.devspace.yaml
+/.render.yaml
 /bin/
 /dist/
 
