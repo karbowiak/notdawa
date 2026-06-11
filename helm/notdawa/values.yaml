@@ -1,0 +1,174 @@
+# Default values for notdawa. Everything here is generic — no secrets, no
+# environment-specific hostnames. Override per-environment with your own values
+# file (e.g. values.devspace.yaml) or a Flux HelmRelease `values:` block.
+
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: ghcr.io/karbowiak/notdawa
+  # Defaults to .Chart.appVersion when empty.
+  tag: ""
+  pullPolicy: IfNotPresent
+
+# Names of pre-existing image pull secrets (for private registries).
+imagePullSecrets: []
+
+# ---------------------------------------------------------------------------
+# Secrets
+# ---------------------------------------------------------------------------
+# The chart renders a Secret from the values below. To supply secrets out of
+# band instead (recommended for GitOps), set `existingSecret` to the name of a
+# Secret that carries these keys: POSTGRES_PASSWORD, DATAFORDELER_API_KEY and
+# (optionally) GSEARCH_TOKEN.
+secret:
+  existingSecret: ""
+  # Datafordeler apiKey — required for `import`/refresh, unused by `serve`.
+  datafordelerApiKey: ""
+  # Optional GSSearch token (autocomplete cross-check).
+  gsearchToken: ""
+
+# ---------------------------------------------------------------------------
+# Database
+# ---------------------------------------------------------------------------
+database:
+  # Full DSN of an EXTERNAL Postgres+PostGIS. When set, the bundled postgres is
+  # not deployed and this connection string is used verbatim. Leave empty to use
+  # the in-chart database below.
+  url: ""
+  # sslmode used when the DSN is assembled from the bundled postgres values.
+  sslmode: disable
+
+postgres:
+  enabled: true
+  # Multi-arch PostGIS build (matches the project's docker-compose).
+  image: imresamu/postgis:17-3.5
+  imagePullPolicy: IfNotPresent
+  auth:
+    username: notdawa
+    database: notdawa
+    # REQUIRED when postgres.enabled and no existingSecret is provided.
+    password: ""
+  persistence:
+    enabled: true
+    storageClass: longhorn
+    size: 50Gi
+    # Annotate the PVC so it survives `helm uninstall` (the data is expensive to
+    # rebuild — a full import is ~8 GB and a few hours).
+    keep: true
+  # Extra postgres server flags.
+  args:
+    - -c
+    - max_connections=200
+    - -c
+    - shared_buffers=512MB
+    - -c
+    - work_mem=32MB
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      memory: 4Gi
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# ---------------------------------------------------------------------------
+# API server (`notdawa serve`)
+# ---------------------------------------------------------------------------
+server:
+  replicas: 2
+  # The host used in generated hrefs. Keep DAWA's default for byte-compatible
+  # responses; point at your own host only if clients should follow links back
+  # to this mirror.
+  baseURL: https://api.dataforsyningen.dk
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 512Mi
+  service:
+    type: ClusterIP
+    port: 80
+  podAnnotations: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# ---------------------------------------------------------------------------
+# Schema migrations (`notdawa migrate`)
+# ---------------------------------------------------------------------------
+# Run as a Helm post-install/post-upgrade hook so the schema is applied once per
+# release operation (no multi-replica race).
+migrate:
+  enabled: true
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
+
+# ---------------------------------------------------------------------------
+# Data import (`notdawa import`)
+# ---------------------------------------------------------------------------
+import:
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      memory: 8Gi
+  # Scratch space for downloaded extracts (TMPDIR). A full run streams ~8 GB.
+  tmpSize: 20Gi
+
+  # One-time, blocking, full import. Enable for the initial install, then leave
+  # it (the Job is named per-`suffix`; bump `suffix` to run it again on demand).
+  bootstrap:
+    enabled: false
+    suffix: ""
+    target: all
+    # Safety cap so a stuck run cannot block forever (6 h).
+    activeDeadlineSeconds: 21600
+
+  # Weekly refresh. Datafordeler republishes each register once a week (DAR Sat,
+  # DAGI+MAT Sun, DS Mon); Tuesday 04:00 lands after them all.
+  cron:
+    enabled: true
+    schedule: "0 4 * * 2"
+    timeZone: Europe/Copenhagen
+    target: all
+    activeDeadlineSeconds: 21600
+    successfulJobsHistoryLimit: 3
+    failedJobsHistoryLimit: 3
+
+# ---------------------------------------------------------------------------
+# Ingress
+# ---------------------------------------------------------------------------
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - notdawa.com
+  # Extra annotations merged onto the Ingress.
+  annotations: {}
+  # Body/response tuning for an address API behind a CDN.
+  proxyBodySize: 1m
+  # Cache-Control added by the ingress to successful responses so an upstream
+  # CDN (Cloudflare) can cache at the edge. Empty disables the header.
+  cacheControl: "public, max-age=300"
+  tls:
+    enabled: true
+    # cert-manager ClusterIssuer that issues the certificate (DNS-01 here).
+    clusterIssuer: letsencrypt
+    secretName: notdawa-tls
+
+# fsGroup/runAsUser for the notdawa (app) pods. Matches the image's user so the
+# /tmp emptyDir is writable during imports.
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 10001
+  runAsGroup: 10001
+  fsGroup: 10001

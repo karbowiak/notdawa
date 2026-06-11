@@ -1,0 +1,30 @@
+notdawa {{ .Chart.AppVersion }} installed as release "{{ .Release.Name }}" in namespace "{{ .Release.Namespace }}".
+
+API server:   svc/{{ include "notdawa.fullname" . }} (port {{ .Values.server.service.port }})
+{{- if .Values.postgres.enabled }}
+Database:     svc/{{ include "notdawa.postgresHost" . }} (PostGIS, port 5432)
+{{- else }}
+Database:     external ({{ .Values.database.url | default "<unset>" }})
+{{- end }}
+{{- if .Values.ingress.enabled }}
+Public URL:   {{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}://{{ index .Values.ingress.hosts 0 }}/docs
+{{- end }}
+
+Next steps:
+{{- if not .Values.import.bootstrap.enabled }}
+  1. The database is empty until you import. Run a one-time full load:
+
+       helm upgrade {{ .Release.Name }} <chart> --reuse-values \
+         --set import.bootstrap.enabled=true
+
+     (~8 GB download, a few hours). Disable it again afterwards; the weekly
+     CronJob keeps the mirror fresh.
+{{- else }}
+  1. A bootstrap import Job is running — follow it with:
+
+       kubectl -n {{ .Release.Namespace }} logs -f job/{{ include "notdawa.fullname" . }}-bootstrap{{ with .Values.import.bootstrap.suffix }}-{{ . }}{{ end }}
+{{- end }}
+  2. Smoke test:
+
+       kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "notdawa.fullname" . }} 8080:{{ .Values.server.service.port }}
+       curl localhost:8080/regioner

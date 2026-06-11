@@ -1,0 +1,20 @@
+apiVersion: v2
+name: notdawa
+description: >-
+  Self-hosted, DAWA-compatible Danish address API backed by a local PostgreSQL +
+  PostGIS mirror of the Datafordeler registers. Bundles the database, the API
+  server, a one-time bootstrap import job and a weekly refresh CronJob.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+home: https://github.com/karbowiak/notdawa
+sources:
+  - https://github.com/karbowiak/notdawa
+keywords:
+  - dawa
+  - dataforsyningen
+  - denmark
+  - addresses
+  - postgis
+maintainers:
+  - name: Michael Karbowiak

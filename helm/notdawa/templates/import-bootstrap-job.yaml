@@ -1,0 +1,53 @@
+{{- if .Values.import.bootstrap.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "notdawa.fullname" . }}-bootstrap{{ with .Values.import.bootstrap.suffix }}-{{ . }}{{ end }}
+  labels:
+    {{- include "notdawa.labels" . | nindent 4 }}
+    app.kubernetes.io/component: bootstrap
+spec:
+  backoffLimit: 3
+  ttlSecondsAfterFinished: 86400
+  activeDeadlineSeconds: {{ .Values.import.bootstrap.activeDeadlineSeconds }}
+  template:
+    metadata:
+      labels:
+        {{- include "notdawa.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: bootstrap
+    spec:
+      restartPolicy: OnFailure
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      initContainers:
+        {{- include "notdawa.waitForDb" . | nindent 8 }}
+      containers:
+        - name: bootstrap
+          image: {{ include "notdawa.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          # Self-contained: ensure the schema exists, then load everything.
+          command: ["sh", "-c"]
+          args:
+            - 'notdawa migrate && notdawa import {{ .Values.import.bootstrap.target }}'
+          env:
+            - name: TMPDIR
+              value: /tmp
+            {{- include "notdawa.appEnv" . | nindent 12 }}
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          {{- with .Values.import.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: {{ .Values.import.tmpSize }}
+{{- end }}
