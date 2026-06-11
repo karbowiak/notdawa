@@ -27,6 +27,20 @@ type importStep struct {
 	register string // DAR | DAGI | MAT | DS | derived
 	desc     string // short human description for the plan table
 	run      func(context.Context, *pgxpool.Pool, *datafordeler.Client) (ingest.Result, error)
+
+	// dataVersion marks the data this step loads; zero means 1. Bump it when a
+	// schema change requires the entity to be re-imported (loads are
+	// TRUNCATE+reload, so a re-run fills new columns) — `provision` re-runs
+	// every step whose ledgered version in data_provisions is behind.
+	dataVersion int
+}
+
+// stepVersion is the effective dataVersion of a step (unset → 1).
+func stepVersion(s importStep) int {
+	if s.dataVersion < 1 {
+		return 1
+	}
+	return s.dataVersion
 }
 
 // importPlan is the canonical full-import order. Steps run top-to-bottom and the
@@ -47,44 +61,44 @@ func importPlan() []importStep {
 	}
 	return []importStep{
 		// DAGI — administrative geographies.
-		{"regioner", "DAGI", "administrative regions", di(ingest.Regioner)},
-		{"kommuner", "DAGI", "municipalities", di(ingest.Kommuner)},
-		{"landsdele", "DAGI", "NUTS3 parts of the country", di(ingest.Landsdele)},
-		{"sogne", "DAGI", "parishes", di(ingest.Sogne)},
-		{"postnumre", "DAGI", "postal districts", di(ingest.Postnumre)},
-		{"supplerendebynavne", "DAGI", "supplementary town names", di(ingest.Supplerendebynavne)},
-		{"opstillingskredse", "DAGI", "nomination districts (geometry)", di(ingest.Opstillingskredse)},
-		{"storkredse-valglandsdele", "DAGI", "constituencies + electoral regions", di(ingest.StorkredseValglandsdele)},
-		{"afstemningsomraader", "DAGI", "polling districts", di(ingest.Afstemningsomraader)},
-		{"opstillingskredse-finish", "derived", "nomination-district centres + kommune links", noClient(ingest.OpstillingskredseFinish)},
-		{"menighedsraadsafstemningsomraader", "DAGI", "parish-council polling districts", di(ingest.MRAfstemningsomraader)},
-		{"retskredse", "DAGI", "judicial districts", di(ingest.Retskredse)},
-		{"politikredse", "DAGI", "police districts", di(ingest.Politikredse)},
-		{"zoner", "DAGI", "planning zones", di(ingest.Zoner)},
+		{"regioner", "DAGI", "administrative regions", di(ingest.Regioner), 1},
+		{"kommuner", "DAGI", "municipalities", di(ingest.Kommuner), 1},
+		{"landsdele", "DAGI", "NUTS3 parts of the country", di(ingest.Landsdele), 1},
+		{"sogne", "DAGI", "parishes", di(ingest.Sogne), 1},
+		{"postnumre", "DAGI", "postal districts", di(ingest.Postnumre), 1},
+		{"supplerendebynavne", "DAGI", "supplementary town names", di(ingest.Supplerendebynavne), 1},
+		{"opstillingskredse", "DAGI", "nomination districts (geometry)", di(ingest.Opstillingskredse), 1},
+		{"storkredse-valglandsdele", "DAGI", "constituencies + electoral regions", di(ingest.StorkredseValglandsdele), 1},
+		{"afstemningsomraader", "DAGI", "polling districts", di(ingest.Afstemningsomraader), 1},
+		{"opstillingskredse-finish", "derived", "nomination-district centres + kommune links", noClient(ingest.OpstillingskredseFinish), 1},
+		{"menighedsraadsafstemningsomraader", "DAGI", "parish-council polling districts", di(ingest.MRAfstemningsomraader), 1},
+		{"retskredse", "DAGI", "judicial districts", di(ingest.Retskredse), 1},
+		{"politikredse", "DAGI", "police districts", di(ingest.Politikredse), 1},
+		{"zoner", "DAGI", "planning zones", di(ingest.Zoner), 1},
 
 		// MAT — cadastre.
-		{"ejerlav", "MAT", "cadastral districts", di(ingest.Ejerlav)},
-		{"mat-sfe", "MAT", "samlet fast ejendom (properties)", di(ingest.SamletFastEjendom)},
-		{"mat-jordstykke", "MAT", "land parcels", di(ingest.Jordstykke)},
-		{"mat-lodflade", "MAT", "parcel faces → parcel geometry", di(ingest.Lodflade)},
+		{"ejerlav", "MAT", "cadastral districts", di(ingest.Ejerlav), 1},
+		{"mat-sfe", "MAT", "samlet fast ejendom (properties)", di(ingest.SamletFastEjendom), 1},
+		{"mat-jordstykke", "MAT", "land parcels", di(ingest.Jordstykke), 1},
+		{"mat-lodflade", "MAT", "parcel faces → parcel geometry", di(ingest.Lodflade), 1},
 
 		// DAR — addresses (dependency order: roads → access → unit addresses).
-		{"navngivenvej", "DAR", "named roads", di(ingest.NavngivenVej)},
-		{"nvkommunedel", "DAR", "road↔municipality links", di(ingest.NavngivenVejKommunedel)},
-		{"nvpostnummer", "DAR", "road↔postal-district links", di(ingest.NavngivenVejPostnummer)},
-		{"darpostnummer", "DAR", "DAR postal districts", di(ingest.DARPostnummer)},
-		{"adressepunkt", "DAR", "address points (geometry)", di(ingest.Adressepunkt)},
-		{"husnummer", "DAR", "access addresses", di(ingest.Husnummer)},
-		{"adresse", "DAR", "unit addresses", di(ingest.Adresse)},
+		{"navngivenvej", "DAR", "named roads", di(ingest.NavngivenVej), 1},
+		{"nvkommunedel", "DAR", "road↔municipality links", di(ingest.NavngivenVejKommunedel), 1},
+		{"nvpostnummer", "DAR", "road↔postal-district links", di(ingest.NavngivenVejPostnummer), 1},
+		{"darpostnummer", "DAR", "DAR postal districts", di(ingest.DARPostnummer), 1},
+		{"adressepunkt", "DAR", "address points (geometry)", di(ingest.Adressepunkt), 1},
+		{"husnummer", "DAR", "access addresses", di(ingest.Husnummer), 1},
+		{"adresse", "DAR", "unit addresses", di(ingest.Adresse), 1},
 
 		// DS — place names.
-		{"ds", "DS", "place names (stednavne)", di(ingest.DS)},
+		{"ds", "DS", "place names (stednavne)", di(ingest.DS), 1},
 
 		// Derived / post-processing — run after the data they read from is loaded.
-		{"postnumre-kommuner", "derived", "postal↔municipality relation", noClient(ingest.PostnumreKommuner)},
-		{"stormodtagere", "derived", "high-volume postal recipients (seed CSV)", noClient(ingest.Stormodtagere)},
-		{"brofasthed", "DAWA-seed", "per-place land-connectedness flag (seed CSV)", noClient(ingest.Brofasthed)},
-		{"polylabel-backfill", "derived", "label points for all geometry", noClient(ingest.PolylabelBackfill)},
+		{"postnumre-kommuner", "derived", "postal↔municipality relation", noClient(ingest.PostnumreKommuner), 1},
+		{"stormodtagere", "derived", "high-volume postal recipients (seed CSV)", noClient(ingest.Stormodtagere), 1},
+		{"brofasthed", "DAWA-seed", "per-place land-connectedness flag (seed CSV)", noClient(ingest.Brofasthed), 1},
+		{"polylabel-backfill", "derived", "label points for all geometry", noClient(ingest.PolylabelBackfill), 1},
 	}
 }
 
@@ -174,6 +188,75 @@ func importCmd() *cobra.Command {
 	return cmd
 }
 
+// provisionCmd reconciles the database against the import plan: it runs the
+// steps whose data has never been loaded (new entities, or a whole fresh
+// database — which makes this the bootstrap path) or whose dataVersion is
+// ahead of the data_provisions ledger (re-import after a schema change). When
+// everything is current it exits immediately, so it is cheap to run on every
+// deploy.
+func provisionCmd() *cobra.Command {
+	var dryRun bool
+	cmd := &cobra.Command{
+		Use:   "provision",
+		Short: "Import whatever plan data the database is missing (run-once per dataVersion)",
+		Long: "Diff the import plan against the data_provisions ledger and import only the\n" +
+			"steps that are missing or stale. New tables get their data on deploy instead of\n" +
+			"waiting for the weekly refresh; on an empty database this performs the full\n" +
+			"initial load. Re-runs resume where they left off.",
+		Args: cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, args []string) error {
+			ctx := cmd.Context()
+			pool, err := db.Connect(ctx, cfg.DatabaseURL)
+			if err != nil {
+				return err
+			}
+			defer pool.Close()
+
+			// A plain provision Job can start before the deploy's migrate hook
+			// has finished, so ensure the schema ourselves — the ledger makes
+			// this a no-op when migrations are already applied.
+			applied, err := db.Migrate(ctx, pool, "migrations")
+			if err != nil {
+				return err
+			}
+			if len(applied) > 0 {
+				fmt.Printf("applied %d pending migration(s) first\n", len(applied))
+			}
+
+			if err := ingest.EnsureProvisionLedger(ctx, pool); err != nil {
+				return err
+			}
+			have, err := ingest.ProvisionedVersions(ctx, pool)
+			if err != nil {
+				return err
+			}
+
+			var pending []importStep
+			for _, s := range importPlan() {
+				if have[s.key] < stepVersion(s) {
+					pending = append(pending, s)
+				}
+			}
+			if len(pending) == 0 {
+				fmt.Println("Everything provisioned — nothing to do.")
+				return nil
+			}
+
+			printImportPlan(pending)
+			if dryRun {
+				return nil
+			}
+			if err := requireKey(); err != nil {
+				return err
+			}
+			client := datafordeler.New(cfg.DatafordelerAPIKey)
+			return runImport(ctx, pool, client, pending)
+		},
+	}
+	cmd.Flags().BoolVar(&dryRun, "dry-run", false, "print what would be provisioned and exit")
+	return cmd
+}
+
 // printImportPlan renders the table of everything the run will pull.
 func printImportPlan(steps []importStep) {
 	fmt.Printf("Import plan — %d step(s):\n\n", len(steps))
@@ -188,7 +271,20 @@ func printImportPlan(steps []importStep) {
 
 // runImport executes each step in order, rendering a live progress line per
 // step. A single step failure aborts the run (later steps may depend on it).
+// Runs are serialised by a Postgres advisory lock (loads are TRUNCATE+reload,
+// so e.g. the weekly CronJob and a deploy's provision Job must not interleave)
+// and every successful step is stamped into the data_provisions ledger, which
+// is what `provision` later diffs the plan against.
 func runImport(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client, steps []importStep) error {
+	if err := ingest.EnsureProvisionLedger(ctx, pool); err != nil {
+		return err
+	}
+	release, err := ingest.AcquireImportLock(ctx, pool)
+	if err != nil {
+		return err
+	}
+	defer release()
+
 	keyCol := 0
 	for _, s := range steps {
 		if n := len(s.key); n > keyCol {
@@ -211,6 +307,7 @@ func runImport(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Cli
 		if err != nil {
 			return fmt.Errorf("import %s: %w", s.key, err)
 		}
+		ingest.StampProvision(ctx, pool, s.key, stepVersion(s), res.RowsLoaded)
 	}
 	fmt.Println("\nImport complete.")
 	return nil

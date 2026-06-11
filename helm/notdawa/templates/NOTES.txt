@@ -11,18 +11,18 @@ Public URL:   {{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}:/
 {{- end }}
 
 Next steps:
-{{- if not .Values.import.bootstrap.enabled }}
-  1. The database is empty until you import. Run a one-time full load:
+{{- if .Values.provision.enabled }}
+  1. A provision Job is importing whatever data the database is missing — on a
+     fresh install that is the full load (~8 GB download, a few hours); when
+     everything is already provisioned it exits in seconds. Follow it with:
 
-       helm upgrade {{ .Release.Name }} <chart> --reuse-values \
-         --set import.bootstrap.enabled=true
+       kubectl -n {{ .Release.Namespace }} logs -f job/{{ include "notdawa.fullname" . }}-provision-r{{ .Release.Revision }}
 
-     (~8 GB download, a few hours). Disable it again afterwards; the weekly
-     CronJob keeps the mirror fresh.
+     The weekly CronJob keeps the mirror fresh afterwards.
 {{- else }}
-  1. A bootstrap import Job is running — follow it with:
+  1. Provisioning is disabled — the database stays empty until you import:
 
-       kubectl -n {{ .Release.Namespace }} logs -f job/{{ include "notdawa.fullname" . }}-bootstrap{{ with .Values.import.bootstrap.suffix }}-{{ . }}{{ end }}
+       kubectl -n {{ .Release.Namespace }} create job --from=cronjob/{{ include "notdawa.fullname" . }}-import initial-import
 {{- end }}
   2. Smoke test:
 

@@ -124,15 +124,6 @@ import:
   # Scratch space for downloaded extracts (TMPDIR). A full run streams ~8 GB.
   tmpSize: 20Gi
 
-  # One-time, blocking, full import. Enable for the initial install, then leave
-  # it (the Job is named per-`suffix`; bump `suffix` to run it again on demand).
-  bootstrap:
-    enabled: false
-    suffix: ""
-    target: all
-    # Safety cap so a stuck run cannot block forever (6 h).
-    activeDeadlineSeconds: 21600
-
   # Weekly refresh. Datafordeler republishes each register once a week (DAR Sat,
   # DAGI+MAT Sun, DS Mon); Tuesday 04:00 lands after them all.
   cron:
@@ -143,6 +134,21 @@ import:
     activeDeadlineSeconds: 21600
     successfulJobsHistoryLimit: 3
     failedJobsHistoryLimit: 3
+
+# ---------------------------------------------------------------------------
+# Data provisioning (`notdawa provision`)
+# ---------------------------------------------------------------------------
+# A Job per install/upgrade that imports whatever plan data the database is
+# missing (tracked in the data_provisions ledger): new entities added by a
+# release get their data on deploy instead of waiting for the weekly refresh,
+# and on a fresh install this performs the full initial load (~8 GB, a few
+# hours). When everything is already provisioned it exits in seconds. Runs
+# async — the rollout does not wait for it. Uses `import.resources`/`tmpSize`.
+provision:
+  enabled: true
+  # Safety cap so a stuck run cannot block forever (6 h — sized for the full
+  # fresh-install load).
+  activeDeadlineSeconds: 21600
 
 # ---------------------------------------------------------------------------
 # Ingress

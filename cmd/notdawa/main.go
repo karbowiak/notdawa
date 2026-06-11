@@ -1,5 +1,6 @@
 // Command notdawa is the unified CLI for the local DAWA mirror: import registers
-// from Datafordeler Fildownload, run migrations, and serve the API.
+// from Datafordeler Fildownload, run migrations, provision missing data, and
+// serve the API.
 package main
 
 import (
@@ -27,7 +28,7 @@ func main() {
 		SilenceUsage:  true,
 		SilenceErrors: false,
 	}
-	root.AddCommand(migrateCmd(), importCmd(), serveCmd())
+	root.AddCommand(migrateCmd(), importCmd(), provisionCmd(), serveCmd())
 
 	if err := root.Execute(); err != nil {
 		os.Exit(1)

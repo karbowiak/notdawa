@@ -1,20 +1,27 @@
-{{- if .Values.import.bootstrap.enabled }}
+{{- if .Values.provision.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "notdawa.fullname" . }}-bootstrap{{ with .Values.import.bootstrap.suffix }}-{{ . }}{{ end }}
+  # Jobs are immutable, so name per release revision: every install/upgrade
+  # gets a fresh run (Helm prunes the previous revision's Job, the TTL reaps
+  # completed ones). `notdawa provision` diffs the import plan against the
+  # data_provisions ledger, so a run with nothing new exits in seconds — and on
+  # an empty database it performs the full initial load.
+  name: {{ include "notdawa.fullname" . }}-provision-r{{ .Release.Revision }}
   labels:
     {{- include "notdawa.labels" . | nindent 4 }}
-    app.kubernetes.io/component: bootstrap
+    app.kubernetes.io/component: provision
 spec:
-  backoffLimit: 3
+  # Not a Helm hook: provisioning may download gigabytes, and the rollout must
+  # not wait on it. Retries resume from the ledger (completed steps are skipped).
+  backoffLimit: 6
   ttlSecondsAfterFinished: 86400
-  activeDeadlineSeconds: {{ .Values.import.bootstrap.activeDeadlineSeconds }}
+  activeDeadlineSeconds: {{ .Values.provision.activeDeadlineSeconds }}
   template:
     metadata:
       labels:
         {{- include "notdawa.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/component: bootstrap
+        app.kubernetes.io/component: provision
     spec:
       restartPolicy: OnFailure
       {{- with .Values.imagePullSecrets }}
@@ -28,13 +35,10 @@ spec:
       initContainers:
         {{- include "notdawa.waitForDb" . | nindent 8 }}
       containers:
-        - name: bootstrap
+        - name: provision
           image: {{ include "notdawa.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          # Self-contained: ensure the schema exists, then load everything.
-          command: ["sh", "-c"]
-          args:
-            - 'notdawa migrate && notdawa import {{ .Values.import.bootstrap.target }}'
+          args: ["provision"]
           env:
             - name: TMPDIR
               value: /tmp
