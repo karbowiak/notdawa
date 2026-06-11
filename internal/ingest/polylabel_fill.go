@@ -19,9 +19,13 @@ var polylabelBackfillTables = []string{
 func PolylabelBackfill(ctx context.Context, pool *pgxpool.Pool) (Result, error) {
 	res := Result{Register: "DERIVED", Entity: "polylabel_backfill"}
 	for _, t := range polylabelBackfillTables {
+		// Most area tables are keyed by "kode"; a few use a different primary key.
 		key := "kode"
-		if t == "dagi_postnumre" {
+		switch t {
+		case "dagi_postnumre":
 			key = "nr"
+		case "dagi_landsdele":
+			key = "nuts3" // landsdele are keyed by NUTS3 code, not kode
 		}
 		if err := fillPolylabel(ctx, pool, t, key); err != nil {
 			return res, fmt.Errorf("%s: %w", t, err)
