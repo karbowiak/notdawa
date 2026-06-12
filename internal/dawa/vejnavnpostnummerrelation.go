@@ -109,21 +109,75 @@ const vnprCTE = `
 		GROUP BY nv.navn, r.postnr
 	)`
 
-// vnprSelect lists the scanned columns in scan order over the agg CTE joined to
-// dar_postnummer for the canonical zero-padded postnr string and postnavn.
+// BuildVNPRTables rebuilds the vnpr_perrel + vnpr_agg derived tables from
+// vnprCTE in one transaction (TRUNCATE + INSERT, crash-atomic; readers keep the
+// old rows until commit). perrel lands first so the kommuner[] aggregation can
+// probe it through its (postnr, nvid) index — evaluated as a CTE scan it is the
+// O(N²) disk-spill the precompute exists to kill. Serving reads ONLY vnpr_agg —
+// the CTE bodies live here so the build and the serve-time expressions cannot
+// drift. Returns the vnpr_agg row count.
+func BuildVNPRTables(ctx context.Context, pool *pgxpool.Pool) (int, error) {
+	tx, err := pool.Begin(ctx)
+	if err != nil {
+		return 0, err
+	}
+	defer tx.Rollback(ctx)
+	if _, err := tx.Exec(ctx, "TRUNCATE vnpr_perrel, vnpr_agg"); err != nil {
+		return 0, err
+	}
+	if _, err := tx.Exec(ctx, vnprCTE+`
+		INSERT INTO vnpr_perrel (nvid, postnr) SELECT nvid, postnr FROM perrel`); err != nil {
+		return 0, fmt.Errorf("build vnpr_perrel: %w", err)
+	}
+	// Statistics for the correlated probes below (planner sees 0 rows otherwise).
+	if _, err := tx.Exec(ctx, "ANALYZE vnpr_perrel"); err != nil {
+		return 0, err
+	}
+	ct, err := tx.Exec(ctx, vnprCTE+`
+		INSERT INTO vnpr_agg (vejnavn, postnr, geom, kommuner)
+		SELECT agg.vejnavn, agg.postnr, agg.geom,
+		(
+			SELECT COALESCE(json_agg(t ORDER BY t.kode), '[]')
+			FROM (
+				SELECT DISTINCT kd.kommune AS kode, k.navn
+				FROM vnpr_perrel r
+				JOIN dar_navngivenvej nv2 ON nv2.id = r.nvid AND nv2.status = '3' AND nv2.navn = agg.vejnavn
+				JOIN dar_navngivenvej_kommunedel kd ON kd.navngivenvej = nv2.id AND kd.status = '3'
+				LEFT JOIN dagi_kommuner k ON k.kode = kd.kommune
+				WHERE r.postnr = agg.postnr
+			) t
+		)::jsonb
+		FROM agg`)
+	if err != nil {
+		return 0, fmt.Errorf("build vnpr_agg: %w", err)
+	}
+	n := int(ct.RowsAffected())
+	if n == 0 {
+		// Source tables empty/renamed: refuse to publish an empty resource.
+		return 0, fmt.Errorf("build vnpr tables: derivation produced 0 rows")
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return 0, err
+	}
+	return n, nil
+}
+
+// vnprSelect lists the scanned columns in scan order over vnpr_agg (aliased
+// agg, the precomputed aggregation) joined to dar_postnummer for the canonical
+// zero-padded postnr string and postnavn.
 //
 // bbox uses DAWA's exact idiom: the 25832 envelope corners transformed to 4326 (NOT
 // transform-then-envelope, which rotates the box). bbox is NULL when the envelope is
 // not a polygon (degenerate single-line clip) or when geom is NULL — mirroring
 // DAWA's GEOMETRY(Polygon) bbox column. visueltcenter is ST_ClosestPoint(geom,
 // Centroid) (DAWA's visueltCenterDerived; polylabel would only apply to polygon
-// geoms, of which we currently serve none). kommuner[] is a correlated scalar
-// subquery scoped to THIS relation: the distinct kommuner (via
-// dar_navngivenvej_kommunedel) of the navngivenveje that actually contribute to
-// (agg.vejnavn, agg.postnr) — i.e. the perrel membership for that postnr restricted
-// to navn = agg.vejnavn. Filtering by postnr too (not just vejnavn) is essential: a
-// vejnavn like "Nyhavn" exists in several kommuner nationally, but the 1051 relation
-// belongs to only one.
+// geoms, of which we currently serve none). kommuner[] is precomputed into
+// vnpr_agg by BuildVNPRTables (it depends only on the row's (postnr, vejnavn);
+// evaluated per row it measured ~1ms — minutes for the full dump): the distinct
+// kommuner (via dar_navngivenvej_kommunedel) of the navngivenveje that actually
+// contribute to (agg.vejnavn, agg.postnr). Filtering by postnr too (not just
+// vejnavn) is essential there: a vejnavn like "Nyhavn" exists in several
+// kommuner nationally, but the 1051 relation belongs to only one.
 const vnprSelect = `
 	p.postnr, p.navn AS postnavn, agg.vejnavn,
 	CASE WHEN ST_GeometryType(ST_Envelope(agg.geom)) = 'ST_Polygon'
@@ -138,26 +192,22 @@ const vnprSelect = `
 	     THEN round(ST_X(ST_Transform(ST_ClosestPoint(agg.geom, ST_Centroid(agg.geom)), 4326))::numeric, 8)::float8 END,
 	CASE WHEN agg.geom IS NOT NULL
 	     THEN round(ST_Y(ST_Transform(ST_ClosestPoint(agg.geom, ST_Centroid(agg.geom)), 4326))::numeric, 8)::float8 END,
-	(
-		SELECT COALESCE(json_agg(t ORDER BY t.kode), '[]')
-		FROM (
-			SELECT DISTINCT kd.kommune AS kode, k.navn
-			FROM perrel r
-			JOIN dar_navngivenvej nv2 ON nv2.id = r.nvid AND nv2.status = '3' AND nv2.navn = agg.vejnavn
-			JOIN dar_navngivenvej_kommunedel kd ON kd.navngivenvej = nv2.id AND kd.status = '3'
-			LEFT JOIN dagi_kommuner k ON k.kode = kd.kommune
-			WHERE r.postnr = agg.postnr
-		) t
-	) AS kommuner`
+	agg.kommuner AS kommuner`
 
-// vnprFrom joins the agg CTE to dar_postnummer for the canonical 4-digit postnr
-// string + postnavn (DISTINCT collapses dar_postnummer's per-status duplicates).
+// vnprFrom joins the precomputed vnpr_agg (aliased agg — the serve-time
+// expressions are unchanged from the CTE era) to dar_postnummer for the
+// canonical 4-digit postnr string + postnavn (DISTINCT collapses
+// dar_postnummer's per-status duplicates).
 const vnprFrom = `
-	FROM agg
+	FROM vnpr_agg agg
 	JOIN (SELECT DISTINCT postnr, navn FROM dar_postnummer) p ON p.postnr::int = agg.postnr`
 
-// vnprOrderBy is DAWA's served key order: (postnr, vejnavn).
-const vnprOrderBy = ` ORDER BY agg.postnr, agg.vejnavn`
+// vnprOrderBy is DAWA's served key order: (postnr, vejnavn). vejnavn sorts in
+// BYTE order (live probe 2026-06-12: "A.Andersens Vej" < "Aabenraavej" — '.'
+// before letters — and "Øster B…" < "Østergade"), i.e. DAWA's column was
+// C-collated; our DB default en_US.utf8 ignores punctuation and diverges on
+// such pages. COLLATE "C" reproduces live's order exactly.
+const vnprOrderBy = ` ORDER BY agg.postnr, agg.vejnavn COLLATE "C"`
 
 // vnprKommuneRaw is the json_agg intermediate for the kommuner[] aggregate; the
 // href is built in Go.
@@ -236,7 +286,7 @@ func buildVNPRKommuner(js []byte, baseURL string) ([]KommuneRef, error) {
 // or pgx.ErrNoRows. vejnavn is the decoded street name (the handler URL-decodes
 // the path segment).
 func GetVejnavnPostnummerRelation(ctx context.Context, pool *pgxpool.Pool, postnr, vejnavn, baseURL string) (*VejnavnPostnummerRelation, error) {
-	sql := vnprCTE + " SELECT " + vnprSelect + vnprFrom +
+	sql := "SELECT " + vnprSelect + vnprFrom +
 		" WHERE agg.postnr = $1::int AND agg.vejnavn = $2"
 	return scanVNPR(pool.QueryRow(ctx, sql, postnr, vejnavn), baseURL)
 }
@@ -261,7 +311,7 @@ func ListVejnavnPostnummerRelationerFiltered(ctx context.Context, pool *pgxpool.
 	}
 	wb.addQ(f.Q, "agg.vejnavn", "p.navn")
 
-	sql := vnprCTE + " SELECT " + f.applySRID(vnprSelect+vnprFrom)
+	sql := "SELECT " + f.applySRID(vnprSelect+vnprFrom)
 	if w := wb.sql(); w != "" {
 		sql += " WHERE " + w
 	}
@@ -317,7 +367,7 @@ func AutocompleteVejnavnPostnummerRelationer(ctx context.Context, pool *pgxpool.
 		     THEN round(ST_X(ST_Transform(ST_ClosestPoint(agg.geom, ST_Centroid(agg.geom)), 4326))::numeric, 8)::float8 END,
 		CASE WHEN agg.geom IS NOT NULL
 		     THEN round(ST_Y(ST_Transform(ST_ClosestPoint(agg.geom, ST_Centroid(agg.geom)), 4326))::numeric, 8)::float8 END`
-	sql := vnprCTE + " SELECT " + sel + vnprFrom
+	sql := "SELECT " + sel + vnprFrom
 	if w := wb.sql(); w != "" {
 		sql += " WHERE " + w
 	}

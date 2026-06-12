@@ -325,30 +325,17 @@ const adgangsadresseCols = `
 	-- jordstykke (MAT) + ejerlav
 	j.ejerlav_kode AS j_ejerlav_kode, el.navn AS j_ejerlav_navn,
 	j.matrikelnr AS j_matrikelnr,
-	-- bebyggelser membership: spatial point-in-polygon of the adgangspunkt (ap.geom,
-	-- 25832) within the bebyggelse polygon (ds_steder.geom, 25832), sorted by
-	-- bebyggelse id ascending to match DAWA. navn is the place's primary name from
-	-- ds_stednavne (brugsprioritet='primær'); kode is the bebyggelseskode (nullable).
-	COALESCE((
-		SELECT jsonb_agg(jsonb_build_object(
-			'id', beb.id_lokalId,
-			'kode', beb.bebyggelseskode,
-			'type', beb.undertype,
-			'navn', (SELECT (array_agg(sn2.skrivemaade ORDER BY sn2.navnefoelgenummer NULLS LAST, sn2.skrivemaade)
-				FILTER (WHERE sn2.brugsprioritet = 'primær'))[1]
-				FROM ds_stednavne sn2 WHERE sn2.place_objectid = beb.objectid)
-		) ORDER BY beb.id_lokalId)
-		FROM ds_steder beb
-		WHERE beb.hovedtype = 'bebyggelse' AND ap.geom IS NOT NULL AND ST_Contains(beb.geom, ap.geom)
-	), '[]'::jsonb) AS bebyggelser_json,
+	-- bebyggelser membership: point-in-polygon of the adgangspunkt within the
+	-- bebyggelse polygon, sorted by bebyggelse id ascending to match DAWA —
+	-- precomputed into adgangsadresse_derived by the adgangsadresse-derive step
+	-- (per-row it measured as the single heaviest item in the query).
+	COALESCE(der.bebyggelser, '[]'::jsonb) AS bebyggelser_json,
 	-- brofast: DAWA-computed (not a DAR field). An address is NOT brofast iff its
 	-- adgangspunkt lies in a sted marked brofast=false (the non-bridge islands) in
-	-- the brofasthed seed table; otherwise true. Mirrors DAWA's ikke_brofaste_adresser.
-	(NOT EXISTS (
-		SELECT 1 FROM brofasthed bf
-		JOIN ds_steder bs ON bs.id_lokalId = bf.stedid
-		WHERE bf.brofast = false AND ap.geom IS NOT NULL AND ST_Contains(bs.geom, ap.geom)
-	)) AS brofast`
+	-- the brofasthed seed table; otherwise true. Mirrors DAWA's
+	-- ikke_brofaste_adresser; precomputed alongside bebyggelser. The COALESCE
+	-- default (no derived row yet) matches the legacy NOT EXISTS semantics.
+	COALESCE(der.brofast, true) AS brofast`
 
 // adgangsadresseFrom resolves all the joins. The kommunedel join (kd) is the
 // fallback for kommunekode/vejkode when vejmidte is absent. The spatial DAGI
@@ -380,16 +367,21 @@ const adgangsadresseJoins = `
 	LEFT JOIN dar_adressepunkt ap ON ap.id_lokalid = h.adgangspunkt_id
 	LEFT JOIN dar_adressepunkt vp ON vp.id_lokalid = h.vejpunkt_id
 	LEFT JOIN dagi_sogne sg ON sg.dagi_id = h.sogn_dagi_id
-	LEFT JOIN LATERAL (SELECT t.nummer, t.navn, t.opstillingskreds_lokalid, t.kommune_lokalid FROM dagi_afstemningsomraader t WHERE ap.geom IS NOT NULL AND ST_Covers(t.geom, ap.geom) LIMIT 1) af ON true
+	-- Spatial memberships (afstemningsområde / landsdel / retskreds /
+	-- politikreds + bebyggelser/brofast in the cols) come precomputed from
+	-- adgangsadresse_derived (rebuilt by the adgangsadresse-derive import step);
+	-- previously these were per-row ST_Covers laterals — ~34ms per output row.
+	LEFT JOIN adgangsadresse_derived der ON der.id = h.id
+	LEFT JOIN dagi_afstemningsomraader af ON af.dagi_id = der.afstem_dagi_id
 	LEFT JOIN dagi_kommuner afk ON afk.dagi_id = af.kommune_lokalid
 	LEFT JOIN dagi_opstillingskredse opk ON opk.dagi_id = af.opstillingskreds_lokalid
 	LEFT JOIN dagi_storkredse sk ON sk.dagi_id = opk.storkreds_lokalid
 	LEFT JOIN dagi_valglandsdele vl ON vl.bogstav = sk.valglandsdelsbogstav
 	LEFT JOIN mat_jordstykke j ON j.id_lokalid = h.jordstykke_id
 	LEFT JOIN mat_ejerlav el ON el.kode = j.ejerlav_kode
-	LEFT JOIN LATERAL (SELECT t.nuts3, t.navn FROM dagi_landsdele t WHERE ap.geom IS NOT NULL AND ST_Covers(t.geom, ap.geom) LIMIT 1) ld ON true
-	LEFT JOIN LATERAL (SELECT t.kode, t.navn FROM dagi_retskredse t WHERE ap.geom IS NOT NULL AND ST_Covers(t.geom, ap.geom) LIMIT 1) rk ON true
-	LEFT JOIN LATERAL (SELECT t.kode, t.navn FROM dagi_politikredse t WHERE ap.geom IS NOT NULL AND ST_Covers(t.geom, ap.geom) LIMIT 1) pk ON true`
+	LEFT JOIN dagi_landsdele ld ON ld.nuts3 = der.landsdel_nuts3
+	LEFT JOIN dagi_retskredse rk ON rk.kode = der.retskreds_kode
+	LEFT JOIN dagi_politikredse pk ON pk.kode = der.politikreds_kode`
 
 // adgScan holds the scanned columns; nullable pointers track presence.
 type adgScan struct {

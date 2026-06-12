@@ -79,30 +79,68 @@ const vejstykkeFrom = `
 		SELECT ST_Transform(ST_Envelope(nv.geom), 4326) AS env,
 		       ST_Transform(ST_ClosestPoint(nv.geom, ST_Centroid(nv.geom)), 4326) AS vc
 	) g ON nv.geom IS NOT NULL
-	LEFT JOIN LATERAL (
-		-- A vejstykke is a road WITHIN one kommune, so its postnumre[] is the
-		-- branch1 ∪ branch2 set (see navngivneveje.go) scoped to this kommunedel's
-		-- kommune. branch1: address Husnummer rows in this kommune (Husnummer's
-		-- kommune is a DAGI kommune id_lokalId, resolved to kommunekode). branch2:
-		-- DAGI postnummer polygons intersecting the road clipped to this kommune's
-		-- polygon by >7 m, excluding gade-postnumre (1000–1999).
-		SELECT COALESCE(json_agg(json_build_object('nr', t.postnr, 'navn', t.navn) ORDER BY t.postnr), '[]') AS j
+	-- A vejstykke is a road WITHIN one kommune, so its postnumre[] is the
+	-- branch1 ∪ branch2 set (see navngivneveje.go) scoped to this kommunedel's
+	-- kommune — precomputed into vejstykke_postnumre by
+	-- BuildVejstykkePostnumre (per-row the union's spatial branch measured
+	-- ~9.5ms; 1–2s cold autocomplete pages). No row = no postnumre.
+	LEFT JOIN vejstykke_postnumre ps0 ON ps0.navngivenvej = nv.id AND ps0.kommune = kd.kommune
+	LEFT JOIN LATERAL (SELECT COALESCE(ps0.postnumre, '[]'::jsonb) AS j) ps ON true`
+
+// BuildVejstykkePostnumre rebuilds the vejstykke_postnumre derived table: per
+// (navngivenvej, kommune), the postnumre[] union the serving LATERAL used to
+// evaluate per row — branch1 = the road's husnummer postnumre in that kommune,
+// branch2 = postnummer polygons the road∩kommune clip crosses by >7 m (gade-
+// postnumre 1000–1999 excluded). roadkom materializes each road∩kommune clip
+// once so the postnummer probe runs against PostGIS-prepared geometry instead
+// of recomputing the clip per candidate. One crash-atomic TRUNCATE+INSERT tx.
+// SQL lives here next to the serving join so the two cannot drift.
+func BuildVejstykkePostnumre(ctx context.Context, pool *pgxpool.Pool) (int, error) {
+	tx, err := pool.Begin(ctx)
+	if err != nil {
+		return 0, err
+	}
+	defer tx.Rollback(ctx)
+	if _, err := tx.Exec(ctx, "TRUNCATE vejstykke_postnumre"); err != nil {
+		return 0, err
+	}
+	ct, err := tx.Exec(ctx, `
+		WITH roadkom AS MATERIALIZED (
+			SELECT nv.id AS nvid, kc.kode AS kommune, ST_Intersection(nv.geom, kc.geom) AS rkgeom
+			FROM dar_navngivenvej nv
+			JOIN dagi_kommuner kc ON nv.geom IS NOT NULL AND ST_Intersects(nv.geom, kc.geom)
+		)
+		INSERT INTO vejstykke_postnumre (navngivenvej, kommune, postnumre)
+		SELECT t.nvid, t.kommune,
+			json_agg(json_build_object('nr', t.postnr, 'navn', t.navn) ORDER BY t.postnr)::jsonb
 		FROM (
-			SELECT p.postnr, p.navn
+			SELECT h.navngivenvej AS nvid, kk.kode AS kommune, p.postnr, p.navn
 			FROM dar_husnummer h
 			JOIN dagi_kommuner kk ON kk.dagi_id = h.kommune
 			JOIN dar_postnummer p ON p.id = h.postnummer_id
-			WHERE h.navngivenvej = nv.id AND kk.kode = kd.kommune
 			UNION
-			SELECT pn.nr AS postnr, pn.navn
-			FROM dagi_kommuner kc
-			JOIN dagi_postnumre pn ON nv.geom IS NOT NULL
-			 AND ST_Intersects(ST_Intersection(nv.geom, kc.geom), pn.geom)
-			 AND ST_Length(ST_Intersection(ST_Intersection(nv.geom, kc.geom), pn.geom)) > 7
-			WHERE kc.kode = kd.kommune
-			  AND (pn.nr ~ '^[0-9]+$' AND NOT (pn.nr::int BETWEEN 1000 AND 1999))
+			SELECT r.nvid, r.kommune, pn.nr AS postnr, pn.navn
+			FROM roadkom r
+			JOIN dagi_postnumre pn ON ST_Intersects(r.rkgeom, pn.geom)
+			 AND ST_Length(ST_Intersection(r.rkgeom, pn.geom)) > 7
+			WHERE pn.nr ~ '^[0-9]+$' AND NOT (pn.nr::int BETWEEN 1000 AND 1999)
 		) t
-	) ps ON true`
+		GROUP BY t.nvid, t.kommune`)
+	if err != nil {
+		return 0, fmt.Errorf("build vejstykke_postnumre: %w", err)
+	}
+	n := int(ct.RowsAffected())
+	if n == 0 {
+		return 0, fmt.Errorf("build vejstykke_postnumre: derivation produced 0 rows")
+	}
+	if _, err := tx.Exec(ctx, "ANALYZE vejstykke_postnumre"); err != nil {
+		return 0, err
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return 0, err
+	}
+	return n, nil
+}
 
 func scanVejstykke(row pgx.Row, baseURL string) (*Vejstykke, error) {
 	var v Vejstykke

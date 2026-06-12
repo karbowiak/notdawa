@@ -87,15 +87,25 @@ func histFilter(idCol string, id, postnr, kommunekode string) (string, []any) {
 	}
 	add(idCol, id)
 	add("pn.postnr", postnr)
-	add("COALESCE(hh.kommunekode, split_part(cur.vejmidte, '-', 1))", kommunekode)
+	// kommunekode_resolved is the same COALESCE(hh.kommunekode,
+	// split_part(cur.vejmidte,'-',1)) the projection serves, resolved at build
+	// time (ingest.HistorikSegments) — as a join-crossing expression the filter
+	// could never use an index; as a column it probes
+	// dar_husnummer_hist_seg_komres_idx.
+	add("hh.kommunekode_resolved", kommunekode)
 	return where, args
 }
 
 // pageSQL appends LIMIT/OFFSET. limit<=0 means no paging (DAWA's no-per_side
-// behaviour is the full dump).
+// behaviour is the full dump). offset is clamped at 0: (side-1)*per_side can
+// overflow negative for absurd side values, and a negative OFFSET is a
+// Postgres error (500) where a too-large one is just an empty page.
 func pageSQL(limit, offset int) string {
 	if limit <= 0 {
 		return ""
+	}
+	if offset < 0 {
+		offset = 0
 	}
 	return fmt.Sprintf(" LIMIT %d OFFSET %d", limit, offset)
 }

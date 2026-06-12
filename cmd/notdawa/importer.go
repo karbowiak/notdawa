@@ -95,15 +95,19 @@ func importPlan() []importStep {
 		{"adressepunkt-historik", "DAR", "address-point status history (bitemporal)", di(ingest.AdressepunktHistorik), 1},
 		{"husnummer-historik", "DAR", "access-address virkning history (bitemporal)", di(ingest.HusnummerHistorik), 1},
 		{"adresse-historik", "DAR", "unit-address virkning history (bitemporal)", di(ingest.AdresseHistorik), 1},
-		{"historik-segments", "derived", "punkt-segmented /historik serving table", noClient(ingest.HistorikSegments), 1},
+		// dataVersion 2: + kommunekode_resolved (indexed serve-time filter).
+		{"historik-segments", "derived", "punkt-segmented /historik serving table", noClient(ingest.HistorikSegments), 2},
 
 		// DS — place names.
 		{"ds", "DS", "place names (stednavne)", di(ingest.DS), 1},
 
 		// Derived / post-processing — run after the data they read from is loaded.
 		{"postnumre-kommuner", "derived", "postal↔municipality relation", noClient(ingest.PostnumreKommuner), 1},
+		{"vnpr-derive", "derived", "precomputed vejnavn↔postnummer relations", noClient(ingest.VNPRDerive), 1},
+		{"vejstykke-postnumre", "derived", "precomputed vejstykke postnumre[]", noClient(ingest.VejstykkePostnumreDerive), 1},
 		{"stormodtagere", "derived", "high-volume postal recipients (seed CSV)", noClient(ingest.Stormodtagere), 1},
 		{"brofasthed", "DAWA-seed", "per-place land-connectedness flag (seed CSV)", noClient(ingest.Brofasthed), 1},
+		{"adgangsadresse-derive", "derived", "precomputed per-address spatial memberships", noClient(ingest.AdgangsadresseDerive), 1},
 		{"polylabel-backfill", "derived", "label points for all geometry", noClient(ingest.PolylabelBackfill), 1},
 	}
 }
@@ -185,9 +189,20 @@ func importCmd() *cobra.Command {
 				return err
 			}
 			defer pool.Close()
-			client := datafordeler.New(cfg.DatafordelerAPIKey)
 
-			return runImport(cmd.Context(), pool, client, steps)
+			// Keep the schema current like provision does: the weekly CronJob
+			// can otherwise race a failed/slow migrate hook and abort mid-run
+			// on a missing table, leaving mixed-generation data for a week.
+			applied, err := db.Migrate(cmd.Context(), pool, "migrations")
+			if err != nil {
+				return err
+			}
+			if len(applied) > 0 {
+				fmt.Printf("applied %d pending migration(s) first\n", len(applied))
+			}
+
+			client := datafordeler.New(cfg.DatafordelerAPIKey)
+			return runImport(cmd.Context(), pool, client, steps, false)
 		},
 	}
 	cmd.Flags().BoolVar(&dryRun, "dry-run", false, "print the import plan and exit without downloading")
@@ -256,7 +271,9 @@ func provisionCmd() *cobra.Command {
 				return err
 			}
 			client := datafordeler.New(cfg.DatafordelerAPIKey)
-			return runImport(ctx, pool, client, pending)
+			// recheckLedger: the pending diff above ran before the import lock;
+			// another Job may complete steps while this one waits on it.
+			return runImport(ctx, pool, client, pending, true)
 		},
 	}
 	cmd.Flags().BoolVar(&dryRun, "dry-run", false, "print what would be provisioned and exit")
@@ -280,8 +297,10 @@ func printImportPlan(steps []importStep) {
 // Runs are serialised by a Postgres advisory lock (loads are TRUNCATE+reload,
 // so e.g. the weekly CronJob and a deploy's provision Job must not interleave)
 // and every successful step is stamped into the data_provisions ledger, which
-// is what `provision` later diffs the plan against.
-func runImport(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client, steps []importStep) error {
+// is what `provision` later diffs the plan against. With recheckLedger
+// (provision), steps another Job completed while this one waited on the lock
+// are skipped instead of wastefully re-downloaded.
+func runImport(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client, steps []importStep, recheckLedger bool) error {
 	if err := ingest.EnsureProvisionLedger(ctx, pool); err != nil {
 		return err
 	}
@@ -290,6 +309,28 @@ func runImport(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Cli
 		return err
 	}
 	defer release()
+
+	if recheckLedger {
+		have, err := ingest.ProvisionedVersions(ctx, pool)
+		if err != nil {
+			return err
+		}
+		fresh := steps[:0]
+		for _, s := range steps {
+			if have[s.key] < stepVersion(s) {
+				fresh = append(fresh, s)
+			}
+		}
+		if len(fresh) == 0 {
+			fmt.Println("Everything provisioned while waiting for the import lock — nothing to do.")
+			return nil
+		}
+		if len(fresh) < len(steps) {
+			fmt.Printf("%d step(s) were provisioned by another run while waiting — running the remaining %d.\n",
+				len(steps)-len(fresh), len(fresh))
+		}
+		steps = fresh
+	}
 
 	keyCol := 0
 	for _, s := range steps {

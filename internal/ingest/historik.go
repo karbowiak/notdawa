@@ -226,11 +226,17 @@ func HistorikSegments(ctx context.Context, pool *pgxpool.Pool) (Result, error) {
 	if _, err := tx.Exec(ctx, `
 		INSERT INTO dar_husnummer_hist_seg
 			(id, dar_status, husnr, kommunekode, vejkode, navngivenvej, postnummer,
-			 supplerendebynavn, adgangspunkt_status, virkning_start, virkning_slut, generation_number)
+			 supplerendebynavn, adgangspunkt_status, kommunekode_resolved,
+			 virkning_start, virkning_slut, generation_number)
 		SELECT h.id, h.dar_status, h.husnr, h.kommunekode, h.vejkode, h.navngivenvej, h.postnummer,
 			h.supplerendebynavn, p.status,
+			-- the serve-time kommunekode filter expression, resolved here so the
+			-- filter can use an index (dar_husnummer is fresh: it loads earlier
+			-- in the same plan run)
+			COALESCE(h.kommunekode, split_part(cur.vejmidte, '-', 1)),
 			seg.s, NULLIF(seg.e, 'infinity'::timestamptz), h.generation_number
 		FROM dar_husnummer_hist h
+		LEFT JOIN dar_husnummer cur ON cur.id = h.id
 		CROSS JOIN LATERAL (
 			SELECT s, LEAD(s) OVER (ORDER BY s) AS e FROM (
 				SELECT h.virkning_start AS s
@@ -259,7 +265,7 @@ func HistorikSegments(ctx context.Context, pool *pgxpool.Pool) (Result, error) {
 	}
 
 	n, err := consolidateHist(ctx, pool, "dar_husnummer_hist_seg",
-		[]string{"dar_status", "husnr", "kommunekode", "vejkode", "navngivenvej", "postnummer", "supplerendebynavn", "adgangspunkt_status"})
+		[]string{"dar_status", "husnr", "kommunekode", "vejkode", "navngivenvej", "postnummer", "supplerendebynavn", "adgangspunkt_status", "kommunekode_resolved"})
 	res.RowsLoaded = n
 	return res, err
 }
