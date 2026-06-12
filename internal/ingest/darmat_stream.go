@@ -80,6 +80,18 @@ func matStreamLoadGeneric[F any](ctx context.Context, pool *pgxpool.Pool, client
 	if err != nil {
 		return res, err
 	}
+	return streamZipRows(ctx, pool, res, file, path, runID, table, insertSQL, keep, args)
+}
+
+// streamZipRows is the shared post-acquire streaming body: decode the top-level
+// JSON array of the zip at path element-by-element and insert kept rows in
+// pgx.Batch chunks within ONE TRUNCATE+insert transaction. It owns (removes)
+// the temp file and finishes the ledger run. Split out so loaders with a
+// different acquire step (e.g. the Bitemporal historik totals) reuse it.
+func streamZipRows[F any](ctx context.Context, pool *pgxpool.Pool, res Result,
+	file datafordeler.FileDownload, path string, runID int64,
+	table, insertSQL string, keep func(F) bool, args func(F, int) []any) (Result, error) {
+
 	defer os.Remove(path)
 	res.GenerationNumber = file.GenerationNumber
 

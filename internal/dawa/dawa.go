@@ -58,7 +58,10 @@ func MarshalDAWA(v any) ([]byte, error) {
 // "},\n  {" separator, so we assemble the array by hand from per-element bytes.
 func MarshalDAWAList[T any](items []T) ([]byte, error) {
 	if len(items) == 0 {
-		return []byte("[]"), nil
+		// DAWA's streaming serializer emits "[\n\n]" for an empty result —
+		// verified byte-for-byte (xxd: 5b 0a 0a 5d) on live collection,
+		// historik and autocomplete endpoints alike.
+		return []byte("[\n\n]"), nil
 	}
 	parts := make([][]byte, len(items))
 	for i, it := range items {
@@ -93,7 +96,9 @@ func MarshalDAWAList[T any](items []T) ([]byte, error) {
 // element type's own MarshalJSON is re-indented by the encoder.
 func MarshalDAWAAutoList[T any](items []T) ([]byte, error) {
 	if len(items) == 0 {
-		return []byte("[]"), nil
+		// Same empty form as MarshalDAWAList — live autocomplete returns
+		// "[\n\n]" too (xxd-verified).
+		return []byte("[\n\n]"), nil
 	}
 	var buf bytes.Buffer
 	enc := json.NewEncoder(&buf)

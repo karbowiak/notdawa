@@ -695,6 +695,10 @@ func NewHumaServer(pool *pgxpool.Pool, baseURL string) http.Handler {
 	auto("Adgangsadresser", "/adgangsadresser/autocomplete", s.autocompleteAdgangsadresser, "Autocomplete adgangsadresser")
 	rev("Adgangsadresser", "/adgangsadresser/reverse", s.reverseAdgangsadresse, "Reverse-geocode an adgangsadresse", nil)
 
+	// ===================== Historik =====================
+	list("Historik", "/historik/adgangsadresser", s.historikAdgangsadresser, "Adgangsadresse virkning history (DAR versions; ?id= for one chain)")
+	list("Historik", "/historik/adresser", s.historikAdresser, "Adresse virkning history (DAR versions; ?id= for one chain)")
+
 	// ===================== Adresser =====================
 	list("Adresser", "/adresser", s.listAdresser, "List adresser")
 	registerID(api, "Adresser", "/adresser/{id}", "get-adresse", "Get a single adresse", s.getAdresse,

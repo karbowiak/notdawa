@@ -71,6 +71,7 @@ func ServerRoutes() []string {
 		"/adgangsadresser", "/adgangsadresser/{id}",
 		"/adresser", "/adresser/{id}",
 		"/datavask/adgangsadresser", "/datavask/adresser",
+		"/historik/adgangsadresser", "/historik/adresser",
 		"/afstemningsomraader", "/afstemningsomraader/{kommunekode}/{nummer}",
 		"/menighedsraadsafstemningsomraader",
 		"/menighedsraadsafstemningsomraader/autocomplete",
@@ -195,6 +196,9 @@ func (s *server) routes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /adresser/{id}", s.getAdresse)
 	mux.HandleFunc("GET /datavask/adgangsadresser", s.datavaskAdgangsadresser)
 	mux.HandleFunc("GET /datavask/adresser", s.datavaskAdresser)
+	// Historik — DAR virkning history (query-param form, like live DAWA).
+	mux.HandleFunc("GET /historik/adgangsadresser", s.historikAdgangsadresser)
+	mux.HandleFunc("GET /historik/adresser", s.historikAdresser)
 	// Afstemningsomraader — single path key is composite (kommunekode, nummer).
 	mux.HandleFunc("GET /afstemningsomraader", s.listAfstemningsomraader)
 	mux.HandleFunc("GET /afstemningsomraader/{kommunekode}/{nummer}", s.getAfstemningsomraade)

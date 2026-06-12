@@ -96,6 +96,7 @@ func run(m *testing.M) int {
 		return 0
 	}
 	defer pool.Close()
+	testPool = pool // direct DB access for sampling tests (historik_sample_test.go)
 	// base-url MUST be the live DAWA host so our href fields match DAWA's.
 	// The oracle runs against the HUMA server (the production front): this proves
 	// Huma serves every route byte-exact vs live DAWA, with full param fidelity —
@@ -796,16 +797,22 @@ func toleratedDiff(label, path string) bool {
 	if i := strings.LastIndex(path, "."); i >= 0 {
 		leaf = path[i+1:]
 	}
-	// historik.{oprettet,ændret,ikrafttrædelse,nedlagt}: on vejstykke/navngivenvej
-	// we hold no DAR bitemporal history (→ null); on adgangsadresse/adresse DAWA
-	// serves frozen legacy DAR-migration instants (often 2000-02-05) that are absent
-	// from our current "gældende" extract — verified same-UUID that none of our
-	// stored columns reproduce DAWA's value (recon: /tmp/recon_historik.md). Source-
-	// data limitation, not a column remap.
+	// historik.*: since the DAR bitemporal ingest (2026-06-12), address
+	// oprettet/ikrafttrædelse DERIVE from the virkning chain and are STRICT
+	// (byte-verified 4/4 vs live incl. foreløbig-start chains). Still tolerated:
+	//   - ændret + nedlagt on addresses: live's value is DAWA's OWN event clock
+	//     (proven 2 s off DAR on the same event) / event-log state — not in any
+	//     extract.
+	//   - all four on vejstykke/navngivenvej: no NavngivenVej bitemporal ingest
+	//     yet (we serve null there).
 	if strings.Contains(path, "historik") {
+		onRoads := strings.Contains(label, "vejstykker") || strings.Contains(label, "navngivneveje") ||
+			strings.Contains(label, "vejnavne") || strings.Contains(label, "naboer")
 		switch leaf {
-		case "oprettet", "ændret", "ikrafttrædelse", "nedlagt":
+		case "ændret", "nedlagt":
 			return true
+		case "oprettet", "ikrafttrædelse":
+			return onRoads
 		}
 	}
 	switch leaf {

@@ -268,10 +268,17 @@ const adgangsadresseCols = `
 	p.postnr, p.navn AS postnrnavn,
 	sb.navn AS suppl_bynavn, sb.dagi_id AS suppl_bynavn2_dagi,
 	k.navn AS kommune_navn,
-	-- historik (DAWA-internal metadata, no trailing Z)
-	to_char(h.oprettet AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS h_oprettet,
+	-- historik: oprettet/ikrafttrædelse derive from the DAR virkning chain
+	-- (dar_husnummer_hist) — oprettet = the chain's first virkningFra,
+	-- ikrafttrædelse = the first gældende (status 3) virkningFra. Byte-verified
+	-- against live nestet on foreløbig-start chains (4/4 exact, 2026-06-12).
+	-- ændret stays the current row's metadata: live's value is DAWA's OWN event
+	-- clock (proven 2s off DAR on the same event) — tolerated, not derivable.
+	to_char((SELECT MIN(hh.virkning_start) FROM dar_husnummer_hist hh WHERE hh.id = h.id)
+		AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS h_oprettet,
 	to_char(h.aendret AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS h_aendret,
-	to_char(h.ikrafttraedelse AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS h_ikraft,
+	to_char((SELECT MIN(hh.virkning_start) FROM dar_husnummer_hist hh WHERE hh.id = h.id AND hh.dar_status = 3)
+		AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS h_ikraft,
 	-- adgangspunkt
 	ap.id_lokalid AS ap_id,
 	CASE WHEN ap.geom IS NULL THEN NULL ELSE round(ST_X(ST_Transform(ap.geom, 4326))::numeric, 8)::float8 END AS ap_lon,
@@ -711,16 +718,23 @@ func darKildeToInt(s *string) *int {
 	return nil
 }
 
-// darStatusToDawa maps the raw DAR status int to DAWA's status int:
-// DAR 2->2 (foreløbig), 3->1 (gældende), 4->3 (nedlagt), 5->4 (henlagt).
+// darStatusToDawa maps the raw DAR status int to DAWA's status enum
+// (1=gældende, 2=nedlagt, 3=foreløbig, 4=henlagt): DAR 2 (foreløbig) -> 3,
+// 3 (gældende) -> 1, 4 (nedlagt) -> 2, 5 (henlagt) -> 4.
+//
+// The 2->2/4->3 swap that lived here until 2026-06-11 was invisible to the
+// compat suite because every sampled row is gældende (3->1, unaffected); the
+// /historik sweep — whose chains carry foreløbig and nedlagt versions —
+// exposed it against live DAWA (ours=2 dawa=3 on DAR-2 rows, ours=3 dawa=2 on
+// DAR-4 rows, consistently).
 func darStatusToDawa(dar int) int {
 	switch dar {
 	case 2:
-		return 2
+		return 3
 	case 3:
 		return 1
 	case 4:
-		return 3
+		return 2
 	case 5:
 		return 4
 	default:

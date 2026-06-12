@@ -33,9 +33,13 @@ const adresseExtraCols = `
 	a.dar_status AS a_dar_status,
 	a.etagebetegnelse AS a_etage,
 	a.doerbetegnelse AS a_doer,
-	to_char(a.oprettet AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS a_oprettet,
+	-- oprettet/ikrafttrædelse derive from the DAR Adresse virkning chain, like
+	-- the husnummer historik (see adgangsadresser.go); ændret stays tolerated.
+	to_char((SELECT MIN(ahh.virkning_start) FROM dar_adresse_hist ahh WHERE ahh.id = a.id_lokalid)
+		AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS a_oprettet,
 	to_char(a.aendret AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS a_aendret,
-	to_char(a.ikrafttraedelse AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS a_ikraft, `
+	to_char((SELECT MIN(ahh.virkning_start) FROM dar_adresse_hist ahh WHERE ahh.id = a.id_lokalid AND ahh.dar_status = 3)
+		AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS') AS a_ikraft, `
 
 // adresseFromPrefix joins dar_adresse to its dar_husnummer (the embedded
 // adgangsadresse) before the shared adgangsadresseFrom join graph (which is

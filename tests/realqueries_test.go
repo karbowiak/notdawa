@@ -105,16 +105,15 @@ func TestRealQueries(t *testing.T) {
 	})
 }
 
-// fladTolerated holds the flad keys whose value may differ from DAWA without being
-// a bug: the DAR historik timestamps DAWA freezes (lifted to top level + the
-// embedded-adgangsadresse copies) and the elevation/bearing we cannot derive
-// (served null). etrs89 coords are handled separately (sub-mm float tolerance).
-// brofast is NOT tolerated — it is now computed from the brofasthed seed (matching
-// DAWA byte-for-byte, incl. the islands). Every other key must match exactly.
+// fladTolerated holds the flad keys whose value may differ from DAWA without
+// being a bug. Since the DAR bitemporal ingest (2026-06-12) the oprettet/
+// ikrafttrædelse timestamps DERIVE from the virkning chain and are STRICT;
+// only ændret remains tolerated (live's value is DAWA's own event clock —
+// proven 2 s off DAR on the same event), plus the elevation/bearing we cannot
+// derive (served null). etrs89 coords are handled separately (sub-mm float
+// tolerance). Every other key must match exactly.
 var fladTolerated = map[string]bool{
-	"oprettet": true, "ændret": true, "ikrafttrædelse": true, "nedlagt": true,
-	"adgangsadresse_oprettet": true, "adgangsadresse_ændret": true,
-	"adgangsadresse_ikrafttrædelse": true, "adgangsadresse_nedlagt": true,
+	"ændret": true, "adgangsadresse_ændret": true,
 	"tekstretning": true, "højde": true,
 }
 
