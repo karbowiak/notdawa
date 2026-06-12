@@ -29,10 +29,11 @@ type Vejstykke struct {
 	Visueltcenter    *[2]float64         `json:"visueltcenter"`
 }
 
-// VejstykkeHistorik has three keys (no ikrafttrædelse, unlike navngivenvej) and,
-// in DAWA, renders timestamps with a +1h offset and NO trailing Z. None are
-// derivable from the Current extract, so they are served null and treated as
-// DAWA-internal metadata in verify.
+// VejstykkeHistorik has three keys (no ikrafttrædelse, unlike navngivenvej)
+// rendered in LOCAL time with NO trailing Z. oprettet derives (since
+// 2026-06-12) from the kommunedel's bitemporal chain (dar_nvkommunedel_hist:
+// first virkningFra); ændret and nedlagt are null on live DAWA even for
+// multi-version chains (verified), so they stay null.
 type VejstykkeHistorik struct {
 	Oprettet *string `json:"oprettet"`
 	Aendret  *string `json:"ændret"`
@@ -60,7 +61,12 @@ const vejstykkeSelect = `
 	CASE WHEN nv.geom IS NULL THEN NULL ELSE round(ST_YMax(g.env)::numeric, 8)::float8 END,
 	CASE WHEN nv.geom IS NULL THEN NULL ELSE round(ST_X(g.vc)::numeric, 8)::float8 END,
 	CASE WHEN nv.geom IS NULL THEN NULL ELSE round(ST_Y(g.vc)::numeric, 8)::float8 END,
-	ps.j`
+	ps.j,
+	-- historik.oprettet = the kommunedel chain's first virkningFra, rendered
+	-- LOCAL time without Z like live. ændret is null on live even for
+	-- multi-version chains (verified 2026-06-12 on 219/398 and 360/2104).
+	(SELECT to_char(MIN(kh.virkning_start) AT TIME ZONE 'Europe/Copenhagen', 'YYYY-MM-DD"T"HH24:MI:SS.MS')
+		FROM dar_nvkommunedel_hist kh WHERE kh.id = kd.id) AS h_oprettet`
 
 // vejstykkeFrom joins each status-3 kommunedel to its parent navngivenvej (also
 // status 3), the kommune (for navn), the parent-line geometry, and the parent's
@@ -105,12 +111,14 @@ func scanVejstykke(row pgx.Row, baseURL string) (*Vejstykke, error) {
 	var navn, adr, komNavn *string
 	var bx0, bx1, bx2, bx3, vx, vy *float64
 	var psJSON []byte
+	var hOpr *string
 	if err := row.Scan(
 		&id, &darstatus, &kommune, &vejkode,
 		&navn, &adr, &nvID, &nvDarstatus,
 		&komNavn,
 		&bx0, &bx1, &bx2, &bx3, &vx, &vy,
 		&psJSON,
+		&hOpr,
 	); err != nil {
 		return nil, err
 	}
@@ -132,7 +140,7 @@ func scanVejstykke(row pgx.Row, baseURL string) (*Vejstykke, error) {
 		return nil, err
 	}
 	v.Postnumre = postnumre
-	v.Historik = VejstykkeHistorik{} // not reproducible from the Current extract
+	v.Historik = VejstykkeHistorik{Oprettet: hOpr} // ændret/nedlagt: null on live
 	if bx0 != nil && bx1 != nil && bx2 != nil && bx3 != nil {
 		v.Bbox = &[4]float64{*bx0, *bx1, *bx2, *bx3}
 	}

@@ -264,6 +264,48 @@ func HistorikSegments(ctx context.Context, pool *pgxpool.Pool) (Result, error) {
 	return res, err
 }
 
+// vejHistFeature is the lean bitemporal row for the road entities: just the
+// status lifecycle and the virkning interval (historik.oprettet/ændret/
+// ikrafttrædelse derive from MIN/MAX over the raw chain — these tables are
+// deliberately NOT consolidated, a projection-merge would destroy MAX).
+type vejHistFeature struct {
+	IDLokalId       string `json:"id_lokalId"`
+	Status          string `json:"status"`
+	RegistreringTil string `json:"registreringTil"`
+	VirkningFra     string `json:"virkningFra"`
+	VirkningTil     string `json:"virkningTil"`
+}
+
+// vejHistLoad is the shared loader for the two road-history entities.
+func vejHistLoad(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client, entity, table string) (Result, error) {
+	res := Result{Register: "DAR", Entity: entity + "/bitemporal"}
+	file, path, runID, err := acquireBitempV3(ctx, pool, client, "DAR", entity, entity+"/bitemporal")
+	if err != nil {
+		return res, err
+	}
+	return streamZipRows(ctx, pool, res, file, path, runID, table,
+		`INSERT INTO `+table+` (id, dar_status, virkning_start, virkning_slut, generation_number)
+		 VALUES ($1,$2,$3::timestamptz,$4::timestamptz,$5)`,
+		func(f vejHistFeature) bool {
+			return f.RegistreringTil == "" && f.IDLokalId != "" && f.VirkningFra != ""
+		},
+		func(f vejHistFeature, gen int) []any {
+			return []any{f.IDLokalId, nullIntStr(f.Status), f.VirkningFra, nullIfEmpty(f.VirkningTil), gen}
+		})
+}
+
+// NavngivenVejHistorik streams the DAR NavngivenVej Bitemporal total into
+// dar_navngivenvej_hist (raw reg-current versions).
+func NavngivenVejHistorik(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client) (Result, error) {
+	return vejHistLoad(ctx, pool, client, "NavngivenVej", "dar_navngivenvej_hist")
+}
+
+// NavngivenVejKommunedelHistorik streams the DAR NavngivenVejKommunedel
+// Bitemporal total into dar_nvkommunedel_hist (the vejstykke history).
+func NavngivenVejKommunedelHistorik(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client) (Result, error) {
+	return vejHistLoad(ctx, pool, client, "NavngivenVejKommunedel", "dar_nvkommunedel_hist")
+}
+
 // adresseHistFeature is the bitemporal DAR Adresse row subset.
 type adresseHistFeature struct {
 	IDLokalId       string `json:"id_lokalId"`

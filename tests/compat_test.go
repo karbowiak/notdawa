@@ -797,22 +797,22 @@ func toleratedDiff(label, path string) bool {
 	if i := strings.LastIndex(path, "."); i >= 0 {
 		leaf = path[i+1:]
 	}
-	// historik.*: since the DAR bitemporal ingest (2026-06-12), address
-	// oprettet/ikrafttrædelse DERIVE from the virkning chain and are STRICT
-	// (byte-verified 4/4 vs live incl. foreløbig-start chains). Still tolerated:
-	//   - ændret + nedlagt on addresses: live's value is DAWA's OWN event clock
-	//     (proven 2 s off DAR on the same event) / event-log state — not in any
-	//     extract.
-	//   - all four on vejstykke/navngivenvej: no NavngivenVej bitemporal ingest
-	//     yet (we serve null there).
+	// historik.*: since the DAR bitemporal ingests (2026-06-12), oprettet and
+	// ikrafttrædelse DERIVE from the virkning chains and are STRICT everywhere
+	// (byte-verified vs live incl. foreløbig-start addresses and 1900-sentinel
+	// roads). ændret on ROADS is also derived exact (= the latest virkningFra);
+	// on ADDRESSES it stays tolerated — live's value is DAWA's OWN event clock
+	// (proven 2 s off DAR on the same event), not in any extract. nedlagt stays
+	// tolerated (event-log state for discontinued entities; both sides null on
+	// everything the suite samples).
 	if strings.Contains(path, "historik") {
 		onRoads := strings.Contains(label, "vejstykker") || strings.Contains(label, "navngivneveje") ||
 			strings.Contains(label, "vejnavne") || strings.Contains(label, "naboer")
 		switch leaf {
-		case "ændret", "nedlagt":
+		case "nedlagt":
 			return true
-		case "oprettet", "ikrafttrædelse":
-			return onRoads
+		case "ændret":
+			return !onRoads
 		}
 	}
 	switch leaf {

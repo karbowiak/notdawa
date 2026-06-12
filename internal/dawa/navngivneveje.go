@@ -29,12 +29,12 @@ type NavngivenVej struct {
 	Beliggenhed            Beliggenhed          `json:"beliggenhed"`
 }
 
-// NavngivenVejHistorik carries the four DAWA history timestamps. None are
-// derivable from the Current extract (oprettet/ikrafttrædelse need DAR's
-// bitemporal history; the served ændret in DAWA comes from that same history,
-// not from the geometry registration — proven by Halvdansvej, whose historik is
-// the 1900-01-01 sentinel while its oprindelse.registrering is 2018). Served as
-// best-effort/null and treated as DAWA-internal metadata in verify.
+// NavngivenVejHistorik carries the four DAWA history timestamps, derived
+// (since 2026-06-12) from the DAR NavngivenVej bitemporal chain
+// (dar_navngivenvej_hist): oprettet = first virkningFra (incl. the
+// 1900-01-01T12:00Z conversion sentinel), ændret = latest virkningFra,
+// ikrafttrædelse = first gældende virkningFra. nedlagt stays null (only
+// gældende roads are served). UTC with trailing Z, unlike the address historik.
 type NavngivenVejHistorik struct {
 	Oprettet        *string `json:"oprettet"`
 	Aendret         *string `json:"ændret"`
@@ -108,7 +108,17 @@ const navngivnevejSelect = `
 	     WHEN GeometryType(nv.geom) IN ('LINESTRING', 'MULTILINESTRING') THEN 'vejnavnelinje'
 	     WHEN GeometryType(nv.geom) IN ('POLYGON', 'MULTIPOLYGON') THEN 'vejnavneområde'
 	     ELSE NULL END AS geometritype,
-	vs.j, ps.j`
+	vs.j, ps.j,
+	-- historik from the DAR NavngivenVej virkning chain (raw, reg-current —
+	-- see migrations/035): oprettet = first virkningFra (the 1900-01-01T12:00Z
+	-- conversion sentinel included), ændret = the latest version's virkningFra,
+	-- ikrafttrædelse = the first gældende virkningFra. UTC + Z like live.
+	(SELECT to_char(MIN(hh.virkning_start) AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')
+		FROM dar_navngivenvej_hist hh WHERE hh.id = nv.id) AS h_oprettet,
+	(SELECT to_char(MAX(hh.virkning_start) AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')
+		FROM dar_navngivenvej_hist hh WHERE hh.id = nv.id) AS h_aendret,
+	(SELECT to_char(MIN(hh.virkning_start) AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')
+		FROM dar_navngivenvej_hist hh WHERE hh.id = nv.id AND hh.dar_status = 3) AS h_ikraft`
 
 // navngivnevejFrom joins the administrerende kommune (for navn), computes the
 // envelope/visueltcenter geometry once via LATERAL, and aggregates the status-3
@@ -155,12 +165,14 @@ func scanNavngivenVej(row pgx.Row, baseURL string) (*NavngivenVej, error) {
 	var kilde, teknisk, registrering, noej, geomtype *string
 	var bx0, bx1, bx2, bx3, vx, vy *float64
 	var vsJSON, psJSON []byte
+	var hOpr, hAen, hIkraft *string
 	if err := row.Scan(
 		&id, &status, &navn, &adr, &udtalt,
 		&komKode, &komNavn,
 		&kilde, &teknisk, &registrering, &noej,
 		&bx0, &bx1, &bx2, &bx3, &vx, &vy, &geomtype,
 		&vsJSON, &psJSON,
+		&hOpr, &hAen, &hIkraft,
 	); err != nil {
 		return nil, err
 	}
@@ -179,8 +191,7 @@ func scanNavngivenVej(row pgx.Row, baseURL string) (*NavngivenVej, error) {
 	if vx != nil && vy != nil {
 		nv.Visueltcenter = &[2]float64{*vx, *vy}
 	}
-	// historik is not reproducible from the Current extract — left null.
-	nv.Historik = NavngivenVejHistorik{}
+	nv.Historik = NavngivenVejHistorik{Oprettet: hOpr, Aendret: hAen, Ikrafttraedelse: hIkraft}
 
 	vejstykker, err := buildVejstykkeMiniRefs(vsJSON, baseURL)
 	if err != nil {
@@ -264,6 +275,7 @@ func scanNavngivenVejAuto(row pgx.Row, baseURL string) (*NavngivenVej, *float64,
 	var kilde, teknisk, registrering, noej, geomtype *string
 	var bx0, bx1, bx2, bx3, vx, vy *float64
 	var vsJSON, psJSON []byte
+	var hOpr, hAen, hIkraft *string
 	var acx, acy *float64
 	if err := row.Scan(
 		&id, &status, &navn, &adr, &udtalt,
@@ -271,6 +283,7 @@ func scanNavngivenVejAuto(row pgx.Row, baseURL string) (*NavngivenVej, *float64,
 		&kilde, &teknisk, &registrering, &noej,
 		&bx0, &bx1, &bx2, &bx3, &vx, &vy, &geomtype,
 		&vsJSON, &psJSON,
+		&hOpr, &hAen, &hIkraft,
 		&acx, &acy,
 	); err != nil {
 		return nil, nil, nil, err

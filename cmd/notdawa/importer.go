@@ -90,6 +90,8 @@ func importPlan() []importStep {
 		{"adressepunkt", "DAR", "address points (geometry)", di(ingest.Adressepunkt), 1},
 		{"husnummer", "DAR", "access addresses", di(ingest.Husnummer), 1},
 		{"adresse", "DAR", "unit addresses", di(ingest.Adresse), 1},
+		{"navngivenvej-historik", "DAR", "named-road virkning history (bitemporal)", di(ingest.NavngivenVejHistorik), 1},
+		{"nvkommunedel-historik", "DAR", "road-municipality-part virkning history (bitemporal)", di(ingest.NavngivenVejKommunedelHistorik), 1},
 		{"adressepunkt-historik", "DAR", "address-point status history (bitemporal)", di(ingest.AdressepunktHistorik), 1},
 		{"husnummer-historik", "DAR", "access-address virkning history (bitemporal)", di(ingest.HusnummerHistorik), 1},
 		{"adresse-historik", "DAR", "unit-address virkning history (bitemporal)", di(ingest.AdresseHistorik), 1},
