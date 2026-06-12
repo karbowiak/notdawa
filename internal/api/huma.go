@@ -85,13 +85,16 @@ func (w *logResponseWriter) Write(b []byte) (int, error) {
 // to the standard logger (stderr/console): remote-ip, method, URI, status,
 // response size, and duration. Applied to the whole Huma handler so it covers
 // every route plus /docs and /openapi.*.
-func accessLog(next http.Handler) http.Handler {
+func accessLog(rec *trafficRecorder, next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 		lw := &logResponseWriter{ResponseWriter: w, status: http.StatusOK}
 		next.ServeHTTP(lw, r)
 		uri := r.URL.RequestURI()
 		log.Printf("%s %s %s %d %dB %s", clientIP(r), r.Method, uri, lw.status, lw.bytes, time.Since(start).Round(time.Microsecond))
+		// Aggregate the request shape for the pre-shutdown traffic replay
+		// (paths only — see trafficRecorder).
+		rec.record(r.Method, uri, lw.status)
 	})
 }
 
@@ -816,7 +819,7 @@ func NewHumaServer(pool *pgxpool.Pool, baseURL string) http.Handler {
 	// wrapper so preflight OPTIONS are logged too, and makes every response (and the
 	// preflight) cross-origin readable, mirroring upstream DAWA's open policy.
 	// withHealth sits OUTSIDE the log wrapper so probe traffic isn't logged.
-	return withHealth(pool, accessLog(withCORS(mux)))
+	return withHealth(pool, accessLog(newTrafficRecorder(pool), withCORS(mux)))
 }
 
 // registerKode registers a single-resource GET keyed by {kode}.
