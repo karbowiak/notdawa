@@ -354,7 +354,11 @@ func listNavngivnevejeMatchingAuto(ctx context.Context, pool *pgxpool.Pool, q, b
 		navngivnevejFrom +
 		" WHERE nv.status = '3' AND dawa_fold(nv.navn) ~* ('\\m' || dawa_fold($1))" +
 		" ORDER BY nv.id" + pageClause(perSide, offset)
-	rows, err := pool.Query(ctx, sql, q)
+	// q lands in regex-pattern position: escape POSIX metacharacters so the
+	// text matches literally. Unescaped, q=( raises "invalid regular
+	// expression" (a 500 where live DAWA serves 200) and nested quantifiers
+	// are a regex-DoS vector. Live returns the empty list for such q.
+	rows, err := pool.Query(ctx, sql, regexEscapePOSIX(q))
 	if err != nil {
 		return nil, err
 	}
@@ -368,6 +372,21 @@ func listNavngivnevejeMatchingAuto(ctx context.Context, pool *pgxpool.Pool, q, b
 		out = append(out, &navngivenvejAuto{nv: nv, vx: vx, vy: vy})
 	}
 	return out, rows.Err()
+}
+
+// regexEscapePOSIX backslash-quotes every character with POSIX regular
+// expression meaning so user-supplied text matches literally in ~/~* position.
+func regexEscapePOSIX(s string) string {
+	var b strings.Builder
+	b.Grow(len(s))
+	for _, r := range s {
+		switch r {
+		case '\\', '.', '+', '*', '?', '(', ')', '[', ']', '{', '}', '|', '^', '$':
+			b.WriteRune('\\')
+		}
+		b.WriteRune(r)
+	}
+	return b.String()
 }
 
 // listNavngivnevejeMatching returns status-3 navngivneveje whose navn matches q.

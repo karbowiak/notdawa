@@ -2,7 +2,9 @@ package api
 
 import (
 	_ "embed"
+	"log"
 	"net/http"
+	"regexp"
 
 	"github.com/karbowiak/notdawa/internal/dawa"
 )
@@ -114,6 +116,27 @@ type pathFormatError struct {
 	Details [][]string `json:"details"`
 }
 
+// jsonpCallbackRE is DAWA's JSONP callback-name pattern. The pattern source
+// also appears verbatim in the error message below, so keep them in sync.
+var jsonpCallbackRE = regexp.MustCompile(`^[\$_a-zA-Z0-9\.]+$`)
+
+// writeCallbackFormatError reproduces DAWA's 400 for an invalid JSONP callback
+// name byte-exactly (captured live 2026-06-12): QueryParameterFormatError with
+// the ARRAY details form and a trailing period in the title — distinct from
+// writeBadRequest's map-details form.
+func writeCallbackFormatError(w http.ResponseWriter, value string) {
+	body, err := dawa.MarshalDAWA(pathFormatError{
+		Type:    "QueryParameterFormatError",
+		Title:   "One or more query parameters was ill-formed.",
+		Details: [][]string{{"callback", `String does not match pattern ^[\$_a-zA-Z0-9\.]+$: ` + value}},
+	})
+	if err != nil {
+		writeServerError(w, err)
+		return
+	}
+	writeJSON(w, http.StatusBadRequest, body)
+}
+
 // writeAdresseReversePathError reproduces DAWA's response to /adresser/reverse:
 // there is no reverse route on /adresser, so DAWA matches /adresser/{id} with
 // id="reverse", which fails the UUID pattern and yields a 404
@@ -152,6 +175,10 @@ func writePathFormatError(w http.ResponseWriter, field, message string) {
 }
 
 // writeServerError emits a plain HTTP 500 for unexpected DB/marshal errors.
+// The error detail is logged server-side only: raw pgx errors carry SQLSTATE
+// codes, table/column names and (on connect failures) DB host/user — internal
+// details a public API must not disclose.
 func writeServerError(w http.ResponseWriter, err error) {
-	http.Error(w, err.Error(), http.StatusInternalServerError)
+	log.Printf("500: %v", err)
+	http.Error(w, "internal server error", http.StatusInternalServerError)
 }

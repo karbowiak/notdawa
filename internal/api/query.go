@@ -131,6 +131,14 @@ func parseCollectionParams(w http.ResponseWriter, r *http.Request) (collectionPa
 		cp.format = "json"
 	}
 	if cp.callback != "" {
+		// DAWA validates the JSONP callback name (the response is served as
+		// executable JavaScript — an unvalidated name is an XSSI vector) and
+		// rejects violations with its array-details 400 envelope, reproduced
+		// byte-exactly here from the live capture.
+		if !jsonpCallbackRE.MatchString(cp.callback) {
+			writeCallbackFormatError(w, cp.callback)
+			return collectionParams{}, false
+		}
 		cp.format = "jsonp"
 	}
 	if _, ok := q["noformat"]; ok {

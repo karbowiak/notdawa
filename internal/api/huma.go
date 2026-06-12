@@ -51,6 +51,7 @@ import (
 	"net/http/httptest"
 	"net/url"
 	"reflect"
+	"runtime/debug"
 	"strconv"
 	"time"
 
@@ -95,6 +96,26 @@ func accessLog(rec *trafficRecorder, next http.Handler) http.Handler {
 		// Aggregate the request shape for the pre-shutdown traffic replay
 		// (paths only — see trafficRecorder).
 		rec.record(r.Method, uri, lw.status)
+	})
+}
+
+// withRecover converts a handler panic into a logged 500 instead of an aborted
+// connection. net/http already keeps the process alive on handler panics; this
+// middleware adds the clean client response and a stack trace in the log.
+// http.ErrAbortHandler is re-panicked — it is the sanctioned way to abort.
+func withRecover(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer func() {
+			if p := recover(); p != nil {
+				if p == http.ErrAbortHandler {
+					panic(p)
+				}
+				log.Printf("panic serving %s: %v\n%s", r.URL.Path, p, debug.Stack())
+				// Best-effort: a no-op if the handler already wrote headers.
+				http.Error(w, "internal server error", http.StatusInternalServerError)
+			}
+		}()
+		next.ServeHTTP(w, r)
 	})
 }
 
@@ -147,8 +168,11 @@ func withHealth(pool *pgxpool.Pool, next http.Handler) http.Handler {
 			defer cancel()
 			w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 			if err := pool.Ping(ctx); err != nil {
+				// Detail goes to the log only — the ping error names the DB
+				// host/user/database, and /readyz is publicly routed.
+				log.Printf("readyz: %v", err)
 				w.WriteHeader(http.StatusServiceUnavailable)
-				_, _ = w.Write([]byte("not ready: " + err.Error() + "\n"))
+				_, _ = w.Write([]byte("not ready\n"))
 				return
 			}
 			_, _ = w.Write([]byte("ready\n"))
@@ -395,7 +419,11 @@ type sekvensInput struct {
 // route the net/http NewServer registers, serving /openapi.json + /openapi.yaml
 // (Huma) and a Scalar docs UI at /docs. Output bytes are identical to NewServer
 // for every route because the existing byte-exact handlers are replayed verbatim.
-func NewHumaServer(pool *pgxpool.Pool, baseURL string) http.Handler {
+//
+// The returned stop func ends the traffic recorder's flush loop with one final
+// flush — call it during graceful shutdown so the tail of access_paths data
+// isn't lost. Callers that don't care (tests) may ignore it.
+func NewHumaServer(pool *pgxpool.Pool, baseURL string) (http.Handler, func()) {
 	s := &server{pool: pool, baseURL: baseURL}
 
 	mux := http.NewServeMux()
@@ -818,8 +846,11 @@ func NewHumaServer(pool *pgxpool.Pool, baseURL string) http.Handler {
 	// /openapi.*) is logged to the console as it comes in. CORS sits inside the log
 	// wrapper so preflight OPTIONS are logged too, and makes every response (and the
 	// preflight) cross-origin readable, mirroring upstream DAWA's open policy.
+	// withRecover sits inside accessLog so a panicking handler still produces an
+	// access-log line (status 500) and a clean client response.
 	// withHealth sits OUTSIDE the log wrapper so probe traffic isn't logged.
-	return withHealth(pool, accessLog(newTrafficRecorder(pool), withCORS(mux)))
+	rec := newTrafficRecorder(pool)
+	return withHealth(pool, accessLog(rec, withRecover(withCORS(mux)))), rec.stop
 }
 
 // registerKode registers a single-resource GET keyed by {kode}.

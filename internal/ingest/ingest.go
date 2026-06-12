@@ -201,6 +201,17 @@ func openZipMember(path string) (*zip.ReadCloser, io.ReadCloser, error) {
 	return zr, rc, nil
 }
 
+// drainZipMember reads the member to EOF so archive/zip verifies its CRC32.
+// json.Decoder stops at the closing ']' and never performs the final read that
+// triggers the check — a corrupted-but-still-decodable member would otherwise
+// pass silently. Cheap: only the trailing bytes remain.
+func drainZipMember(rc io.Reader) error {
+	if _, err := io.Copy(io.Discard, rc); err != nil {
+		return fmt.Errorf("zip member integrity (crc): %w", err)
+	}
+	return nil
+}
+
 // readZipJSON decodes the whole .json member into dst (a pointer). Suitable for
 // small/medium extracts; use streamLoad for the large DAR/MAT ones.
 func readZipJSON(path string, dst any) error {
@@ -213,7 +224,7 @@ func readZipJSON(path string, dst any) error {
 	if err := json.NewDecoder(rc).Decode(dst); err != nil {
 		return fmt.Errorf("decode zip json %s: %w", path, err)
 	}
-	return nil
+	return drainZipMember(rc)
 }
 
 // downloadEntity discovers the latest Current TotalDownload JSON for an entity,

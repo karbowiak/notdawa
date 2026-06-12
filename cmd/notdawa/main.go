@@ -4,10 +4,15 @@
 package main
 
 import (
+	"context"
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/spf13/cobra"
 
@@ -30,7 +35,13 @@ func main() {
 	}
 	root.AddCommand(migrateCmd(), importCmd(), provisionCmd(), serveCmd())
 
-	if err := root.Execute(); err != nil {
+	// SIGINT/SIGTERM cancel cmd.Context(): serve drains gracefully, and import
+	// steps abort through their context so failRun can record the interruption
+	// instead of leaving ingest_runs rows frozen at pending/downloaded.
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
+
+	if err := root.ExecuteContext(ctx); err != nil {
 		os.Exit(1)
 	}
 }
@@ -78,15 +89,49 @@ func serveCmd() *cobra.Command {
 		Use:   "serve",
 		Short: "Serve the DAWA-compatible HTTP API",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			pool, err := db.Connect(cmd.Context(), cfg.DatabaseURL)
+			// The serving pool runs with statement_timeout + bounded size;
+			// the import/migrate lanes keep the untimed db.Connect.
+			pool, err := db.ConnectServe(cmd.Context(), cfg.DatabaseURL)
 			if err != nil {
 				return err
 			}
 			defer pool.Close()
 
-			handler := api.NewHumaServer(pool, baseURL)
+			handler, stopRecorder := api.NewHumaServer(pool, baseURL)
+			srv := &http.Server{
+				Addr:    addr,
+				Handler: handler,
+				// Slowloris guards. WriteTimeout stays generous: responses are
+				// fully buffered before writing, but large bodies to slow
+				// clients still need room.
+				ReadHeaderTimeout: 10 * time.Second,
+				ReadTimeout:       time.Minute,
+				WriteTimeout:      15 * time.Minute,
+				IdleTimeout:       2 * time.Minute,
+				MaxHeaderBytes:    1 << 20,
+			}
+
+			errCh := make(chan error, 1)
+			go func() { errCh <- srv.ListenAndServe() }()
 			log.Printf("notdawa api listening on %s - OpenAPI at /openapi.json, docs at /docs", addr)
-			return http.ListenAndServe(addr, handler)
+
+			select {
+			case err := <-errCh:
+				return err
+			case <-cmd.Context().Done():
+				// Rolling deploy / SIGTERM: drain in-flight requests, then
+				// flush the traffic recorder's pending access_paths counts.
+				// 25s fits inside k8s' default 30s termination grace period.
+				log.Printf("shutting down: draining in-flight requests")
+				shutdownCtx, cancel := context.WithTimeout(context.Background(), 25*time.Second)
+				defer cancel()
+				err := srv.Shutdown(shutdownCtx)
+				stopRecorder()
+				if err != nil && !errors.Is(err, context.DeadlineExceeded) {
+					return err
+				}
+				return nil
+			}
 		},
 	}
 	cmd.Flags().StringVar(&addr, "addr", ":8080", "address to listen on")

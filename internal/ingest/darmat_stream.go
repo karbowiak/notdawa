@@ -148,6 +148,19 @@ func streamZipRows[F any](ctx context.Context, pool *pgxpool.Pool, res Result,
 			return res, fmt.Errorf("insert into %s: %w", table, err)
 		}
 	}
+	if err = drainZipMember(rc); err != nil {
+		failRun(ctx, pool, runID, err)
+		return res, fmt.Errorf("%s: %w", file.FileName, err)
+	}
+	// Zero-row floor (same guard dagiLoad/streamLoad have): a structurally valid
+	// but empty extract — or an upstream field rename that makes keep() drop
+	// every row — must fail loudly and roll the TRUNCATE back, never publish an
+	// empty serving table with a ledger row that says "loaded".
+	if n == 0 {
+		err = fmt.Errorf("%s: extract %s yielded 0 rows for %s — refusing to commit empty table", res.Entity, file.FileName, table)
+		failRun(ctx, pool, runID, err)
+		return res, err
+	}
 	if err = tx.Commit(ctx); err != nil {
 		failRun(ctx, pool, runID, err)
 		return res, err

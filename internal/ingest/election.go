@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"os"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 
@@ -86,15 +87,23 @@ func StorkredseValglandsdele(ctx context.Context, pool *pgxpool.Pool, client *da
 	res := Result{Register: "DAGI", Entity: "Storkreds+Valglandsdel"}
 
 	var stork []storkredsAttrFeature
-	sf, _, err := downloadAndDecode(ctx, pool, client, "DAGI", "Storkreds", &stork)
+	sf, sfRun, err := downloadAndDecode(ctx, pool, client, "DAGI", "Storkreds", &stork)
 	if err != nil {
 		return res, err
 	}
 	res.GenerationNumber = sf.GenerationNumber
 
 	var vld []valglandsdelAttrFeature
-	if _, _, err = downloadAndDecode(ctx, pool, client, "DAGI", "Valglandsdel", &vld); err != nil {
+	_, vldRun, err := downloadAndDecode(ctx, pool, client, "DAGI", "Valglandsdel", &vld)
+	if err != nil {
+		failRun(ctx, pool, sfRun, fmt.Errorf("aborted: Valglandsdel download failed: %w", err))
 		return res, err
+	}
+	// Both ledger rows stay open until the load tx commits (they used to be
+	// abandoned at 'downloaded' forever).
+	fail := func(cause error) {
+		failRun(ctx, pool, sfRun, cause)
+		failRun(ctx, pool, vldRun, cause)
 	}
 	// bogstav -> navn (dedupe; all scales carry the same navn) and the bare
 	// 6-digit suffix of valglandsdel.id_lokalId -> bogstav, used to resolve a
@@ -114,14 +123,17 @@ func StorkredseValglandsdele(ctx context.Context, pool *pgxpool.Pool, client *da
 
 	tx, err := pool.Begin(ctx)
 	if err != nil {
+		fail(err)
 		return res, err
 	}
 	defer tx.Rollback(ctx)
 
 	if _, err = tx.Exec(ctx, "TRUNCATE dagi_storkredse"); err != nil {
+		fail(err)
 		return res, err
 	}
 	if _, err = tx.Exec(ctx, "TRUNCATE dagi_valglandsdele"); err != nil {
+		fail(err)
 		return res, err
 	}
 
@@ -146,9 +158,17 @@ func StorkredseValglandsdele(ctx context.Context, pool *pgxpool.Pool, client *da
 			s.Nummer, s.Navn, nullIfEmpty(storkredsRegionskode[s.Nummer]), nullIfEmpty(bogstav),
 			nullIfEmpty(s.IDLokalId), nullIfEmpty(s.Opdtid), sf.GenerationNumber)
 		if err != nil {
+			fail(err)
 			return res, fmt.Errorf("insert storkreds %s: %w", s.Nummer, err)
 		}
 		res.RowsLoaded++
+	}
+	// Zero-row floor: an attribute extract published without the 1:10.000 scale
+	// would otherwise silently empty both election tables.
+	if res.RowsLoaded == 0 {
+		err = fmt.Errorf("Storkreds extract yielded 0 rows at scale %q — refusing to commit empty election tables", fullResScale)
+		fail(err)
+		return res, err
 	}
 
 	// Valglandsdele: geom = union of the storkredse with that bogstav.
@@ -161,12 +181,19 @@ func StorkredseValglandsdele(ctx context.Context, pool *pgxpool.Pool, client *da
 			WHERE s.valglandsdelsbogstav = $1`,
 			bogstav, navn, sf.GenerationNumber)
 		if err != nil {
+			fail(err)
 			return res, fmt.Errorf("insert valglandsdel %s: %w", bogstav, err)
 		}
 	}
 
 	if err = tx.Commit(ctx); err != nil {
+		fail(err)
 		return res, err
+	}
+	for _, id := range []int64{sfRun, vldRun} {
+		if err := finishRun(ctx, pool, id, res.RowsLoaded); err != nil {
+			fmt.Fprintf(os.Stderr, "notdawa: ingest committed but ledger update failed for run %d: %v\n", id, err)
+		}
 	}
 
 	// Precompute visueltcenter (Mapbox polylabel) for both tables.

@@ -170,6 +170,16 @@ func matStreamLoad[F any](ctx context.Context, pool *pgxpool.Pool, client *dataf
 			return res, fmt.Errorf("insert into %s: %w", table, err)
 		}
 	}
+	if err = drainZipMember(rc); err != nil {
+		failRun(ctx, pool, runID, err)
+		return res, fmt.Errorf("%s: %w", file.FileName, err)
+	}
+	// Zero-row floor — see streamZipRows: never commit a TRUNCATE with 0 inserts.
+	if n == 0 {
+		err = fmt.Errorf("%s: extract %s yielded 0 rows for %s — refusing to commit empty table", res.Entity, file.FileName, table)
+		failRun(ctx, pool, runID, err)
+		return res, err
+	}
 	if err = tx.Commit(ctx); err != nil {
 		failRun(ctx, pool, runID, err)
 		return res, err

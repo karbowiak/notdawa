@@ -97,11 +97,23 @@ func run(m *testing.M) int {
 	}
 	defer pool.Close()
 	testPool = pool // direct DB access for sampling tests (historik_sample_test.go)
+	// The server under test uses the SERVING pool (statement_timeout + bounded
+	// size) exactly like production `serve` — the suite is the regression gate
+	// for those semantics too. testPool above stays untimed for the heavy
+	// sampling/discovery queries.
+	servePool, err := db.ConnectServe(context.Background(), cfg.DatabaseURL)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "compat: serve pool failed (%v)\n", err)
+		return 1
+	}
+	defer servePool.Close()
 	// base-url MUST be the live DAWA host so our href fields match DAWA's.
 	// The oracle runs against the HUMA server (the production front): this proves
 	// Huma serves every route byte-exact vs live DAWA, with full param fidelity —
 	// not just that a separate hand-rolled mux does.
-	srv := httptest.NewServer(api.NewHumaServer(pool, liveDAWA))
+	handler, stopRecorder := api.NewHumaServer(servePool, liveDAWA)
+	defer stopRecorder()
+	srv := httptest.NewServer(handler)
 	defer srv.Close()
 	ourBase = srv.URL
 	return m.Run()

@@ -83,6 +83,10 @@ func streamLoad[F any](ctx context.Context, pool *pgxpool.Pool, client *dataford
 			return res, fmt.Errorf("insert into %s: %w", table, err)
 		}
 	}
+	if err = drainZipMember(rc); err != nil {
+		failRun(ctx, pool, runID, err)
+		return res, fmt.Errorf("%s: %w", file.FileName, err)
+	}
 	if res.RowsLoaded == 0 {
 		err = fmt.Errorf("no matching features in %s", file.FileName)
 		failRun(ctx, pool, runID, err)

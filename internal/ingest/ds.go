@@ -69,14 +69,65 @@ var dsPlaceTypes = []dsPlaceType{
 	{"Rute", "Rute", "rutetype"},
 }
 
-// DS truncates ds_steder + ds_stednavne, then loads every place-type extract
-// into ds_steder and the Bitemporal Stednavn extract into ds_stednavne, and
-// finally computes visueltcenter (point/line via SQL, polygon via the Go
-// polylabel). NOTDAWA_INGEST_DIR (if set) serves the cached zips offline.
+// DS loads every place-type extract into ds_steder and the Bitemporal Stednavn
+// extract into ds_stednavne. All ~28 downloads complete FIRST; only then does
+// one transaction TRUNCATE + reload both tables and compute visueltcenter
+// (point/line via SQL, polygon via the Go polylabel) — so readers either see
+// last week's complete data or this week's complete data, never an empty or
+// partial table. (The old shape truncated up front and then performed 28
+// network round-trips against a server that stalls regularly: a mid-sequence
+// failure left /steder, /stednavne — and via the brofast EXISTS every island
+// address — silently wrong for a week.) NOTDAWA_INGEST_DIR (if set) serves the
+// cached zips offline.
 func DS(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client) (Result, error) {
 	res := Result{Register: "DS", Entity: "steder+stednavne"}
 
-	if _, err := pool.Exec(ctx, "TRUNCATE ds_steder, ds_stednavne"); err != nil {
+	// Phase 1: download everything before touching the serving tables.
+	type dsDownload struct {
+		pt    dsPlaceType
+		file  datafordeler.FileDownload
+		path  string
+		runID int64
+	}
+	var dls []dsDownload
+	// pending tracks ledger rows not yet finished/failed so an error on any
+	// later download (or the load tx) closes ALL open rows loudly.
+	var pending []int64
+	failPending := func(cause error) {
+		for _, id := range pending {
+			failRun(ctx, pool, id, cause)
+		}
+	}
+	for _, pt := range dsPlaceTypes {
+		file, path, runID, err := downloadEntity(ctx, pool, client, "DS", pt.Entity)
+		if err != nil {
+			failPending(fmt.Errorf("aborted: sibling DS download %s failed: %w", pt.Entity, err))
+			return res, fmt.Errorf("%s: %w", pt.Entity, err)
+		}
+		defer os.Remove(path)
+		dls = append(dls, dsDownload{pt, file, path, runID})
+		pending = append(pending, runID)
+		if file.GenerationNumber > res.GenerationNumber {
+			res.GenerationNumber = file.GenerationNumber
+		}
+	}
+	snFile, snPath, snRunID, err := downloadEntityT(ctx, pool, client, "DS", "Stednavn", "Bitemporal")
+	if err != nil {
+		failPending(fmt.Errorf("aborted: DS Stednavn download failed: %w", err))
+		return res, fmt.Errorf("Stednavn: %w", err)
+	}
+	defer os.Remove(snPath)
+	pending = append(pending, snRunID)
+
+	// Phase 2: one crash-atomic transaction over both serving tables.
+	tx, err := pool.Begin(ctx)
+	if err != nil {
+		failPending(err)
+		return res, err
+	}
+	defer tx.Rollback(ctx)
+	if _, err := tx.Exec(ctx, "TRUNCATE ds_steder, ds_stednavne"); err != nil {
+		failPending(err)
 		return res, fmt.Errorf("truncate ds tables: %w", err)
 	}
 
@@ -86,70 +137,80 @@ func DS(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client) (R
 	 ON CONFLICT (id_lokalId) DO NOTHING`
 
 	total := 0
-	for _, pt := range dsPlaceTypes {
-		n, gen, err := dsLoadPlaceType(ctx, pool, client, pt, insertSQL)
+	counts := make(map[int64]int, len(dls)+1)
+	for _, dl := range dls {
+		n, err := dsLoadPlaceTypeInto(ctx, tx, dl.path, dl.file, dl.pt, insertSQL)
 		if err != nil {
-			return res, fmt.Errorf("%s: %w", pt.Entity, err)
+			failPending(err)
+			return res, fmt.Errorf("%s: %w", dl.pt.Entity, err)
 		}
-		if gen > res.GenerationNumber {
-			res.GenerationNumber = gen
-		}
+		counts[dl.runID] = n
 		total += n
-		fmt.Fprintf(os.Stderr, "notdawa: ds %s loaded %d rows\n", pt.Entity, n)
+		fmt.Fprintf(os.Stderr, "notdawa: ds %s loaded %d rows\n", dl.pt.Entity, n)
 	}
 	res.RowsLoaded = total
+	if total == 0 {
+		err := fmt.Errorf("DS: all place-type extracts yielded 0 rows — refusing to commit empty ds_steder")
+		failPending(err)
+		return res, err
+	}
 
-	snN, err := dsLoadStednavne(ctx, pool, client)
+	snN, err := dsLoadStednavneInto(ctx, tx, snPath, snFile)
 	if err != nil {
+		failPending(err)
 		return res, fmt.Errorf("Stednavn: %w", err)
 	}
+	if snN == 0 {
+		err := fmt.Errorf("DS: Stednavn extract yielded 0 rows — refusing to commit empty ds_stednavne")
+		failPending(err)
+		return res, err
+	}
+	counts[snRunID] = snN
 	fmt.Fprintf(os.Stderr, "notdawa: ds Stednavn loaded %d rows\n", snN)
 
-	if err := dsFillVisueltcenter(ctx, pool); err != nil {
+	// visueltcenter inside the same tx: committed rows are complete rows.
+	if err := dsFillVisueltcenter(ctx, tx); err != nil {
+		failPending(err)
 		return res, fmt.Errorf("visueltcenter: %w", err)
+	}
+
+	if err := tx.Commit(ctx); err != nil {
+		failPending(err)
+		return res, err
+	}
+	for _, id := range pending {
+		if err := finishRun(ctx, pool, id, counts[id]); err != nil {
+			fmt.Fprintf(os.Stderr, "notdawa: ingest committed but ledger update failed for run %d: %v\n", id, err)
+		}
 	}
 	return res, nil
 }
 
-// dsLoadPlaceType streams one place-type extract feature-by-feature into
-// ds_steder (the extracts are top-level JSON arrays; several run to tens of MB,
-// so streaming keeps memory bounded). Returns rows inserted and the extract's
-// generation number. Empty extracts (FaergeruteLinje/Punkt, Rute) yield 0 rows.
-func dsLoadPlaceType(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client, pt dsPlaceType, insertSQL string) (int, int, error) {
-	file, path, runID, err := downloadEntity(ctx, pool, client, "DS", pt.Entity)
-	if err != nil {
-		return 0, 0, err
-	}
-	defer os.Remove(path)
-
+// dsLoadPlaceTypeInto streams one already-downloaded place-type extract
+// feature-by-feature into ds_steder within the caller's transaction (the
+// extracts are top-level JSON arrays; several run to tens of MB, so streaming
+// keeps memory bounded). Returns rows inserted. Empty extracts
+// (FaergeruteLinje/Punkt, Rute) yield 0 rows. Ledger bookkeeping is the
+// caller's (DS drives one tx over all extracts).
+func dsLoadPlaceTypeInto(ctx context.Context, tx pgx.Tx, path string, file datafordeler.FileDownload, pt dsPlaceType, insertSQL string) (int, error) {
 	zr, rc, err := openZipMember(path)
 	if err != nil {
-		failRun(ctx, pool, runID, err)
-		return 0, file.GenerationNumber, err
+		return 0, err
 	}
 	defer zr.Close()
 	defer rc.Close()
 
 	dec := json.NewDecoder(rc)
 	if _, err = dec.Token(); err != nil { // consume the opening '['
-		failRun(ctx, pool, runID, err)
-		return 0, file.GenerationNumber, fmt.Errorf("read array start in %s: %w", file.FileName, err)
+		return 0, fmt.Errorf("read array start in %s: %w", file.FileName, err)
 	}
-
-	tx, err := pool.Begin(ctx)
-	if err != nil {
-		failRun(ctx, pool, runID, err)
-		return 0, file.GenerationNumber, err
-	}
-	defer tx.Rollback(ctx)
 
 	batch := &pgx.Batch{}
 	n := 0
 	for dec.More() {
 		var p map[string]any
 		if err = dec.Decode(&p); err != nil {
-			failRun(ctx, pool, runID, err)
-			return 0, file.GenerationNumber, fmt.Errorf("decode feature in %s: %w", file.FileName, err)
+			return 0, fmt.Errorf("decode feature in %s: %w", file.FileName, err)
 		}
 		geometri := asString(p["geometri"])
 		idLokal := asString(p["id_lokalId"])
@@ -171,43 +232,31 @@ func dsLoadPlaceType(ctx context.Context, pool *pgxpool.Pool, client *datafordel
 		n++
 		if batch.Len() >= streamChunk {
 			if err = drainBatch(ctx, tx, batch); err != nil {
-				failRun(ctx, pool, runID, err)
-				return 0, file.GenerationNumber, fmt.Errorf("insert into ds_steder: %w", err)
+				return 0, fmt.Errorf("insert into ds_steder: %w", err)
 			}
 			batch = &pgx.Batch{}
 		}
 	}
 	if batch.Len() > 0 {
 		if err = drainBatch(ctx, tx, batch); err != nil {
-			failRun(ctx, pool, runID, err)
-			return 0, file.GenerationNumber, fmt.Errorf("insert into ds_steder: %w", err)
+			return 0, fmt.Errorf("insert into ds_steder: %w", err)
 		}
 	}
-	if err = tx.Commit(ctx); err != nil {
-		failRun(ctx, pool, runID, err)
-		return 0, file.GenerationNumber, err
+	if err = drainZipMember(rc); err != nil {
+		return 0, fmt.Errorf("%s: %w", file.FileName, err)
 	}
-	if err = finishRun(ctx, pool, runID, n); err != nil {
-		fmt.Fprintf(os.Stderr, "notdawa: ingest committed but ledger update failed for run %d: %v\n", runID, err)
-	}
-	return n, file.GenerationNumber, nil
+	return n, nil
 }
 
-// dsLoadStednavne streams the Bitemporal Stednavn extract into ds_stednavne.
-// The export is flat (no id_lokalId/registreringTil columns): the name's own key
-// is "objectid" (-> ds_stednavne.id_lokalId) and it references its place via
+// dsLoadStednavneInto streams the already-downloaded Bitemporal Stednavn
+// extract into ds_stednavne within the caller's transaction. The export is
+// flat (no id_lokalId/registreringTil columns): the name's own key is
+// "objectid" (-> ds_stednavne.id_lokalId) and it references its place via
 // "navngivetSted_objectid" (-> place_objectid == ds_steder.objectid). Every row
 // is the current version; rows are deduped defensively on the name's objectid.
-func dsLoadStednavne(ctx context.Context, pool *pgxpool.Pool, client *datafordeler.Client) (int, error) {
-	file, path, runID, err := downloadEntityT(ctx, pool, client, "DS", "Stednavn", "Bitemporal")
-	if err != nil {
-		return 0, err
-	}
-	defer os.Remove(path)
-
+func dsLoadStednavneInto(ctx context.Context, tx pgx.Tx, path string, file datafordeler.FileDownload) (int, error) {
 	zr, rc, err := openZipMember(path)
 	if err != nil {
-		failRun(ctx, pool, runID, err)
 		return 0, err
 	}
 	defer zr.Close()
@@ -215,16 +264,8 @@ func dsLoadStednavne(ctx context.Context, pool *pgxpool.Pool, client *datafordel
 
 	dec := json.NewDecoder(rc)
 	if _, err = dec.Token(); err != nil { // consume the opening '['
-		failRun(ctx, pool, runID, err)
 		return 0, fmt.Errorf("read array start in %s: %w", file.FileName, err)
 	}
-
-	tx, err := pool.Begin(ctx)
-	if err != nil {
-		failRun(ctx, pool, runID, err)
-		return 0, err
-	}
-	defer tx.Rollback(ctx)
 
 	insertSQL := `INSERT INTO ds_stednavne
 		(id_lokalId, place_objectid, skrivemaade, navnestatus, brugsprioritet, navnefoelgenummer, generation_number)
@@ -237,7 +278,6 @@ func dsLoadStednavne(ctx context.Context, pool *pgxpool.Pool, client *datafordel
 	for dec.More() {
 		var p map[string]any
 		if err = dec.Decode(&p); err != nil {
-			failRun(ctx, pool, runID, err)
 			return 0, fmt.Errorf("decode feature in %s: %w", file.FileName, err)
 		}
 		idLokal := asString(p["objectid"])
@@ -262,7 +302,6 @@ func dsLoadStednavne(ctx context.Context, pool *pgxpool.Pool, client *datafordel
 		n++
 		if batch.Len() >= streamChunk {
 			if err = drainBatch(ctx, tx, batch); err != nil {
-				failRun(ctx, pool, runID, err)
 				return 0, fmt.Errorf("insert into ds_stednavne: %w", err)
 			}
 			batch = &pgx.Batch{}
@@ -270,16 +309,11 @@ func dsLoadStednavne(ctx context.Context, pool *pgxpool.Pool, client *datafordel
 	}
 	if batch.Len() > 0 {
 		if err = drainBatch(ctx, tx, batch); err != nil {
-			failRun(ctx, pool, runID, err)
 			return 0, fmt.Errorf("insert into ds_stednavne: %w", err)
 		}
 	}
-	if err = tx.Commit(ctx); err != nil {
-		failRun(ctx, pool, runID, err)
-		return 0, err
-	}
-	if err = finishRun(ctx, pool, runID, n); err != nil {
-		fmt.Fprintf(os.Stderr, "notdawa: ingest committed but ledger update failed for run %d: %v\n", runID, err)
+	if err = drainZipMember(rc); err != nil {
+		return 0, fmt.Errorf("%s: %w", file.FileName, err)
 	}
 	return n, nil
 }
@@ -288,20 +322,21 @@ func dsLoadStednavne(ctx context.Context, pool *pgxpool.Pool, client *datafordel
 // points use the point itself (ST_PointOnSurface), lines use the point on the
 // line nearest its centroid (ST_ClosestPoint), and polygons use the Mapbox
 // polylabel via fillPolylabelWhere (polylabelOfGeoJSON only handles polygons).
-func dsFillVisueltcenter(ctx context.Context, pool *pgxpool.Pool) error {
-	if _, err := pool.Exec(ctx, `
+// Runs against the DS() load transaction so committed rows are complete rows.
+func dsFillVisueltcenter(ctx context.Context, db pgExec) error {
+	if _, err := db.Exec(ctx, `
 		UPDATE ds_steder
 		SET visueltcenter = ST_PointOnSurface(geom)
 		WHERE GeometryType(geom) IN ('POINT', 'MULTIPOINT')`); err != nil {
 		return fmt.Errorf("point visueltcenter: %w", err)
 	}
-	if _, err := pool.Exec(ctx, `
+	if _, err := db.Exec(ctx, `
 		UPDATE ds_steder
 		SET visueltcenter = ST_ClosestPoint(geom, ST_Centroid(geom))
 		WHERE GeometryType(geom) IN ('LINESTRING', 'MULTILINESTRING')`); err != nil {
 		return fmt.Errorf("line visueltcenter: %w", err)
 	}
-	if err := fillPolylabelWhere(ctx, pool, "ds_steder", "id_lokalId",
+	if err := fillPolylabelWhere(ctx, db, "ds_steder", "id_lokalId",
 		"GeometryType(geom) IN ('POLYGON', 'MULTIPOLYGON')"); err != nil {
 		return fmt.Errorf("polygon visueltcenter: %w", err)
 	}

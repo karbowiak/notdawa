@@ -27,6 +27,9 @@ type trafficRecorder struct {
 	mu      sync.Mutex
 	counts  map[string]*pathHit
 	dropped bool // logged-once marker for flush failures
+
+	done    chan struct{} // closed by stop() to end the flush loop
+	stopped chan struct{} // closed by loop() after the final flush
 }
 
 type pathHit struct {
@@ -50,9 +53,22 @@ var trafficJunk = []string{
 }
 
 func newTrafficRecorder(pool *pgxpool.Pool) *trafficRecorder {
-	t := &trafficRecorder{pool: pool, counts: map[string]*pathHit{}}
+	t := &trafficRecorder{
+		pool:    pool,
+		counts:  map[string]*pathHit{},
+		done:    make(chan struct{}),
+		stopped: make(chan struct{}),
+	}
 	go t.loop()
 	return t
+}
+
+// stop ends the flush loop and performs one final flush so the tail of the
+// traffic (up to flushInterval's worth) survives a graceful shutdown. Safe to
+// call once; blocks until the final flush has run.
+func (t *trafficRecorder) stop() {
+	close(t.done)
+	<-t.stopped
 }
 
 // record notes one served request. Only GETs of non-junk paths count.
@@ -78,8 +94,15 @@ func (t *trafficRecorder) record(method, uri string, status int) {
 func (t *trafficRecorder) loop() {
 	tick := time.NewTicker(flushInterval)
 	defer tick.Stop()
-	for range tick.C {
-		t.flush()
+	for {
+		select {
+		case <-tick.C:
+			t.flush()
+		case <-t.done:
+			t.flush()
+			close(t.stopped)
+			return
+		}
 	}
 }
 
