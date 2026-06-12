@@ -42,14 +42,24 @@ spec:
         {{- include "notdawa.selectorLabels" . | nindent 8 }}
         app.kubernetes.io/component: postgres
     spec:
+      automountServiceAccountToken: false
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.postgres.securityContext }}
+      securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
         - name: postgres
           image: {{ .Values.postgres.image | quote }}
           imagePullPolicy: {{ .Values.postgres.imagePullPolicy }}
+          # No readOnlyRootFilesystem: the image needs /var/run/postgresql.
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
           env:
             - name: POSTGRES_USER
               value: {{ .Values.postgres.auth.username | quote }}

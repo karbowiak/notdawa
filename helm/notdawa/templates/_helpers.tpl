@@ -51,10 +51,33 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
-Environment for the notdawa app/jobs: Datafordeler key, optional GSSearch token,
-and DATABASE_URL. When the bundled postgres is used, the password is injected
-from the Secret and referenced via $(POSTGRES_PASSWORD) so it never appears in
-the rendered manifest.
+Database environment shared by every component. When the bundled postgres is
+used, the password is injected from the Secret and referenced via
+$(POSTGRES_PASSWORD) so it never appears in the rendered manifest. The
+assembled DSN carries pool_max_conns (pgx pool sizing) so replicas and jobs
+stay within postgres max_connections.
+*/}}
+{{- define "notdawa.dbEnv" -}}
+{{- if .Values.database.url }}
+- name: DATABASE_URL
+  value: {{ .Values.database.url | quote }}
+{{- else }}
+- name: POSTGRES_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ include "notdawa.secretName" . }}
+      key: POSTGRES_PASSWORD
+- name: DATABASE_URL
+  value: "postgres://{{ .Values.postgres.auth.username }}:$(POSTGRES_PASSWORD)@{{ include "notdawa.postgresHost" . }}:5432/{{ .Values.postgres.auth.database }}?sslmode={{ .Values.database.sslmode }}&pool_max_conns={{ .Values.postgres.poolMaxConns }}"
+{{- end }}
+{{- end -}}
+
+{{/*
+Environment for the import/migrate/provision jobs: the database plus the
+Datafordeler key and optional GSSearch token. The serve Deployment deliberately
+uses notdawa.dbEnv only — `serve` never reads the import credentials, and
+keeping them out of the internet-facing pods shrinks the blast radius of any
+server-pod compromise.
 */}}
 {{- define "notdawa.appEnv" -}}
 - name: DATAFORDELER_API_KEY
@@ -69,18 +92,19 @@ the rendered manifest.
       name: {{ include "notdawa.secretName" . }}
       key: GSEARCH_TOKEN
       optional: true
-{{- if .Values.database.url }}
-- name: DATABASE_URL
-  value: {{ .Values.database.url | quote }}
-{{- else }}
-- name: POSTGRES_PASSWORD
-  valueFrom:
-    secretKeyRef:
-      name: {{ include "notdawa.secretName" . }}
-      key: POSTGRES_PASSWORD
-- name: DATABASE_URL
-  value: "postgres://{{ .Values.postgres.auth.username }}:$(POSTGRES_PASSWORD)@{{ include "notdawa.postgresHost" . }}:5432/{{ .Values.postgres.auth.database }}?sslmode={{ .Values.database.sslmode }}"
-{{- end }}
+{{ include "notdawa.dbEnv" . }}
+{{- end -}}
+
+{{/*
+Hardened container securityContext for the app (Go binary) containers. The
+image runs as uid 10001 and writes only TMPDIR, so the root filesystem can be
+read-only and every capability dropped.
+*/}}
+{{- define "notdawa.containerSecurityContext" -}}
+allowPrivilegeEscalation: false
+readOnlyRootFilesystem: true
+capabilities:
+  drop: ["ALL"]
 {{- end -}}
 
 {{/* wait-for-db init container (only meaningful when the bundled DB is used). */}}
@@ -89,6 +113,8 @@ the rendered manifest.
 - name: wait-for-db
   image: {{ include "notdawa.image" . }}
   imagePullPolicy: {{ .Values.image.pullPolicy }}
+  securityContext:
+    {{- include "notdawa.containerSecurityContext" . | nindent 4 }}
   command:
     - sh
     - -c

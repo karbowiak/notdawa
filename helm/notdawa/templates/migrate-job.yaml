@@ -12,7 +12,10 @@ metadata:
     helm.sh/hook-weight: "-5"
     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
 spec:
-  backoffLimit: 30
+  # Helm waits on hooks: fail a broken migration fast instead of crash-looping
+  # the release into its timeout.
+  backoffLimit: {{ .Values.migrate.backoffLimit }}
+  activeDeadlineSeconds: {{ .Values.migrate.activeDeadlineSeconds }}
   ttlSecondsAfterFinished: 3600
   template:
     metadata:
@@ -21,6 +24,7 @@ spec:
         app.kubernetes.io/component: migrate
     spec:
       restartPolicy: OnFailure
+      automountServiceAccountToken: false
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -35,6 +39,8 @@ spec:
         - name: migrate
           image: {{ include "notdawa.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            {{- include "notdawa.containerSecurityContext" . | nindent 12 }}
           args: ["migrate"]
           env:
             {{- include "notdawa.appEnv" . | nindent 12 }}

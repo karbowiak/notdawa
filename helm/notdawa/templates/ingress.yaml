@@ -14,9 +14,10 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: {{ . | quote }}
     {{- end }}
     {{- with .Values.ingress.cacheControl }}
-    # Let an upstream CDN (Cloudflare) cache successful GETs at the edge.
+    # Let an upstream CDN (Cloudflare) cache GETs at the edge. Scoped (-s) to
+    # success statuses so a transient 404/500 is never CDN-cached for 5 min.
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "Cache-Control: {{ . }}";
+      more_set_headers -s '200 301 304' "Cache-Control: {{ . }}";
     {{- end }}
     {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}

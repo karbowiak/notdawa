@@ -1,0 +1,62 @@
+{{- if .Values.networkPolicy.enabled }}
+# Default-deny ingress for everything this chart deploys, then the two flows
+# the app needs. Essential on a shared cluster: without these, every pod of
+# every tenant can open TCP to the password-only postgres.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "notdawa.fullname" . }}-default-deny
+  labels:
+    {{- include "notdawa.labels" . | nindent 4 }}
+spec:
+  podSelector: {}
+  policyTypes: ["Ingress"]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "notdawa.fullname" . }}-server-ingress
+  labels:
+    {{- include "notdawa.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "notdawa.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: server
+  policyTypes: ["Ingress"]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: {{ .Values.networkPolicy.ingressNamespace }}
+      ports:
+        - protocol: TCP
+          port: 8080
+{{- if .Values.postgres.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "notdawa.fullname" . }}-postgres-ingress
+  labels:
+    {{- include "notdawa.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "notdawa.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: postgres
+  policyTypes: ["Ingress"]
+  ingress:
+    - from:
+        # Every pod of this release (server, import, migrate, provision).
+        - podSelector:
+            matchLabels:
+              {{- include "notdawa.selectorLabels" . | nindent 14 }}
+        {{- with .Values.networkPolicy.postgresExtraFrom }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      ports:
+        - protocol: TCP
+          port: 5432
+{{- end }}
+{{- end }}

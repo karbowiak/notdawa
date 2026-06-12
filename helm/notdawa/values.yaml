@@ -56,20 +56,47 @@ postgres:
     # Annotate the PVC so it survives `helm uninstall` (the data is expensive to
     # rebuild — a full import is ~8 GB and a few hours).
     keep: true
-  # Extra postgres server flags.
+  # pgx pool_max_conns appended to the assembled DSN: 2 server replicas + the
+  # import/provision jobs stay well inside max_connections below.
+  poolMaxConns: 16
+  # Postgres tuning for the ~14 GB dataset inside the 4Gi memory limit on SSD
+  # (longhorn). shared_buffers 25% of the limit; effective_cache_size tells the
+  # planner about the container page cache; random_page_cost 1.1 biases toward
+  # the index plans this workload wants; jit off — these are sub-second OLTP
+  # plans where JIT compile time only hurts; maintenance_work_mem sized for the
+  # weekly index rebuilds on multi-million-row reloads.
   args:
     - -c
-    - max_connections=200
+    - max_connections=80
     - -c
-    - shared_buffers=512MB
+    - shared_buffers=1GB
+    - -c
+    - effective_cache_size=3GB
     - -c
     - work_mem=32MB
+    - -c
+    - maintenance_work_mem=256MB
+    - -c
+    - random_page_cost=1.1
+    - -c
+    - jit=off
   resources:
     requests:
       cpu: 500m
       memory: 1Gi
     limits:
       memory: 4Gi
+  # The official postgres entrypoint runs as this uid directly (skipping its
+  # root chown/su path); PGDATA on the existing PVC is owned by 999 (verified
+  # against the live volume before this default changed).
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
+    fsGroupChangePolicy: OnRootMismatch
+    seccompProfile:
+      type: RuntimeDefault
   nodeSelector: {}
   tolerations: []
   affinity: {}
@@ -92,6 +119,10 @@ server:
   service:
     type: ClusterIP
     port: 80
+  # Keep one replica up through other tenants' node drains (shared cluster).
+  podDisruptionBudget:
+    enabled: true
+    minAvailable: 1
   podAnnotations: {}
   nodeSelector: {}
   tolerations: []
@@ -104,6 +135,10 @@ server:
 # release operation (no multi-replica race).
 migrate:
   enabled: true
+  # Helm WAITS on hooks (disableWaitForJobs does not apply): a genuinely broken
+  # migration must fail the release fast, not crash-loop for half an hour.
+  backoffLimit: 3
+  activeDeadlineSeconds: 600
   resources:
     requests:
       cpu: 100m
@@ -119,9 +154,14 @@ import:
     requests:
       cpu: 500m
       memory: 2Gi
+      # Reserve the scratch emptyDir at scheduling time so a ~15 GB weekly
+      # download cannot create disk pressure that evicts other tenants' pods.
+      ephemeral-storage: 20Gi
     limits:
       memory: 8Gi
-  # Scratch space for downloaded extracts (TMPDIR). A full run streams ~8 GB.
+      ephemeral-storage: 24Gi
+  # Scratch space for downloaded extracts (TMPDIR). A full run streams ~15 GB
+  # (8 current + 6.7 bitemporal).
   tmpSize: 20Gi
 
   # Weekly refresh. Datafordeler republishes each register once a week (DAR Sat,
@@ -131,7 +171,10 @@ import:
     schedule: "0 4 * * 2"
     timeZone: Europe/Copenhagen
     target: all
-    activeDeadlineSeconds: 21600
+    # 12 h: the deadline caps the whole Job INCLUDING its retries, and
+    # Datafordeler stalls regularly — a lost week of data is worse than a
+    # long-running Tuesday job.
+    activeDeadlineSeconds: 43200
     successfulJobsHistoryLimit: 3
     failedJobsHistoryLimit: 3
 
@@ -178,3 +221,22 @@ podSecurityContext:
   runAsUser: 10001
   runAsGroup: 10001
   fsGroup: 10001
+  seccompProfile:
+    type: RuntimeDefault
+
+# ---------------------------------------------------------------------------
+# NetworkPolicy
+# ---------------------------------------------------------------------------
+# Default-deny ingress for the namespace plus the two allowances the app needs:
+# ingress-controller → server :8080 and app pods → postgres :5432. Essential on
+# a shared cluster — without it every pod of every tenant can reach the
+# password-only postgres. Extra peers (e.g. a Tailscale operator proxy that
+# should reach postgres) go in postgresExtraFrom as raw NetworkPolicyPeer
+# entries.
+networkPolicy:
+  enabled: false
+  # Namespace running the ingress controller (matched on the standard
+  # kubernetes.io/metadata.name label).
+  ingressNamespace: ingress-nginx
+  # Additional NetworkPolicyPeer entries allowed to reach postgres :5432.
+  postgresExtraFrom: []

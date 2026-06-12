@@ -21,6 +21,11 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
+      # The server never talks to the Kubernetes API; don't hand an attacker a
+      # cluster credential on the internet-facing pods.
+      automountServiceAccountToken: false
+      # Drain margin: `serve` shuts down gracefully within 25s of SIGTERM.
+      terminationGracePeriodSeconds: 40
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -29,20 +34,34 @@ spec:
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              {{- include "notdawa.selectorLabels" . | nindent 14 }}
+              app.kubernetes.io/component: server
       initContainers:
         {{- include "notdawa.waitForDb" . | nindent 8 }}
       containers:
         - name: server
           image: {{ include "notdawa.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            {{- include "notdawa.containerSecurityContext" . | nindent 12 }}
           args:
             - serve
             - --addr
             - ":8080"
             - --base-url
             - {{ .Values.server.baseURL | quote }}
+          # dbEnv only — serve never reads the Datafordeler/GSSearch credentials.
           env:
-            {{- include "notdawa.appEnv" . | nindent 12 }}
+            {{- include "notdawa.dbEnv" . | nindent 12 }}
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
           ports:
             - name: http
               containerPort: 8080
@@ -67,6 +86,11 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+      volumes:
+        # Writable scratch for the read-only root filesystem.
+        - name: tmp
+          emptyDir:
+            sizeLimit: 64Mi
       {{- with .Values.server.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -96,3 +120,19 @@ spec:
     - name: http
       port: {{ .Values.server.service.port }}
       targetPort: http
+{{- if .Values.server.podDisruptionBudget.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "notdawa.fullname" . }}
+  labels:
+    {{- include "notdawa.labels" . | nindent 4 }}
+    app.kubernetes.io/component: server
+spec:
+  minAvailable: {{ .Values.server.podDisruptionBudget.minAvailable }}
+  selector:
+    matchLabels:
+      {{- include "notdawa.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: server
+{{- end }}

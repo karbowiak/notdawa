@@ -4,7 +4,7 @@ API server:   svc/{{ include "notdawa.fullname" . }} (port {{ .Values.server.ser
 {{- if .Values.postgres.enabled }}
 Database:     svc/{{ include "notdawa.postgresHost" . }} (PostGIS, port 5432)
 {{- else }}
-Database:     external ({{ .Values.database.url | default "<unset>" }})
+Database:     external (database.url{{ if not .Values.database.url }} — UNSET{{ end }}; not echoed — the DSN may embed credentials)
 {{- end }}
 {{- if .Values.ingress.enabled }}
 Public URL:   {{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}://{{ index .Values.ingress.hosts 0 }}/docs
