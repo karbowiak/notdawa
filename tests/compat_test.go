@@ -234,21 +234,23 @@ func TestCompat(t *testing.T) {
 	}
 }
 
-// TestDocumentedCoverage probes documented DAWA endpoints that notdawa does NOT
-// implement (or implements at a different path). Each FAILS today with a status
-// mismatch (DAWA serves it, ours 404s) — that is the honest "not implemented"
-// signal, not a bug in the test. Listed so the gap is visible, not silently
-// uncovered. See docs/dawa_reference/ENDPOINTS.md.
+// TestDocumentedCoverage probes documented DAWA endpoints that notdawa does
+// NOT implement (or implements at a different path). A case FAILS with a
+// status mismatch (DAWA serves it, ours 404s) — that is the honest "not
+// implemented" signal, not a bug in the test. See docs/dawa_reference/ENDPOINTS.md.
+//
+// /bygninger (GeoDanmark building polygons) is deliberately OUT OF SCOPE
+// (owner decision 2026-06-12): it is not address data, the upstream GeoDanmark
+// sources survive DAWA's shutdown, the extract needs a separate Datafordeler
+// subscription, and the production access log (access_paths) shows zero
+// demand. Revisit only if real /bygninger traffic ever appears in the log.
 func TestDocumentedCoverage(t *testing.T) {
 	requireDAWA(t)
 	// id-bearing endpoints derive their key from a sibling collection so they
 	// don't hardcode unstable UUIDs.
 	adgId := firstID(t, "/adgangsadresser")
 	adrId := firstID(t, "/adresser")
-	bygId := firstID(t, "/bygninger")
 	cases := map[string]string{
-		"bygning-collection":       "/bygninger?side=1&per_side=5",
-		"bygning-single":           "/bygninger/" + bygId,
 		"historik-adgangsadresser": "/historik/adgangsadresser?id=" + adgId,
 		"historik-adresser":        "/historik/adresser?id=" + adrId,
 	}
