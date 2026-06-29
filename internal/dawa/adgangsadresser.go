@@ -761,6 +761,15 @@ func adgFilterClauses(wb *whereBuilder, f ListFilter) {
 	if v, ok := f.Filters["vejkode"]; ok {
 		wb.addCode(adgVejkodeExpr, v)
 	}
+	// vejnavn/husnr are exact, case-sensitive field filters (DAWA: lowercasing the
+	// vejnavn yields an empty result). nv.navn / h.husnummertekst are the same
+	// columns the SELECT projects, so the filter matches the emitted values.
+	if v, ok := f.Filters["vejnavn"]; ok {
+		wb.addEq("nv.navn", v)
+	}
+	if v, ok := f.Filters["husnr"]; ok {
+		wb.addEq("h.husnummertekst", v)
+	}
 	wb.addQ(f.Q, "nv.navn", "nv.adresseringsnavn", "h.husnummertekst", "p.navn")
 	if f.Spatial != nil {
 		wb.addSpatial(f.Spatial, "ap.geom")
@@ -774,7 +783,8 @@ func ListAdgangsadresser(ctx context.Context, pool *pgxpool.Pool, baseURL string
 }
 
 // ListAdgangsadresserFiltered is ListAdgangsadresser with SQL-side per-field
-// filters (postnr, vejkode, kommunekode), q= over vejnavn/husnr/postnrnavn, srid
+// filters (postnr, vejkode, kommunekode, vejnavn, husnr), q= over
+// vejnavn/husnr/postnrnavn, srid
 // output reprojection and an optional spatial filter (against the adgangspunkt),
 // plus offset paging. A zero filter reproduces ListAdgangsadresser byte-for-byte.
 func ListAdgangsadresserFiltered(ctx context.Context, pool *pgxpool.Pool, baseURL string, limit, offset int, f ListFilter) ([]*Adgangsadresse, error) {

@@ -118,8 +118,8 @@ func ListAdresser(ctx context.Context, pool *pgxpool.Pool, baseURL string, limit
 }
 
 // ListAdresserFiltered is ListAdresser with SQL-side per-field filters (postnr,
-// vejkode, kommunekode via the shared adgangsadresse clauses, plus etage and dør
-// on the enhedsadresse), q= over the address name fields, srid output
+// vejkode, kommunekode, vejnavn, husnr via the shared adgangsadresse clauses,
+// plus etage and dør on the enhedsadresse), q= over the address name fields, srid output
 // reprojection and an optional spatial filter (against the adgangspunkt), plus
 // offset paging. A zero filter reproduces ListAdresser byte-for-byte.
 func ListAdresserFiltered(ctx context.Context, pool *pgxpool.Pool, baseURL string, limit, offset int, f ListFilter) ([]*Adresse, error) {
